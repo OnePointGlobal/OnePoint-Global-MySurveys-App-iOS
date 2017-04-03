@@ -1,0 +1,138 @@
+
+/* Class = "UILabel"; text = "OnePoint Global"; ObjectID = "11x-wa-4vb"; */
+"11x-wa-4vb.text" = "OnePoint Global";
+
+/* Class = "UILabel"; text = "KFC Demo Surveys"; ObjectID = "3O8-5o-Zcx"; */
+"3O8-5o-Zcx.text" = "KFC Demo Surveys";
+
+/* Class = "UILabel"; text = "Chinthan"; ObjectID = "3cr-Me-wdS"; */
+"3cr-Me-wdS.text" = "Chinthan";
+
+/* Class = "UILabel"; text = "02/05/1988"; ObjectID = "4Xe-El-F1i"; */
+"4Xe-El-F1i.text" = "02/05/1988";
+
+/* Class = "UILabel"; text = "Text Color"; ObjectID = "4dn-ez-WuR"; */
+"4dn-ez-WuR.text" = "Text Color";
+
+/* Class = "UILabel"; text = "New"; ObjectID = "4pO-q9-O7l"; */
+"4pO-q9-O7l.text" = "New";
+
+/* Class = "UINavigationItem"; title = "OnePoint Global"; ObjectID = "5AP-fJ-Lnc"; */
+"5AP-fJ-Lnc.title" = "OnePoint Global";
+
+/* Class = "UINavigationItem"; title = "Notifications"; ObjectID = "5Nq-FH-HXl"; */
+"5Nq-FH-HXl.title" = "Notifications";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "9QP-cM-6gN"; */
+"9QP-cM-6gN.normalTitle" = "Forgot Password?";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "9p6-8e-Ama"; */
+"9p6-8e-Ama.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "12/12/2016"; ObjectID = "A1D-7I-tnU"; */
+"A1D-7I-tnU.text" = "12/12/2016";
+
+/* Class = "UILabel"; text = "3 min"; ObjectID = "AT4-97-LsI"; */
+"AT4-97-LsI.text" = "3 min";
+
+/* Class = "UILabel"; text = "Single"; ObjectID = "ATA-UO-bqG"; */
+"ATA-UO-bqG.text" = "Single";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "Cpj-oi-8H6"; */
+"Cpj-oi-8H6.text" = "Date";
+
+/* Class = "UILabel"; text = "approximately"; ObjectID = "Gtx-Pm-0uR"; */
+"Gtx-Pm-0uR.text" = "approximately";
+
+/* Class = "UITabBarItem"; title = "Upload Results"; ObjectID = "Gx9-3V-j0S"; */
+"Gx9-3V-j0S.title" = "Upload Results";
+
+/* Class = "UILabel"; text = "Background color"; ObjectID = "IyX-qA-HwD"; */
+"IyX-qA-HwD.text" = "Background color";
+
+/* Class = "UINavigationItem"; title = "OPGSurvey "; ObjectID = "J4c-K6-EdJ"; */
+"J4c-K6-EdJ.title" = "OPGSurvey ";
+
+/* Class = "UILabel"; text = "3 times"; ObjectID = "Ksr-eB-S4p"; */
+"Ksr-eB-S4p.text" = "3 times";
+
+/* Class = "UILabel"; text = "Background Image"; ObjectID = "Kyd-Ux-DGU"; */
+"Kyd-Ux-DGU.text" = "Background Image";
+
+/* Class = "UITextField"; placeholder = "User Name"; ObjectID = "MNj-gc-Zuv"; */
+"MNj-gc-Zuv.placeholder" = "User Name";
+
+/* Class = "UITableViewController"; title = "LeftMenuViewController"; ObjectID = "MbP-T7-YRp"; */
+"MbP-T7-YRp.title" = "LeftMenuViewController";
+
+/* Class = "UILabel"; text = "chinthanm@gmail.com"; ObjectID = "O1C-qZ-CfB"; */
+"O1C-qZ-CfB.text" = "chinthanm@gmail.com";
+
+/* Class = "UILabel"; text = "OnePoint Global"; ObjectID = "P55-dj-DNS"; */
+"P55-dj-DNS.text" = "OnePoint Global";
+
+/* Class = "UIViewController"; title = "About Us"; ObjectID = "Rgu-Ni-3lb"; */
+"Rgu-Ni-3lb.title" = "About Us";
+
+/* Class = "UIBarButtonItem"; title = "Home"; ObjectID = "Sis-Ke-Pl5"; */
+"Sis-Ke-Pl5.title" = "Home";
+
+/* Class = "UIViewController"; title = "Settings"; ObjectID = "UTE-SE-lyX"; */
+"UTE-SE-lyX.title" = "Settings";
+
+/* Class = "UILabel"; text = "Wecome to the App!!"; ObjectID = "WSx-zS-UTY"; */
+"WSx-zS-UTY.text" = "Wecome to the App!!";
+
+/* Class = "UIButton"; normalTitle = "X"; ObjectID = "Wwm-6S-93V"; */
+"Wwm-6S-93V.normalTitle" = "X";
+
+/* Class = "UITabBarItem"; title = "Notifications"; ObjectID = "a23-2e-2l8"; */
+"a23-2e-2l8.title" = "Notifications";
+
+/* Class = "UIViewController"; title = "Survey"; ObjectID = "epj-1l-11w"; */
+"epj-1l-11w.title" = "Survey";
+
+/* Class = "UINavigationItem"; title = "Login"; ObjectID = "har-vg-5KN"; */
+"har-vg-5KN.title" = "Login";
+
+/* Class = "UISegmentedControl"; iK6-vh-HrA.segmentTitles[0] = "Surveys"; ObjectID = "iK6-vh-HrA"; */
+"iK6-vh-HrA.segmentTitles[0]" = "Surveys";
+
+/* Class = "UISegmentedControl"; iK6-vh-HrA.segmentTitles[1] = "Location Surveys"; ObjectID = "iK6-vh-HrA"; */
+"iK6-vh-HrA.segmentTitles[1]" = "Location Surveys";
+
+/* Class = "UILabel"; text = "Survey Taken"; ObjectID = "kFg-KE-IXV"; */
+"kFg-KE-IXV.text" = "Survey Taken";
+
+/* Class = "UIButton"; normalTitle = ">"; ObjectID = "ks1-1e-U8B"; */
+"ks1-1e-U8B.normalTitle" = ">";
+
+/* Class = "UIButton"; normalTitle = ">"; ObjectID = "lUA-rW-j0q"; */
+"lUA-rW-j0q.normalTitle" = ">";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "pUX-Ji-tJP"; */
+"pUX-Ji-tJP.title" = "Profile";
+
+/* Class = "UITabBarItem"; title = "Survey"; ObjectID = "rVx-Cd-7fb"; */
+"rVx-Cd-7fb.title" = "Survey";
+
+/* Class = "UIViewController"; title = "Welcome"; ObjectID = "sbI-Vg-r2F"; */
+"sbI-Vg-r2F.title" = "Welcome";
+
+/* Class = "UIViewController"; title = "SurveyDetail"; ObjectID = "v9z-65-t3W"; */
+"v9z-65-t3W.title" = "SurveyDetail";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "vEt-NP-LAD"; */
+"vEt-NP-LAD.text" = "Time";
+
+/* Class = "UILabel"; text = "OnePoint Global"; ObjectID = "vQ4-RO-nCu"; */
+"vQ4-RO-nCu.text" = "OnePoint Global";
+
+/* Class = "UIBarButtonItem"; title = "Logout"; ObjectID = "vp2-gg-hrS"; */
+"vp2-gg-hrS.title" = "Logout";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "x4b-p3-76U"; */
+"x4b-p3-76U.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "KFC Demo Surveys - Online"; ObjectID = "xly-Yz-wZr"; */
+"xly-Yz-wZr.text" = "KFC Demo Surveys - Online";

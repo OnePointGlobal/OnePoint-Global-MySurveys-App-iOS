@@ -1,0 +1,25 @@
+{
+        "coordinates" : [ {
+                 "lattitude" : 12.916524,
+                 "longitude" : 77.618920,
+                 "item" : "KFC",
+                 "id" : "kfcdemo"
+                 }, {
+                 "lattitude" : 12.917943,
+                 "longitude" : 77.624089,
+                 "item" : "Nielsen"
+                 }, {
+                 "lattitude" : 12.9169007,
+                 "longitude" : 77.6094791,
+                 "item" : "OnePoint Global"
+                 }, {
+                 "lattitude" : 12.913306,
+                 "longitude" : 77.613700,
+                 "item" : "KFC",
+                 "id" : "kfcdemo"
+                 }, {
+                 "lattitude" : 12.915774,
+                 "longitude" : 77.610277,
+                 "item" : "McDonalds"
+                 }]
+    }

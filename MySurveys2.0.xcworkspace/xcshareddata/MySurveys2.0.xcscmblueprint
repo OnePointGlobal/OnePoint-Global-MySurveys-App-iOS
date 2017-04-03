@@ -1,0 +1,55 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "4d37e2cc-3ff1-4978-9a0a-28d175ad4462" : {
+
+    },
+    "c8cf3702-d023-4840-9048-5778e723de58" : {
+
+    },
+    "5926df91-cdb9-418b-8d64-d955e8c9ddbf" : {
+
+    },
+    "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4d37e2cc-3ff1-4978-9a0a-28d175ad4462" : 9223372036854775807,
+    "c8cf3702-d023-4840-9048-5778e723de58" : 9223372036854775807,
+    "5926df91-cdb9-418b-8d64-d955e8c9ddbf" : 9223372036854775807,
+    "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "750F71BB-A858-4117-88C9-4A193578F729",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4d37e2cc-3ff1-4978-9a0a-28d175ad4462" : "iosopgsdk\/",
+    "c8cf3702-d023-4840-9048-5778e723de58" : "iphoneprom\/",
+    "5926df91-cdb9-418b-8d64-d955e8c9ddbf" : "iphoneruntimeframework\/",
+    "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25" : "iosmysurveys20\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MySurveys2.0",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MySurveys2.0.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iosopgsdk",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4d37e2cc-3ff1-4978-9a0a-28d175ad4462"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iphoneruntimeframework",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5926df91-cdb9-418b-8d64-d955e8c9ddbf"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iphoneprom",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "c8cf3702-d023-4840-9048-5778e723de58"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iosmysurveys20",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25"
+    }
+  ]
+}

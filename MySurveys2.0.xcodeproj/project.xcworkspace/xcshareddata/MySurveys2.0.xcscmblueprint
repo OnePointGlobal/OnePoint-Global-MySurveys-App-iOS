@@ -1,0 +1,65 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "6c612c89-ccb7-46bb-aa4e-06e728e3748f" : {
+
+    },
+    "4d37e2cc-3ff1-4978-9a0a-28d175ad4462" : {
+
+    },
+    "459424e7-35d0-4a19-8520-017c2efc924a" : {
+
+    },
+    "6f5dc5b5-4c53-45fc-aff4-3549ff1f48f8" : {
+
+    },
+    "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "6c612c89-ccb7-46bb-aa4e-06e728e3748f" : 0,
+    "4d37e2cc-3ff1-4978-9a0a-28d175ad4462" : 0,
+    "459424e7-35d0-4a19-8520-017c2efc924a" : 0,
+    "6f5dc5b5-4c53-45fc-aff4-3549ff1f48f8" : 0,
+    "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FBC28C01-1101-400B-87F5-CAA0E65089D8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "6c612c89-ccb7-46bb-aa4e-06e728e3748f" : "iosmysurveysv20\/",
+    "4d37e2cc-3ff1-4978-9a0a-28d175ad4462" : "..\/Downloads\/iosopgsdk",
+    "459424e7-35d0-4a19-8520-017c2efc924a" : "SDK\/OnePointSDKiOS\/",
+    "6f5dc5b5-4c53-45fc-aff4-3549ff1f48f8" : "MySurveys_2.0\/",
+    "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25" : "iosmysurveys20\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MySurveys2.0",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MySurveys2.0.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iosonepointsdk",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "459424e7-35d0-4a19-8520-017c2efc924a"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iosopgsdk",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4d37e2cc-3ff1-4978-9a0a-28d175ad4462"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iosmysurveysv20",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6c612c89-ccb7-46bb-aa4e-06e728e3748f"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iosmysurveys20",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6f5dc5b5-4c53-45fc-aff4-3549ff1f48f8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iosmysurveys20",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25"
+    }
+  ]
+}
