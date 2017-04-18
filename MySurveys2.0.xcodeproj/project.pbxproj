@@ -57,6 +57,8 @@
 		13F9A48B1DF962A10017C42C /* surveydetail_nav@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4881DF962A10017C42C /* surveydetail_nav@3x.png */; };
 		1687868231AF9FEE3FC9403E /* libPods-MySurveys2.0Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F2B9E895E12A5F50246EA1B /* libPods-MySurveys2.0Tests.a */; };
 		6EE233761C56BD469DCAFC14 /* libPods-MySurveys2.0UITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B0DD1BD844238B023825F6 /* libPods-MySurveys2.0UITests.a */; };
+		7803418E1EA6263A00F3CCE1 /* libOnePointSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E7E3861E7BE757004F6934 /* libOnePointSDK.a */; };
+		7803418F1EA62AF200F3CCE1 /* libOnePoint.PROM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB071DBF7F7E0066A049 /* libOnePoint.PROM.a */; };
 		7853A2761DB899B8005EC4D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7853A2751DB899B8005EC4D1 /* GoogleService-Info.plist */; };
 		785B8B141E1E254800F09F20 /* libOnePointFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB081DBF7F7E0066A049 /* libOnePointFramework.a */; };
 		7869DB371E23BA05001F016F /* OPGResourceBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7812F82E1E1F98FF00CBFF36 /* OPGResourceBundle.bundle */; };
@@ -90,7 +92,6 @@
 		78E2252D1DC3638400880AE0 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		78E368461DF6DF4900D14F07 /* profile_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78E368451DF6DF4900D14F07 /* profile_default.png */; };
 		78E4F2731E1271FF001678FB /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E4F2721E1271FF001678FB /* UserNotifications.framework */; };
-		78E7E3871E7BE757004F6934 /* libOnePointSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E7E3861E7BE757004F6934 /* libOnePointSDK.a */; };
 		78E9F4CB1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F4CA1DDC61500004FC73 /* ProfileTableViewCountryCell.swift */; };
 		78E9F4CC1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F4CA1DDC61500004FC73 /* ProfileTableViewCountryCell.swift */; };
 		78E9F4CD1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F4CA1DDC61500004FC73 /* ProfileTableViewCountryCell.swift */; };
@@ -123,7 +124,6 @@
 		9408BB041DBF7EFE0066A049 /* NSString+NSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408BB011DBF7EFE0066A049 /* NSString+NSDate.m */; };
 		9408BB091DBF7F7E0066A049 /* libOnePoint.MOM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB051DBF7F7E0066A049 /* libOnePoint.MOM.a */; };
 		9408BB0A1DBF7F7E0066A049 /* libOnePoint.POM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB061DBF7F7E0066A049 /* libOnePoint.POM.a */; };
-		9408BB0B1DBF7F7E0066A049 /* libOnePoint.PROM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB071DBF7F7E0066A049 /* libOnePoint.PROM.a */; };
 		9428C4101E1E4F3500DEF65D /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 9428C40E1E1E4F3500DEF65D /* Location.gpx */; };
 		9428C4111E1E4F3500DEF65D /* NewLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 9428C40F1E1E4F3500DEF65D /* NewLocation.gpx */; };
 		942DBBEC1DE5725400A0BD98 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 942DBBEB1DE5725400A0BD98 /* Images.xcassets */; };
@@ -462,13 +462,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78E7E3871E7BE757004F6934 /* libOnePointSDK.a in Frameworks */,
+				7803418F1EA62AF200F3CCE1 /* libOnePoint.PROM.a in Frameworks */,
+				7803418E1EA6263A00F3CCE1 /* libOnePointSDK.a in Frameworks */,
 				785B8B141E1E254800F09F20 /* libOnePointFramework.a in Frameworks */,
 				787D1E591E1E22120095DFFA /* libxml2.tbd in Frameworks */,
 				78E4F2731E1271FF001678FB /* UserNotifications.framework in Frameworks */,
 				9408BB091DBF7F7E0066A049 /* libOnePoint.MOM.a in Frameworks */,
 				9408BB0A1DBF7F7E0066A049 /* libOnePoint.POM.a in Frameworks */,
-				9408BB0B1DBF7F7E0066A049 /* libOnePoint.PROM.a in Frameworks */,
 				94F07BE01DBDE3CB00EEE189 /* FBSDKCoreKit.framework in Frameworks */,
 				94F07BC41DBDD89100EEE189 /* libPods-MySurveys2.0Tests.a in Frameworks */,
 				94F07BC51DBDD89100EEE189 /* libPods-MySurveys2.0UITests.a in Frameworks */,
