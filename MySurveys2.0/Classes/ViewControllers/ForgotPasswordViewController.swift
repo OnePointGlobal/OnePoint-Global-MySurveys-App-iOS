@@ -18,6 +18,7 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var constraintViewTop: NSLayoutConstraint!
     @IBOutlet weak var bgView : UIView!
+    @IBOutlet weak var emailFieldTopSpace: NSLayoutConstraint!
 
     // MARK: - Properties of viewcontroller
     var bgColor : UIColor?
@@ -53,6 +54,16 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
+    }
+
+     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.txtEmailID?.resignFirstResponder()
+        
+        coordinator.animate(alongsideTransition: nil, completion: { _ in
+            //self.setBackgroundImageforView()
+            self.txtEmailID?.becomeFirstResponder()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -165,6 +176,7 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.view.layoutIfNeeded()
         let height = self.view.bounds.height
+        let width = self.view.bounds.width
         if height > 480 {
             UIView.animate(withDuration: 0.5, animations: {
                 self.constraintViewTop.constant = -70.0
@@ -177,6 +189,23 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
                 self.view.layoutIfNeeded()
             })
         }
+        
+        //iPad landscape
+        if width == 1024.0
+        {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.emailFieldTopSpace.constant = 8.0
+                self.view.layoutIfNeeded()
+            })
+        }
+        else if width == 768.0
+        {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.emailFieldTopSpace.constant = 125.0
+                self.view.layoutIfNeeded()
+            })
+        }
+        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

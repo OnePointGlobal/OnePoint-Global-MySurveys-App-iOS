@@ -175,6 +175,14 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
 
     
     // MARK: - Tableview Delegates
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 80.0
+        } else {
+            return 60.0
+        }
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notificationArray.count
     }
@@ -195,17 +203,33 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             tableViewCell.lblNotificationDesc.textColor = color                          // color if notification is unread
         }
         tableViewCell.lblNotificationDesc.text = dict["Title"] as? String
+        tableViewCell.layoutMargins = UIEdgeInsets.zero
         tableViewCell.accessoryType = .disclosureIndicator
         tableViewCell.selectionStyle = .none
         if self.isEditable
         {
-            tableViewCell.imgSelect.image = UIImage(named: "notif_deselect.png")                //deselect all cells on clicking cancel button
+            if ( UIDevice.current.userInterfaceIdiom == .phone )
+            {
+                tableViewCell.imgSelect.image = UIImage(named: "notif_deselect.png")                //deselect all cells on clicking cancel button
+            }
+            else
+            {
+                tableViewCell.imgSelect.image = UIImage(named: "notif_deselect_iPad.png")
+            }
         }
         else
         {
             tableViewCell.contentView.backgroundColor = UIColor.clear
             tableViewCell.backgroundColor = UIColor.clear
-            tableViewCell.imgSelect.image = UIImage(named: "notif_reminder.png")
+            if ( UIDevice.current.userInterfaceIdiom == .phone )
+            {
+                tableViewCell.imgSelect.image = UIImage(named: "notif_reminder.png")
+            }
+            else
+            {
+                tableViewCell.imgSelect.image = UIImage(named: "notif_reminder_iPad.png")
+            }
+            
 //            if (indexPath.row%2)==0                                                            //dummy condition to differentiate reminders and other notifs
 //            {
 //                tableViewCell.imgSelect.image = UIImage(named: "notif_reminder.png")
@@ -226,7 +250,14 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
         {
             if self.selectedIndexArray.contains(indexPath.row)
             {
-                cell.imgSelect.image = UIImage(named: "notif_deselect.png")                             //deselect cell again after selecting
+                if ( UIDevice.current.userInterfaceIdiom == .phone )
+                {
+                    cell.imgSelect.image = UIImage(named: "notif_deselect.png")                             //deselect cell again after selecting
+                }
+                else
+                {
+                    cell.imgSelect.image = UIImage(named: "notif_deselect_iPad.png")
+                }
                 cell.contentView.backgroundColor = UIColor.clear
                 cell.backgroundColor = UIColor.clear
                 let indexOfElelement = self.selectedIndexArray.index(of: indexPath.row)
@@ -235,7 +266,15 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             else
             {
                 self.selectedIndexArray.append(indexPath.row)
-                cell.imgSelect.image = UIImage(named: "notif_select.png")                                       //select cell
+                if ( UIDevice.current.userInterfaceIdiom == .phone )
+                {
+                    cell.imgSelect.image = UIImage(named: "notif_select.png")                   //select cell
+                }
+                else
+                {
+                    cell.imgSelect.image = UIImage(named: "notif_select_iPad.png")
+                }
+                
                 let color : UIColor = UIColor(colorLiteralRed: 196/255.0, green: 196/255.0, blue: 196/255.0, alpha: 1)     //for Hex C4C4C4
                 cell.contentView.backgroundColor = color
                 cell.backgroundColor = color

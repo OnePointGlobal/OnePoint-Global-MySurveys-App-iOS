@@ -51,7 +51,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - Table View Delegate Methods
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 80.0
+        } else {
+            return 60.0
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,6 +67,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
         if indexPath.row == 1 {
             tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
+            tableViewCell.layoutMargins = UIEdgeInsets.zero
             tableViewCell.fillCell(items: settingItems[indexPath.row], isGeoFencing: true)
             tableViewCell.switchControl.addTarget(self, action: #selector(switchEvents), for: UIControlEvents.valueChanged)
             tableViewCell.accessoryType = .none

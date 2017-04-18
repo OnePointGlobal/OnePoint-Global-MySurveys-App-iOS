@@ -169,6 +169,17 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
 
         AppTheme.theme=nil              //reset theme after showing custom BG image
     }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        imgLoginBG?.alpha = 0.5
+
+        coordinator.animate(alongsideTransition: nil, completion: { _ in
+            self.setBackgroundImageforView()
+            self.imgLoginBG?.alpha = 1.0
+
+        })
+    }
     
     
     // MARK: - Generic Private methods
@@ -358,7 +369,25 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
                 break
             }
         }
+        else if UIDevice.current.userInterfaceIdiom == .pad
+        {
+            switch height {
+            case 1024.0:
+                print("iPad Portrait")
+                imgLoginBG?.image = UIImage(named: "Default_iPad_Portrait.png")
+                break
+            case 768.0:
+                print("iPad Landscape")
+                imgLoginBG?.image = UIImage(named: "Default_iPad_Landscape.png")
+                break
+            default:
+                print("not an iPad")
+                imgLoginBG?.image = UIImage(named: "Default-736@3x.png")
+                break
+            }
+        }
     }
+
     
 
     // MARK: - Navigation

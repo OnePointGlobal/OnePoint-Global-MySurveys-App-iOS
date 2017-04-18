@@ -61,6 +61,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     override func viewDidLoad()
     {
         super.viewDidLoad()
+
         queue.maxConcurrentOperationCount = 1
         self.geoFencedView?.isHidden = true
         self.mapView.showsUserLocation = true;
@@ -110,8 +111,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
+    override func viewWillAppear(_ animated: Bool)
+    {
         self.tableView?.setContentOffset(CGPoint.zero, animated: true)
         let defaults = UserDefaults.standard
         let name:String? = defaults.value(forKey: "appName") as? String
@@ -1304,7 +1305,12 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90.0
+         if UIDevice.current.userInterfaceIdiom == .pad {
+            return 105.0
+        } else {
+            return 90.0
+        }
+
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -1353,6 +1359,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         tableViewCell.btnSurveyDesc.isUserInteractionEnabled = true
                         tableViewCell.btnSurveyDesc.isEnabled = true
                         tableViewCell.btnSurveyDesc.addTarget(self, action: #selector(self.uploadGeoFenceOfflineResults(sender:)), for: .touchUpInside)
+                        tableViewCell.constarintCounterBtnSpace.constant = (tableViewCell.offlineFileCountButton.frame.width+20)    //reduce surveyName field size to accomodate counter
                     }
                 }
             }
@@ -1580,21 +1587,47 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     func setUpGeoFeningView(_ isGeoFenced : Bool) {
         self.view.layoutIfNeeded()
-        if isGeoFenced {
-            if geoFencedArrayFiltered.count > 1 {
-                self.tableView?.isScrollEnabled = true
-                self.constraintGeotableViewHeight.constant = 180
-                self.constraintMapViewHeight.constant = self.view.bounds.size.height - 181
-            } else if geoFencedArrayFiltered.count == 1 {
-                self.tableView?.isScrollEnabled = false
-                self.constraintGeotableViewHeight.constant = 90
-                self.constraintMapViewHeight.constant = self.view.bounds.size.height - 91
+        if isGeoFenced
+        {
+            if geoFencedArrayFiltered.count > 1
+            {
+                if UIDevice.current.userInterfaceIdiom == .pad
+                {
+                    self.tableView?.isScrollEnabled = true
+                    self.constraintGeotableViewHeight.constant = 210
+                    self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)! - 211
+                }
+                else
+                {
+                    self.tableView?.isScrollEnabled = true
+                    self.constraintGeotableViewHeight.constant = 180
+                    self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)! - 181
+                }
+                
             }
-        } else {
-            self.constraintMapViewHeight.constant = self.view.bounds.size.height
+            else if geoFencedArrayFiltered.count == 1
+            {
+                if UIDevice.current.userInterfaceIdiom == .pad
+                {
+                    self.tableView?.isScrollEnabled = false
+                    self.constraintGeotableViewHeight.constant = 105
+                    self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)! - 106
+                }
+                else
+                {
+                    self.tableView?.isScrollEnabled = false
+                    self.constraintGeotableViewHeight.constant = 90
+                    self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)! - 91
+                }
+            }
+        }
+        else
+        {
+            self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)!
             self.constraintGeotableViewHeight.constant = 0
         }
         self.view.layoutIfNeeded()
+
         
     }
     

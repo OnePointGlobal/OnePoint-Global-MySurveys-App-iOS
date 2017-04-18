@@ -64,7 +64,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         self.tableview.dataSource=self
         self.tableview.allowsSelection = false                  //Disable table view selection
         self.tableview.separatorStyle = UITableViewCellSeparatorStyle.none
-        //self.title = NSLocalizedString("Profile", comment: "")
+        self.tableview.isScrollEnabled=false
         self.activityIndicator.color = AppTheme.appBackgroundColor()
 
         let bounds = UIScreen.main.bounds
@@ -145,6 +145,29 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     override func viewWillDisappear(_ animated: Bool)
     {
         self.isEditable = false
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: nil, completion: { _ in
+            let bounds = UIScreen.main.bounds
+            let height = bounds.size.height
+            if (self.tableview != nil)
+            {
+                if(height==768 || height==1536)
+                {
+                    //enable scroll for iPad landscape
+                    self.tableview.isScrollEnabled=true
+                }
+                else
+                {
+                    self.tableview.isScrollEnabled=false
+                }
+            }
+            
+            
+        })
     }
     
     // MARK: - DB methods
@@ -698,7 +721,13 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         return 0.01
     }
 
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 110.0
+        } else {
+            return self.tableview.rowHeight
+        }
+    }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -714,9 +743,16 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             {
                 tableViewCell.fillCell(title: titleArray[indexPath.row], value : (panelist?.firstName)!, tagIdentifier: 1)
             }
-            if isEditable! {
+            if isEditable!
+            {
                 tableViewCell.txtValue.isEnabled=true
                 tableViewCell.txtValue.perform(#selector(becomeFirstResponder), with: nil , afterDelay: 0)
+                if UIDevice.current.userInterfaceIdiom == .pad
+                {
+                    //15 is for iPhone
+                    tableViewCell.separatorInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+                }
+
             }
             else{
                 tableViewCell.txtValue.isEnabled=false
@@ -735,6 +771,11 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             else
             {
                 tableViewCell.fillCell(title: titleArray[indexPath.row], value: (self.panelist?.countryName)!)
+            }
+            if (isEditable! && UIDevice.current.userInterfaceIdiom == .pad)
+            {
+                //15 is for iPhone
+                tableViewCell.separatorInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
             }
             tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
             return tableViewCell
