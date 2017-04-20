@@ -172,10 +172,13 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        imgLoginBG?.alpha = 0.5
+        if (AppTheme.getLoginBGImagePath().isEmpty)
+        {
+            imgLoginBG?.alpha = 0.5
+        }
 
         coordinator.animate(alongsideTransition: nil, completion: { _ in
-            self.setBackgroundImageforView()
+            self.setThemeElements()             
             self.imgLoginBG?.alpha = 1.0
 
         })

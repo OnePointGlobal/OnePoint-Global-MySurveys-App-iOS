@@ -55,6 +55,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     var alertsArray : Array<Any> = []
     var selectedOfflineSurveyIndex : Int?
     var refreshButton = UIButton()
+    var bannerTitle : NSString?             //class var to show during orientation transition
     
     // MARK: - ViewController LifeCycle Methods
     
@@ -154,6 +155,22 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     override func viewWillDisappear(_ animated: Bool) {
         self.isAppKilled = false
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        let isOperating : Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
+        if (isOperating == 1 || isOperating == 3)
+        {
+            self.hideBanner()
+        }
+
+        coordinator.animate(alongsideTransition: nil, completion: { _ in
+            if (isOperating == 1 || isOperating == 3)
+            {
+                self.showBanner(progressTitle: self.bannerTitle as! String)
+            }
+        })
     }
     
     // MARK: - IBOutlet Action methods
@@ -1060,7 +1077,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         
     }
     
-    func showBanner(progressTitle : String) {
+    func showBanner(progressTitle : String)
+    {
+        self.bannerTitle = progressTitle as NSString?
         self.bannerView = OPGNotificationView()
         self.bannerView?.initialisewithNavigation(title: progressTitle, referenceView: self.view, notificationType: .upload)
         self.view.addSubview(self.bannerView!)
@@ -1405,7 +1424,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
      In a storyboard-based application, you will often want to do a little preparation before navigation
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        self.isAppKilled = false
         if(segue.identifier == "embedSurveyDetails")
         {
             let viewController : SurveyDetailsViewController = segue.destination as! SurveyDetailsViewController
