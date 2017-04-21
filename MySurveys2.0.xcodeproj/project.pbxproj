@@ -66,6 +66,7 @@
 		787D88E21E09337800E15D22 /* number_of_times.png in Resources */ = {isa = PBXBuildFile; fileRef = 787D88DF1E09337800E15D22 /* number_of_times.png */; };
 		787D88E31E09337800E15D22 /* number_of_times@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787D88E01E09337800E15D22 /* number_of_times@2x.png */; };
 		787D88E41E09337800E15D22 /* number_of_times@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787D88E11E09337800E15D22 /* number_of_times@3x.png */; };
+		78822D1E1EAA0ED500E84831 /* forgotpwd_key_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78822D1D1EAA0ED500E84831 /* forgotpwd_key_iPad.png */; };
 		789CCFEA1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */; };
 		789CCFEB1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */; };
 		789CCFEC1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */; };
@@ -318,6 +319,7 @@
 		787D88DF1E09337800E15D22 /* number_of_times.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = number_of_times.png; path = icons/number_of_times.png; sourceTree = "<group>"; };
 		787D88E01E09337800E15D22 /* number_of_times@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "number_of_times@2x.png"; path = "icons/number_of_times@2x.png"; sourceTree = "<group>"; };
 		787D88E11E09337800E15D22 /* number_of_times@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "number_of_times@3x.png"; path = "icons/number_of_times@3x.png"; sourceTree = "<group>"; };
+		78822D1D1EAA0ED500E84831 /* forgotpwd_key_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forgotpwd_key_iPad.png; path = icons/forgotpwd_key_iPad.png; sourceTree = "<group>"; };
 		789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = Classes/TableViewCells/ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		78A92B9E1E530D8B000890CB /* ThemeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		78B7B3E51E54282D00A3FA9A /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
@@ -726,6 +728,7 @@
 		94CD76601DB4AB9F00C6F958 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				78822D1D1EAA0ED500E84831 /* forgotpwd_key_iPad.png */,
 				78CB257B1EA5EE460002EC6D /* Default_iPad_Landscape.png */,
 				78CB257C1EA5EE460002EC6D /* Default_iPad_Portrait.png */,
 				78CB257D1EA5EE460002EC6D /* notif_deselect_iPad.png */,
@@ -1025,6 +1028,7 @@
 				78CB25931EA5EE460002EC6D /* notif_select_iPad.png in Resources */,
 				13F9A4831DF961300017C42C /* survey_time@3x.png in Resources */,
 				13F9A4691DF9442A0017C42C /* profile@3x.png in Resources */,
+				78822D1E1EAA0ED500E84831 /* forgotpwd_key_iPad.png in Resources */,
 				94CB0D701DCB1B84007AF73F /* notification@2x.png in Resources */,
 				78CB25971EA5EE460002EC6D /* survey_calendar_iPad.png in Resources */,
 				78F230AC1E445B00001E24EC /* default_theme_image@3X.png in Resources */,

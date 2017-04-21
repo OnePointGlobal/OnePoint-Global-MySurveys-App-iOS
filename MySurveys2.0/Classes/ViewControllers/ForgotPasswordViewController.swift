@@ -19,6 +19,7 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
     @IBOutlet weak var constraintViewTop: NSLayoutConstraint!
     @IBOutlet weak var bgView : UIView!
     @IBOutlet weak var emailFieldTopSpace: NSLayoutConstraint!
+    @IBOutlet weak var emailToLabelTopSpace: NSLayoutConstraint!
 
     // MARK: - Properties of viewcontroller
     var bgColor : UIColor?
@@ -35,7 +36,14 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
                                                                      attributes:[NSForegroundColorAttributeName: UIColor(red:178/255.0, green:176/255.0, blue:178/255.0, alpha: 1.0)])
         self.btnSubmit?.setTitleColor(self.bgColor, for: .normal)
         self.btnSubmit?.layer.borderColor = self.bgColor?.cgColor
-        self.btnSubmit?.layer.borderWidth = 1.0;
+        if ( UIDevice.current.userInterfaceIdiom == .phone )
+        {
+            self.btnSubmit?.layer.borderWidth = 1.0;
+        }
+        else
+        {
+            self.btnSubmit?.layer.borderWidth = 1.3;
+        }
         self.btnSubmit?.setTitle(NSLocalizedString("Send", comment: "Send"), for: .normal)
         self.activityIndicator.color = self.bgColor
         self.view.backgroundColor = self.bgColor
@@ -173,48 +181,85 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
         return false
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField)
+    {
         self.view.layoutIfNeeded()
         let height = self.view.bounds.height
         let width = self.view.bounds.width
-        if height > 480 {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.constraintViewTop.constant = -70.0
-                self.view.layoutIfNeeded()
-            })
-        }
-        else{
-            UIView.animate(withDuration: 0.5, animations: {
-                self.constraintViewTop.constant = -130.0
-                self.view.layoutIfNeeded()
-            })
-        }
-        
-        //iPad landscape
-        if width == 1024.0
+
+        if UIDevice.current.userInterfaceIdiom == .phone
         {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.emailFieldTopSpace.constant = 8.0
-                self.view.layoutIfNeeded()
-            })
+            if height > 480
+            {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.constraintViewTop.constant = -70.0
+                    self.view.layoutIfNeeded()
+                })
+            }
+            else{
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.constraintViewTop.constant = -130.0
+                    self.view.layoutIfNeeded()
+                })
+            }
         }
-        else if width == 768.0
+        else
         {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.emailFieldTopSpace.constant = 125.0
-                self.view.layoutIfNeeded()
-            })
+            //iPad landscape
+            if width == 1024.0
+            {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.emailFieldTopSpace.constant = 5.0
+                    self.emailToLabelTopSpace.constant = 20.0
+                    self.constraintViewTop.constant = -20.0
+                    self.view.layoutIfNeeded()
+                })
+            }
+            else if width == 768.0
+            {
+                //iPad portrait
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.emailFieldTopSpace.constant = 125.0
+                    self.view.layoutIfNeeded()
+                })
+            }
         }
-        
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField)
+    {
+        let bounds = UIScreen.main.bounds
+        let height = bounds.size.height
+
         self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.5, animations: {
-            self.constraintViewTop.constant = 0
-            self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.5, animations:
+            {
+                if UIDevice.current.userInterfaceIdiom == .pad
+                {
+                    if(height==1024 || height==2018)
+                    {
+                        //iPad portarit
+                        self.constraintViewTop.constant = 30
+                        //self.emailFieldTopSpace.constant = 0
+                        self.view.layoutIfNeeded()
+                    }
+                    else
+                    {
+                        //iPad landscape
+                        self.constraintViewTop.constant = 0
+                        self.emailFieldTopSpace.constant = 20
+                        self.emailToLabelTopSpace.constant = 80.0
+                        self.view.layoutIfNeeded()
+                    }
+
+                }
+                else
+                {
+                    //iPhone
+                    self.constraintViewTop.constant = 0
+                    self.emailFieldTopSpace.constant = 20
+                    self.view.layoutIfNeeded()
+                }
         })
-
     }
-
 }
