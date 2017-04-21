@@ -145,13 +145,4 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             print("GeoFencing stopped")
         }
     }
-    
-    func geoFencedAreas(_ locations: [Any]!) {
-        print("the areas to be monitored are \(locations.description)")
-        let geofencedArrays : Array<OPGMSGeoFencingModel> = locations as! Array<OPGMSGeoFencingModel>
-        if geofencedArrays.count > 0 {
-            UserDefaults.standard.set(geofencedArrays, forKey: "GeoFencedArrays")
-        }
-        
-    }
 }

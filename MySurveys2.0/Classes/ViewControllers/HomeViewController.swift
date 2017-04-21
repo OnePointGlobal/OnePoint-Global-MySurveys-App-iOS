@@ -1154,7 +1154,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
         
     }
-    
+
+
+    // MARK: - Filtering Methods for geo-fencing
     func runThroughAddresses(_ address:String, _ isEntered:Bool) {
         if geofencedArrays.count > 0 {
             if isEntered == true {
@@ -1162,7 +1164,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     let addresses = (geofencedArrays[i] as! OPGMSGeoFencingModel).address
                     if address.contains(addresses!) {
                         (geofencedArrays[i] as! OPGMSGeoFencingModel).isDeleted = 2
-                        CollabrateDB.sharedInstance().updateGeoFenceSurvey((geofencedArrays[i] as! OPGMSGeoFencingModel).addressID,withStatus: 2)
+                        CollabrateDB.sharedInstance().updateGeoFenceSurvey((geofencedArrays[i] as! OPGMSGeoFencingModel).addressID,withStatus: 2)   //2 = entered
                     }
                 }
             } else {
@@ -1170,7 +1172,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     let addresses = (geofencedArrays[i] as! OPGMSGeoFencingModel).address
                     if address.contains(addresses!) {
                         (geofencedArrays[i] as! OPGMSGeoFencingModel).isDeleted = 1
-                        CollabrateDB.sharedInstance().updateGeoFenceSurvey((geofencedArrays[i] as! OPGMSGeoFencingModel).addressID,withStatus: 1)
+                        CollabrateDB.sharedInstance().updateGeoFenceSurvey((geofencedArrays[i] as! OPGMSGeoFencingModel).addressID,withStatus: 1)       //1 = exited
                     }
                 }
                 
@@ -1458,16 +1460,18 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             
         }
     }
-    
+
+
     func didEnterRegion(_ regionEntered: OPGMSGeoFencingModel!) {
         if (regionEntered != nil) {
             print("region entered is \(regionEntered.address!)")
             self.runThroughAddresses(regionEntered.address, true)
             self.runThroughSurveyName(regionEntered.surveyName, _isEntered: true)
-            self.tableViewGeoFenced?.reloadData()
+            self.tableViewGeoFenced?.reloadData()       //enable surveys with orange color
             let appState = UIApplication.shared.applicationState
-            if appState == UIApplicationState.active {
-                self.showGeoAlerts(regionEntered)
+            if appState == UIApplicationState.active
+            {
+                self.showGeoAlerts(regionEntered)           //if app is active, show alert
                 let dict : [String:Any] = ["LastUpdated" : "2017-01-03T12:35:06",
                                            "Type" : 0,
                                            "AppNotificationID" : 1,
@@ -1476,7 +1480,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     "IsRead" : "0"]
                 print("dict createsd \(dict)")
                 CollabrateDB.sharedInstance().saveLocalNotifications(dict)
-            } else {
+            }
+            else
+            {
+                //if app is inactive, send notifications
                 if #available(iOS 10.0, *) {
                     let content = UNMutableNotificationContent()
                     
@@ -1494,7 +1501,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     )
                     UNUserNotificationCenter.current().add(
                         request, withCompletionHandler: nil)
-                }
+                } // TODO: write code for iOS9.0 and below
             }
         }
         
@@ -1504,7 +1511,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func didExitRegion(_ regionExited: OPGMSGeoFencingModel) {
         print("region exited is \(regionExited.address)")
         self.runThroughSurveyName(regionExited.surveyName, _isEntered: false)
-        self.tableViewGeoFenced?.reloadData()
+        self.tableViewGeoFenced?.reloadData()               //disnable surveys with gray color
     }
     
     func showGeoAlerts(_ regions : OPGMSGeoFencingModel) {
@@ -1590,8 +1597,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             self.removeOverlaysFromMap()
             self.loadInitialData()
             
-        } else if (geoFenceValue == nil) ||  (geoFenceValue == "0") {
-            self.setUpGeoFeningView(false)
+        }
+
+        else if (geoFenceValue == nil) ||  (geoFenceValue == "0") {
+            self.setUpGeoFeningView(false)              //show only map view with no surveys
             self.removeOverlaysFromMap()
             self.showGeoFencePopUp(NSLocalizedString("To take your location based surveys turn on ‘Geolocation’ from the App Settings", comment: ""))
         }
@@ -1659,7 +1668,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         for i in 0 ..< geofencedArrays.count {
             let name = (geofencedArrays[i] as! OPGMSGeoFencingModel).surveyName            // check once PROM models updated
             if !surveyNames.contains(name!) {
-                dummyArray.append(geofencedArrays[i])
+                dummyArray.append(geofencedArrays[i])                       //filter to avoid mduplication
                 surveyNames.append(name!)
             }
         }
