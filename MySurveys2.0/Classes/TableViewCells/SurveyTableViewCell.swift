@@ -32,6 +32,12 @@ class SurveyTableViewCell : UITableViewCell
         let labelColor = UIColor(red:236/255.0, green:236/255.0, blue:236/255.0, alpha: 1.0)
         selectButton.layer.cornerRadius = 0.5 * selectButton.bounds.size.width
         offlineFileCountButton.layer.cornerRadius = 0.5 * offlineFileCountButton.bounds.size.width
+
+        if ( UIDevice.current.userInterfaceIdiom == .pad )
+        {
+            self.selectButton.setImage(UIImage(named : "survey_nav_iPad.png"), for: .normal)
+        }
+
         
         if survey.surveyDescription == "xyz"
         {
