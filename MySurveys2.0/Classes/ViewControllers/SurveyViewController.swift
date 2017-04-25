@@ -27,7 +27,13 @@ class SurveyViewController: OPGViewController, OPGSurveyDelegate
 
         if self.surveySelected?.isOffline == 0
         {
-            self.loadSurvey(self.surveyReference)
+
+            self.panelIdStr = UserDefaults.standard.value(forKey: "SelectedPanelID") as? String
+            self.panellistIdStr  = UserDefaults.standard.value(forKey: "PanelListID") as? String
+            let panelNumber = self.stringToNSNumber(str: self.panelIdStr!)
+            let panellistNumber = self.stringToNSNumber(str: self.panellistIdStr!)
+            //self.loadSurvey(self.surveyReference)
+            self.loadSurvey(self.surveyReference, panelID : panelNumber, panellistID: panellistNumber)
         }
         else
         {

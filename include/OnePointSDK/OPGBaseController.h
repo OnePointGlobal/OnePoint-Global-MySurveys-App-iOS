@@ -100,6 +100,8 @@
 -(void)loadSurvey:(NSString *)surveyRef
    withDictionary:(NSDictionary *)values;
 
+- (void)loadSurvey:(NSString *)surveyRef panelID:(NSNumber*)panelID panellistID:(NSNumber*)panellistID;
+
 /*!
  This method is used to run offline survey providing the script filename, path, surveyID, panelID and panellistID.
  */
