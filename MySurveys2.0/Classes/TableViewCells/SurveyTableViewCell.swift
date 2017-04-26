@@ -83,7 +83,7 @@ class SurveyTableViewCell : UITableViewCell
     }
 
     
-    func fillCellGeoFenced(_ survey : OPGMSGeoFencingModel) {
+    func fillCellGeoFenced(_ survey : OPGGeoFencingModel) {
         selectButton.layer.cornerRadius = 0.5 * selectButton.bounds.size.width
         print("Geo check! For \(survey.surveyName) it is \(survey.isDeleted)")
         if survey.isDeleted == 2 {                                              // isDeleted is used for Enter/Exit operations

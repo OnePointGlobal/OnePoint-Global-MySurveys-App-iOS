@@ -557,7 +557,7 @@
 }
 
 #pragma mark - dB methods for GeoFencing
--(void)saveGeoFenceSurveys:(OPGMSGeoFencingModel*)geoFencedSurveys {
+-(void)saveGeoFenceSurveys:(OPGGeoFencingModel*)geoFencedSurveys {
     @synchronized (self) {
         GeofenceSurveyFactory *surveyFactory=[[GeofenceSurveyFactory alloc]init];
         GeofenceSurvey *survey = [[GeofenceSurvey alloc]init];
@@ -588,7 +588,7 @@
 
             if (survey) {
                 // TODO: add geofencingID to OPGMSGeoFencingModel class
-                OPGMSGeoFencingModel *opgsurvey = [OPGMSGeoFencingModel new];
+                OPGGeoFencingModel *opgsurvey = [OPGGeoFencingModel new];
                 opgsurvey.address = survey.Address;
                 opgsurvey.addressID = survey.AddressID;
                 opgsurvey.surveyID = survey.SurveyID;
@@ -610,11 +610,11 @@
     }
 }
 
--(OPGMSGeoFencingModel *)getGeofenceSurvey:(NSNumber *)surveyID {
+-(OPGGeoFencingModel *)getGeofenceSurvey:(NSNumber *)surveyID {
     @synchronized (self) {
         GeofenceSurveyFactory *surveyFactory = [[GeofenceSurveyFactory alloc]init];
         GeofenceSurvey  *survey = (GeofenceSurvey*)[surveyFactory FindObject:surveyID];
-        OPGMSGeoFencingModel *opgsurvey = [OPGMSGeoFencingModel new];
+        OPGGeoFencingModel *opgsurvey = [OPGGeoFencingModel new];
         opgsurvey.address = survey.Address;
         opgsurvey.addressID = survey.AddressID;
         opgsurvey.surveyID = survey.SurveyID;

@@ -12,7 +12,7 @@ let privacyUrl = "https://framework.onepointglobal.com/appwebsite/privacy?locati
 let tcUrl = "https://framework.onepointglobal.com/appwebsite/TermsOfUse?location=mobile&culture=en-US"
 let aboutUsUrl = "https://framework.onepointglobal.com/appwebsite/about?location=mobile&culture=en-US"
 
-let geoFence = OPGMSGeoFencing.sharedInstance()
+let geoFence = OPGGeoFencing.sharedInstance()
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
@@ -134,7 +134,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             UserDefaults.standard.set("1", forKey: "isGeoFenced")
             geoFence?.start()
         } else {
-            let array = CollabrateDB.sharedInstance().getAllGeoFenceSurveys() as! Array<OPGMSGeoFencingModel>
+            let array = CollabrateDB.sharedInstance().getAllGeoFenceSurveys() as! Array<OPGGeoFencingModel>
             DispatchQueue.global(qos: .default).sync {
                 for element in array {
                     CollabrateDB.sharedInstance().deleteGeoFenceSurvey(element.surveyID)

@@ -19,11 +19,9 @@
 #import "OPGParseResult.h"
 
 #import "OPGTheme.h"
-#import "OPGGeoFencing.h"
 #import "OPGGeoFencingModel.h"
-#import "OPGMSGeoFencingModel.h"
 #import "OPGReachability.h"
-#import "OPGMSGeoFencing.h"
+#import "OPGGeoFencing.h"
 
 #import "FBShimmering.h"
 #import "FBShimmeringLayer.h"

@@ -100,7 +100,20 @@
 -(void)loadSurvey:(NSString *)surveyRef
    withDictionary:(NSDictionary *)values;
 
-- (void)loadSurvey:(NSString *)surveyRef panelID:(NSNumber*)panelID panellistID:(NSNumber*)panellistID;
+/*!
+ This method is used to load the online survey and facilitates resuming the survey where it was stopped.
+ */
+-(void)loadSurvey:(NSString *)surveyRef
+          panelID:(NSNumber*)panelID
+      panellistID:(NSNumber*)panellistID;
+
+/*!
+ This method is used to append dictionary of query parameters to load the online survey and facilitates resuming the survey where it was stopped.
+ */
+-(void)loadSurvey:(NSString *)surveyRef
+          panelID:(NSNumber*)panelID
+      panellistID:(NSNumber*)panellistID
+   withDictionary:(NSDictionary *)values;
 
 /*!
  This method is used to run offline survey providing the script filename, path, surveyID, panelID and panellistID.

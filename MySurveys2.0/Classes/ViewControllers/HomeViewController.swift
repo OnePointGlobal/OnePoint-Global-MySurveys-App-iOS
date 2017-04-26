@@ -14,7 +14,7 @@ import UserNotifications
 let isDownload = "isDownloaded"
 let queue = OperationQueue()
 
-class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableViewDelegate,UITableViewDataSource,MySurveysDelegate
+class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableViewDelegate,UITableViewDataSource,OPGGeoFencingDelegate
 {
     
     // MARK: - IBOutlets for view
@@ -1161,18 +1161,18 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         if geofencedArrays.count > 0 {
             if isEntered == true {
                 for i in 0 ..< geofencedArrays.count {
-                    let addresses = (geofencedArrays[i] as! OPGMSGeoFencingModel).address
+                    let addresses = (geofencedArrays[i] as! OPGGeoFencingModel).address
                     if address.contains(addresses!) {
-                        (geofencedArrays[i] as! OPGMSGeoFencingModel).isDeleted = 2
-                        CollabrateDB.sharedInstance().updateGeoFenceSurvey((geofencedArrays[i] as! OPGMSGeoFencingModel).addressID,withStatus: 2)   //2 = entered
+                        (geofencedArrays[i] as! OPGGeoFencingModel).isDeleted = 2
+                        CollabrateDB.sharedInstance().updateGeoFenceSurvey((geofencedArrays[i] as! OPGGeoFencingModel).addressID,withStatus: 2)   //2 = entered
                     }
                 }
             } else {
                 for i in 0 ..< geofencedArrays.count {
-                    let addresses = (geofencedArrays[i] as! OPGMSGeoFencingModel).address
+                    let addresses = (geofencedArrays[i] as! OPGGeoFencingModel).address
                     if address.contains(addresses!) {
-                        (geofencedArrays[i] as! OPGMSGeoFencingModel).isDeleted = 1
-                        CollabrateDB.sharedInstance().updateGeoFenceSurvey((geofencedArrays[i] as! OPGMSGeoFencingModel).addressID,withStatus: 1)       //1 = exited
+                        (geofencedArrays[i] as! OPGGeoFencingModel).isDeleted = 1
+                        CollabrateDB.sharedInstance().updateGeoFenceSurvey((geofencedArrays[i] as! OPGGeoFencingModel).addressID,withStatus: 1)       //1 = exited
                     }
                 }
                 
@@ -1184,17 +1184,17 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         if geoFencedArrayFiltered.count > 0 {
             if _isEntered == true {
                 for i in 0 ..< geoFencedArrayFiltered.count {
-                    let name = (geoFencedArrayFiltered[i] as! OPGMSGeoFencingModel).surveyName
+                    let name = (geoFencedArrayFiltered[i] as! OPGGeoFencingModel).surveyName
                     if surveyName.contains(name!) {
-                        (geoFencedArrayFiltered[i] as! OPGMSGeoFencingModel).isDeleted = 2              // isDeleted is used for Enter/Exit operations
+                        (geoFencedArrayFiltered[i] as! OPGGeoFencingModel).isDeleted = 2              // isDeleted is used for Enter/Exit operations
                     }
                 }
                 
             } else {
                 for i in 0 ..< geoFencedArrayFiltered.count {
-                    let name = (geoFencedArrayFiltered[i] as! OPGMSGeoFencingModel).surveyName
+                    let name = (geoFencedArrayFiltered[i] as! OPGGeoFencingModel).surveyName
                     if !surveyName.contains(name!) {
-                        (geoFencedArrayFiltered[i] as! OPGMSGeoFencingModel).isDeleted = 1              // isDeleted is used for Enter/Exit operations
+                        (geoFencedArrayFiltered[i] as! OPGGeoFencingModel).isDeleted = 1              // isDeleted is used for Enter/Exit operations
                     }
                 }
             }
@@ -1216,17 +1216,17 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         return surv
     }
     
-    func runThroughAddressAnnontationGeoFenceSurvey(_ address:String) -> OPGMSGeoFencingModel {
-        let surv = OPGMSGeoFencingModel()
+    func runThroughAddressAnnontationGeoFenceSurvey(_ address:String) -> OPGGeoFencingModel {
+        let surv = OPGGeoFencingModel()
         if (self.geofencedArrays.count > 0) && (self.surveyGeoAvailable.count > 0) {
             for sur in self.geofencedArrays {
-                if (sur as! OPGMSGeoFencingModel).address == address {                                          // compare address u got from annotataion with the list u got from dB
+                if (sur as! OPGGeoFencingModel).address == address {                                          // compare address u got from annotataion with the list u got from dB
                     
                     for geoAvailable in self.surveyGeoAvailable {
-                        if (geoAvailable as! OPGSurvey).surveyID == (sur as! OPGMSGeoFencingModel).surveyID {     // compare and get the surveyID for the particular address entered
-                            return sur as! OPGMSGeoFencingModel
+                        if (geoAvailable as! OPGSurvey).surveyID == (sur as! OPGGeoFencingModel).surveyID {     // compare and get the surveyID for the particular address entered
+                            return sur as! OPGGeoFencingModel
                         } else {
-                            return sur as! OPGMSGeoFencingModel
+                            return sur as! OPGGeoFencingModel
                         }
                     }
                 }
@@ -1299,7 +1299,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         let indexPath = IndexPath(item: sender.tag, section: 0)
         let tableViewCell : SurveyTableViewCell? = self.tableViewGeoFenced?.cellForRow(at: indexPath) as? SurveyTableViewCell
         tableViewCell?.btnSurveyDesc.isUserInteractionEnabled = false
-        let survey = self.geoFencedArrayFiltered[sender.tag] as! OPGMSGeoFencingModel
+        let survey = self.geoFencedArrayFiltered[sender.tag] as! OPGGeoFencingModel
         
         if survey.surveyID == nil {
             return;
@@ -1370,7 +1370,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
         
         if(tableView == self.tableViewGeoFenced){
-            let survey : OPGMSGeoFencingModel = self.geoFencedArrayFiltered[indexPath.row] as! OPGMSGeoFencingModel
+            let survey : OPGGeoFencingModel = self.geoFencedArrayFiltered[indexPath.row] as! OPGGeoFencingModel
             for item in self.surveyGeoAvailable {
                 let normalSurvey : OPGSurvey = item as! OPGSurvey
                 if survey.surveyID == normalSurvey.surveyID {
@@ -1407,7 +1407,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 self.performSegue(withIdentifier: "embedOfflineSurveyDetails", sender: self)
             }
         } else {
-            let survey : OPGMSGeoFencingModel? = self.geoFencedArrayFiltered[indexPath.row] as? OPGMSGeoFencingModel
+            let survey : OPGGeoFencingModel? = self.geoFencedArrayFiltered[indexPath.row] as? OPGGeoFencingModel
             if survey != nil {
                 if survey?.isDeleted == 2 {                     // if survey entered
                     // goto survey details screen based on selection
@@ -1443,7 +1443,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     // MARK: - MySurveysDelegate methods
     func geoFencedAreas(_ locations: [Any]!) {
-        let array : Array<OPGMSGeoFencingModel> = (locations as? Array<OPGMSGeoFencingModel>)!
+        let array : Array<OPGGeoFencingModel> = (locations as? Array<OPGGeoFencingModel>)!
         if (array.count) > 0 {
             DispatchQueue.global(qos: .default).async {
                 for survey in array {
@@ -1462,7 +1462,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
 
 
-    func didEnterRegion(_ regionEntered: OPGMSGeoFencingModel!) {
+    func didEnterRegion(_ regionEntered: OPGGeoFencingModel!) {
         if (regionEntered != nil) {
             print("region entered is \(regionEntered.address!)")
             self.runThroughAddresses(regionEntered.address, true)
@@ -1508,13 +1508,13 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         
     }
     
-    func didExitRegion(_ regionExited: OPGMSGeoFencingModel) {
+    func didExitRegion(_ regionExited: OPGGeoFencingModel) {
         print("region exited is \(regionExited.address)")
         self.runThroughSurveyName(regionExited.surveyName, _isEntered: false)
         self.tableViewGeoFenced?.reloadData()               //disnable surveys with gray color
     }
-    
-    func showGeoAlerts(_ regions : OPGMSGeoFencingModel) {
+
+    func showGeoAlerts(_ regions : OPGGeoFencingModel) {
         
         let alert = UIAlertController.init(title: NSLocalizedString("MySurveys", comment: ""), message: ("Welcome to \(regions.address!)!. You have a survey available!"), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Take Survey", comment: ""), style: UIAlertActionStyle.default, handler: {
@@ -1666,7 +1666,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         self.geoFencedArrayFiltered = []
         var surveyNames : Array<String> = []
         for i in 0 ..< geofencedArrays.count {
-            let name = (geofencedArrays[i] as! OPGMSGeoFencingModel).surveyName            // check once PROM models updated
+            let name = (geofencedArrays[i] as! OPGGeoFencingModel).surveyName            // check once PROM models updated
             if !surveyNames.contains(name!) {
                 dummyArray.append(geofencedArrays[i])                       //filter to avoid mduplication
                 surveyNames.append(name!)
@@ -1675,7 +1675,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         
         self.geoFencedArrayFiltered = dummyArray.filter { dummy in
             return self.surveyGeoAvailable.contains { survey in
-                (survey as! OPGSurvey).surveyReference == (dummy as! OPGMSGeoFencingModel).surveyReference
+                (survey as! OPGSurvey).surveyReference == (dummy as! OPGGeoFencingModel).surveyReference
             }
             
         }
@@ -1713,7 +1713,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func loadInitialData() {
         var coordinate:CLLocationCoordinate2D!
         self.mapView.showsUserLocation = true
-        for geoFencedArea : OPGMSGeoFencingModel in self.geofencedArrays as! Array<OPGMSGeoFencingModel> {
+        for geoFencedArea : OPGGeoFencingModel in self.geofencedArrays as! Array<OPGGeoFencingModel> {
             let latitude = Double(geoFencedArea.latitude)
             let longitude = Double(geoFencedArea.longitude)
             let address = geoFencedArea.address as String
@@ -1801,7 +1801,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             if let selectedLoc = self.mapView.selectedAnnotations[0] as? MKAnnotation {
                 print("Annotation has been selected")
                 let address:String? = selectedLoc.title!
-                let survey : OPGMSGeoFencingModel = runThroughAddressAnnontationGeoFenceSurvey(address!)
+                let survey : OPGGeoFencingModel = runThroughAddressAnnontationGeoFenceSurvey(address!)
                 
                 if !(survey.surveyID == nil) {
                     if survey.isDeleted == 2 {
