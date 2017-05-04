@@ -27,6 +27,7 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
     @IBOutlet weak var constraintImageViewTop: NSLayoutConstraint!
     @IBOutlet weak var constraintImageViewBottom: NSLayoutConstraint!
     @IBOutlet weak var activityIndicatorView : UIActivityIndicatorView?
+    @IBOutlet weak var constarintForgotPassowrdTrailingSpace: NSLayoutConstraint!
 
     
     // MARK: - Properties for viewcontroller
@@ -180,8 +181,34 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
         coordinator.animate(alongsideTransition: nil, completion: { _ in
             self.setThemeElements()             
             self.imgLoginBG?.alpha = 1.0
-
+            let bounds = UIScreen.main.bounds
+            let width = bounds.size.width
+            if(width==1024 || width==2018)
+            {
+                //iPad landscape
+                self.constarintForgotPassowrdTrailingSpace.constant = 250
+            }
+            else
+            {
+                //iPad portrait
+                self.constarintForgotPassowrdTrailingSpace.constant = 120
+            }
         })
+    }
+
+    override func viewDidAppear(_ animated: Bool)
+    {
+        //iOS - CONSTARINTS CANNOT BE UPDATED FROM VIEWDIDLOAD()
+        if ( UIDevice.current.userInterfaceIdiom == .pad )
+        {
+            let bounds = UIScreen.main.bounds
+            let width = bounds.size.width
+            if(width==1024 || width==2018)
+            {
+                //iPad landscape
+                self.constarintForgotPassowrdTrailingSpace.constant = 250
+            }
+        }
     }
     
     

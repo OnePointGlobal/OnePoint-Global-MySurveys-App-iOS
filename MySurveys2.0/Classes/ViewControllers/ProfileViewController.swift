@@ -66,14 +66,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         self.tableview.separatorStyle = UITableViewCellSeparatorStyle.none
         self.tableview.isScrollEnabled=false
         self.activityIndicator.color = AppTheme.appBackgroundColor()
-
-        let bounds = UIScreen.main.bounds
-        let height = bounds.size.height
-        if height == 480                                    //Enable scroll only for 4S
-        {
-            self.tableview.isScrollEnabled=true
-        }
-
+        self.configureUI()
         self.getPanellistProfileFromDB()
         if self.panelist != nil
         {
@@ -82,8 +75,8 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         self.isEditable=false
         self.view.layoutIfNeeded()
         circularImage(imageView)
-        let width =  btnCameraIcon.bounds.size.width
-        btnCameraIcon.layer.cornerRadius = 0.5 * width
+        let cameraIconWidth =  btnCameraIcon.bounds.size.width
+        btnCameraIcon.layer.cornerRadius = 0.5 * cameraIconWidth
     }
     
     override func didReceiveMemoryWarning() {
@@ -181,6 +174,31 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
 
 
     // MARK: - Generic Private methods
+    func configureUI()
+    {
+        let bounds = UIScreen.main.bounds
+        let height = bounds.size.height
+        let width = bounds.size.width
+
+        if UIDevice.current.userInterfaceIdiom == .pad
+        {
+            if(width==1024 || width==2018)
+            {
+                //enable scroll if iPad landscape is loaded first time
+                self.tableview.isScrollEnabled=true
+            }
+        }
+        else
+        {
+            if height == 480
+            {
+                //Enable scroll only for 4S
+                self.tableview.isScrollEnabled=true
+            }
+        }
+    }
+
+
     func openGallery()
     {
         let imagePicker = UIImagePickerController()

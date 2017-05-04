@@ -49,6 +49,19 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
         self.view.backgroundColor = self.bgColor
         self.bgView.backgroundColor = self.bgColor
     }
+
+    override func viewDidAppear(_ animated: Bool)
+    {
+        if ( UIDevice.current.userInterfaceIdiom == .pad )
+        {
+            let bounds = UIScreen.main.bounds
+            let width = bounds.size.width
+            if(width==1024 || width==2018)
+            {
+                self.setConstraintsForiPadLandscape()
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -153,6 +166,16 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: mailID)
+    }
+
+    func setConstraintsForiPadLandscape()
+    {
+        UIView.animate(withDuration: 0.5, animations: {
+        self.constraintViewTop.constant = 0
+        self.emailFieldTopSpace.constant = 60
+        self.emailToLabelTopSpace.constant = 50.0
+        self.view.layoutIfNeeded()
+        })
     }
 
 
