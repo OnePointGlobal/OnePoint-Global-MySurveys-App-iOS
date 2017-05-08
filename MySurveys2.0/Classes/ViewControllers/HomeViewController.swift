@@ -157,7 +157,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         self.isAppKilled = false
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
+    {
         super.viewWillTransition(to: size, with: coordinator)
         let isOperating : Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
         if (isOperating == 1 || isOperating == 3)
@@ -169,6 +170,24 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             if (isOperating == 1 || isOperating == 3)
             {
                 self.showBanner(progressTitle: self.bannerTitle as! String)
+            }
+
+            let geoFenceValue : String? = UserDefaults.standard.value(forKey: "isGeoFenced") as? String
+            if UIDevice.current.userInterfaceIdiom == .pad
+            {
+                if(self.geoFencedView?.isHidden == false)
+                {
+                    if (geoFenceValue == nil) ||  (geoFenceValue == "0")
+                    {
+                        self.setUpGeoFeningView(false)              //show only map view with no surveys
+                    }
+                    else
+
+                    {
+                        self.setUpGeoFeningView(true)
+                    }
+                }
+                
             }
         })
     }

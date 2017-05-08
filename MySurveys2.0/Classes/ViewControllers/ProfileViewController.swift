@@ -77,6 +77,12 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         circularImage(imageView)
         let cameraIconWidth =  btnCameraIcon.bounds.size.width
         btnCameraIcon.layer.cornerRadius = 0.5 * cameraIconWidth
+        if UIDevice.current.userInterfaceIdiom == .pad
+        {
+            //only for iPad
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+            NotificationCenter.default.addObserver(self, selector:  #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -172,6 +178,41 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         self.panelist?.countryName = country.name
     }
 
+    // MARK: - Keyboard Notification selector methods
+    func keyboardWillShow(notification: NSNotification)
+    {
+        let bounds = UIScreen.main.bounds
+        let width = bounds.size.width
+        if(width==1024 || width==2048)
+        {
+            //only for iPad landscape
+            let indexPath = IndexPath(item: 0 , section: 0)
+            let tableViewCell : ProfileTableViewCell? = self.tableview?.cellForRow(at: indexPath) as? ProfileTableViewCell
+            if (tableViewCell != nil)
+            {
+                tableViewCell?.constarintNameTopSpace.constant = -35
+            }
+            self.view.updateConstraints()
+        }
+    }
+
+    func keyboardWillHide(notification: NSNotification)
+    {
+        let bounds = UIScreen.main.bounds
+        let width = bounds.size.width
+        if(width==1024 || width==2048)
+        {
+            //only for iPad landscape
+            let indexPath = IndexPath(item: 0 , section: 0)
+            let tableViewCell : ProfileTableViewCell? = self.tableview?.cellForRow(at: indexPath) as? ProfileTableViewCell
+            if (tableViewCell != nil)
+            {
+                tableViewCell?.constarintNameTopSpace.constant = 40
+            }
+            self.view.updateConstraints()
+        }
+    }
+
 
     // MARK: - Generic Private methods
     func configureUI()
@@ -182,7 +223,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
 
         if UIDevice.current.userInterfaceIdiom == .pad
         {
-            if(width==1024 || width==2018)
+            if(width==1024 || width==2048)
             {
                 //enable scroll if iPad landscape is loaded first time
                 self.tableview.isScrollEnabled=true

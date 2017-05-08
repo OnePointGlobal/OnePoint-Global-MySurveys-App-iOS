@@ -22,6 +22,7 @@ class SurveyViewController: OPGViewController, OPGSurveyDelegate
     {
         super.viewDidLoad()
         self.view.backgroundColor = AppTheme.appBackgroundColor()
+        self.spinner.color = AppTheme.appBackgroundColor()
         self.spinner.startAnimating()
         self.surveyDelegate = self;
 

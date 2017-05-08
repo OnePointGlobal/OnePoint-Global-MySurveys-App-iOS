@@ -179,20 +179,24 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
         }
 
         coordinator.animate(alongsideTransition: nil, completion: { _ in
-            self.setThemeElements()             
+            self.setThemeElements()
             self.imgLoginBG?.alpha = 1.0
             let bounds = UIScreen.main.bounds
             let width = bounds.size.width
-            if(width==1024 || width==2018)
+            if(self.constarintForgotPassowrdTrailingSpace != nil)         //temp fix
             {
-                //iPad landscape
-                self.constarintForgotPassowrdTrailingSpace.constant = 250
+                if(width==1024 || width==2018)
+                {
+                    //iPad landscape
+                    self.constarintForgotPassowrdTrailingSpace.constant = 250
+                }
+                else
+                {
+                    //iPad portrait
+                    self.constarintForgotPassowrdTrailingSpace.constant = 120
+                }
             }
-            else
-            {
-                //iPad portrait
-                self.constarintForgotPassowrdTrailingSpace.constant = 120
-            }
+            
         })
     }
 
