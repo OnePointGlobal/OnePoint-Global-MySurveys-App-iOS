@@ -249,7 +249,7 @@
                                         <rect key="frame" x="503" y="0.0" width="266" height="130"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="number_of_times.png" translatesAutoresizingMaskIntoConstraints="NO" id="sUM-1j-X0A">
-                                                <rect key="frame" x="114" y="14" width="40" height="40"/>
+                                                <rect key="frame" x="113" y="14" width="40" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="SF4-E0-nQP">
@@ -262,7 +262,7 @@
                                                 <variation key="heightClass=regular-widthClass=regular" image="number_of_times_iPad.png"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mn-EB-Kg2">
-                                                <rect key="frame" x="134" y="26" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="133" y="26" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                                 <color key="textColor" red="0.69803921570000005" green="0.69019607839999997" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -441,10 +441,10 @@
                                 <rect key="frame" x="-2" y="166" width="772" height="130"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUl-p9-i5W">
-                                        <rect key="frame" x="-6" y="0.0" width="387" height="130"/>
+                                        <rect key="frame" x="-5.5" y="0.0" width="386" height="130"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="survey_calender.png" translatesAutoresizingMaskIntoConstraints="NO" id="G5H-DW-XRj">
-                                                <rect key="frame" x="173" y="8" width="40" height="40"/>
+                                                <rect key="frame" x="172.5" y="8" width="40" height="40"/>
                                                 <variation key="heightClass=regular-widthClass=regular" image="survey_calendar_iPad.png"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4X-Cu-7uQ">
@@ -468,14 +468,14 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qiy-Ig-7PS">
-                                        <rect key="frame" x="379" y="0.0" width="393" height="130"/>
+                                        <rect key="frame" x="378.5" y="0.0" width="393.5" height="130"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="survey_time.png" translatesAutoresizingMaskIntoConstraints="NO" id="juH-Gy-7u9">
                                                 <rect key="frame" x="177" y="8" width="40" height="40"/>
                                                 <variation key="heightClass=regular-widthClass=regular" image="survey_time_iPad.png"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8w-zr-MAB">
-                                                <rect key="frame" x="32" y="52" width="329" height="71"/>
+                                                <rect key="frame" x="32" y="52" width="329.5" height="71"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" red="0.69803921568627447" green="0.69019607843137254" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1535,7 +1535,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E7C5BAD3-6CB5-4C56-9993-265D2B54648E" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-BK-cEp">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E640AB04-D5C5-4A04-B494-21F6DDE9D618" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-BK-cEp">
                                                     <rect key="frame" x="20" y="9" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="8TP-Ti-rGC">
@@ -1613,7 +1613,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavigationController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="W26-8j-p1z" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="downloads" id="4qv-Oe-Jc8"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="SG9-4F-pWX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="SG9-4F-pWX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2577,7 +2577,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="E7C5BAD3-6CB5-4C56-9993-265D2B54648E" width="20" height="20">
+        <image name="E640AB04-D5C5-4A04-B494-21F6DDE9D618" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

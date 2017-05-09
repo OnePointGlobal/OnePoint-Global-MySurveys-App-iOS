@@ -187,7 +187,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         self.setUpGeoFeningView(true)
                     }
                 }
-                
             }
         })
     }
