@@ -14,7 +14,7 @@ import UserNotifications
 let isDownload = "isDownloaded"
 let queue = OperationQueue()
 
-class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableViewDelegate,UITableViewDataSource,MySurveysDelegate
+class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableViewDelegate,UITableViewDataSource,OPGGeoFencingDelegate
 {
     
     // MARK: - IBOutlets for view
@@ -55,12 +55,14 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     var alertsArray : Array<Any> = []
     var selectedOfflineSurveyIndex : Int?
     var refreshButton = UIButton()
+    var bannerTitle : NSString?             //class var to show during orientation transition
     
     // MARK: - ViewController LifeCycle Methods
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+
         queue.maxConcurrentOperationCount = 1
         self.geoFencedView?.isHidden = true
         self.mapView.showsUserLocation = true;
@@ -110,8 +112,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
+    override func viewWillAppear(_ animated: Bool)
+    {
         self.tableView?.setContentOffset(CGPoint.zero, animated: true)
         let defaults = UserDefaults.standard
         let name:String? = defaults.value(forKey: "appName") as? String
@@ -153,6 +155,41 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     override func viewWillDisappear(_ animated: Bool) {
         self.isAppKilled = false
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
+    {
+        super.viewWillTransition(to: size, with: coordinator)
+        let isOperating : Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
+        if (isOperating == 1 || isOperating == 3)
+        {
+            self.hideBanner()
+        }
+
+        coordinator.animate(alongsideTransition: nil, completion: { _ in
+            if (isOperating == 1 || isOperating == 3)
+            {
+                self.showBanner(progressTitle: self.bannerTitle as! String)
+            }
+
+            let geoFenceValue : String? = UserDefaults.standard.value(forKey: "isGeoFenced") as? String
+            if UIDevice.current.userInterfaceIdiom == .pad
+            {
+                if(self.geoFencedView?.isHidden == false)
+                {
+                    if (geoFenceValue == nil) ||  (geoFenceValue == "0")
+                    {
+                        self.setUpGeoFeningView(false)              //show only map view with no surveys
+                    }
+                    else
+
+                    {
+                        self.setUpGeoFeningView(true)
+                    }
+                }
+                
+            }
+        })
     }
     
     // MARK: - IBOutlet Action methods
@@ -1059,7 +1096,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         
     }
     
-    func showBanner(progressTitle : String) {
+    func showBanner(progressTitle : String)
+    {
+        self.bannerTitle = progressTitle as NSString?
         self.bannerView = OPGNotificationView()
         self.bannerView?.initialisewithNavigation(title: progressTitle, referenceView: self.view, notificationType: .upload)
         self.view.addSubview(self.bannerView!)
@@ -1134,23 +1173,25 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
         
     }
-    
+
+
+    // MARK: - Filtering Methods for geo-fencing
     func runThroughAddresses(_ address:String, _ isEntered:Bool) {
         if geofencedArrays.count > 0 {
             if isEntered == true {
                 for i in 0 ..< geofencedArrays.count {
-                    let addresses = (geofencedArrays[i] as! OPGMSGeoFencingModel).address
+                    let addresses = (geofencedArrays[i] as! OPGGeoFencingModel).address
                     if address.contains(addresses!) {
-                        (geofencedArrays[i] as! OPGMSGeoFencingModel).isDeleted = 2
-                        CollabrateDB.sharedInstance().updateGeoFenceSurvey((geofencedArrays[i] as! OPGMSGeoFencingModel).addressID,withStatus: 2)
+                        (geofencedArrays[i] as! OPGGeoFencingModel).isDeleted = 2
+                        CollabrateDB.sharedInstance().updateGeoFenceSurvey((geofencedArrays[i] as! OPGGeoFencingModel).addressID,withStatus: 2)   //2 = entered
                     }
                 }
             } else {
                 for i in 0 ..< geofencedArrays.count {
-                    let addresses = (geofencedArrays[i] as! OPGMSGeoFencingModel).address
+                    let addresses = (geofencedArrays[i] as! OPGGeoFencingModel).address
                     if address.contains(addresses!) {
-                        (geofencedArrays[i] as! OPGMSGeoFencingModel).isDeleted = 1
-                        CollabrateDB.sharedInstance().updateGeoFenceSurvey((geofencedArrays[i] as! OPGMSGeoFencingModel).addressID,withStatus: 1)
+                        (geofencedArrays[i] as! OPGGeoFencingModel).isDeleted = 1
+                        CollabrateDB.sharedInstance().updateGeoFenceSurvey((geofencedArrays[i] as! OPGGeoFencingModel).addressID,withStatus: 1)       //1 = exited
                     }
                 }
                 
@@ -1162,17 +1203,17 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         if geoFencedArrayFiltered.count > 0 {
             if _isEntered == true {
                 for i in 0 ..< geoFencedArrayFiltered.count {
-                    let name = (geoFencedArrayFiltered[i] as! OPGMSGeoFencingModel).surveyName
+                    let name = (geoFencedArrayFiltered[i] as! OPGGeoFencingModel).surveyName
                     if surveyName.contains(name!) {
-                        (geoFencedArrayFiltered[i] as! OPGMSGeoFencingModel).isDeleted = 2              // isDeleted is used for Enter/Exit operations
+                        (geoFencedArrayFiltered[i] as! OPGGeoFencingModel).isDeleted = 2              // isDeleted is used for Enter/Exit operations
                     }
                 }
                 
             } else {
                 for i in 0 ..< geoFencedArrayFiltered.count {
-                    let name = (geoFencedArrayFiltered[i] as! OPGMSGeoFencingModel).surveyName
+                    let name = (geoFencedArrayFiltered[i] as! OPGGeoFencingModel).surveyName
                     if !surveyName.contains(name!) {
-                        (geoFencedArrayFiltered[i] as! OPGMSGeoFencingModel).isDeleted = 1              // isDeleted is used for Enter/Exit operations
+                        (geoFencedArrayFiltered[i] as! OPGGeoFencingModel).isDeleted = 1              // isDeleted is used for Enter/Exit operations
                     }
                 }
             }
@@ -1194,17 +1235,17 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         return surv
     }
     
-    func runThroughAddressAnnontationGeoFenceSurvey(_ address:String) -> OPGMSGeoFencingModel {
-        let surv = OPGMSGeoFencingModel()
+    func runThroughAddressAnnontationGeoFenceSurvey(_ address:String) -> OPGGeoFencingModel {
+        let surv = OPGGeoFencingModel()
         if (self.geofencedArrays.count > 0) && (self.surveyGeoAvailable.count > 0) {
             for sur in self.geofencedArrays {
-                if (sur as! OPGMSGeoFencingModel).address == address {                                          // compare address u got from annotataion with the list u got from dB
+                if (sur as! OPGGeoFencingModel).address == address {                                          // compare address u got from annotataion with the list u got from dB
                     
                     for geoAvailable in self.surveyGeoAvailable {
-                        if (geoAvailable as! OPGSurvey).surveyID == (sur as! OPGMSGeoFencingModel).surveyID {     // compare and get the surveyID for the particular address entered
-                            return sur as! OPGMSGeoFencingModel
+                        if (geoAvailable as! OPGSurvey).surveyID == (sur as! OPGGeoFencingModel).surveyID {     // compare and get the surveyID for the particular address entered
+                            return sur as! OPGGeoFencingModel
                         } else {
-                            return sur as! OPGMSGeoFencingModel
+                            return sur as! OPGGeoFencingModel
                         }
                     }
                 }
@@ -1277,7 +1318,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         let indexPath = IndexPath(item: sender.tag, section: 0)
         let tableViewCell : SurveyTableViewCell? = self.tableViewGeoFenced?.cellForRow(at: indexPath) as? SurveyTableViewCell
         tableViewCell?.btnSurveyDesc.isUserInteractionEnabled = false
-        let survey = self.geoFencedArrayFiltered[sender.tag] as! OPGMSGeoFencingModel
+        let survey = self.geoFencedArrayFiltered[sender.tag] as! OPGGeoFencingModel
         
         if survey.surveyID == nil {
             return;
@@ -1304,7 +1345,12 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90.0
+         if UIDevice.current.userInterfaceIdiom == .pad {
+            return 105.0
+        } else {
+            return 90.0
+        }
+
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -1343,7 +1389,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
         
         if(tableView == self.tableViewGeoFenced){
-            let survey : OPGMSGeoFencingModel = self.geoFencedArrayFiltered[indexPath.row] as! OPGMSGeoFencingModel
+            let survey : OPGGeoFencingModel = self.geoFencedArrayFiltered[indexPath.row] as! OPGGeoFencingModel
             for item in self.surveyGeoAvailable {
                 let normalSurvey : OPGSurvey = item as! OPGSurvey
                 if survey.surveyID == normalSurvey.surveyID {
@@ -1353,6 +1399,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         tableViewCell.btnSurveyDesc.isUserInteractionEnabled = true
                         tableViewCell.btnSurveyDesc.isEnabled = true
                         tableViewCell.btnSurveyDesc.addTarget(self, action: #selector(self.uploadGeoFenceOfflineResults(sender:)), for: .touchUpInside)
+                        tableViewCell.constarintCounterBtnSpace.constant = (tableViewCell.offlineFileCountButton.frame.width+20)    //reduce surveyName field size to accomodate counter
                     }
                 }
             }
@@ -1379,7 +1426,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 self.performSegue(withIdentifier: "embedOfflineSurveyDetails", sender: self)
             }
         } else {
-            let survey : OPGMSGeoFencingModel? = self.geoFencedArrayFiltered[indexPath.row] as? OPGMSGeoFencingModel
+            let survey : OPGGeoFencingModel? = self.geoFencedArrayFiltered[indexPath.row] as? OPGGeoFencingModel
             if survey != nil {
                 if survey?.isDeleted == 2 {                     // if survey entered
                     // goto survey details screen based on selection
@@ -1398,7 +1445,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
      In a storyboard-based application, you will often want to do a little preparation before navigation
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        self.isAppKilled = false
         if(segue.identifier == "embedSurveyDetails")
         {
             let viewController : SurveyDetailsViewController = segue.destination as! SurveyDetailsViewController
@@ -1415,7 +1462,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     // MARK: - MySurveysDelegate methods
     func geoFencedAreas(_ locations: [Any]!) {
-        let array : Array<OPGMSGeoFencingModel> = (locations as? Array<OPGMSGeoFencingModel>)!
+        let array : Array<OPGGeoFencingModel> = (locations as? Array<OPGGeoFencingModel>)!
         if (array.count) > 0 {
             DispatchQueue.global(qos: .default).async {
                 for survey in array {
@@ -1432,16 +1479,18 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             
         }
     }
-    
-    func didEnterRegion(_ regionEntered: OPGMSGeoFencingModel!) {
+
+
+    func didEnterRegion(_ regionEntered: OPGGeoFencingModel!) {
         if (regionEntered != nil) {
             print("region entered is \(regionEntered.address!)")
             self.runThroughAddresses(regionEntered.address, true)
             self.runThroughSurveyName(regionEntered.surveyName, _isEntered: true)
-            self.tableViewGeoFenced?.reloadData()
+            self.tableViewGeoFenced?.reloadData()       //enable surveys with orange color
             let appState = UIApplication.shared.applicationState
-            if appState == UIApplicationState.active {
-                self.showGeoAlerts(regionEntered)
+            if appState == UIApplicationState.active
+            {
+                self.showGeoAlerts(regionEntered)           //if app is active, show alert
                 let dict : [String:Any] = ["LastUpdated" : "2017-01-03T12:35:06",
                                            "Type" : 0,
                                            "AppNotificationID" : 1,
@@ -1450,7 +1499,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     "IsRead" : "0"]
                 print("dict createsd \(dict)")
                 CollabrateDB.sharedInstance().saveLocalNotifications(dict)
-            } else {
+            }
+            else
+            {
+                //if app is inactive, send notifications
                 if #available(iOS 10.0, *) {
                     let content = UNMutableNotificationContent()
                     
@@ -1468,20 +1520,20 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     )
                     UNUserNotificationCenter.current().add(
                         request, withCompletionHandler: nil)
-                }
+                } // TODO: write code for iOS9.0 and below
             }
         }
         
         
     }
     
-    func didExitRegion(_ regionExited: OPGMSGeoFencingModel) {
+    func didExitRegion(_ regionExited: OPGGeoFencingModel) {
         print("region exited is \(regionExited.address)")
         self.runThroughSurveyName(regionExited.surveyName, _isEntered: false)
-        self.tableViewGeoFenced?.reloadData()
+        self.tableViewGeoFenced?.reloadData()               //disnable surveys with gray color
     }
-    
-    func showGeoAlerts(_ regions : OPGMSGeoFencingModel) {
+
+    func showGeoAlerts(_ regions : OPGGeoFencingModel) {
         
         let alert = UIAlertController.init(title: NSLocalizedString("MySurveys", comment: ""), message: ("Welcome to \(regions.address!)!. You have a survey available!"), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Take Survey", comment: ""), style: UIAlertActionStyle.default, handler: {
@@ -1564,8 +1616,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             self.removeOverlaysFromMap()
             self.loadInitialData()
             
-        } else if (geoFenceValue == nil) ||  (geoFenceValue == "0") {
-            self.setUpGeoFeningView(false)
+        }
+
+        else if (geoFenceValue == nil) ||  (geoFenceValue == "0") {
+            self.setUpGeoFeningView(false)              //show only map view with no surveys
             self.removeOverlaysFromMap()
             self.showGeoFencePopUp(NSLocalizedString("To take your location based surveys turn on ‘Geolocation’ from the App Settings", comment: ""))
         }
@@ -1580,21 +1634,47 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     func setUpGeoFeningView(_ isGeoFenced : Bool) {
         self.view.layoutIfNeeded()
-        if isGeoFenced {
-            if geoFencedArrayFiltered.count > 1 {
-                self.tableView?.isScrollEnabled = true
-                self.constraintGeotableViewHeight.constant = 180
-                self.constraintMapViewHeight.constant = self.view.bounds.size.height - 181
-            } else if geoFencedArrayFiltered.count == 1 {
-                self.tableView?.isScrollEnabled = false
-                self.constraintGeotableViewHeight.constant = 90
-                self.constraintMapViewHeight.constant = self.view.bounds.size.height - 91
+        if isGeoFenced
+        {
+            if geoFencedArrayFiltered.count > 1
+            {
+                if UIDevice.current.userInterfaceIdiom == .pad
+                {
+                    self.tableView?.isScrollEnabled = true
+                    self.constraintGeotableViewHeight.constant = 210
+                    self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)! - 211
+                }
+                else
+                {
+                    self.tableView?.isScrollEnabled = true
+                    self.constraintGeotableViewHeight.constant = 180
+                    self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)! - 181
+                }
+                
             }
-        } else {
-            self.constraintMapViewHeight.constant = self.view.bounds.size.height
+            else if geoFencedArrayFiltered.count == 1
+            {
+                if UIDevice.current.userInterfaceIdiom == .pad
+                {
+                    self.tableView?.isScrollEnabled = false
+                    self.constraintGeotableViewHeight.constant = 105
+                    self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)! - 106
+                }
+                else
+                {
+                    self.tableView?.isScrollEnabled = false
+                    self.constraintGeotableViewHeight.constant = 90
+                    self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)! - 91
+                }
+            }
+        }
+        else
+        {
+            self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)!
             self.constraintGeotableViewHeight.constant = 0
         }
         self.view.layoutIfNeeded()
+
         
     }
     
@@ -1605,16 +1685,16 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         self.geoFencedArrayFiltered = []
         var surveyNames : Array<String> = []
         for i in 0 ..< geofencedArrays.count {
-            let name = (geofencedArrays[i] as! OPGMSGeoFencingModel).surveyName            // check once PROM models updated
+            let name = (geofencedArrays[i] as! OPGGeoFencingModel).surveyName            // check once PROM models updated
             if !surveyNames.contains(name!) {
-                dummyArray.append(geofencedArrays[i])
+                dummyArray.append(geofencedArrays[i])                       //filter to avoid mduplication
                 surveyNames.append(name!)
             }
         }
         
         self.geoFencedArrayFiltered = dummyArray.filter { dummy in
             return self.surveyGeoAvailable.contains { survey in
-                (survey as! OPGSurvey).surveyReference == (dummy as! OPGMSGeoFencingModel).surveyReference
+                (survey as! OPGSurvey).surveyReference == (dummy as! OPGGeoFencingModel).surveyReference
             }
             
         }
@@ -1652,7 +1732,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func loadInitialData() {
         var coordinate:CLLocationCoordinate2D!
         self.mapView.showsUserLocation = true
-        for geoFencedArea : OPGMSGeoFencingModel in self.geofencedArrays as! Array<OPGMSGeoFencingModel> {
+        for geoFencedArea : OPGGeoFencingModel in self.geofencedArrays as! Array<OPGGeoFencingModel> {
             let latitude = Double(geoFencedArea.latitude)
             let longitude = Double(geoFencedArea.longitude)
             let address = geoFencedArea.address as String
@@ -1740,7 +1820,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             if let selectedLoc = self.mapView.selectedAnnotations[0] as? MKAnnotation {
                 print("Annotation has been selected")
                 let address:String? = selectedLoc.title!
-                let survey : OPGMSGeoFencingModel = runThroughAddressAnnontationGeoFenceSurvey(address!)
+                let survey : OPGGeoFencingModel = runThroughAddressAnnontationGeoFenceSurvey(address!)
                 
                 if !(survey.surveyID == nil) {
                     if survey.isDeleted == 2 {

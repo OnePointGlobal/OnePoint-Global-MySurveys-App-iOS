@@ -16,5 +16,4 @@
 @property (nonatomic,strong) NSString *statusMessage;
 /*! @brief isSuccess : bool value of true indicates success and false indicates failure. */
 @property (nonatomic,strong) NSNumber *isSuccess;
-
 @end
