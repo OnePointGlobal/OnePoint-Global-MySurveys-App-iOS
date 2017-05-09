@@ -12,7 +12,7 @@ let privacyUrl = "https://framework.onepointglobal.com/appwebsite/privacy?locati
 let tcUrl = "https://framework.onepointglobal.com/appwebsite/TermsOfUse?location=mobile&culture=en-US"
 let aboutUsUrl = "https://framework.onepointglobal.com/appwebsite/about?location=mobile&culture=en-US"
 
-let geoFence = OPGMSGeoFencing.sharedInstance()
+let geoFence = OPGGeoFencing.sharedInstance()
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
@@ -51,7 +51,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - Table View Delegate Methods
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 80.0
+        } else {
+            return 60.0
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,6 +67,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
         if indexPath.row == 1 {
             tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
+            tableViewCell.layoutMargins = UIEdgeInsets.zero
             tableViewCell.fillCell(items: settingItems[indexPath.row], isGeoFencing: true)
             tableViewCell.switchControl.addTarget(self, action: #selector(switchEvents), for: UIControlEvents.valueChanged)
             tableViewCell.accessoryType = .none
@@ -129,7 +134,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             UserDefaults.standard.set("1", forKey: "isGeoFenced")
             geoFence?.start()
         } else {
-            let array = CollabrateDB.sharedInstance().getAllGeoFenceSurveys() as! Array<OPGMSGeoFencingModel>
+            let array = CollabrateDB.sharedInstance().getAllGeoFenceSurveys() as! Array<OPGGeoFencingModel>
             DispatchQueue.global(qos: .default).sync {
                 for element in array {
                     CollabrateDB.sharedInstance().deleteGeoFenceSurvey(element.surveyID)
@@ -139,14 +144,5 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             geoFence?.stop()
             print("GeoFencing stopped")
         }
-    }
-    
-    func geoFencedAreas(_ locations: [Any]!) {
-        print("the areas to be monitored are \(locations.description)")
-        let geofencedArrays : Array<OPGMSGeoFencingModel> = locations as! Array<OPGMSGeoFencingModel>
-        if geofencedArrays.count > 0 {
-            UserDefaults.standard.set(geofencedArrays, forKey: "GeoFencedArrays")
-        }
-        
     }
 }

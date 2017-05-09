@@ -13,6 +13,8 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate
     
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var txtValue : UITextField!
+    @IBOutlet weak var constarintNameTopSpace: NSLayoutConstraint!
+    @IBOutlet weak var constarintNameToLabelTopSpace: NSLayoutConstraint!
 
     var editedName : String = ""
     var editedCountry : String = ""
@@ -41,7 +43,7 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate
     
     func textFieldDidBeginEditing(_ textField: UITextField)
     {
-
+        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField)

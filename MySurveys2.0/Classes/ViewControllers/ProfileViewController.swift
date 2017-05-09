@@ -64,16 +64,9 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         self.tableview.dataSource=self
         self.tableview.allowsSelection = false                  //Disable table view selection
         self.tableview.separatorStyle = UITableViewCellSeparatorStyle.none
-        //self.title = NSLocalizedString("Profile", comment: "")
+        self.tableview.isScrollEnabled=false
         self.activityIndicator.color = AppTheme.appBackgroundColor()
-
-        let bounds = UIScreen.main.bounds
-        let height = bounds.size.height
-        if height == 480                                    //Enable scroll only for 4S
-        {
-            self.tableview.isScrollEnabled=true
-        }
-
+        self.configureUI()
         self.getPanellistProfileFromDB()
         if self.panelist != nil
         {
@@ -82,8 +75,14 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         self.isEditable=false
         self.view.layoutIfNeeded()
         circularImage(imageView)
-        let width =  btnCameraIcon.bounds.size.width
-        btnCameraIcon.layer.cornerRadius = 0.5 * width
+        let cameraIconWidth =  btnCameraIcon.bounds.size.width
+        btnCameraIcon.layer.cornerRadius = 0.5 * cameraIconWidth
+        if UIDevice.current.userInterfaceIdiom == .pad
+        {
+            //only for iPad
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+            NotificationCenter.default.addObserver(self, selector:  #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -146,6 +145,29 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     {
         self.isEditable = false
     }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: nil, completion: { _ in
+            let bounds = UIScreen.main.bounds
+            let height = bounds.size.height
+            if (self.tableview != nil)
+            {
+                if(height==768 || height==1536)
+                {
+                    //enable scroll for iPad landscape
+                    self.tableview.isScrollEnabled=true
+                }
+                else
+                {
+                    self.tableview.isScrollEnabled=false
+                }
+            }
+            
+            
+        })
+    }
     
     // MARK: - DB methods
     func getPanellistProfileFromDB()
@@ -156,8 +178,68 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         self.panelist?.countryName = country.name
     }
 
+    // MARK: - Keyboard Notification selector methods
+    func keyboardWillShow(notification: NSNotification)
+    {
+        let bounds = UIScreen.main.bounds
+        let width = bounds.size.width
+        if(width==1024 || width==2048)
+        {
+            //only for iPad landscape
+            let indexPath = IndexPath(item: 0 , section: 0)
+            let tableViewCell : ProfileTableViewCell? = self.tableview?.cellForRow(at: indexPath) as? ProfileTableViewCell
+            if (tableViewCell != nil)
+            {
+                tableViewCell?.constarintNameTopSpace.constant = -35
+            }
+            self.view.updateConstraints()
+        }
+    }
+
+    func keyboardWillHide(notification: NSNotification)
+    {
+        let bounds = UIScreen.main.bounds
+        let width = bounds.size.width
+        if(width==1024 || width==2048)
+        {
+            //only for iPad landscape
+            let indexPath = IndexPath(item: 0 , section: 0)
+            let tableViewCell : ProfileTableViewCell? = self.tableview?.cellForRow(at: indexPath) as? ProfileTableViewCell
+            if (tableViewCell != nil)
+            {
+                tableViewCell?.constarintNameTopSpace.constant = 40
+            }
+            self.view.updateConstraints()
+        }
+    }
+
 
     // MARK: - Generic Private methods
+    func configureUI()
+    {
+        let bounds = UIScreen.main.bounds
+        let height = bounds.size.height
+        let width = bounds.size.width
+
+        if UIDevice.current.userInterfaceIdiom == .pad
+        {
+            if(width==1024 || width==2048)
+            {
+                //enable scroll if iPad landscape is loaded first time
+                self.tableview.isScrollEnabled=true
+            }
+        }
+        else
+        {
+            if height == 480
+            {
+                //Enable scroll only for 4S
+                self.tableview.isScrollEnabled=true
+            }
+        }
+    }
+
+
     func openGallery()
     {
         let imagePicker = UIImagePickerController()
@@ -698,7 +780,13 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         return 0.01
     }
 
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return 110.0
+        } else {
+            return self.tableview.rowHeight
+        }
+    }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -714,9 +802,16 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             {
                 tableViewCell.fillCell(title: titleArray[indexPath.row], value : (panelist?.firstName)!, tagIdentifier: 1)
             }
-            if isEditable! {
+            if isEditable!
+            {
                 tableViewCell.txtValue.isEnabled=true
                 tableViewCell.txtValue.perform(#selector(becomeFirstResponder), with: nil , afterDelay: 0)
+                if UIDevice.current.userInterfaceIdiom == .pad
+                {
+                    //15 is for iPhone
+                    tableViewCell.separatorInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+                }
+
             }
             else{
                 tableViewCell.txtValue.isEnabled=false
@@ -735,6 +830,11 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             else
             {
                 tableViewCell.fillCell(title: titleArray[indexPath.row], value: (self.panelist?.countryName)!)
+            }
+            if (isEditable! && UIDevice.current.userInterfaceIdiom == .pad)
+            {
+                //15 is for iPhone
+                tableViewCell.separatorInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
             }
             tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
             return tableViewCell

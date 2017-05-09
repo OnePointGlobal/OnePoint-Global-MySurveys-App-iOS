@@ -27,6 +27,7 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
     @IBOutlet weak var constraintImageViewTop: NSLayoutConstraint!
     @IBOutlet weak var constraintImageViewBottom: NSLayoutConstraint!
     @IBOutlet weak var activityIndicatorView : UIActivityIndicatorView?
+    @IBOutlet weak var constarintForgotPassowrdTrailingSpace: NSLayoutConstraint!
 
     
     // MARK: - Properties for viewcontroller
@@ -168,6 +169,50 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
         self.txtUsername?.resignFirstResponder()
 
         AppTheme.theme=nil              //reset theme after showing custom BG image
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        if (AppTheme.getLoginBGImagePath().isEmpty)
+        {
+            imgLoginBG?.alpha = 0.5
+        }
+
+        coordinator.animate(alongsideTransition: nil, completion: { _ in
+            self.setThemeElements()
+            self.imgLoginBG?.alpha = 1.0
+            let bounds = UIScreen.main.bounds
+            let width = bounds.size.width
+            if(self.constarintForgotPassowrdTrailingSpace != nil)         //temp fix
+            {
+                if(width==1024 || width==2018)
+                {
+                    //iPad landscape
+                    self.constarintForgotPassowrdTrailingSpace.constant = 250
+                }
+                else
+                {
+                    //iPad portrait
+                    self.constarintForgotPassowrdTrailingSpace.constant = 120
+                }
+            }
+            
+        })
+    }
+
+    override func viewDidAppear(_ animated: Bool)
+    {
+        //iOS - CONSTARINTS CANNOT BE UPDATED FROM VIEWDIDLOAD()
+        if ( UIDevice.current.userInterfaceIdiom == .pad )
+        {
+            let bounds = UIScreen.main.bounds
+            let width = bounds.size.width
+            if(width==1024 || width==2018)
+            {
+                //iPad landscape
+                self.constarintForgotPassowrdTrailingSpace.constant = 250
+            }
+        }
     }
     
     
@@ -358,7 +403,25 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
                 break
             }
         }
+        else if UIDevice.current.userInterfaceIdiom == .pad
+        {
+            switch height {
+            case 1024.0:
+                print("iPad Portrait")
+                imgLoginBG?.image = UIImage(named: "Default_iPad_Portrait.png")
+                break
+            case 768.0:
+                print("iPad Landscape")
+                imgLoginBG?.image = UIImage(named: "Default_iPad_Landscape.png")
+                break
+            default:
+                print("not an iPad")
+                imgLoginBG?.image = UIImage(named: "Default-736@3x.png")
+                break
+            }
+        }
     }
+
     
 
     // MARK: - Navigation

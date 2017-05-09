@@ -44,7 +44,7 @@
 #import <OnePointSDK/OPGSurveyPanel.h>
 #import <OnePointSDK/OPGPanellistProfile.h>
 #import <OnePointSDK/OPGCountry.h>
-#import <OnePointSDK/OPGMSGeoFencingModel.h>
+#import <OnePointSDK/OPGGeoFencingModel.h>
 #import <OnePoint.POM/CountryFactory.h>
 #import <OnePoint.POM/Country.h>
 
@@ -103,11 +103,11 @@
 
 -(void)updateNotifications:(NSNumber *)notificationID;
 
--(void)saveGeoFenceSurveys:(OPGMSGeoFencingModel*)geoFencedSurveys;
+-(void)saveGeoFenceSurveys:(OPGGeoFencingModel*)geoFencedSurveys;
 
 -(NSArray*)getAllGeoFenceSurveys;
 
--(OPGMSGeoFencingModel*)getGeofenceSurvey:(NSNumber*)surveyID;
+-(OPGGeoFencingModel*)getGeofenceSurvey:(NSNumber*)surveyID;
 
 -(void)updateGeoFenceSurvey:(NSNumber *)geoFenceID
                  withStatus:(NSNumber *)isEntered;

@@ -57,8 +57,15 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
         
     // MARK: - UITableView Delegates
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 182.0
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        if UIDevice.current.userInterfaceIdiom == .pad
+        {
+            return 260.0
+        } else {
+            return 182.0
+        }
+
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

@@ -19,7 +19,6 @@
 #import "OPGTheme.h"
 #import "OPGSurveyPanel.h"
 #import "OPGGeoFencingModel.h"
-#import "OPGMSGeoFencingModel.h"
 #import "OPGPanellistPanel.h"
 #import "OPGCountry.h"
 
@@ -90,12 +89,6 @@
  This method does parsing of json response obtained from panelistPanel api.
  */
 -(OPGPanellistPanel *)parsePanellistPanel:(NSDictionary *)panellistPanel;
-
-/*!
- This method does parsing of json response obtained from geofencing api.
- */
--(NSMutableArray *)parseGeoFencingSurvey:(NSArray *)responseList
-                                  error:(NSError **)error;
 
 /*!
  This method does parsing of json response obtained from geofencing api.

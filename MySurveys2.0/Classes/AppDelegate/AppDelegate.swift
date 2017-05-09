@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 {
 
     var window: UIWindow?
+    internal var shouldRotate = false
     
     func setAppViews()
     {
@@ -185,6 +186,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                                     sourceApplication: sourceApplication,
                                                     annotation: annotation)
         return googleDidHandle || facebookDidHandle
+    }
+
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask
+    {
+        if ( UIDevice.current.userInterfaceIdiom == .phone )
+        {
+            if shouldRotate
+            {
+                //only when inside the survey
+                return UIInterfaceOrientationMask.all;
+            }
+            else
+            {
+                //all other screens outside the survey
+                return UIInterfaceOrientationMask.portrait;
+            }
+        }
+        else
+        {
+            return UIInterfaceOrientationMask.all;      //for iPad
+        }
+
     }
 
 

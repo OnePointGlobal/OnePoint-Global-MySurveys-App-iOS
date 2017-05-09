@@ -32,6 +32,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
     var indexCharacters = ["A", "B", "C", "D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","Y","Z"]          //There is no X
     var arrayOfCountryNames : [String] = []
     weak var delegate : CountryChangedDelegate? = nil
+    var navigationBar = UINavigationBar()
     
     // MARK: - viewcontroller delegate methods
     override func viewDidLoad()
@@ -44,26 +45,8 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
     
     override func viewWillAppear(_ animated: Bool)
     {
-        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height:60))
-        
-        navigationBar.barTintColor = AppTheme.appBackgroundColor()
-        navigationBar.tintColor = UIColor.white
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-
-        let navigationItem = UINavigationItem()             // Create a navigation item with a title
-        navigationItem.title = NSLocalizedString("Country", comment: "Country")
-        
-        // Create left and right button for navigation item
-        let leftButton =  UIBarButtonItem(title: NSLocalizedString("Cancel", comment: "Cancel"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelBtn_clicked))
-        navigationItem.leftBarButtonItem = leftButton
-        // Assign the navigation item to the navigation bar
-        navigationBar.items = [navigationItem]
-        
-        // Make the navigation bar a subview of the current view controller
-        self.view.addSubview(navigationBar)
-
+        self.createNavBarforiPad(width: Int(view.frame.size.width))
         self.activityIndicator.color = AppTheme.appBackgroundColor()
-
         if super.isOnline()==false
         {
             self.activityIndicator.stopAnimating()
@@ -80,9 +63,40 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         super.didReceiveMemoryWarning()
         //Dispose of any resources that can be recreated.
     }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        coordinator.animate(alongsideTransition: nil, completion: { _ in
+            let bounds = UIScreen.main.bounds
+            self.createNavBarforiPad(width: Int(bounds.size.width))
+        })
+    }
+
     
     
     // MARK: - Generic Private Methods
+     func createNavBarforiPad(width : Int)
+    {
+        self.navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: width, height:60))
+       navigationBar.barTintColor = AppTheme.appBackgroundColor()
+        navigationBar.tintColor = UIColor.white
+        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+
+        let navigationItem = UINavigationItem()             // Create a navigation item with a title
+        navigationItem.title = NSLocalizedString("Country", comment: "Country")
+        
+        // Create left and right button for navigation item
+        let leftButton =  UIBarButtonItem(title: NSLocalizedString("Cancel", comment: "Cancel"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelBtn_clicked))
+        navigationItem.leftBarButtonItem = leftButton
+        // Assign the navigation item to the navigation bar
+        navigationBar.items = [navigationItem]
+        
+        // Make the navigation bar a subview of the current view controller
+        self.view.addSubview(navigationBar)
+    }
+
+
     func getCountries()
     {
             self.activityIndicator.startAnimating()

@@ -1,5 +1,5 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "095D4F007E2C192AD0C02CF4551BE4A6CD303AAF",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
     "4d37e2cc-3ff1-4978-9a0a-28d175ad4462" : {
 
@@ -15,22 +15,29 @@
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25" : 9223372036854775807,
     "4d37e2cc-3ff1-4978-9a0a-28d175ad4462" : 9223372036854775807,
     "c8cf3702-d023-4840-9048-5778e723de58" : 9223372036854775807,
     "5926df91-cdb9-418b-8d64-d955e8c9ddbf" : 9223372036854775807,
-    "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25" : 9223372036854775807
+    "095D4F007E2C192AD0C02CF4551BE4A6CD303AAF" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "750F71BB-A858-4117-88C9-4A193578F729",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25" : "iosmysurveys20\/",
     "4d37e2cc-3ff1-4978-9a0a-28d175ad4462" : "iosopgsdk\/",
     "c8cf3702-d023-4840-9048-5778e723de58" : "iphoneprom\/",
     "5926df91-cdb9-418b-8d64-d955e8c9ddbf" : "iphoneruntimeframework\/",
-    "e256b3a6-a33c-419f-a8c7-bbb45d4a3e25" : "iosmysurveys20\/"
+    "095D4F007E2C192AD0C02CF4551BE4A6CD303AAF" : "OnePoint-Global-MySurveys-App-iOS\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MySurveys2.0",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MySurveys2.0.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/OnePointGlobal\/OnePoint-Global-MySurveys-App-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "095D4F007E2C192AD0C02CF4551BE4A6CD303AAF"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iosopgsdk",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",

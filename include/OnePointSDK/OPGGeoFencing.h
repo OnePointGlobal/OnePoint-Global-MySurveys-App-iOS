@@ -1,45 +1,34 @@
 //
-// Copyright (c) 2016 OnePoint Global Ltd. All rights reserved.
+//  OPGMSGeoFencing.h
+//  OnePointSDK
 //
-// This code is licensed under the OnePoint Global License.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+//  Created by OnePoint Global on 24/11/16.
+//  Copyright © 2016 OnePointGlobal. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "OPGBaseFencing.h"
+#import <CoreLocation/CoreLocation.h>
+#import "OPGGeoFencingModel.h"
 
 @protocol OPGGeoFencingDelegate <NSObject>
 
-/*!
- @brief This method indicates the survey available for the current location.
- 
- @discussion This method indicates the list of survey available for user at current location/region.
- 
- @return void.
- */
--(void)didEnterSurveyRegion:(NSArray*)locations;
-
-/*!
- @brief This method indicates the unavailable surveys for the current location.
- 
- @discussion This method indicates the list of survey that user has exited for the current region/location.
- 
- @return void.
- */
--(void)didExitSurveyRegion:(NSArray*)locations;
+-(void)geoFencedAreas:(NSArray*)locations;
+-(void)didEnterRegion:(OPGGeoFencingModel*)regionEntered;
+-(void)didExitRegion:(OPGGeoFencingModel*)regionExited;
 
 @end
 
-@interface OPGGeoFencing : OPGBaseFencing
+@interface OPGGeoFencing : NSObject
 
-@property(assign, nonatomic) id<OPGGeoFencingDelegate> geoFencingDelegate;
++(OPGGeoFencing*)sharedInstance;
+
+-(void)startGeoFencing;
+-(void)stopGeoFencing;
+-(void)monitorForGeoFencing:(NSArray*)locations;
+-(void)getGeofencingLocations;
+
+@property(assign, nonatomic) id<OPGGeoFencingDelegate> fencingDelegate;
+@property (nonatomic, strong) CLLocationManager* locationManager;
 
 
 @end
