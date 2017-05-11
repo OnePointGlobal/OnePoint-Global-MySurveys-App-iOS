@@ -31,19 +31,8 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
 
     
     // MARK: - Properties for viewcontroller
-    var username : String?
-    var password : String?
-    var fbAccessToken : String?
-    var googleAuthCode : String?
-    var isLogin : Bool?
-    var currentThemeID : String?
-    var err : NSError? = nil
-    var surveyList:Array<Any> = []
-    var uniqueID:String = ""
-    var txtForgotPassword:UITextField?
     var loginManager : FBSDKLoginManager?
-    var downloadArray : Array<Any> = []
-    var uploadArray : Array<Any> = []
+  
     var bgColor : UIColor?
 
     // MARK: - IBOutlet Action methods
@@ -233,11 +222,14 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
                     if (authenticate.isSuccess == 1)
                     {
                         self.registerForAPNS()
-                        UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
+                        ///UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
+                        let downloadArray : Array<Any> = []
+                        let uploadArray : Array<Any> = []
+                        
                         UserDefaults.standard.set(0, forKey: "isSocialLogin")
                         UserDefaults.standard.set(1, forKey: "isOperating")
-                        UserDefaults.standard.set(self.uploadArray, forKey: "uploadSurveysArray")
-                        UserDefaults.standard.set(self.downloadArray, forKey: "downloadSurveysArray")
+                        UserDefaults.standard.set(uploadArray, forKey: "uploadSurveysArray")
+                        UserDefaults.standard.set(downloadArray, forKey: "downloadSurveysArray")
                         UserDefaults.standard.set(self.txtUsername?.text, forKey: "Username")
                         UserDefaults.standard.set(self.txtPassword?.text, forKey: "Password")
                         UserDefaults.standard.synchronize()
@@ -303,11 +295,14 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
                     DispatchQueue.main.async {
                         if authObj.isSuccess == 1
                         {
+                            let downloadArray : Array<Any> = []
+                            let uploadArray : Array<Any> = []
+                            self.registerForAPNS()
                             self.stopActivityIndicator()
                             UserDefaults.standard.set(1, forKey: "isOperating")
-                            UserDefaults.standard.set(self.uploadArray, forKey: "uploadSurveysArray")
-                            UserDefaults.standard.set(self.downloadArray, forKey: "downloadSurveysArray")
-                            UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
+                            UserDefaults.standard.set(uploadArray, forKey: "uploadSurveysArray")
+                            UserDefaults.standard.set(downloadArray, forKey: "downloadSurveysArray")
+                            ///UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
                             UserDefaults.standard.set(1, forKey: "isSocialLogin")                  // set as 1 if loggedin thro' facebook
                             UserDefaults.standard.set(tokenString, forKey: "tokenString")
                             UserDefaults.standard.synchronize()
@@ -548,11 +543,14 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
                             {
                                 if authObj.isSuccess == 1
                                 {
+                                    let downloadArray : Array<Any> = []
+                                    let uploadArray : Array<Any> = []
+                                    self.registerForAPNS()
                                     self.stopActivityIndicator()
                                     UserDefaults.standard.set(1, forKey: "isOperating")
-                                    UserDefaults.standard.set(self.uploadArray, forKey: "uploadSurveysArray")
-                                    UserDefaults.standard.set(self.downloadArray, forKey: "downloadSurveysArray")
-                                    UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
+                                    UserDefaults.standard.set(uploadArray, forKey: "uploadSurveysArray")
+                                    UserDefaults.standard.set(downloadArray, forKey: "downloadSurveysArray")
+                                    ///UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
                                     UserDefaults.standard.set(2, forKey: "isSocialLogin")                  // set as 2 if loggedin thro' Google
                                     UserDefaults.standard.set(tokenString, forKey: "tokenString")
                                     UserDefaults.standard.synchronize()
