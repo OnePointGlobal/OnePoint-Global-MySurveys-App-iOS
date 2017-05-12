@@ -13,8 +13,6 @@
 "Back" = "Back";
 "By List" = "By List";
 "By Location" = "By Location";
-"Upload Results" = "Upload Results";
-"Version" = "Version";
 "Cancel" = "Cancel";
 "Can't sign in. Try again." = "Can't sign in. Try again.";
 "Change Panel" = "Change Panel";
@@ -24,6 +22,7 @@
 "Completed" = "Completed";
 "Confirm Password" = "Confirm Password";
 "Country" = "Country";
+"Current Panel" = "Current Panel";
 "Current Password does not exist" = "Current Password does not exist";
 "Delete" = "Delete";
 "Done" = "Done";
@@ -68,6 +67,7 @@
 "Password Change Failed" = "Password Change Failed";
 "Password changed successfully!" = "Password changed successfully!";
 "Password cannot be empty" = "Password cannot be empty!";
+"Pending" = "Pending";
 "Please confirm your new password." = "Please confirm your new password.";
 "Please enable location services from device Settings to take the survey." = "Please enable location services from device Settings to take the survey.";
 "Please enter a valid e-mail ID." = "Please enter a valid e-mail ID.";
@@ -79,6 +79,7 @@
 "Profile" = "Profile";
 "Profile image" = "Profile image";
 "Save" = "Save";
+"Selected survey is not under current Panel. Please change the panel to take survey!" = "Selected survey is not under current Panel. Please change the panel to take survey!";
 "Send" = "Send";
 "Settings" = "Settings";
 "Sign in with Google" = "Sign in with Google   ";
@@ -95,10 +96,12 @@
 "Unauthorised login" = "Unauthorised login";
 "Unable to upload results. Please try again!" = "Unable to upload results. Please try again!";
 "Upload" = "Upload";
+"Upload Results" = "Upload Results";
 "Uploading" = "Uploading";
 "Uploading Offline Survey results" = "Uploading Offline Survey results";
 "Username/password cannot be empty." = "Username/password cannot be empty.";
 "Username/EmailID" = "Username/EmailID";
+"Version" = "Version";
 "Welcome! You have a survey here!" = "Welcome! You have a survey here!";
 "We will email you a link to reset your Password" = "We will email you a link to reset your Password";
 "You are not in this location to take the survey!" = "You are not in this location to take the survey!";

@@ -352,6 +352,9 @@
 		78CB25881EA5EE460002EC6D /* survey_calendar_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "survey_calendar_iPad@2x.png"; path = "icons/survey_calendar_iPad@2x.png"; sourceTree = "<group>"; };
 		78CB25891EA5EE460002EC6D /* survey_time_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = survey_time_iPad.png; path = icons/survey_time_iPad.png; sourceTree = "<group>"; };
 		78CB258A1EA5EE460002EC6D /* survey_time_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "survey_time_iPad@2x.png"; path = "icons/survey_time_iPad@2x.png"; sourceTree = "<group>"; };
+		78CDF6E11EC5BBC900B8C8BC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		78CDF6E21EC5BBC900B8C8BC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		78CDF6E31EC5BBCA00B8C8BC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		78E368451DF6DF4900D14F07 /* profile_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile_default.png; path = icons/profile_default.png; sourceTree = "<group>"; };
 		78E4F2711E127099001678FB /* MySurveys2.0.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MySurveys2.0.entitlements; sourceTree = "<group>"; };
 		78E4F2721E1271FF001678FB /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -985,6 +988,7 @@
 				en,
 				Base,
 				de,
+				ar,
 			);
 			mainGroup = 1337DB191D07F4130075B356;
 			productRefGroup = 1337DB231D07F4130075B356 /* Products */;
@@ -1391,6 +1395,7 @@
 			children = (
 				1337DB2A1D07F4140075B356 /* Base */,
 				135B70FD1DB9F90900F48E94 /* de */,
+				78CDF6E21EC5BBC900B8C8BC /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1400,6 +1405,7 @@
 			children = (
 				1337DB321D07F4140075B356 /* Base */,
 				135B70FE1DB9F90A00F48E94 /* de */,
+				78CDF6E31EC5BBCA00B8C8BC /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1409,6 +1415,7 @@
 			children = (
 				135B71071DB9FC6A00F48E94 /* Base */,
 				135B710A1DB9FC7C00F48E94 /* de */,
+				78CDF6E11EC5BBC900B8C8BC /* ar */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

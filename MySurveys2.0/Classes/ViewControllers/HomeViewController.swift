@@ -1570,7 +1570,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func performGeoFencingPush(_ surveyReference : String?) {
         self.surveySelected = self.runThroughSurveyRef(surveyReference!)
         if (surveyReference != nil) && (self.surveySelected?.surveyReference == nil) {
-            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: "Selected survey is not under current Panel. Please change the panel to take survey!", alertAction: "OK")
+            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Selected survey is not under current Panel. Please change the panel to take survey!", comment: ""), alertAction: "OK")
             return
         }
         if (self.surveySelected?.isOffline.boolValue == false ) {
@@ -1841,7 +1841,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     if survey.isDeleted == 2 {
                         self.surveySelected = self.runThroAddressForAnnotationSelection(survey.surveyReference)
                         if (self.surveySelected?.surveyReference == "") || (self.surveySelected?.surveyReference == nil) {
-                            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: "Selected survey is not under current Panel. Please change the panel to take survey!", alertAction: NSLocalizedString("OK", comment: "OK"))
+                            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Selected survey is not under current Panel. Please change the panel to take survey!", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                         } else {
                             if (self.surveySelected?.isOffline.boolValue == false ) {
                                 self.performSegue(withIdentifier: "embedSurveyDetails", sender: self)

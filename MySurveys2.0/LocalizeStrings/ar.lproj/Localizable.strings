@@ -1,0 +1,123 @@
+/* 
+  Localizable.strings
+  MySurveys2.0
+
+  Created by Chinthan on 21/10/16.
+  Copyright © 2016 Chinthan. All rights reserved.
+*/
+
+"AboutUs" = "من نحن";
+"Approximately" = "تقريبا";
+"Are you sure you want to logout?" = "هل أنت متأكد أنك تريد المغادرة؟";
+"Authentication Failed" = "فشل تسجيل الدخول";
+"Back" = "رجوع";
+"By List" = "حسب القائمة";
+"By Location" = "حسب الموقع";
+"Cancel" = "إلغاء";
+"Can't sign in. Try again." = "لا يمكن تسجيل الدخول. أعد المحاولة.";
+"Change Panel" = "تغيير اللوحة";
+"Change Password" = "تغيير كلمة السر";
+"Check your credentials!" = "تحقق من بياناتك الخاصة !";
+"Choose From Gallery" = "اختر من معرض الصور";
+"Completed" = "انتهت";
+"Confirm Password" = "تأكيد كلمة الس";
+"Country" = "البلد";
+"Current Panel" = "Current Panel";
+"Current Password does not exist" = "كلمة السر الحالية غير موجودة";
+"Delete" = "إحذف";
+"Done" = "انتهت";
+"Download" = "تحميل";
+"Downloading..." = "جارى التحميل...";
+"Downloading. Please wait!" = "جارى التنزيل. يرجى الإنتظار!";
+"Downloading surveys. Please wait!" = "تنزيل الاستطلاعات. يرجى الإنتظار!";
+"E-mail Id" = "معرف البريد الإلكتروني";
+"E-mail Id does not exist" = "معرف البريد الإلكتروني غير موجود";
+"E-mail Id not found." = "لم يتم العثور على معرف البريد الإلكتروني";
+"Edit" = "تغيير";
+"Error while uploading. Please Refresh again!" = "حدث خطأ أثناء التحميل. الرجاء التحديث مرة أخرى!";
+"Forgot Password" = "نسيت كلمة السر";
+"Forgot Password?" = "هل نسيت كلمة السر؟";
+"Forgot your password?" = "هل نسيت كلمة السر الخاصة بك؟";
+"Geo location" = "الموقع الجغرافي";
+"Got it!" = "فهمت!";
+"Invalid Credentials" = "البيانات الخاصة خاطئة";
+"Internal Server Error" = "خطأ داخلي";
+"Location Services not enabled!" = "لم يتم ضبط خدمات الموقع!";
+"Login" = "تسجيل الدخول";
+"Login with Facebook" = "تسجيل الدخول عبر الفايسبوك";
+"Log out" = "تسجيل الخروج";
+"min" = "دقيقة";
+"MySurveys"= "My Surveys";
+"Name" = "الإسم";
+"New" = "جديد";
+"New and Confirm passwords should be same" = "يجب أن تكون كلمة السر الجديدة والتأكيد متطابقة";
+"New Password" = "كلمة السر الجديدة";
+"No items selected." = "لم يتم إختيار أي عنصر";
+"No internet connection. Please try again!" = "!لا يوجد اتصال بالإنترنت. حاول مرة اخرى";
+"No surveys available for the selected panel." = "لا تتوفر استطلاعات رأي لللوحة المختارة.";
+"No notifications so far." = "لا توجد إشعارات حتى الآن.";
+"Notifications" = "الإشعارات";
+"Number of times taken" = "عدد العناصر التي تم أخدها";
+"OK" = "حسنا";
+"Old Password" = "كلمة السر القديمة";
+"Old Password cannot be empty." = "لا يمكن أن تكون كلمة السر القديمة فارغة";
+"Old and new passwords cannot be same" = "لا يمكن أن تكون كلمة السر الجديدة نفس كلمة السر القديمة";
+"Oops! Unknown error. Please try again." = "عفوا! خطأ غير معروف. حاول مرة اخرى.";
+"Password" = "كلمة السر";
+"Password Change Failed" = "فشل تغيير كلمة السر";
+"Password changed successfully!" = "تم تغيير كلمة السر بنجاح!";
+"Password cannot be empty" = "لا يمكن أن تكون كلمة السر فارغة!";
+"Pending" = "Pending";
+"Please confirm your new password." = "الرجاء تأكيد كلمة السر الجديدة";
+"Please enable location services from device Settings to take the survey." = "الرجاء ضبط خدمات الموقع من إعدادات الجهاز لإجراء الاستطلاع.";
+"Please enter a valid e-mail ID." = "يرجى إدخال معرف بريد إلكتروني صحيح.";
+"Please enter your e-mail ID" = "لرجاء إدخال معرف البريد الإلكتروني الخاص بك.";
+"Please enter your new password." = "لرجاء إدخال كلمة السر الجديدة.";
+"Please take the survey before uploading results." = "يرجى المشاركة في استطلاع الرأي قبل تحميل النتائج.";
+"Please upload offline survey results before logout." = "يرجى تحميل نتائج الإستطلاع قبل تسجيل الخروج.";
+"Privacy" = "الخصوصية";
+"Profile" = "الملف الشخصي";
+"Profile image" = "صورة الملف الشخصي";
+"Save" = "إحفظ";
+"Selected survey is not under current Panel. Please change the panel to take survey!" = "Selected survey is not under current Panel. Please change the panel to take survey!";
+"Send" = "أرسل";
+"Settings" = "الإعدادات";
+"Sign in with Google" = "تسجيل الدخول عبر جوجل   ";
+"Sorry! You are not in survey location. So, you can not take the survey." = "معذرة! أنت لست في موقع الإستطلاع. لذا، لا يمكنك إجراء الإستطلاع.";
+"Survey" = "الإستطلاع";
+"Survey not available to take" = "الإستطلاع غير متوفر للمشاركة به";
+"Success! Please check your e-mail for new password!" = "نجاح! يرجى التحقق من بريدك الإلكتروني للحصول على كلمة مرور جديدة!";
+"Sync in progress. Please wait!" = "التحديث قيد التقدم. يرجى الانتظار!";
+"Take Photo" = "التقط صورة";
+"Take Survey" = "المشاركة في استطلاع الرأي";
+"Terms & Conditions" = "الشروط والأحكام";
+"To take your location based surveys turn on ‘Geolocation’ from the App Settings" = "للمشاركة في استطلاعات الرأي في موقعك شغل خدمة تحديد الموقع الجغرافي من إعدادات التطبيق";
+"T&C" = "الشروط والأحكام";
+"Unauthorised login" = "تسجيل الدخول غير مسموح به";
+"Unable to upload results. Please try again!" = "يتعذر تحميل النتائج. حاول مرة اخرى!";
+"Upload" = "تحميل";
+"Upload Results" = "تحميل النتائج";
+"Uploading" = "جاري التحميل";
+"Uploading Offline Survey results" = "جاري تحميل نتائج الإستطلاع";
+"Username/password cannot be empty." = "اسم المستخدم/كلمة السر لا يمكن أن يكون فارغة.";
+"Username/EmailID" = "اسم المستخدم / معرف البريد الإلكتروني";
+"Version" = "الإصدار";
+"Welcome! You have a survey here!" = "أهلا بك! لديك إستطلاع رأي هنا!";
+"We will email you a link to reset your Password" = "سنرسل إليك رابطا لإعادة تعيين كلمة السر";
+"You are not in this location to take the survey!" = "أنت لست في هذا الموقع لإجراء الإستطلاع!";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

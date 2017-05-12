@@ -38,6 +38,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.activityIndicator.startAnimating()
         self.getCountries()
         self.tableView.contentInset = UIEdgeInsets(top: 60,left: 0,bottom: 0,right: 0)
         
@@ -99,7 +100,6 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
 
     func getCountries()
     {
-            self.activityIndicator.startAnimating()
             self.tableView.backgroundView = self.activityIndicator
             DispatchQueue.global(qos: .default).async
             {

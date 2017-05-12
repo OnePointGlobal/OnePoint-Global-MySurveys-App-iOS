@@ -79,7 +79,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         btnCameraIcon.layer.cornerRadius = 0.5 * cameraIconWidth
         if UIDevice.current.userInterfaceIdiom == .pad
         {
-            //only for iPad
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
             NotificationCenter.default.addObserver(self, selector:  #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         }
@@ -181,6 +180,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     // MARK: - Keyboard Notification selector methods
     func keyboardWillShow(notification: NSNotification)
     {
+        //only for iPad
         let bounds = UIScreen.main.bounds
         let width = bounds.size.width
         if(width==1024 || width==2048)
@@ -198,6 +198,8 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
 
     func keyboardWillHide(notification: NSNotification)
     {
+
+        //only for iPad
         let bounds = UIScreen.main.bounds
         let width = bounds.size.width
         if(width==1024 || width==2048)
@@ -237,6 +239,16 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 self.tableview.isScrollEnabled=true
             }
         }
+    }
+
+    func hideKeyboard()
+    {
+        let indexPath = IndexPath(item: 0 , section: 0)
+            let tableViewCell : ProfileTableViewCell? = self.tableview?.cellForRow(at: indexPath) as? ProfileTableViewCell
+            if (tableViewCell != nil)
+            {
+                tableViewCell?.txtValue.resignFirstResponder()
+            }
     }
 
 
@@ -718,6 +730,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 self.tabBarController?.navigationItem.rightBarButtonItem?.title=NSLocalizedString("Edit", comment: "")
                 self.tableview.allowsSelection = false
                 self.tableview.separatorStyle = UITableViewCellSeparatorStyle.none
+                self.hideKeyboard()                 //dismiss keyboard first and then update profile
                 self.updateProfile()
             }
             else
@@ -732,7 +745,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
         else
         {
-            if self.isEditable!                                                 //calls when internet turned off during saving
+            if self.isEditable!                             //calls when internet turned off during saving
             {
                 self.isEditable = false
                 self.tabBarController?.navigationItem.rightBarButtonItem?.title=NSLocalizedString("Edit", comment: "")
@@ -805,7 +818,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             if isEditable!
             {
                 tableViewCell.txtValue.isEnabled=true
-                tableViewCell.txtValue.perform(#selector(becomeFirstResponder), with: nil , afterDelay: 0)
+                //tableViewCell.txtValue.perform(#selector(becomeFirstResponder), with: nil , afterDelay: 0)
                 if UIDevice.current.userInterfaceIdiom == .pad
                 {
                     //15 is for iPhone
@@ -815,7 +828,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             }
             else{
                 tableViewCell.txtValue.isEnabled=false
-                tableViewCell.txtValue.resignFirstResponder()
+                //tableViewCell.txtValue.resignFirstResponder()
                 //self.view.endEditing(true)
             }
             tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
