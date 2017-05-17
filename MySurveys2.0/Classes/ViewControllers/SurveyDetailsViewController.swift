@@ -58,7 +58,7 @@ class SurveyDetailsViewController: RootViewController {
         btnTakeSurvey.backgroundColor = AppTheme.appBackgroundColor()
         btnTakeSurvey.layer.cornerRadius = 0.5 * btnTakeSurvey.bounds.size.width
         lblSurveyName?.text = surveySelected?.surveyName
-        lblSurveyStatus?.text = surveySelected?.surveyDescription
+        lblSurveyStatus?.text = NSLocalizedString((surveySelected?.surveyDescription)!, comment: "")
         let approxString = NSLocalizedString("Approximately", comment: "") + " " + (self.surveySelected?.estimatedTime.stringValue)! + " " +  NSLocalizedString("min", comment: "min")
         lblSurveyETA?.text = approxString
 

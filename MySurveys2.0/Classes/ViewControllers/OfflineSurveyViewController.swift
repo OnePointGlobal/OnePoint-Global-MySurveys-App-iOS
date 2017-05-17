@@ -40,6 +40,7 @@ class OfflineSurveyViewController : RootViewController
         // Do any additional setup after loading the view.
         self.navigationController?.hidesBarsOnSwipe = false
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateProgressBar(_:)), name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
+        self.btnUploadResults.setTitle(NSLocalizedString("Upload Results", comment: ""),for: .normal)
     }
     
     
@@ -100,7 +101,7 @@ class OfflineSurveyViewController : RootViewController
         btnTakeSurvey.layer.cornerRadius = 0.5 * btnTakeSurvey.bounds.size.width
         
         lblSurveyName?.text = surveySelected?.surveyName
-        lblSurveyStatus?.text = surveySelected?.surveyDescription
+        lblSurveyStatus?.text = NSLocalizedString((surveySelected?.surveyDescription)!, comment: "")
 
         let startDateString = self.formatDate(dateString: (self.surveySelected?.startDate)!)
         let endDateString = self.formatDate(dateString: (self.surveySelected?.endDate)!)

@@ -33,7 +33,7 @@ class ChangePasswordViewController: RootViewController, UITextFieldDelegate
         txtOldPassword.delegate=self
         txtNewPassword.delegate=self
         txtConfirmPassword.delegate=self
-        //self.navigationController?.navigationBar.isHidden = false
+
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -60,6 +60,9 @@ class ChangePasswordViewController: RootViewController, UITextFieldDelegate
         self.txtOldPassword!.setValue(placeHolderColor, forKeyPath: "_placeholderLabel.textColor")
         self.txtNewPassword!.setValue(placeHolderColor, forKeyPath: "_placeholderLabel.textColor")
         self.txtConfirmPassword!.setValue(placeHolderColor, forKeyPath: "_placeholderLabel.textColor")
+
+        self.btnOK.setTitle((NSLocalizedString("OK", comment: "")), for: .normal)
+        self.btnCancel.setTitle((NSLocalizedString("Cancel", comment: "")), for: .normal)
     }
     
     func resetUI()
