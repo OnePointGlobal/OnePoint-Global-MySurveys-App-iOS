@@ -1,0 +1,135 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1i3-wS-mUw"; */
+"1i3-wS-mUw.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "2gI-j6-QTr"; */
+"2gI-j6-QTr.text" = "Label";
+
+/* Class = "UILabel"; text = "Current Panel"; ObjectID = "50N-YE-s3x"; */
+"50N-YE-s3x.text" = "Current Panel";
+
+/* Class = "UINavigationItem"; title = "OnePoint Global"; ObjectID = "5AP-fJ-Lnc"; */
+"5AP-fJ-Lnc.title" = "OnePoint Global";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "79l-Fm-emW"; */
+"79l-Fm-emW.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7Ro-WJ-inE"; */
+"7Ro-WJ-inE.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "95g-Id-eTn"; */
+"95g-Id-eTn.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Email ID"; ObjectID = "A89-rO-YTc"; */
+"A89-rO-YTc.placeholder" = "Email ID";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "AHl-pe-yxP"; */
+"AHl-pe-yxP.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UITextField"; text = "value"; ObjectID = "ASS-H3-DIq"; */
+"ASS-H3-DIq.text" = "value";
+
+/* Class = "UILabel"; text = "Version 1.5 Alpha"; ObjectID = "DOW-YE-uAa"; */
+"DOW-YE-uAa.text" = "Version 1.5 Alpha";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ET1-z7-ocr"; */
+"ET1-z7-ocr.text" = "Label";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "FDt-tu-h9x"; */
+"FDt-tu-h9x.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FbY-ak-2yM"; */
+"FbY-ak-2yM.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "Gx9-3V-j0S"; */
+"Gx9-3V-j0S.title" = "Settings";
+
+/* Class = "UINavigationItem"; title = "Survey"; ObjectID = "H6j-oB-2SI"; */
+"H6j-oB-2SI.title" = "Survey";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "KAD-lc-Gdd"; */
+"KAD-lc-Gdd.title" = "Back";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "QBl-zM-tm3"; */
+"QBl-zM-tm3.title" = "Back";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Rwg-js-7L7"; */
+"Rwg-js-7L7.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Six-st-gLa"; */
+"Six-st-gLa.text" = "Label";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "UZv-TH-ZVU"; */
+"UZv-TH-ZVU.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Take a Trail"; ObjectID = "Xl9-bf-iOT"; */
+"Xl9-bf-iOT.normalTitle" = "Take a Trail";
+
+/* Class = "UITabBarItem"; title = "Notifications"; ObjectID = "a23-2e-2l8"; */
+"a23-2e-2l8.title" = "Notifications";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "cAf-Un-cGv"; */
+"cAf-Un-cGv.title" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "Upload Results"; ObjectID = "cGb-7L-oIH"; */
+"cGb-7L-oIH.normalTitle" = "Upload Results";
+
+/* Class = "UITabBarController"; title = "TabBarViewController"; ObjectID = "d4g-Ty-kgG"; */
+"d4g-Ty-kgG.title" = "TabBarViewController";
+
+/* Class = "UIViewController"; title = "Survey"; ObjectID = "epj-1l-11w"; */
+"epj-1l-11w.title" = "Survey";
+
+/* Class = "UILabel"; text = "email"; ObjectID = "epj-NR-PAT"; */
+"epj-NR-PAT.text" = "email";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "fdf-cb-HBX"; */
+"fdf-cb-HBX.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gzN-64-YJ9"; */
+"gzN-64-YJ9.text" = "Label";
+
+/* Class = "UILabel"; text = "Value"; ObjectID = "hPL-G7-Y89"; */
+"hPL-G7-Y89.text" = "Value";
+
+/* Class = "UINavigationItem"; title = "Login"; ObjectID = "har-vg-5KN"; */
+"har-vg-5KN.title" = "Login";
+
+/* Class = "UISegmentedControl"; iK6-vh-HrA.segmentTitles[0] = "By List"; ObjectID = "iK6-vh-HrA"; */
+"iK6-vh-HrA.segmentTitles[0]" = "By List";
+
+/* Class = "UISegmentedControl"; iK6-vh-HrA.segmentTitles[1] = "By Location"; ObjectID = "iK6-vh-HrA"; */
+"iK6-vh-HrA.segmentTitles[1]" = "By Location";
+
+/* Class = "UINavigationItem"; title = "Details"; ObjectID = "iQL-Mp-K9I"; */
+"iQL-Mp-K9I.title" = "Details";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "ja5-Be-vVX"; */
+"ja5-Be-vVX.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = "                                         "; ObjectID = "ldm-Ad-Zxi"; */
+"ldm-Ad-Zxi.text" = "                                         ";
+
+/* Class = "UIButton"; normalTitle = "Log out"; ObjectID = "mBw-Cq-kPY"; */
+"mBw-Cq-kPY.normalTitle" = "Log out";
+
+/* Class = "UIButton"; normalTitle = "Take a trail"; ObjectID = "rNC-Xs-oXv"; */
+"rNC-Xs-oXv.normalTitle" = "Take a trail";
+
+/* Class = "UITabBarItem"; title = "Survey"; ObjectID = "rVx-Cd-7fb"; */
+"rVx-Cd-7fb.title" = "Survey";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "rno-f7-1TU"; */
+"rno-f7-1TU.title" = "Profile";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "wCc-eJ-YGY"; */
+"wCc-eJ-YGY.text" = "Label";
+
+/* Class = "UILabel"; text = "                                         "; ObjectID = "xly-Yz-wZr"; */
+"xly-Yz-wZr.text" = "                                         ";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "ysZ-ze-oWc"; */
+"ysZ-ze-oWc.normalTitle" = "Cancel";
+
+/* Class = "UIViewController"; title = "Login"; ObjectID = "zx5-tf-9mK"; */
+"zx5-tf-9mK.title" = "Login";

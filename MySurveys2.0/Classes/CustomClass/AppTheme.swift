@@ -158,7 +158,8 @@ class AppTheme: NSObject
         {
             //UDID of the device tmp folder path changes on every re-run
             let filePath:String? = UserDefaults.standard.value(forKey: "LoginBGImagePath") as? String
-            let filename =  NSURL(string: filePath!)?.lastPathComponent
+            let filePathWithoutSpaces = filePath?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+            let filename =  NSURL(string: filePathWithoutSpaces!)?.lastPathComponent
             let tempDirURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename!)        //get image name, construct path and return
             return (tempDirURL?.path)!
         }
@@ -180,7 +181,8 @@ class AppTheme: NSObject
         {
             //UDID of the device tmp folder path changes on every re-run
             let filePath = (UserDefaults.standard.object(forKey: "HeaderLogoImagePath") as? String)!
-            let filename =  NSURL(string: filePath)?.lastPathComponent
+            let filePathWithoutSpaces = filePath.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+            let filename =  NSURL(string: filePathWithoutSpaces!)?.lastPathComponent
             let tempDirURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename!)        //get image name, construct path and return
             return (tempDirURL?.path)!
         }
