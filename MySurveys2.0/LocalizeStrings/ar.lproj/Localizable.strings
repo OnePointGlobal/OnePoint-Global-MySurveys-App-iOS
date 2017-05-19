@@ -95,6 +95,7 @@
 "T&C" = "الشروط والأحكام";
 "Unauthorised login" = "تسجيل الدخول غير مسموح به";
 "Unable to upload results. Please try again!" = "يتعذر تحميل النتائج. حاول مرة اخرى!";
+"Unscheduled" = "Unscheduled";
 "Upload" = "تحميل";
 "Upload Results" = "تحميل النتائج";
 "Uploading" = "جاري التحميل";
@@ -102,10 +103,11 @@
 "Username/password cannot be empty." = "اسم المستخدم/كلمة السر لا يمكن أن يكون فارغة.";
 "Username/EmailID" = "اسم المستخدم / معرف البريد الإلكتروني";
 "Version" = "الإصدار";
+"Welcome to" = "Welcome to";
 "Welcome! You have a survey here!" = "أهلا بك! لديك إستطلاع رأي هنا!";
 "We will email you a link to reset your Password" = "سنرسل إليك رابطا لإعادة تعيين كلمة السر";
 "You are not in this location to take the survey!" = "أنت لست في هذا الموقع لإجراء الإستطلاع!";
-
+"You have a survey available at this location" = "You have a survey available at this location";
 
 
 

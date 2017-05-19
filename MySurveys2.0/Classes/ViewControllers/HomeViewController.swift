@@ -1510,8 +1510,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                            "Type" : 0,
                                            "AppNotificationID" : 1,
                                            "title" : regionEntered.surveyName,
-                                           "body" : "Welcome to \(regionEntered.address!)! You have survey available at this location",
-                    "IsRead" : "0"]
+                                           "body" : NSLocalizedString("Welcome to", comment: "") + "\(regionEntered.address!)!" + NSLocalizedString("You have a survey available at this location", comment: ""),
+                                            "IsRead" : "0"]
                 print("dict createsd \(dict)")
                 CollabrateDB.sharedInstance().saveLocalNotifications(dict)
             }
@@ -1521,8 +1521,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 if #available(iOS 10.0, *) {
                     let content = UNMutableNotificationContent()
                     
-                    content.title = "MySurveys 2.0"
-                    content.body = "Welcome to \(regionEntered.address!)! You have survey available at this location"
+                    content.title = NSLocalizedString("MySurveys", comment: "")
+                    content.body = NSLocalizedString("Welcome to", comment: "") + "\(regionEntered.address!)!" + NSLocalizedString("You have a survey available at this location", comment: "")
                     
                     let trigger = UNTimeIntervalNotificationTrigger(
                         timeInterval: 0.3,

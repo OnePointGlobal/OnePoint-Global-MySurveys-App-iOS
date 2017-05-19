@@ -22,7 +22,7 @@
 "Completed" = "Terminé";
 "Confirm Password" = "Confirmer le mot de passe";
 "Country" = "Pays";
-"Current Panel" = "Current Panel";
+"Current Panel" = "Panel Sélectionné";
 "Current Password does not exist" = "Ce mot de passe n'existe pas";
 "Delete" = "Effacer";
 "Done" = "Terminé";
@@ -67,7 +67,7 @@
 "Password Change Failed" = "La modification du mot de passe a échoué";
 "Password changed successfully!" = "Votre mot de passe a été changé avec succès!";
 "Password cannot be empty" = "Le champ mot de passe ne peut pas être vide!";
-"Pending" = "Pending";
+"Pending" = "En suspens";
 "Please confirm your new password." = "Veuillez confirmer votre nouveau mot de passe.";
 "Please enable location services from device Settings to take the survey." = "Pour participer au sondage, il est nécessaire  d’activer le service de localisation à partir des paramètres de votre appareil.";
 "Please enter a valid e-mail ID." = "Veuillez saisir une adresse e-mail valide.";
@@ -79,7 +79,7 @@
 "Profile" = "Profil";
 "Profile image" = "Photo de profil";
 "Save" = "Sauvegarder";
-"Selected survey is not under current Panel. Please change the panel to take survey!" = "Selected survey is not under current Panel. Please change the panel to take survey!";
+"Selected survey is not under current Panel. Please change the panel to take survey!" = "Le sondage choisi n’appartient pas au Panel sélectionné. Veuillez changer le panel pour participer au sondage.";
 "Send" = "Envoyer";
 "Settings" = "Paramètres";
 "Sign in with Google" = "Se connecter avec Google  ";
@@ -95,6 +95,7 @@
 "T&C" = "T&C";
 "Unauthorised login" = "Connexion non autorisée";
 "Unable to upload results. Please try again!" = "Impossible de charger les résultats. Veuillez réessayer!";
+"Unscheduled" = "Imprévu";
 "Upload" = "Chargement";
 "Upload Results" = "Résultats du chargement";
 "Uploading" = "En cours de chargement";
@@ -102,10 +103,11 @@
 "Username/password cannot be empty." = "Les champs nom d'utilisateur / mot de passe ne peuvent pas être vide.";
 "Username/EmailID" = "Nom d'utilisateur / Adresse e-mail";
 "Version" = "Version";
+"Welcome to" = "Bienvenue à";
 "Welcome! You have a survey here!" = "Bienvenue ! Vous avez un sondage!";
 "We will email you a link to reset your Password" = "Nous vous enverrons un lien pour réinitialiser votre mot de passe";
 "You are not in this location to take the survey!" = "Votre localisation ne vous permet pas de répondre à ce sondage!";
-
+"You have a survey available at this location" = "Vous avez un sondage disponible à cet endroit";
 
 
 

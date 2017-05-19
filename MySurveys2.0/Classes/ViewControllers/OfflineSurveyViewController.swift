@@ -108,7 +108,7 @@ class OfflineSurveyViewController : RootViewController
         
         if ((startDateString == "6 Oct 2100") || (endDateString == "9 Oct 2100"))          //Default date value in case of Null or empty
         {
-            lblSurveyDate?.text = "Unscheduled"
+            lblSurveyDate?.text = NSLocalizedString("Unscheduled", comment: "")
         }
         else
         {

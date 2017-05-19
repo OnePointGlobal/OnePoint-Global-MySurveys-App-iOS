@@ -95,6 +95,7 @@
 "T&C" = "T&C";
 "Unauthorised login" = "Unauthorised login";
 "Unable to upload results. Please try again!" = "Unable to upload results. Please try again!";
+"Unscheduled" = "Unscheduled";
 "Upload" = "Upload";
 "Upload Results" = "Upload Results";
 "Uploading" = "Uploading";
@@ -102,9 +103,11 @@
 "Username/password cannot be empty." = "Username/password cannot be empty.";
 "Username/EmailID" = "Username/EmailID";
 "Version" = "Version";
+"Welcome to" = "Welcome to";
 "Welcome! You have a survey here!" = "Welcome! You have a survey here!";
 "We will email you a link to reset your Password" = "We will email you a link to reset your Password";
 "You are not in this location to take the survey!" = "You are not in this location to take the survey!";
+"You have a survey available at this location" = "You have a survey available at this location";
 
 
 
