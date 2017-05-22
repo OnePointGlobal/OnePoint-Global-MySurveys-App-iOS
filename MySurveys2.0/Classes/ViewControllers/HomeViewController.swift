@@ -1496,7 +1496,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
 
 
-    func didEnterRegion(_ regionEntered: OPGGeoFencingModel!) {
+    func didEnterRegion(_ regionEntered: OPGGeoFencingModel!)
+    {
         if (regionEntered != nil) {
             print("region entered is \(regionEntered.address!)")
             self.runThroughAddresses(regionEntered.address, true)
@@ -1511,23 +1512,24 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                            "AppNotificationID" : 1,
                                            "title" : regionEntered.surveyName,
                                            "body" : NSLocalizedString("Welcome to", comment: "") + "\(regionEntered.address!)!" + NSLocalizedString("You have a survey available at this location", comment: ""),
-                                            "IsRead" : "0"]
+                                           "IsRead" : "0"]
                 print("dict createsd \(dict)")
                 CollabrateDB.sharedInstance().saveLocalNotifications(dict)
             }
             else
             {
                 //if app is inactive, send notifications
-                if #available(iOS 10.0, *) {
+                if #available(iOS 10.0, *)
+                {
                     let content = UNMutableNotificationContent()
-                    
+
                     content.title = NSLocalizedString("MySurveys", comment: "")
                     content.body = NSLocalizedString("Welcome to", comment: "") + "\(regionEntered.address!)!" + NSLocalizedString("You have a survey available at this location", comment: "")
-                    
+
                     let trigger = UNTimeIntervalNotificationTrigger(
                         timeInterval: 0.3,
                         repeats: false)
-                    
+
                     let request = UNNotificationRequest(
                         identifier: regionEntered.address,
                         content: content,
@@ -1536,6 +1538,15 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     UNUserNotificationCenter.current().add(
                         request, withCompletionHandler: nil)
                 } // TODO: write code for iOS9.0 and below
+                else
+                {
+                    let notification = UILocalNotification()
+                    notification.alertTitle = NSLocalizedString("MySurveys", comment: "")
+                    notification.alertBody = NSLocalizedString("Welcome to", comment: "") + "\(regionEntered.address!)!" + NSLocalizedString("You have a survey available at this location", comment: "")
+                    notification.fireDate = NSDate(timeIntervalSinceNow:0.3)
+                    UIApplication.sharedApplication().cancelAllLocalNotifications()
+                    UIApplication.sharedApplication().scheduledLocalNotifications = [notification]
+                }
             }
         }
         
