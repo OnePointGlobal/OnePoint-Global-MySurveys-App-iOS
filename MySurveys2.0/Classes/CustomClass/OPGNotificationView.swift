@@ -87,6 +87,7 @@ class OPGNotificationView : UIView
         titleLabel.frame = labelRect
         titleLabel.text = title
         titleLabel.numberOfLines = 2
+        titleLabel.adjustsFontSizeToFitWidth = true;
         titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 17)
         titleLabel.textColor = UIColor.white
         titleLabel.textAlignment = NSTextAlignment.center

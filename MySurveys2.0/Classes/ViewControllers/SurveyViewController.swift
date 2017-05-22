@@ -25,6 +25,7 @@ class SurveyViewController: OPGViewController, OPGSurveyDelegate
         self.spinner.color = AppTheme.appBackgroundColor()
         self.spinner.startAnimating()
         self.surveyDelegate = self;
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem?.title = NSLocalizedString("Back", comment: "Back")
 
         if self.surveySelected?.isOffline == 0
         {

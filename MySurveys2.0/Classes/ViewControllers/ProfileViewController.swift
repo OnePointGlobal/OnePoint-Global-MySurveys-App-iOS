@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ProfileViewController: RootViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CountryChangedDelegate
 {
    // MARK: - IBOutlets for view
@@ -42,9 +43,13 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     
     func getProfileImagePath() -> String
     {
-        let filename = (UserDefaults.standard.object(forKey: "profileImagePath") as? String)!
-        let tempDirURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename)        //get image name, construct path and return
-        return (tempDirURL?.path)!
+        let filename = UserDefaults.standard.object(forKey: "profileImagePath") as? String
+        if (filename != nil)
+        {
+            let tempDirURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename!)        //get image name, construct path and return
+            return (tempDirURL?.path)!
+        }
+        return EMPTY_STRING
     }
 
     func getDateString() -> String
@@ -533,7 +538,11 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                                 self.imageView?.image = UIImage(contentsOfFile: self.getProfileImagePath())           //Update profile image view
                                 if(didChangeProfilePic)
                                 {
-                                    self.deletePreviousProfileImg(path: previousProfileImgPath)                     //delete old profile pic once new one is updated
+                                    let fileExists = FileManager().fileExists(atPath: previousProfileImgPath!)
+                                    if(fileExists)
+                                    {
+                                        self.deletePreviousProfileImg(path: previousProfileImgPath)                     //delete old profile pic once new one is updated
+                                    }
                                     self.updatePanellistProfileWithMedia(mediaID: mediaId)                          //Update Panellist Profile with new media id using sdk api
                                 }
                             }

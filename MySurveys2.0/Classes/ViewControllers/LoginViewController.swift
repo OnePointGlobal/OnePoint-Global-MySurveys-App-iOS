@@ -117,6 +117,7 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.title = NSLocalizedString("Login", comment: "")
         self.loginManager = FBSDKLoginManager()
         self.setBackgroundImageforView()
         self.stopActivityIndicator()
@@ -536,6 +537,7 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
         {
             self.stopActivityIndicator()
             print(error)
+            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Can't sign in. Try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
             return
         }
         

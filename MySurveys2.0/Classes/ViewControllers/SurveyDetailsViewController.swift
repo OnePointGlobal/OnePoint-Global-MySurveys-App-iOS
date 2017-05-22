@@ -89,7 +89,6 @@ class SurveyDetailsViewController: RootViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = NSLocalizedString("Back", comment: "Back")
         self.navigationItem.title = NSLocalizedString("Survey", comment: "Survey")
-        //self.navigationController?.navigationBar.topItem?.title = self.back
         
         let array : Array<Any>? = UserDefaults.standard.value(forKey: "downloadSurveysArray") as? Array<Any>
         if ((array?.count)! > 0) {

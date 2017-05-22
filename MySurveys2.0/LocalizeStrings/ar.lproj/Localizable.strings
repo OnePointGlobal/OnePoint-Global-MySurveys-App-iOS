@@ -22,7 +22,7 @@
 "Completed" = "انتهت";
 "Confirm Password" = "تأكيد كلمة الس";
 "Country" = "البلد";
-"Current Panel" = "Current Panel";
+"Current Panel" = "اللوحة الحالية";
 "Current Password does not exist" = "كلمة السر الحالية غير موجودة";
 "Delete" = "إحذف";
 "Done" = "انتهت";
@@ -67,7 +67,7 @@
 "Password Change Failed" = "فشل تغيير كلمة السر";
 "Password changed successfully!" = "تم تغيير كلمة السر بنجاح!";
 "Password cannot be empty" = "لا يمكن أن تكون كلمة السر فارغة!";
-"Pending" = "Pending";
+"Pending" = "قيد الانتظار";
 "Please confirm your new password." = "الرجاء تأكيد كلمة السر الجديدة";
 "Please enable location services from device Settings to take the survey." = "الرجاء ضبط خدمات الموقع من إعدادات الجهاز لإجراء الاستطلاع.";
 "Please enter a valid e-mail ID." = "يرجى إدخال معرف بريد إلكتروني صحيح.";
@@ -79,7 +79,7 @@
 "Profile" = "الملف الشخصي";
 "Profile image" = "صورة الملف الشخصي";
 "Save" = "إحفظ";
-"Selected survey is not under current Panel. Please change the panel to take survey!" = "Selected survey is not under current Panel. Please change the panel to take survey!";
+"Selected survey is not under current Panel. Please change the panel to take survey!" = "لإستطلاع الذي اخترته ليس ضمن هذه اللوحة. يرجى تغيير اللوحة للمشاركة في إستطلاع!";
 "Send" = "أرسل";
 "Settings" = "الإعدادات";
 "Sign in with Google" = "تسجيل الدخول عبر جوجل   ";
@@ -95,7 +95,7 @@
 "T&C" = "الشروط والأحكام";
 "Unauthorised login" = "تسجيل الدخول غير مسموح به";
 "Unable to upload results. Please try again!" = "يتعذر تحميل النتائج. حاول مرة اخرى!";
-"Unscheduled" = "Unscheduled";
+"Unscheduled" = "غير مجدولة";
 "Upload" = "تحميل";
 "Upload Results" = "تحميل النتائج";
 "Uploading" = "جاري التحميل";
@@ -103,11 +103,11 @@
 "Username/password cannot be empty." = "اسم المستخدم/كلمة السر لا يمكن أن يكون فارغة.";
 "Username/EmailID" = "اسم المستخدم / معرف البريد الإلكتروني";
 "Version" = "الإصدار";
-"Welcome to" = "Welcome to";
+"Welcome to" = "مرحبا بك في";
 "Welcome! You have a survey here!" = "أهلا بك! لديك إستطلاع رأي هنا!";
 "We will email you a link to reset your Password" = "سنرسل إليك رابطا لإعادة تعيين كلمة السر";
 "You are not in this location to take the survey!" = "أنت لست في هذا الموقع لإجراء الإستطلاع!";
-"You have a survey available at this location" = "You have a survey available at this location";
+"You have a survey available at this location" = "لديك إستطلاع متوفر في هذا الموقع";
 
 
 

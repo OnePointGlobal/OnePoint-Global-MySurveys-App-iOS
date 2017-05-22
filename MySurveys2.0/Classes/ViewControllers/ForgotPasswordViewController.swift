@@ -48,6 +48,7 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
         self.activityIndicator.color = self.bgColor
         self.view.backgroundColor = self.bgColor
         self.bgView.backgroundColor = self.bgColor
+        
     }
 
     override func viewDidAppear(_ animated: Bool)
