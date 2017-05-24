@@ -20,4 +20,7 @@
 @property (nonatomic, strong)UIButton *closeButton;
 @property (nonatomic, strong)UIView *imageBgView;
 
+
+-(void) adjustPreview;
+
 @end

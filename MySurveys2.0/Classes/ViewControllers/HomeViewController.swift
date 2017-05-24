@@ -1131,7 +1131,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                        options: [.curveLinear],
                        animations: {
                         
-                        self.tabBarController?.navigationItem.rightBarButtonItem?.customView!.transform = CGAffineTransform.identity
+                        self.tabBarController?.navigationItem.rightBarButtonItem?.customView?.transform = CGAffineTransform.identity
                         self.tabBarController?.navigationItem.rightBarButtonItem?.customView?.isUserInteractionEnabled = true
                         self.view.layoutIfNeeded()
                         
@@ -1541,11 +1541,15 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 else
                 {
                     let notification = UILocalNotification()
-                    notification.alertTitle = NSLocalizedString("MySurveys", comment: "")
+                    if #available(iOS 8.2, *) {
+                        notification.alertTitle = NSLocalizedString("MySurveys", comment: "")
+                    } else {
+                        // Fallback on earlier versions
+                    }
                     notification.alertBody = NSLocalizedString("Welcome to", comment: "") + "\(regionEntered.address!)!" + NSLocalizedString("You have a survey available at this location", comment: "")
-                    notification.fireDate = NSDate(timeIntervalSinceNow:0.3)
-                    UIApplication.sharedApplication().cancelAllLocalNotifications()
-                    UIApplication.sharedApplication().scheduledLocalNotifications = [notification]
+                    notification.fireDate = NSDate(timeIntervalSinceNow:0.3) as Date
+                    UIApplication.shared.cancelAllLocalNotifications()
+                    UIApplication.shared.scheduledLocalNotifications = [notification]
                 }
             }
         }

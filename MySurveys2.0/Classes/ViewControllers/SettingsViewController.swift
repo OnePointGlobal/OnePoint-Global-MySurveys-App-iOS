@@ -8,9 +8,7 @@
 
 import Foundation
 
-let privacyUrl = "https://framework.onepointglobal.com/appwebsite/privacy?location=mobile&culture=en-US"
-let tcUrl = "https://framework.onepointglobal.com/appwebsite/TermsOfUse?location=mobile&culture=en-US"
-let aboutUsUrl = "https://framework.onepointglobal.com/appwebsite/about?location=mobile&culture=en-US"
+
 
 let geoFence = OPGGeoFencing.sharedInstance()
 
@@ -24,7 +22,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     var settingItems : [String] = []
     var urlString : String?
     var pageTitle : String?
-    
+
+    //Append locale based on language selected.
+    var privacyUrl = "https://framework.onepointglobal.com/appwebsite/privacy?location=mobile&culture="
+    var tcUrl = "https://framework.onepointglobal.com/appwebsite/TermsOfUse?location=mobile&culture="
+    var aboutUsUrl = "https://framework.onepointglobal.com/appwebsite/about?location=mobile&culture="
     
     // MARK: - View Delegate Methods
     override func viewDidLoad()
@@ -34,6 +36,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.layoutMargins = UIEdgeInsets.zero
         self.tableView.separatorInset = UIEdgeInsets.zero
         self.tableView.tableFooterView = UIView()
+
+
+
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -82,12 +87,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return tableViewCell
     }
     
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 0.01
-//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
+
+
         switch indexPath.row {
         case 0:
             self.performSegue(withIdentifier: "changePanel", sender: self)
@@ -96,17 +100,20 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             self.performSegue(withIdentifier: "changePassword", sender: self)
 
         case 3:
-            self.urlString = privacyUrl                                            //set url to load in the next screen
+            let langStr = Locale.current.languageCode
+            self.urlString = self.privacyUrl.appending(langStr!)                                           //set url to load in the next screen
             self.pageTitle = NSLocalizedString("Privacy", comment: "")
             self.performSegue(withIdentifier: "commonWebView", sender: self)
 
         case 4:
-            self.urlString = tcUrl
+            let langStr = Locale.current.languageCode
+            self.urlString = self.tcUrl.appending(langStr!)
             self.pageTitle = NSLocalizedString("T&C", comment: "")
             self.performSegue(withIdentifier: "commonWebView", sender: self)
 
         case 5:
-            self.urlString = aboutUsUrl
+            let langStr = Locale.current.languageCode
+            self.urlString = self.aboutUsUrl.appending(langStr!)
             self.pageTitle = NSLocalizedString("AboutUs", comment: "")
             self.performSegue(withIdentifier: "commonWebView", sender: self)
 

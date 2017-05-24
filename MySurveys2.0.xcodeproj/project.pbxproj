@@ -57,7 +57,6 @@
 		13F9A48B1DF962A10017C42C /* surveydetail_nav@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4881DF962A10017C42C /* surveydetail_nav@3x.png */; };
 		1687868231AF9FEE3FC9403E /* libPods-MySurveys2.0Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F2B9E895E12A5F50246EA1B /* libPods-MySurveys2.0Tests.a */; };
 		6EE233761C56BD469DCAFC14 /* libPods-MySurveys2.0UITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B0DD1BD844238B023825F6 /* libPods-MySurveys2.0UITests.a */; };
-		7803418E1EA6263A00F3CCE1 /* libOnePointSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E7E3861E7BE757004F6934 /* libOnePointSDK.a */; };
 		7803418F1EA62AF200F3CCE1 /* libOnePoint.PROM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB071DBF7F7E0066A049 /* libOnePoint.PROM.a */; };
 		781401101EADDD2D00799399 /* survey_nav_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7814010E1EADDD2D00799399 /* survey_nav_iPad.png */; };
 		781401111EADDD2D00799399 /* survey_nav_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7814010F1EADDD2D00799399 /* survey_nav_iPad@2x.png */; };
@@ -77,6 +76,7 @@
 		789CCFEB1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */; };
 		789CCFEC1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */; };
 		78A92B9F1E530D8B000890CB /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92B9E1E530D8B000890CB /* ThemeModel.swift */; };
+		78B742621ED55DE900BCC41A /* libOnePointSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E7E3861E7BE757004F6934 /* libOnePointSDK.a */; };
 		78B7B3E61E54282D00A3FA9A /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7B3E51E54282D00A3FA9A /* AppTheme.swift */; };
 		78C7540D1DC367E800832AD0 /* ProfileLogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C7540C1DC367E800832AD0 /* ProfileLogoutTableViewCell.swift */; };
 		78CB258B1EA5EE460002EC6D /* Default_iPad_Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB257B1EA5EE460002EC6D /* Default_iPad_Landscape.png */; };
@@ -482,8 +482,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B742621ED55DE900BCC41A /* libOnePointSDK.a in Frameworks */,
 				7803418F1EA62AF200F3CCE1 /* libOnePoint.PROM.a in Frameworks */,
-				7803418E1EA6263A00F3CCE1 /* libOnePointSDK.a in Frameworks */,
 				785B8B141E1E254800F09F20 /* libOnePointFramework.a in Frameworks */,
 				787D1E591E1E22120095DFFA /* libxml2.tbd in Frameworks */,
 				78E4F2731E1271FF001678FB /* UserNotifications.framework in Frameworks */,
