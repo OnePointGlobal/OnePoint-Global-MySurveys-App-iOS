@@ -41,6 +41,10 @@ class OfflineSurveyViewController : RootViewController
         self.navigationController?.hidesBarsOnSwipe = false
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateProgressBar(_:)), name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
         self.btnUploadResults.setTitle(NSLocalizedString("Upload Results", comment: ""),for: .normal)
+        if ( UIDevice.current.userInterfaceIdiom == .pad )
+        {
+            self.btnTakeSurvey.setImage(UIImage(named : "surveydetail_nav_iPad.png"), for: .normal)
+        }
     }
     
     

@@ -41,6 +41,10 @@ class SurveyDetailsViewController: RootViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.navigationController?.hidesBarsOnSwipe = false
+        if ( UIDevice.current.userInterfaceIdiom == .pad )
+        {
+            self.btnTakeSurvey.setImage(UIImage(named : "surveydetail_nav_iPad.png"), for: .normal)
+        }
 
     }
 

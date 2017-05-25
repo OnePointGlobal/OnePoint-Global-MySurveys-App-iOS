@@ -164,7 +164,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
 
         coordinator.animate(alongsideTransition: nil, completion: { _ in
-            if (isOperating == 1 || isOperating == 3)
+            if ((isOperating == 1 || isOperating == 3) && (self.bannerTitle != nil))
             {
                 self.showBanner(progressTitle: self.bannerTitle as! String)
             }
@@ -232,7 +232,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 if (tableViewCell != nil)
                 {
                     tableViewCell?.progressBar?.progress = percentage
-                    
+                    tableViewCell?.progressBar?.progressTintColor = AppTheme.appBackgroundColor()        //theme for profgress bar
                     if percentage == 1.0
                     {
                         tableViewCell?.offlineFileCountButton.isHidden = true
@@ -603,8 +603,11 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 print("In OperationQueue Main thread")
                 UserDefaults.standard.set(2, forKey: "isOperating")
                 let userLoggedIn : String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
+                print("userLoggedIn \(userLoggedIn)")
+
                 if userLoggedIn == "0"
                 {
+                    print("userLoggedIn 0")
                     UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
                 }
                 else{
@@ -1121,7 +1124,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func hideBanner() {
         self.bannerView?.hideNotification()
         self.bannerView = nil
-        self.bannerTitle = nil
+        //self.bannerTitle = nil
     }
     
     func stopSpinning(){
@@ -1375,7 +1378,16 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let tableViewCell : SurveyTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Surveys") as! SurveyTableViewCell
-        if(tableView == self.tableView){
+        if ( UIDevice.current.userInterfaceIdiom == .pad )
+        {
+            tableViewCell.selectButton.setImage(UIImage(named : "survey_nav_iPad.png"), for: .normal)
+        }
+        tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+        tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
+        print(tableViewCell.selectButton.bounds.size.width)
+         print(tableViewCell.selectButton.bounds.size.height)
+        if(tableView == self.tableView)
+        {
             let survey : OPGSurvey = self.surveyFilteredList[indexPath.row] as! OPGSurvey
             tableViewCell.fillCell(survey)
             tableViewCell.btnSurveyDesc.tag = indexPath.row

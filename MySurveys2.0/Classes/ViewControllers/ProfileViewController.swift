@@ -358,6 +358,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
 
         let deviceToken : String? = UserDefaults.standard.value(forKey: "DeviceTokenID") as? String
         let bgImagePath:String? = AppTheme.getLoginBGImagePath()
+        let userLoggedIn : String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
         self.unRegisterForAPNS(deviceToken)
         let appDomain = Bundle.main.bundleIdentifier
         UserDefaults.standard.removePersistentDomain(forName: appDomain!)
@@ -370,7 +371,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
 
         let loginManager : FBSDKLoginManager = FBSDKLoginManager()
         loginManager.logOut()
-
+        UserDefaults.standard.set(userLoggedIn, forKey: "isUserLoggedIN")           
         UserDefaults.standard.set(deviceToken, forKey: "DeviceTokenID")             // Before Logout, Re-assign DeviceTokenID as we get that only for one time
         AppTheme.setLoginBGImagePath(path: bgImagePath!)         // Before Logout, Re-assign login BG image path as it is to be shown after logout
         AppTheme.setLoginBtnTextColor(color: AppTheme.appBackgroundColor())

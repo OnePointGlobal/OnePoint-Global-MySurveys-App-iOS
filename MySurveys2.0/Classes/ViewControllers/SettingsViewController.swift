@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 {
     // MARK: - IBOutlets for View
     @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var lblVersion: UILabel!
 
     
     // MARK: - Properties for viewcontroller
@@ -36,7 +37,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.layoutMargins = UIEdgeInsets.zero
         self.tableView.separatorInset = UIEdgeInsets.zero
         self.tableView.tableFooterView = UIView()
-
+        self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 1.6 " + "Alpha"
 
 
     }
