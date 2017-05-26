@@ -45,6 +45,10 @@ class OfflineSurveyViewController : RootViewController
         {
             self.btnTakeSurvey.setImage(UIImage(named : "surveydetail_nav_iPad.png"), for: .normal)
         }
+        else
+        {
+            self.btnTakeSurvey.setImage(UIImage(named : "surveydetail_nav.png"), for: .normal)
+        }
     }
     
     

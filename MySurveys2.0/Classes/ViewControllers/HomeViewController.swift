@@ -621,6 +621,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 self.checkForGeoFencing()
                 self.shimmeringView?.isShimmering = false
                 self.tableView?.isUserInteractionEnabled = true     //Enable table after refresh/shimmer
+               self.tableView?.layoutIfNeeded()
                 self.tableView!.reloadData()
                 self.checkforAvailableSurveys()
                 self.setUpSegmentedController()
@@ -1381,11 +1382,27 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         if ( UIDevice.current.userInterfaceIdiom == .pad )
         {
             tableViewCell.selectButton.setImage(UIImage(named : "survey_nav_iPad.png"), for: .normal)
+            if(tableViewCell.selectButton.bounds.size.width < 61.0)
+            {
+                //Apply default iPad width and height - TEMP FIX for app kill and come back to home page
+                tableViewCell.selectButton.layer.cornerRadius = 0.5 * 61.0
+                tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * 61.0
+            }
+            else
+            {
+                tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+                tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
+            }
         }
-        tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
-        tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
-        print(tableViewCell.selectButton.bounds.size.width)
-         print(tableViewCell.selectButton.bounds.size.height)
+        else
+        {
+            tableViewCell.selectButton.setImage(UIImage(named : "survey_nav.png"), for: .normal)
+            tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+            tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
+        }
+
+        //print("width = \(tableViewCell.selectButton.bounds.size.width)  height =   \(tableViewCell.selectButton.bounds.size.height)")
+
         if(tableView == self.tableView)
         {
             let survey : OPGSurvey = self.surveyFilteredList[indexPath.row] as! OPGSurvey
