@@ -58,7 +58,7 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
         {
             let bounds = UIScreen.main.bounds
             let width = bounds.size.width
-            if(width==1024 || width==2018)
+            if(width==1024 || width==2048)
             {
                 self.setConstraintsForiPadLandscape()
             }

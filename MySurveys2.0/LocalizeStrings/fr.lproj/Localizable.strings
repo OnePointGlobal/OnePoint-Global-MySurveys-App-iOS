@@ -49,6 +49,7 @@
 "min" = "min";
 "MySurveys"= "My Surveys";
 "Name" = "Nom";
+"Name is empty" = "Nom est vide";
 "New" = "Nouveau";
 "New and Confirm passwords should be same" = "Les mots de passe ne concordent pas";
 "New Password" = "Nouveau mot de passe";

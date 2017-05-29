@@ -49,6 +49,7 @@
 "min" = "دقيقة";
 "MySurveys"= "My Surveys";
 "Name" = "الإسم";
+"Name is empty" = "الاسم فارغ";
 "New" = "جديد";
 "New and Confirm passwords should be same" = "يجب أن تكون كلمة السر الجديدة والتأكيد متطابقة";
 "New Password" = "كلمة السر الجديدة";

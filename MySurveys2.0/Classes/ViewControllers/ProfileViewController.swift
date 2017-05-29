@@ -295,24 +295,33 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             self.tableview.reloadData()
             return
         }
-        DispatchQueue.global(qos: .default).async
+        let nameCell = self.tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! ProfileTableViewCell
+        if (nameCell.txtValue.text!.isEmpty)
         {
-                let sdk = OPGSDK()
-                do
+            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Name is empty", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+            //If name is edited to an empty string, don't update profile
+            self.tableview.reloadData()
+        }
+        else
+        {
+            DispatchQueue.global(qos: .default).async
                 {
-                    let nameCell = self.tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! ProfileTableViewCell
-                    self.panelist?.firstName = nameCell.txtValue.text!
-                    try sdk.update(self.panelist)                               //update profile to server
-                    DispatchQueue.main.async
+                    let sdk = OPGSDK()
+                    do
                     {
-                            self.getPanellistProfileFromServer()                //get profile from server and update DB
-                            self.tableview.reloadData()
+                        self.panelist?.firstName = nameCell.txtValue.text!
+                        try sdk.update(self.panelist)                               //update profile to server
+                        DispatchQueue.main.async
+                        {
+                                self.getPanellistProfileFromServer()                //get profile from server and update DB
+                                self.tableview.reloadData()
+                        }
                     }
-                }
-                catch let err as NSError
-                {
-                    print("Error: \(err)")
-                }
+                    catch let err as NSError
+                    {
+                        print("Error: \(err)")
+                    }
+            }
         }
     }
 

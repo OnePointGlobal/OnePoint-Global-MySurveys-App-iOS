@@ -456,6 +456,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         }
                     }
                 } else {
+                    UserDefaults.standard.set(0, forKey: isDownload)
                     super.showNoInternetConnectionAlert()
                 }
             } catch let err as NSError {
@@ -488,6 +489,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 }
                 else
                 {
+                    UserDefaults.standard.set(0, forKey: isDownload)
                     super.showNoInternetConnectionAlert()
                 }
             }
@@ -555,84 +557,90 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     func getSurveysFromDB() {
         print("getSurveysFromDB")
-        let panelID : String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String
-        
-        let surveyPanelFactory : SurveyPanelFactory = SurveyPanelFactory()
-        let surveyFactory : SurveyFactory = SurveyFactory()
-        let myInteger = Int(panelID!)
-        let myNumber = NSNumber(value:myInteger!)
-        
-        let array : Array<SurveyPanel> = surveyPanelFactory.find(byPanelID:myNumber) as! Array<SurveyPanel>
-        var dummyList:Array<Any> = []
-        self.surveyList = []
-        
-        let blockTakeFromDB = BlockOperation {
-            for item in array {
-                let surveysArray : Array<Survey> = surveyFactory.find(bySurveyID:item.surveyID) as! Array<Survey>
-                for survey in surveysArray {
-                    let opgSurvey : OPGSurvey =  OPGSurvey()
-                    opgSurvey.surveyName = survey.name
-                    opgSurvey.surveyDescription = survey.status;
-                    opgSurvey.surveyReference = survey.description;
-                    opgSurvey.lastUpdatedDate = self.stringFromDate(survey.lastUpdatedDate as NSDate)
-                    if (survey.createdDate == nil) {
-                        opgSurvey.createdDate = ""
-                        opgSurvey.startDate = ""
-                    } else {
-                        opgSurvey.createdDate = self.stringFromDate(survey.createdDate as NSDate)
-                        opgSurvey.startDate = self.stringFromDate(survey.createdDate as NSDate)   // check once why its used the same again
+        let panelid : String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String
+
+        if let panelID = panelid {
+            let surveyPanelFactory : SurveyPanelFactory = SurveyPanelFactory()
+            let surveyFactory : SurveyFactory = SurveyFactory()
+            let myInteger = Int(panelID)
+            let myNumber = NSNumber(value:myInteger!)
+
+            let array : Array<SurveyPanel> = surveyPanelFactory.find(byPanelID:myNumber) as! Array<SurveyPanel>
+            var dummyList:Array<Any> = []
+            self.surveyList = []
+
+            let blockTakeFromDB = BlockOperation {
+                for item in array {
+                    let surveysArray : Array<Survey> = surveyFactory.find(bySurveyID:item.surveyID) as! Array<Survey>
+                    for survey in surveysArray {
+                        let opgSurvey : OPGSurvey =  OPGSurvey()
+                        opgSurvey.surveyName = survey.name
+                        opgSurvey.surveyDescription = survey.status;
+                        opgSurvey.surveyReference = survey.description;
+                        opgSurvey.lastUpdatedDate = self.stringFromDate(survey.lastUpdatedDate as NSDate)
+                        if (survey.createdDate == nil) {
+                            opgSurvey.createdDate = ""
+                            opgSurvey.startDate = ""
+                        } else {
+                            opgSurvey.createdDate = self.stringFromDate(survey.createdDate as NSDate)
+                            opgSurvey.startDate = self.stringFromDate(survey.createdDate as NSDate)   // check once why its used the same again
+                        }
+                        if (survey.deadLine == nil) {
+                            opgSurvey.endDate = ""
+                            opgSurvey.deadline = ""
+                        } else {
+                            opgSurvey.endDate = self.stringFromDate(survey.deadLine as NSDate)
+                            opgSurvey.deadline = self.stringFromDate(survey.deadLine as NSDate)
+                        }
+                        opgSurvey.isOffline = NSNumber(value:Int(survey.isOffline))
+                        opgSurvey.isGeoFencing = NSNumber(value:Int(survey.isGeofencing))
+                        opgSurvey.surveyID = survey.surveyID;
+                        opgSurvey.estimatedTime = survey.estimatedTime;
+                        opgSurvey.isOfflineDownloaded = NSNumber(value:Int(survey.occurences))
+
+                        dummyList.append(opgSurvey)
                     }
-                    if (survey.deadLine == nil) {
-                        opgSurvey.endDate = ""
-                        opgSurvey.deadline = ""
-                    } else {
-                        opgSurvey.endDate = self.stringFromDate(survey.deadLine as NSDate)
-                        opgSurvey.deadline = self.stringFromDate(survey.deadLine as NSDate)
-                    }
-                    opgSurvey.isOffline = NSNumber(value:Int(survey.isOffline))
-                    opgSurvey.isGeoFencing = NSNumber(value:Int(survey.isGeofencing))
-                    opgSurvey.surveyID = survey.surveyID;
-                    opgSurvey.estimatedTime = survey.estimatedTime;
-                    opgSurvey.isOfflineDownloaded = NSNumber(value:Int(survey.occurences))
-                    
-                    dummyList.append(opgSurvey)
                 }
+
+                OperationQueue.main.addOperation({
+                    print("In OperationQueue Main thread")
+                    UserDefaults.standard.set(2, forKey: "isOperating")
+                    let userLoggedIn : String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
+                    print("userLoggedIn \(userLoggedIn)")
+
+                    if userLoggedIn == "0"
+                    {
+                        print("userLoggedIn 0")
+                        UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
+                    }
+                    else{
+                        self.isAppKilled = false
+                    }
+
+                    self.surveyList = dummyList.reversed()
+                    self.filterSurveyList()
+                    self.OfflineDownloadList.removeAll()
+                    self.downloadSurveys()
+                    self.checkForGeoFencing()
+                    self.shimmeringView?.isShimmering = false
+                    self.tableView?.isUserInteractionEnabled = true     //Enable table after refresh/shimmer
+                    self.tableView?.layoutIfNeeded()
+                    self.tableView!.reloadData()
+                    self.checkforAvailableSurveys()
+                    self.setUpSegmentedController()
+                    if self.bannerView != nil
+                    {
+                        self.hideBanner()
+                    }
+                    self.stopSpinning()
+                })
             }
-            
-            OperationQueue.main.addOperation({
-                print("In OperationQueue Main thread")
-                UserDefaults.standard.set(2, forKey: "isOperating")
-                let userLoggedIn : String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
-                print("userLoggedIn \(userLoggedIn)")
-
-                if userLoggedIn == "0"
-                {
-                    print("userLoggedIn 0")
-                    UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
-                }
-                else{
-                    self.isAppKilled = false
-                }
-
-                self.surveyList = dummyList.reversed()
-                self.filterSurveyList()
-                self.OfflineDownloadList.removeAll()
-                self.downloadSurveys()
-                self.checkForGeoFencing()
-                self.shimmeringView?.isShimmering = false
-                self.tableView?.isUserInteractionEnabled = true     //Enable table after refresh/shimmer
-               self.tableView?.layoutIfNeeded()
-                self.tableView!.reloadData()
-                self.checkforAvailableSurveys()
-                self.setUpSegmentedController()
-                if self.bannerView != nil
-                {
-                    self.hideBanner()
-                }
-                self.stopSpinning()
-            })
+            queue.addOperation(blockTakeFromDB)
         }
-        queue.addOperation(blockTakeFromDB)
+        else{
+         // Need to implement
+        }
+        
         
     }
     
@@ -737,6 +745,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: (panellistPanels?.statusMessage)!, alertAction: NSLocalizedString("OK", comment: "OK"))
                     }
                 } else {
+                    UserDefaults.standard.set(0, forKey: isDownload)
                     super.showNoInternetConnectionAlert()
                 }
                 
@@ -1377,31 +1386,54 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let tableViewCell : SurveyTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Surveys") as! SurveyTableViewCell
-        if ( UIDevice.current.userInterfaceIdiom == .pad )
+        if(tableView == self.tableView)
         {
-            tableViewCell.selectButton.setImage(UIImage(named : "survey_nav_iPad.png"), for: .normal)
-            if(tableViewCell.selectButton.bounds.size.width < 61.0)
+            if ( UIDevice.current.userInterfaceIdiom == .pad )
             {
-                //Apply default iPad width and height - TEMP FIX for app kill and come back to home page
-                tableViewCell.selectButton.layer.cornerRadius = 0.5 * 61.0
-                tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * 61.0
+                tableViewCell.selectButton.setImage(UIImage(named : "survey_nav_iPad.png"), for: .normal)
+                if(tableViewCell.selectButton.bounds.size.width < 61.0)
+                {
+                    //Apply default iPad width and height - TEMP FIX for app kill and come back to home page
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * 61.0
+                    tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * 61.0
+                }
+                else
+                {
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+                    tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
+                }
             }
             else
             {
+                tableViewCell.selectButton.setImage(UIImage(named : "survey_nav.png"), for: .normal)
                 tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
                 tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
             }
         }
-        else
+        else if (tableView == self.tableViewGeoFenced)
         {
-            tableViewCell.selectButton.setImage(UIImage(named : "survey_nav.png"), for: .normal)
-            tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
-            tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
+            //Geo-fencing view
+            if ( UIDevice.current.userInterfaceIdiom == .pad )
+            {
+                tableViewCell.selectButton.setImage(UIImage(named : "survey_nav_iPad.png"), for: .normal)
+                if(tableViewCell.selectButton.bounds.size.width < 61.0)
+                {
+                    //Apply default iPad width and height - TEMP FIX for app kill and come back to home page
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * 61.0
+                }
+                else
+                {
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+                }
+            }
+            else
+            {
+                tableViewCell.selectButton.setImage(UIImage(named : "survey_nav.png"), for: .normal)
+                tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+            }
         }
-
-        //print("width = \(tableViewCell.selectButton.bounds.size.width)  height =   \(tableViewCell.selectButton.bounds.size.height)")
 
         if(tableView == self.tableView)
         {
@@ -1431,7 +1463,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 }
             }
         }
-        
+
         if(tableView == self.tableViewGeoFenced){
             let survey : OPGGeoFencingModel = self.geoFencedArrayFiltered[indexPath.row] as! OPGGeoFencingModel
             for item in self.surveyGeoAvailable {
@@ -1744,11 +1776,14 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         self.geoFencedArrayFiltered = []
         var surveyNames : Array<String> = []
         for i in 0 ..< geofencedArrays.count {
-            let name = (geofencedArrays[i] as! OPGGeoFencingModel).surveyName            // check once PROM models updated
-            if !surveyNames.contains(name!) {
-                dummyArray.append(geofencedArrays[i])                       //filter to avoid mduplication
-                surveyNames.append(name!)
+            let surName = (geofencedArrays[i] as? OPGGeoFencingModel)?.surveyName            // check once PROM models updated
+            if let name = surName {
+                if !surveyNames.contains(name) {
+                    dummyArray.append(geofencedArrays[i])                       //filter to avoid mduplication
+                    surveyNames.append(name)
+                }
             }
+
         }
         
         self.geoFencedArrayFiltered = dummyArray.filter { dummy in

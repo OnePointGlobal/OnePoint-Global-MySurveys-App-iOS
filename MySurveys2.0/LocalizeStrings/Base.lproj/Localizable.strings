@@ -49,6 +49,7 @@
 "min" = "min";
 "MySurveys"= "My Surveys";
 "Name" = "Name";
+"Name is empty" = "Name is empty";
 "New" = "New";
 "New and Confirm passwords should be same" = "New and Confirm passwords should be same";
 "New Password" = "New Password";

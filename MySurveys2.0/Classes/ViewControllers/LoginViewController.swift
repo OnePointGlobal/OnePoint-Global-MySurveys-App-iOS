@@ -185,7 +185,7 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
             let width = bounds.size.width
             if(self.constarintForgotPassowrdTrailingSpace != nil)         //temp fix
             {
-                if(width==1024 || width==2018)
+                if(width==1024 || width==2048)
                 {
                     //iPad landscape
                     self.constarintForgotPassowrdTrailingSpace.constant = 250
@@ -207,7 +207,7 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
         {
             let bounds = UIScreen.main.bounds
             let width = bounds.size.width
-            if(width==1024 || width==2018)
+            if(width==1024 || width==2048)
             {
                 //iPad landscape
                 self.constarintForgotPassowrdTrailingSpace.constant = 250
