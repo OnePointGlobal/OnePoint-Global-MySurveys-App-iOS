@@ -22,6 +22,7 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var panelTableView : UITableView?
     @IBOutlet weak var lblPanelname : UILabel?
     @IBOutlet weak var backgroundView : UIView?
+    @IBOutlet weak var lblCurrentPanel: UILabel!
     
     var panelsArray : Array<OPGPanel> = []
 
@@ -29,6 +30,7 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("Change Panel", comment: "ChangePanel")
+        self.lblCurrentPanel.text = NSLocalizedString("Current Panel", comment: "")
         getPanelsfromDB()
     }
     

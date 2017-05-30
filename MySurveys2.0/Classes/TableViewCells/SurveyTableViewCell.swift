@@ -30,15 +30,6 @@ class SurveyTableViewCell : UITableViewCell
     func fillCell(_ survey: OPGSurvey)
     {
         let labelColor = UIColor(red:236/255.0, green:236/255.0, blue:236/255.0, alpha: 1.0)
-        selectButton.layer.cornerRadius = 0.5 * selectButton.bounds.size.width
-        offlineFileCountButton.layer.cornerRadius = 0.5 * offlineFileCountButton.bounds.size.width
-
-        if ( UIDevice.current.userInterfaceIdiom == .pad )
-        {
-            self.selectButton.setImage(UIImage(named : "survey_nav_iPad.png"), for: .normal)
-        }
-
-        
         if survey.surveyDescription == "xyz"
         {
             self.lblSurveyName.backgroundColor = labelColor
@@ -54,26 +45,34 @@ class SurveyTableViewCell : UITableViewCell
             self.lblSurveyName.backgroundColor = UIColor.clear
             self.btnSurveyDesc.backgroundColor = UIColor.clear
             self.lblSurveyName.text=survey.surveyName
-            if survey.isOffline == 1 {
-                if survey.isOfflineDownloaded == 2 {
+            if survey.isOffline == 1
+            {
+                if survey.isOfflineDownloaded == 2
+                {
                     self.btnSurveyDesc.setTitleColor(UIColor.lightGray, for: .normal)
-                    self.btnSurveyDesc.setTitle(survey.surveyDescription,for: .normal)
+                    self.btnSurveyDesc.setTitle(NSLocalizedString(survey.surveyDescription, comment: ""),for: .normal)
                     self.progressBar?.progress = 0.0
                     if (survey.surveyDescription == "Upload Results") || (survey.surveyDescription == "Uploading") {
                         self.btnSurveyDesc.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
                     }
                     
-                } else if survey.isOfflineDownloaded == 1  {
+                }
+                else if survey.isOfflineDownloaded == 1
+                {
                     self.btnSurveyDesc.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
-                    self.btnSurveyDesc.setTitle("Downloading..."/*survey.surveyDescription*/,for: .normal)
+                    self.btnSurveyDesc.setTitle(NSLocalizedString("Downloading...", comment: "")/*survey.surveyDescription*/,for: .normal)
                   //      test download thamarai
-                } else if survey.isOfflineDownloaded == 0  {
+                }
+                else if survey.isOfflineDownloaded == 0
+                {
                     self.btnSurveyDesc.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
-                    self.btnSurveyDesc.setTitle(survey.surveyDescription,for: .normal)
+                    self.btnSurveyDesc.setTitle(NSLocalizedString(survey.surveyDescription, comment: ""),for: .normal)
                 }
                 
-            } else  {
-                self.btnSurveyDesc.setTitle(survey.surveyDescription,for: .normal)
+            }
+            else
+            {
+                self.btnSurveyDesc.setTitle(NSLocalizedString(survey.surveyDescription, comment: ""),for: .normal)
                 self.btnSurveyDesc.setTitleColor(UIColor.lightGray, for: .normal)
                 self.progressBar?.progress = 0.0
             }

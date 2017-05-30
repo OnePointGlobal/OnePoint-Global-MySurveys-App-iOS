@@ -41,7 +41,14 @@ class SurveyDetailsViewController: RootViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.navigationController?.hidesBarsOnSwipe = false
-
+        if ( UIDevice.current.userInterfaceIdiom == .pad )
+        {
+            self.btnTakeSurvey.setImage(UIImage(named : "surveydetail_nav_iPad.png"), for: .normal)
+        }
+        else
+        {
+            self.btnTakeSurvey.setImage(UIImage(named : "surveydetail_nav.png"), for: .normal)
+        }
     }
 
     func setBorder(view : UIView)
@@ -58,7 +65,7 @@ class SurveyDetailsViewController: RootViewController {
         btnTakeSurvey.backgroundColor = AppTheme.appBackgroundColor()
         btnTakeSurvey.layer.cornerRadius = 0.5 * btnTakeSurvey.bounds.size.width
         lblSurveyName?.text = surveySelected?.surveyName
-        lblSurveyStatus?.text = surveySelected?.surveyDescription
+        lblSurveyStatus?.text = NSLocalizedString((surveySelected?.surveyDescription)!, comment: "")
         let approxString = NSLocalizedString("Approximately", comment: "") + " " + (self.surveySelected?.estimatedTime.stringValue)! + " " +  NSLocalizedString("min", comment: "min")
         lblSurveyETA?.text = approxString
 
@@ -89,7 +96,6 @@ class SurveyDetailsViewController: RootViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = NSLocalizedString("Back", comment: "Back")
         self.navigationItem.title = NSLocalizedString("Survey", comment: "Survey")
-        //self.navigationController?.navigationBar.topItem?.title = self.back
         
         let array : Array<Any>? = UserDefaults.standard.value(forKey: "downloadSurveysArray") as? Array<Any>
         if ((array?.count)! > 0) {

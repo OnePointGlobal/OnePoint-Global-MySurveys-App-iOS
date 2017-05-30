@@ -31,19 +31,8 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
 
     
     // MARK: - Properties for viewcontroller
-    var username : String?
-    var password : String?
-    var fbAccessToken : String?
-    var googleAuthCode : String?
-    var isLogin : Bool?
-    var currentThemeID : String?
-    var err : NSError? = nil
-    var surveyList:Array<Any> = []
-    var uniqueID:String = ""
-    var txtForgotPassword:UITextField?
     var loginManager : FBSDKLoginManager?
-    var downloadArray : Array<Any> = []
-    var uploadArray : Array<Any> = []
+  
     var bgColor : UIColor?
 
     // MARK: - IBOutlet Action methods
@@ -89,7 +78,7 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
             super.showNoInternetConnectionAlert()
             return
         }
-        
+
         self.startActivityIndicator()
 
         self.loginManager?.logIn(withReadPermissions: ["public_profile", "email", "user_friends"], from: self)
@@ -107,7 +96,17 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
             else
             {
                 self.stopActivityIndicator()
-                super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Can't sign in. Try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                if super.isOnline()==false
+                {
+                    super.showNoInternetConnectionAlert()
+
+                }
+                else
+                {
+                    //token is nil even if the device is online
+                    //incorrect username and password is handled by facebook itself on the webpage.
+                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Can't sign in. Try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                }
             }
         }
     }
@@ -118,6 +117,7 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.title = NSLocalizedString("Login", comment: "")
         self.loginManager = FBSDKLoginManager()
         self.setBackgroundImageforView()
         self.stopActivityIndicator()
@@ -185,7 +185,7 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
             let width = bounds.size.width
             if(self.constarintForgotPassowrdTrailingSpace != nil)         //temp fix
             {
-                if(width==1024 || width==2018)
+                if(width==1024 || width==2048)
                 {
                     //iPad landscape
                     self.constarintForgotPassowrdTrailingSpace.constant = 250
@@ -207,7 +207,7 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
         {
             let bounds = UIScreen.main.bounds
             let width = bounds.size.width
-            if(width==1024 || width==2018)
+            if(width==1024 || width==2048)
             {
                 //iPad landscape
                 self.constarintForgotPassowrdTrailingSpace.constant = 250
@@ -233,11 +233,14 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
                     if (authenticate.isSuccess == 1)
                     {
                         self.registerForAPNS()
-                        UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
+                        ///UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
+                        let downloadArray : Array<Any> = []
+                        let uploadArray : Array<Any> = []
+                        
                         UserDefaults.standard.set(0, forKey: "isSocialLogin")
                         UserDefaults.standard.set(1, forKey: "isOperating")
-                        UserDefaults.standard.set(self.uploadArray, forKey: "uploadSurveysArray")
-                        UserDefaults.standard.set(self.downloadArray, forKey: "downloadSurveysArray")
+                        UserDefaults.standard.set(uploadArray, forKey: "uploadSurveysArray")
+                        UserDefaults.standard.set(downloadArray, forKey: "downloadSurveysArray")
                         UserDefaults.standard.set(self.txtUsername?.text, forKey: "Username")
                         UserDefaults.standard.set(self.txtPassword?.text, forKey: "Password")
                         UserDefaults.standard.synchronize()
@@ -291,10 +294,10 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
     {
         if result.token != nil
         {
-            
+
             print("the token received is \(result.token.tokenString)")
             print("the user id is \(result.token.userID)")
-            
+
             DispatchQueue.global(qos: .default).async {
                 let sdk = OPGSDK()
                 do {
@@ -303,11 +306,14 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
                     DispatchQueue.main.async {
                         if authObj.isSuccess == 1
                         {
+                            let downloadArray : Array<Any> = []
+                            let uploadArray : Array<Any> = []
+                            self.registerForAPNS()
                             self.stopActivityIndicator()
                             UserDefaults.standard.set(1, forKey: "isOperating")
-                            UserDefaults.standard.set(self.uploadArray, forKey: "uploadSurveysArray")
-                            UserDefaults.standard.set(self.downloadArray, forKey: "downloadSurveysArray")
-                            UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
+                            UserDefaults.standard.set(uploadArray, forKey: "uploadSurveysArray")
+                            UserDefaults.standard.set(downloadArray, forKey: "downloadSurveysArray")
+                            ///UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
                             UserDefaults.standard.set(1, forKey: "isSocialLogin")                  // set as 1 if loggedin thro' facebook
                             UserDefaults.standard.set(tokenString, forKey: "tokenString")
                             UserDefaults.standard.synchronize()
@@ -316,7 +322,19 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
                         else
                         {
                             self.stopActivityIndicator()
-                            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Authentication Failed", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                            if(authObj.httpStatusCode.intValue==401)
+                            {
+                                super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage:NSLocalizedString("Unauthorised login", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                            }
+                            //server always return http 500 for bad token and expired token
+                            else if(authObj.httpStatusCode.intValue==500)
+                            {
+                                super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage:NSLocalizedString("Internal Server Error", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                            }
+                            else
+                            {
+                                super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage:NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                            }
                         }
                     }
                 }
@@ -519,6 +537,7 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
         {
             self.stopActivityIndicator()
             print(error)
+            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Can't sign in. Try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
             return
         }
         
@@ -528,12 +547,21 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
         print("ID Token : " + user.authentication.idToken + "\n")    // Safe to send to the server
         print("User ID : " + user.userID + "\n")                     // For client-side use only!
         print("Profile Name : " + user.profile.name + "\n")
-        
+
         if user.authentication.idToken.isEmpty
         {
             self.stopActivityIndicator()
-            let alert = UIAlertView(title: NSLocalizedString("MySurveys", comment: ""), message: NSLocalizedString("Can't sign in. Try again.", comment: ""), delegate: self, cancelButtonTitle: NSLocalizedString("OK", comment: "OK"))
-            alert.show()
+            if super.isOnline()==false
+            {
+                super.showNoInternetConnectionAlert()
+
+            }
+            else
+            {
+                //when token is nil even if the device is online
+                //incorrect username and password is handled by Google on the webpage itself.
+                super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Can't sign in. Try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+            }
         }
         else
         {
@@ -548,11 +576,14 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
                             {
                                 if authObj.isSuccess == 1
                                 {
+                                    let downloadArray : Array<Any> = []
+                                    let uploadArray : Array<Any> = []
+                                    self.registerForAPNS()
                                     self.stopActivityIndicator()
                                     UserDefaults.standard.set(1, forKey: "isOperating")
-                                    UserDefaults.standard.set(self.uploadArray, forKey: "uploadSurveysArray")
-                                    UserDefaults.standard.set(self.downloadArray, forKey: "downloadSurveysArray")
-                                    UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
+                                    UserDefaults.standard.set(uploadArray, forKey: "uploadSurveysArray")
+                                    UserDefaults.standard.set(downloadArray, forKey: "downloadSurveysArray")
+                                    ///UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
                                     UserDefaults.standard.set(2, forKey: "isSocialLogin")                  // set as 2 if loggedin thro' Google
                                     UserDefaults.standard.set(tokenString, forKey: "tokenString")
                                     UserDefaults.standard.synchronize()
@@ -561,17 +592,29 @@ class LoginViewController: RootViewController,UITextFieldDelegate, GIDSignInUIDe
                                 else
                                 {
                                     self.stopActivityIndicator()
-                                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Authentication Failed", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                                    if(authObj.httpStatusCode.intValue==401)
+                                    {
+                                        super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage:NSLocalizedString("Unauthorised login", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                                    }
+                                    //server always return http 500 for bad token and expired token
+                                    else if(authObj.httpStatusCode.intValue==500)
+                                    {
+                                        super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage:NSLocalizedString("Internal Server Error", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                                    }
+                                    else
+                                    {
+                                        super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage:NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                                    }
                                     GIDSignIn.sharedInstance().signOut()                    //Sign Out when the authentication fails
-                            }
+                                }
                         }
                     }
                     catch let err as NSError
                     {
                         DispatchQueue.main.async
-                        {
-                            self.stopActivityIndicator()
-                            print("Error: \(err)")
+                            {
+                                self.stopActivityIndicator()
+                                print("Error: \(err)")
                         }
                     }
             }

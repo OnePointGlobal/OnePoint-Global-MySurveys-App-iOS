@@ -22,6 +22,7 @@
 #import "OPGPluginResult.h"
 #import "NSMutableArray+QueueAdditions.h"
 #import "OPGCommandDelegate.h"
+#import "OPGBaseController.h"
 
 extern NSString* const CDVPageDidLoadNotification;
 extern NSString* const CDVPluginHandleOpenURLNotification;
@@ -33,7 +34,7 @@ extern NSString* const CDVRemoteNotificationError;
 @interface OPGPlugin : NSObject {}
 
 @property (nonatomic, weak) UIWebView* webView;
-@property (nonatomic, weak) UIViewController* viewController;
+@property (nonatomic, weak) OPGBaseController* viewController;
 @property (nonatomic, weak) id <OPGCommandDelegate> commandDelegate;
 
 @property (readonly, assign) BOOL hasPendingOperation;

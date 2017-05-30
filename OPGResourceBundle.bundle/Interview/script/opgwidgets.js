@@ -75,11 +75,11 @@
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(e.proxy(this._showPosition, this), e.proxy(this._showError, this), r)
                 } else {
-                    e.alertOpg("Geolocation is not supported by this browser.","Vitaccess")
+                    e.alertOpg("Geolocation is not supported by this browser.","My Surveys")
                 }
                 this.changer.parent().addClass("updatedgeoLocator");
             } catch (s) {
-                e.alertOpg("Geolocation error.","Vitaccess")
+                e.alertOpg("Geolocation error.","My Surveys")
             }
         },
         _showPosition: function(t) {
@@ -109,7 +109,7 @@
                 });
                 this.changer.val("Click to update location").button("refresh")
             } catch (u) {
-                e.alertOpg("An error occured in displaying geolocation.","Vitaccess")
+                e.alertOpg("An error occured in displaying geolocation.","My Surveys")
             }
         },
         _showError: function(t) {
@@ -132,7 +132,7 @@
              
             }
             this.element.attr("value", "");
-            e.alertOpg(n,"Vitaccess")
+            e.alertOpg(n,"My Surveys")
         }
     });
     e.widget("opg.barcode", {
@@ -192,7 +192,7 @@
             };
             if (!t || t.cancelled) {
                 var s = this;
-                e.promptOpg("Please enter the barcode", "", "Vitaccess", function(e) {
+                e.promptOpg("Please enter the barcode", "", "My Surveys", function(e) {
                     i(e, s)
                 });
             } else if (!t.cancelled) i(t.text, this)
@@ -943,7 +943,7 @@
         },
         _previewImage: function() {
             if (!this.fileURI) {
-                e.alertOpg("No Image selected","Vitaccess");
+                e.alertOpg("No Image selected","My Surveys");
                 return
             }
             var t = {
@@ -970,7 +970,7 @@
         },
         _uploadImage: function(t, n) {
             if (!this.fileURI) {
-                e.alertOpg("No Image selected","Vitaccess");
+                e.alertOpg("No Image selected","My Surveys");
                 return
             }
             var r = this;
@@ -998,7 +998,7 @@
                                             });
             } catch (s) {
                 r.uploadBtn.val("Upload").button("refresh");
-                e.alertOpg("Image upload failed : " + s,"Vitaccess")
+                e.alertOpg("Image upload failed : " + s,"My Surveys")
             }
         }
     });
@@ -1082,7 +1082,7 @@
                 n.captureBtn.val("Stop Recording").button("refresh");
                 try {
                     cordova.exec(function(e) {}, function(t) {
-                        e.alertOpg("Error while recording audio. Please try again.", "Vitaccess")
+                        e.alertOpg("Error while recording audio. Please try again.", "My Surveys")
                     }, "MediaPickerAndPreviewPlugin", "startRecordingAudio", [])
                 } catch (r) {
                     n._storeFile(false, r)
@@ -1096,7 +1096,7 @@
                         var r = jQuery.parseJSON(t);
                         e.proxy(n._storeFile(true, r), this)
                     }, function(t) {
-                        e.alertOpg("Couldn't stop recording audio. Please try again.", "Vitaccess")
+                        e.alertOpg("Couldn't stop recording audio. Please try again.", "My Surveys")
                     }, "MediaPickerAndPreviewPlugin", "stopRecordingAudio", [])
                 } catch (r) {
                     n._storeFile(false, r)
@@ -1105,7 +1105,7 @@
         },
         _playAudio: function() {
             if (!this.file) {
-                e.alertOpg("No Audio selected","Vitaccess");
+                e.alertOpg("No Audio selected","My Surveys");
                 return
             }
             var t = this;
@@ -1157,14 +1157,14 @@
         },
         _storeFile: function(t, n) {
            // console.log("_storeAudio " + n);
-            if (!t) e.alertOpg("Capture Audio failed because: " + n,"Vitaccess");
+            if (!t) e.alertOpg("Capture Audio failed because: " + n,"My Surveys");
             else if (t) {
                 this.file = n.path
             }
         },
         _uploadAudio: function() {
             if (!this.file) {
-                e.alertOpg("No Audio selected","Vitaccess");
+                e.alertOpg("No Audio selected","My Surveys");
                 return
             }
             var t = this;
@@ -1188,10 +1188,10 @@
 						}				
                     }
                 }, function(t) {
-                    e.alertOpg("Audio upload failed : " + t,"Vitaccess")
+                    e.alertOpg("Audio upload failed : " + t,"My Surveys")
                                             });
             } catch (r) {
-                e.alertOpg("Audio upload failed : " + r,"Vitaccess")
+                e.alertOpg("Audio upload failed : " + r,"My Surveys")
             }
         }
     });
@@ -1279,7 +1279,7 @@
                 }, "MediaPickerAndPreviewPlugin", "pickVideoFromCamera", [])
             } catch (r) {
                 //console.log("Exception in capture video : " + r);
-                e.alertOpg("Capture Video failed. Please try again.","Vitaccess")
+                e.alertOpg("Capture Video failed. Please try again.","My Surveys")
             }
         },
         _getVideo: function() {
@@ -1302,7 +1302,7 @@
                 }, "MediaPickerAndPreviewPlugin", "pickVideoFromGallery", [s])
             } catch (o) {
                // console.log("Exception in pick video : " + o);
-                e.alertOpg("Pick Video failed. Please try again.","Vitaccess")
+                e.alertOpg("Pick Video failed. Please try again.","My Surveys")
             }
         },
         _storeFile: function(e) {
@@ -1311,7 +1311,7 @@
         },
         _previewVideo: function() {
             if (!this.fileURI) {
-                e.alertOpg("No Video selected","Vitaccess");
+                e.alertOpg("No Video selected","My Surveys");
                 return
             }
             var t = {
@@ -1330,7 +1330,7 @@
         },
         _uploadVideo: function(t, n) {
             if (!this.fileURI) {
-                e.alertOpg("No Video selected" ,"Vitaccess");
+                e.alertOpg("No Video selected" ,"My Surveys");
                 return
             }
             var r = this;
@@ -1355,10 +1355,10 @@
 						
                     }
                 }, function(t) {
-                    e.alertOpg("Video upload failed : " + t,"Vitaccess")
+                    e.alertOpg("Video upload failed : " + t,"My Surveys")
                 })
             } catch (s) {
-                e.alertOpg("Video upload failed : " + s,"Vitaccess");
+                e.alertOpg("Video upload failed : " + s,"My Surveys");
                 this.uploadBtn.val("Upload").button("refresh")
             }
         }

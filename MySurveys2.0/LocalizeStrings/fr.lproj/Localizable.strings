@@ -1,0 +1,121 @@
+/* 
+  Localizable.strings
+  MySurveys2.0
+
+  Created by Chinthan on 21/10/16.
+  Copyright © 2016 Chinthan. All rights reserved.
+*/
+
+"AboutUs" = "À propos de nous";
+"Approximately" = "Approximativement";
+"Are you sure you want to logout?" = "Êtes-vous certain de vouloir vous déconnecter?";
+"Authentication Failed" = "Authentification échouée";
+"Back" = "Retour";
+"By List" = "Par liste";
+"By Location" = "Par localisation";
+"Cancel" = "Annuler";
+"Can't sign in. Try again." = "Impossible de se connecter. Essayez à nouveau.";
+"Change Panel" = "Changer de panel";
+"Change Password" = "Changer le mot de passe";
+"Check your credentials!" = "Vérifiez vos informations d'identification!";
+"Choose From Gallery" = "Choisir dans la galerie";
+"Completed" = "Terminé";
+"Confirm Password" = "Confirmer le mot de passe";
+"Country" = "Pays";
+"Current Panel" = "Panel Sélectionné";
+"Current Password does not exist" = "Ce mot de passe n'existe pas";
+"Delete" = "Effacer";
+"Done" = "Terminé";
+"Download" = "Télécharger";
+"Downloading..." = "Téléchargement en cours...";
+"Downloading. Please wait!" = "Téléchargement en cours. Veuillez patienter!";
+"Downloading surveys. Please wait!" = "Téléchargement des sondages. Veuillez patienter!";
+"E-mail Id" = "Adresse e-mail";
+"E-mail Id does not exist" = "L’adresse e-mail n’existe pas";
+"E-mail Id not found." = "Adresse e-mail non trouvée.";
+"Edit" = "Modifier";
+"Error while uploading. Please Refresh again!" = "Erreur lors du chargement. Veuillez actualiser votre page!";
+"Forgot Password" = "Mot de passe oublié";
+"Forgot Password?" = "Mot de passe oublié?";
+"Forgot your password?" = "Vous avez oublié votre mot de passe?";
+"Geo location" = "Géolocalisation";
+"Got it!" = "Compris!";
+"Invalid Credentials" = "Les informations d'identification sont invalides.";
+"Internal Server Error" = "Erreur interne du serveur";
+"Location Services not enabled!" = "Service de localisation non activé!";
+"Login" = "Se connecter";
+"Login with Facebook" = "Se connecter avec Facebook";
+"Log out" = "Déconnexiont";
+"min" = "min";
+"MySurveys"= "My Surveys";
+"Name" = "Nom";
+"Name is empty" = "Nom est vide";
+"New" = "Nouveau";
+"New and Confirm passwords should be same" = "Les mots de passe ne concordent pas";
+"New Password" = "Nouveau mot de passe";
+"No items selected." = "Aucun élément sélectionné";
+"No internet connection. Please try again!" = "Pas de connexion Internet. Veuillez réessayer!";
+"No surveys available for the selected panel." = "Pas de sondages disponibles pour le panel sélectionné.";
+"No notifications so far." = "Aucune notification à ce jour.";
+"Notifications" = "Notifications";
+"Number of times taken" = "Nombre de participations au sondage";
+"OK" = "OK";
+"Old Password" = "Ancien mot de passe";
+"Old Password cannot be empty." = "Le champ ancien mot de passe ne peut pas être vide.";
+"Old and new passwords cannot be same" = "Le nouveau mot de passe ne peut pas être le même que l’ancien.";
+"Oops! Unknown error. Please try again." = "Oups! Erreur inconnue. Veuillez réessayer.";
+"Password" = "Mot de passe";
+"Password Change Failed" = "La modification du mot de passe a échoué";
+"Password changed successfully!" = "Votre mot de passe a été changé avec succès!";
+"Password cannot be empty" = "Le champ mot de passe ne peut pas être vide!";
+"Pending" = "En suspens";
+"Please confirm your new password." = "Veuillez confirmer votre nouveau mot de passe.";
+"Please enable location services from device Settings to take the survey." = "Pour participer au sondage, il est nécessaire  d’activer le service de localisation à partir des paramètres de votre appareil.";
+"Please enter a valid e-mail ID." = "Veuillez saisir une adresse e-mail valide.";
+"Please enter your e-mail ID" = "Veuillez saisir votre adresse e-mail.";
+"Please enter your new password." = "Veuillez saisir votre nouveau mot de passe.";
+"Please take the survey before uploading results." = "Veuillez participer au sondage avant de charger les résultats.";
+"Please upload offline survey results before logout." = "Veuillez charger les résultats du sondage avant de vous déconnecter.";
+"Privacy" = "Vie privée";
+"Profile" = "Profil";
+"Profile image" = "Photo de profil";
+"Save" = "Sauvegarder";
+"Selected survey is not under current Panel. Please change the panel to take survey!" = "Le sondage choisi n’appartient pas au Panel sélectionné. Veuillez changer le panel pour participer au sondage.";
+"Send" = "Envoyer";
+"Settings" = "Paramètres";
+"Sign in with Google" = "Se connecter avec Google  ";
+"Sorry! You are not in survey location. So, you can not take the survey." = "Désolé ! Votre localisation ne vous permet pas de participer à ce sondage.";
+"Survey" = "Sondage";
+"Survey not available to take" = "Sondage non disponible";
+"Success! Please check your e-mail for new password!" = "Succès ! Un e-mail vous a été envoyé avec un nouveau mot de passe.";
+"Sync in progress. Please wait!" = "Synchronisation en cours. Veuillez patienter!";
+"Take Photo" = "Prendre une photo";
+"Take Survey" = "Participer à un sondage";
+"Terms & Conditions" = "Termes et Conditions";
+"To take your location based surveys turn on ‘Geolocation’ from the App Settings" = "Pour participer aux sondages liés à votre localisation, veuillez activer la fonction « Géolocalisation » dans les paramètres de l'application";
+"T&C" = "T&C";
+"Unauthorised login" = "Connexion non autorisée";
+"Unable to upload results. Please try again!" = "Impossible de charger les résultats. Veuillez réessayer!";
+"Unscheduled" = "Imprévu";
+"Upload" = "Chargement";
+"Upload Results" = "Résultats du chargement";
+"Uploading" = "En cours de chargement";
+"Uploading Offline Survey results" = "Chargement des résultats du sondage répondu hors-ligne";
+"Username/password cannot be empty." = "Les champs nom d'utilisateur / mot de passe ne peuvent pas être vide.";
+"Username/EmailID" = "Nom d'utilisateur / Adresse e-mail";
+"Version" = "Version";
+"Welcome to" = "Bienvenue à";
+"Welcome! You have a survey here!" = "Bienvenue ! Vous avez un sondage!";
+"We will email you a link to reset your Password" = "Nous vous enverrons un lien pour réinitialiser votre mot de passe";
+"You are not in this location to take the survey!" = "Votre localisation ne vous permet pas de répondre à ce sondage!";
+"You have a survey available at this location" = "Vous avez un sondage disponible à cet endroit";
+
+
+
+
+
+
+
+
+
+

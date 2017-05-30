@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ProfileViewController: RootViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CountryChangedDelegate
 {
    // MARK: - IBOutlets for view
@@ -42,9 +43,13 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     
     func getProfileImagePath() -> String
     {
-        let filename = (UserDefaults.standard.object(forKey: "profileImagePath") as? String)!
-        let tempDirURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename)        //get image name, construct path and return
-        return (tempDirURL?.path)!
+        let filename = UserDefaults.standard.object(forKey: "profileImagePath") as? String
+        if (filename != nil)
+        {
+            let tempDirURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename!)        //get image name, construct path and return
+            return (tempDirURL?.path)!
+        }
+        return EMPTY_STRING
     }
 
     func getDateString() -> String
@@ -79,7 +84,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         btnCameraIcon.layer.cornerRadius = 0.5 * cameraIconWidth
         if UIDevice.current.userInterfaceIdiom == .pad
         {
-            //only for iPad
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
             NotificationCenter.default.addObserver(self, selector:  #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         }
@@ -181,6 +185,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     // MARK: - Keyboard Notification selector methods
     func keyboardWillShow(notification: NSNotification)
     {
+        //only for iPad
         let bounds = UIScreen.main.bounds
         let width = bounds.size.width
         if(width==1024 || width==2048)
@@ -198,6 +203,8 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
 
     func keyboardWillHide(notification: NSNotification)
     {
+
+        //only for iPad
         let bounds = UIScreen.main.bounds
         let width = bounds.size.width
         if(width==1024 || width==2048)
@@ -239,6 +246,16 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
     }
 
+    func hideKeyboard()
+    {
+        let indexPath = IndexPath(item: 0 , section: 0)
+            let tableViewCell : ProfileTableViewCell? = self.tableview?.cellForRow(at: indexPath) as? ProfileTableViewCell
+            if (tableViewCell != nil)
+            {
+                tableViewCell?.txtValue.resignFirstResponder()
+            }
+    }
+
 
     func openGallery()
     {
@@ -278,24 +295,33 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             self.tableview.reloadData()
             return
         }
-        DispatchQueue.global(qos: .default).async
+        let nameCell = self.tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! ProfileTableViewCell
+        if (nameCell.txtValue.text!.isEmpty)
         {
-                let sdk = OPGSDK()
-                do
+            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Name is empty", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+            //If name is edited to an empty string, don't update profile
+            self.tableview.reloadData()
+        }
+        else
+        {
+            DispatchQueue.global(qos: .default).async
                 {
-                    let nameCell = self.tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! ProfileTableViewCell
-                    self.panelist?.firstName = nameCell.txtValue.text!
-                    try sdk.update(self.panelist)                               //update profile to server
-                    DispatchQueue.main.async
+                    let sdk = OPGSDK()
+                    do
                     {
-                            self.getPanellistProfileFromServer()                //get profile from server and update DB
-                            self.tableview.reloadData()
+                        self.panelist?.firstName = nameCell.txtValue.text!
+                        try sdk.update(self.panelist)                               //update profile to server
+                        DispatchQueue.main.async
+                        {
+                                self.getPanellistProfileFromServer()                //get profile from server and update DB
+                                self.tableview.reloadData()
+                        }
                     }
-                }
-                catch let err as NSError
-                {
-                    print("Error: \(err)")
-                }
+                    catch let err as NSError
+                    {
+                        print("Error: \(err)")
+                    }
+            }
         }
     }
 
@@ -338,9 +364,10 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     //You will no longer be able to access any of the api via SDK after you logout.
     func logout()
     {
-
+        let isSocialLogin = UserDefaults.standard.value(forKey: "isSocialLogin") as? Int
         let deviceToken : String? = UserDefaults.standard.value(forKey: "DeviceTokenID") as? String
         let bgImagePath:String? = AppTheme.getLoginBGImagePath()
+        let userLoggedIn : String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
         self.unRegisterForAPNS(deviceToken)
         let appDomain = Bundle.main.bundleIdentifier
         UserDefaults.standard.removePersistentDomain(forName: appDomain!)
@@ -349,17 +376,24 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             geoFence?.stop()
         }
         self.deleteTempDBFolders()
-        GIDSignIn.sharedInstance().signOut()                    //Sign Out when the authentication fails
-
-        let loginManager : FBSDKLoginManager = FBSDKLoginManager()
-        loginManager.logOut()
-
+        if(isSocialLogin == 1)
+        {
+            let loginManager : FBSDKLoginManager = FBSDKLoginManager()
+            loginManager.logOut()                                           //Facebook logout
+        }
+        else if (isSocialLogin == 2)
+        {
+            GIDSignIn.sharedInstance().signOut()                    //Sign Out of Google
+        }
+        else
+        {
+            OPGSDK.logout()
+        }
+        UserDefaults.standard.set(userLoggedIn, forKey: "isUserLoggedIN")
         UserDefaults.standard.set(deviceToken, forKey: "DeviceTokenID")             // Before Logout, Re-assign DeviceTokenID as we get that only for one time
         AppTheme.setLoginBGImagePath(path: bgImagePath!)         // Before Logout, Re-assign login BG image path as it is to be shown after logout
         AppTheme.setLoginBtnTextColor(color: AppTheme.appBackgroundColor())
         UserDefaults.standard.synchronize()
-
-        OPGSDK.logout()
         _ = self.navigationController?.popViewController(animated: true)
     }
 
@@ -521,7 +555,11 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                                 self.imageView?.image = UIImage(contentsOfFile: self.getProfileImagePath())           //Update profile image view
                                 if(didChangeProfilePic)
                                 {
-                                    self.deletePreviousProfileImg(path: previousProfileImgPath)                     //delete old profile pic once new one is updated
+                                    let fileExists = FileManager().fileExists(atPath: previousProfileImgPath!)
+                                    if(fileExists)
+                                    {
+                                        self.deletePreviousProfileImg(path: previousProfileImgPath)                     //delete old profile pic once new one is updated
+                                    }
                                     self.updatePanellistProfileWithMedia(mediaID: mediaId)                          //Update Panellist Profile with new media id using sdk api
                                 }
                             }
@@ -718,6 +756,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 self.tabBarController?.navigationItem.rightBarButtonItem?.title=NSLocalizedString("Edit", comment: "")
                 self.tableview.allowsSelection = false
                 self.tableview.separatorStyle = UITableViewCellSeparatorStyle.none
+                self.hideKeyboard()                 //dismiss keyboard first and then update profile
                 self.updateProfile()
             }
             else
@@ -732,7 +771,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
         else
         {
-            if self.isEditable!                                                 //calls when internet turned off during saving
+            if self.isEditable!                             //calls when internet turned off during saving
             {
                 self.isEditable = false
                 self.tabBarController?.navigationItem.rightBarButtonItem?.title=NSLocalizedString("Edit", comment: "")
@@ -805,7 +844,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             if isEditable!
             {
                 tableViewCell.txtValue.isEnabled=true
-                tableViewCell.txtValue.perform(#selector(becomeFirstResponder), with: nil , afterDelay: 0)
+                //tableViewCell.txtValue.perform(#selector(becomeFirstResponder), with: nil , afterDelay: 0)
                 if UIDevice.current.userInterfaceIdiom == .pad
                 {
                     //15 is for iPhone
@@ -815,7 +854,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             }
             else{
                 tableViewCell.txtValue.isEnabled=false
-                tableViewCell.txtValue.resignFirstResponder()
+                //tableViewCell.txtValue.resignFirstResponder()
                 //self.view.endEditing(true)
             }
             tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none

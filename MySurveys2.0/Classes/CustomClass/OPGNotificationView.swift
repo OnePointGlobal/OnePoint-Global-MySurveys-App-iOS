@@ -28,7 +28,8 @@ class OPGNotificationView : UIView
 {
     var title = ""
     let titleLabel = UILabel()
-    var referenceView = UIView()
+    weak var referenceView = UIView()
+    let referenceViewWidth:Int = 0
     var showNotificationUnderNavigationBar = false
     var animator = UIDynamicAnimator()
     var gravity = UIGravityBehavior()
@@ -58,14 +59,14 @@ class OPGNotificationView : UIView
     func applyDynamics()
     {
         let boundaryYAxis :CGFloat = showNotificationUnderNavigationBar == true ? 1 : 1
-        animator = UIDynamicAnimator(referenceView: referenceView)
+        animator = UIDynamicAnimator(referenceView: referenceView!)
         gravity = UIGravityBehavior(items:[self])
         collision = UICollisionBehavior(items: [self])
         itemBehavior = UIDynamicItemBehavior(items: [self])
         
         itemBehavior.elasticity = 0.5
         
-        collision.addBoundary(withIdentifier: "AZNotificationBoundary" as NSCopying, from: CGPoint(x: 0, y: self.bounds.size.height * boundaryYAxis), to: CGPoint(x: referenceView.bounds.size.width,y: self.bounds.size.height * boundaryYAxis))
+        collision.addBoundary(withIdentifier: "AZNotificationBoundary" as NSCopying, from: CGPoint(x: 0, y: self.bounds.size.height * boundaryYAxis), to: CGPoint(x: (referenceView?.bounds.size.width)!,y: self.bounds.size.height * boundaryYAxis))
         
         animator.addBehavior(gravity)
         animator.addBehavior(collision)
@@ -86,6 +87,7 @@ class OPGNotificationView : UIView
         titleLabel.frame = labelRect
         titleLabel.text = title
         titleLabel.numberOfLines = 2
+        titleLabel.adjustsFontSizeToFitWidth = true;
         titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 17)
         titleLabel.textColor = UIColor.white
         titleLabel.textAlignment = NSTextAlignment.center

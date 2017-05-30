@@ -20,6 +20,7 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
     @IBOutlet weak var bgView : UIView!
     @IBOutlet weak var emailFieldTopSpace: NSLayoutConstraint!
     @IBOutlet weak var emailToLabelTopSpace: NSLayoutConstraint!
+    @IBOutlet weak var forgotYourPasswordBottomSpace: NSLayoutConstraint!
 
     // MARK: - Properties of viewcontroller
     var bgColor : UIColor?
@@ -48,6 +49,7 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
         self.activityIndicator.color = self.bgColor
         self.view.backgroundColor = self.bgColor
         self.bgView.backgroundColor = self.bgColor
+        
     }
 
     override func viewDidAppear(_ animated: Bool)
@@ -56,7 +58,7 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
         {
             let bounds = UIScreen.main.bounds
             let width = bounds.size.width
-            if(width==1024 || width==2018)
+            if(width==1024 || width==2048)
             {
                 self.setConstraintsForiPadLandscape()
             }
@@ -229,20 +231,22 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
         else
         {
             //iPad landscape
-            if width == 1024.0
+            if (width == 1024.0 || width == 2048.0)
             {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.emailFieldTopSpace.constant = 5.0
-                    self.emailToLabelTopSpace.constant = 20.0
-                    self.constraintViewTop.constant = -20.0
+                    self.emailToLabelTopSpace.constant = 5.0
+                    self.constraintViewTop.constant = -30.0
+                    self.forgotYourPasswordBottomSpace.constant = 15.0
                     self.view.layoutIfNeeded()
                 })
             }
-            else if width == 768.0
+            else if (width == 768.0 || width == 1536.0)
             {
                 //iPad portrait
                 UIView.animate(withDuration: 0.5, animations: {
                     self.emailFieldTopSpace.constant = 125.0
+                    self.forgotYourPasswordBottomSpace.constant = 30.0
                     self.view.layoutIfNeeded()
                 })
             }
@@ -259,7 +263,7 @@ class ForgotPasswordViewController: RootViewController , UITextFieldDelegate{
             {
                 if UIDevice.current.userInterfaceIdiom == .pad
                 {
-                    if(height==1024 || height==2018)
+                    if(height==1024 || height==2048)
                     {
                         //iPad portarit
                         self.constraintViewTop.constant = 30

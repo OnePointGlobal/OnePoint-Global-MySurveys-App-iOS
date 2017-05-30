@@ -8,17 +8,16 @@
 
 import UIKit
 import MapKit
-import Foundation
 import UserNotifications
 
-let isDownload = "isDownloaded"
-let queue = OperationQueue()
+
 
 class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableViewDelegate,UITableViewDataSource,OPGGeoFencingDelegate
 {
-    
+    let isDownload = "isDownloaded"
+    let queue = OperationQueue()
     // MARK: - IBOutlets for view
-    @IBOutlet var shimmeringView: FBShimmeringView?
+    @IBOutlet weak var shimmeringView: FBShimmeringView?
     @IBOutlet weak var tableView: UITableView?
     @IBOutlet weak var bgImage: UIImageView?
     @IBOutlet weak var global: UILabel?
@@ -46,7 +45,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     var surveyStatus:NSString?
     var surveySelected : OPGSurvey?
     var isOfflineDownloaded:[Int] = []
-    let refreshButtonItem = UIBarButtonItem()
+    
     var bannerView : OPGNotificationView?
     var noGeoFenceView : UIView?
     var isAppKilled : Bool = false
@@ -54,7 +53,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     var notificationsArray : [NSDictionary]?
     var alertsArray : Array<Any> = []
     var selectedOfflineSurveyIndex : Int?
-    var refreshButton = UIButton()
+    
     var bannerTitle : NSString?             //class var to show during orientation transition
     
     // MARK: - ViewController LifeCycle Methods
@@ -90,10 +89,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         self.segmentedControl.setTitle(NSLocalizedString("By Location", comment: ""), forSegmentAt: 1)
         NotificationCenter.default.addObserver(self, selector: #selector(self.uploadSurveyResults(_:)), name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
         
-        self.refreshButton.setImage(UIImage(named: "refresh"), for: .normal)
-        self.refreshButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-        self.refreshButton.addTarget(self, action: #selector(refreshButtonAction), for: .touchUpInside)
-        self.refreshButtonItem.customView = refreshButton
+       
+
         let isOperating : Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
         if (isOperating == 3)  {
             self.performAPIOperations()
@@ -167,7 +164,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
 
         coordinator.animate(alongsideTransition: nil, completion: { _ in
-            if (isOperating == 1 || isOperating == 3)
+            if ((isOperating == 1 || isOperating == 3) && (self.bannerTitle != nil))
             {
                 self.showBanner(progressTitle: self.bannerTitle as! String)
             }
@@ -187,7 +184,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         self.setUpGeoFeningView(true)
                     }
                 }
-                
             }
         })
     }
@@ -200,12 +196,12 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         {
         case 0:
             self.geoFencedView?.isHidden = true
-            self.shimmeringView!.isHidden = false
+            self.shimmeringView?.isHidden = false
             hideGeoFencePopUp()
             sender.subviews.last?.tintColor =  AppTheme.appBackgroundColor()
         case 1:
             self.geoFencedView?.isHidden = false
-            self.shimmeringView!.isHidden = true
+            self.shimmeringView?.isHidden = true
             self.startGeoFencingView()
             sender.subviews.first?.tintColor = AppTheme.appBackgroundColor()
         default:
@@ -236,7 +232,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 if (tableViewCell != nil)
                 {
                     tableViewCell?.progressBar?.progress = percentage
-                    
+                    tableViewCell?.progressBar?.progressTintColor = AppTheme.appBackgroundColor()        //theme for profgress bar
                     if percentage == 1.0
                     {
                         tableViewCell?.offlineFileCountButton.isHidden = true
@@ -460,6 +456,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         }
                     }
                 } else {
+                    UserDefaults.standard.set(0, forKey: isDownload)
                     super.showNoInternetConnectionAlert()
                 }
             } catch let err as NSError {
@@ -492,6 +489,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 }
                 else
                 {
+                    UserDefaults.standard.set(0, forKey: isDownload)
                     super.showNoInternetConnectionAlert()
                 }
             }
@@ -559,71 +557,88 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     func getSurveysFromDB() {
         print("getSurveysFromDB")
-        let panelID : String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String
-        
-        let surveyPanelFactory : SurveyPanelFactory = SurveyPanelFactory()
-        let surveyFactory : SurveyFactory = SurveyFactory()
-        let myInteger = Int(panelID!)
-        let myNumber = NSNumber(value:myInteger!)
-        
-        let array : Array<SurveyPanel> = surveyPanelFactory.find(byPanelID:myNumber) as! Array<SurveyPanel>
-        var dummyList:Array<Any> = []
-        self.surveyList = []
-        
-        let blockTakeFromDB = BlockOperation {
-            for item in array {
-                let surveysArray : Array<Survey> = surveyFactory.find(bySurveyID:item.surveyID) as! Array<Survey>
-                for survey in surveysArray {
-                    let opgSurvey : OPGSurvey =  OPGSurvey()
-                    opgSurvey.surveyName = survey.name
-                    opgSurvey.surveyDescription = survey.status;
-                    opgSurvey.surveyReference = survey.description;
-                    opgSurvey.lastUpdatedDate = self.stringFromDate(survey.lastUpdatedDate as NSDate)
-                    if (survey.createdDate == nil) {
-                        opgSurvey.createdDate = ""
-                        opgSurvey.startDate = ""
-                    } else {
-                        opgSurvey.createdDate = self.stringFromDate(survey.createdDate as NSDate)
-                        opgSurvey.startDate = self.stringFromDate(survey.createdDate as NSDate)   // check once why its used the same again
+        let panelid : String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String
+
+        if let panelID = panelid {
+            let surveyPanelFactory : SurveyPanelFactory = SurveyPanelFactory()
+            let surveyFactory : SurveyFactory = SurveyFactory()
+            let myInteger = Int(panelID)
+            let myNumber = NSNumber(value:myInteger!)
+
+            let array : Array<SurveyPanel> = surveyPanelFactory.find(byPanelID:myNumber) as! Array<SurveyPanel>
+            var dummyList:Array<Any> = []
+            self.surveyList = []
+
+            let blockTakeFromDB = BlockOperation {
+                for item in array {
+                    let surveysArray : Array<Survey> = surveyFactory.find(bySurveyID:item.surveyID) as! Array<Survey>
+                    for survey in surveysArray {
+                        let opgSurvey : OPGSurvey =  OPGSurvey()
+                        opgSurvey.surveyName = survey.name
+                        opgSurvey.surveyDescription = survey.status;
+                        opgSurvey.surveyReference = survey.description;
+                        opgSurvey.lastUpdatedDate = self.stringFromDate(survey.lastUpdatedDate as NSDate)
+                        if (survey.createdDate == nil) {
+                            opgSurvey.createdDate = ""
+                            opgSurvey.startDate = ""
+                        } else {
+                            opgSurvey.createdDate = self.stringFromDate(survey.createdDate as NSDate)
+                            opgSurvey.startDate = self.stringFromDate(survey.createdDate as NSDate)   // check once why its used the same again
+                        }
+                        if (survey.deadLine == nil) {
+                            opgSurvey.endDate = ""
+                            opgSurvey.deadline = ""
+                        } else {
+                            opgSurvey.endDate = self.stringFromDate(survey.deadLine as NSDate)
+                            opgSurvey.deadline = self.stringFromDate(survey.deadLine as NSDate)
+                        }
+                        opgSurvey.isOffline = NSNumber(value:Int(survey.isOffline))
+                        opgSurvey.isGeoFencing = NSNumber(value:Int(survey.isGeofencing))
+                        opgSurvey.surveyID = survey.surveyID;
+                        opgSurvey.estimatedTime = survey.estimatedTime;
+                        opgSurvey.isOfflineDownloaded = NSNumber(value:Int(survey.occurences))
+
+                        dummyList.append(opgSurvey)
                     }
-                    if (survey.deadLine == nil) {
-                        opgSurvey.endDate = ""
-                        opgSurvey.deadline = ""
-                    } else {
-                        opgSurvey.endDate = self.stringFromDate(survey.deadLine as NSDate)
-                        opgSurvey.deadline = self.stringFromDate(survey.deadLine as NSDate)
-                    }
-                    opgSurvey.isOffline = NSNumber(value:Int(survey.isOffline))
-                    opgSurvey.isGeoFencing = NSNumber(value:Int(survey.isGeofencing))
-                    opgSurvey.surveyID = survey.surveyID;
-                    opgSurvey.estimatedTime = survey.estimatedTime;
-                    opgSurvey.isOfflineDownloaded = NSNumber(value:Int(survey.occurences))
-                    
-                    dummyList.append(opgSurvey)
                 }
+
+                OperationQueue.main.addOperation({
+                    print("In OperationQueue Main thread")
+                    UserDefaults.standard.set(2, forKey: "isOperating")
+                    let userLoggedIn : String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
+
+                    if userLoggedIn == "0"
+                    {
+                        UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
+                    }
+                    else{
+                        self.isAppKilled = false
+                    }
+
+                    self.surveyList = dummyList.reversed()
+                    self.filterSurveyList()
+                    self.OfflineDownloadList.removeAll()
+                    self.downloadSurveys()
+                    self.checkForGeoFencing()
+                    self.shimmeringView?.isShimmering = false
+                    self.tableView?.isUserInteractionEnabled = true     //Enable table after refresh/shimmer
+                    self.tableView?.layoutIfNeeded()
+                    self.tableView!.reloadData()
+                    self.checkforAvailableSurveys()
+                    self.setUpSegmentedController()
+                    if self.bannerView != nil
+                    {
+                        self.hideBanner()
+                    }
+                    self.stopSpinning()
+                })
             }
-            
-            OperationQueue.main.addOperation({
-                print("In OperationQueue Main thread")
-                UserDefaults.standard.set(2, forKey: "isOperating")
-                self.surveyList = dummyList.reversed()
-                self.filterSurveyList()
-                self.OfflineDownloadList.removeAll()
-                self.downloadSurveys()
-                self.checkForGeoFencing()
-                self.shimmeringView?.isShimmering = false
-                self.tableView?.isUserInteractionEnabled = true     //Enable table after refresh/shimmer
-                self.tableView!.reloadData()
-                self.checkforAvailableSurveys()
-                self.setUpSegmentedController()
-                if self.bannerView != nil
-                {
-                    self.hideBanner()
-                }
-                self.stopSpinning()
-            })
+            queue.addOperation(blockTakeFromDB)
         }
-        queue.addOperation(blockTakeFromDB)
+        else{
+         // Need to implement
+        }
+        
         
     }
     
@@ -728,6 +743,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: (panellistPanels?.statusMessage)!, alertAction: NSLocalizedString("OK", comment: "OK"))
                     }
                 } else {
+                    UserDefaults.standard.set(0, forKey: isDownload)
                     super.showNoInternetConnectionAlert()
                 }
                 
@@ -804,7 +820,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         }
                         
                         DispatchQueue.global(qos: .background).async {
-                            dataObject.downloadOfflineSurvey(self.surveyList[index] as! OPGSurvey) { progress, survey, error in
+                            dataObject.downloadOfflineSurvey(self.surveyList[index] as! OPGSurvey) { [weak self] progress, survey, error in
                                 
                                 if error != nil {
                                     let isOperating : Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
@@ -818,28 +834,28 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                         let filteredArray : Array<Any> = (array?.filter { ($0 as? NSNumber) != survey?.surveyID })!
                                         UserDefaults.standard.set(filteredArray, forKey: "downloadSurveysArray")
                                     } else {
-                                        self.isAppKilled = false
+                                        self?.isAppKilled = false
                                     }
                                     
                                     if isOperating == 2 {
-                                        let currentSurvey:OPGSurvey? = self.surveyList[index] as? OPGSurvey
+                                        let currentSurvey:OPGSurvey? = self?.surveyList[index] as? OPGSurvey
                                         if currentSurvey != nil {
                                             if (currentSurvey?.surveyName == survey?.surveyName){
                                                 currentSurvey?.surveyDescription = NSLocalizedString("Download", comment: "")
                                                 currentSurvey?.isOfflineDownloaded = 0
-                                                self.surveyList[index] = currentSurvey
+                                                self?.surveyList[index] = currentSurvey
                                                 if survey?.isGeoFencing != 1 {
-                                                    let indexForSurvey = self.findIndexOfSurey(survey!)
+                                                    let indexForSurvey = self?.findIndexOfSurey(survey!)
                                                     if indexForSurvey != -1 {
-                                                        let indexPath = IndexPath(item: indexForSurvey, section: 0)
-                                                        let tableViewCell : SurveyTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
+                                                        let indexPath = IndexPath(item: indexForSurvey!, section: 0)
+                                                        let tableViewCell : SurveyTableViewCell? = self?.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
                                                         if (tableViewCell != nil){
                                                             tableViewCell?.progressBar?.progress = 0.0
                                                             tableViewCell?.btnSurveyDesc.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
                                                             tableViewCell?.btnSurveyDesc.setTitle(NSLocalizedString("Download", comment: ""),for: .normal)
                                                             tableViewCell?.btnSurveyDesc.isUserInteractionEnabled = true
                                                             tableViewCell?.btnSurveyDesc.isEnabled = true
-                                                            tableViewCell?.btnSurveyDesc.addTarget(self, action: #selector(self.reDownloadOfflineSurvey(sender:)), for: .touchUpInside)
+                                                            tableViewCell?.btnSurveyDesc.addTarget(self, action: #selector(self?.reDownloadOfflineSurvey(sender:)), for: .touchUpInside)
                                                             tableViewCell?.setNeedsDisplay()
                                                         }
                                                     }
@@ -865,22 +881,22 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                         CollabrateDB.sharedInstance().updateSurvey(survey?.surveyID, withStatus: "New", withDownloadStatus: 2)
                                     }
                                     
-                                    let isIndexValid = self.surveyList.indices.contains(index)
-                                    if ( isIndexValid ){
+                                    let isIndexValid = self?.surveyList.indices.contains(index)
+                                    if ( isIndexValid )!{
                                         
-                                        let currentSurvey:OPGSurvey? = self.surveyList[index] as? OPGSurvey
+                                        let currentSurvey:OPGSurvey? = self?.surveyList[index] as? OPGSurvey
                                         if (currentSurvey != nil){
                                             if (currentSurvey?.surveyReference == survey?.surveyReference){
                                                 if progress == 1.0{
                                                     currentSurvey?.surveyDescription = NSLocalizedString("New", comment: "")
                                                     currentSurvey?.isOfflineDownloaded = 2
-                                                    self.surveyList[index] = currentSurvey
+                                                    self?.surveyList[index] = currentSurvey
                                                 }
                                                 if survey?.isGeoFencing != 1 {
-                                                    let indexForSurvey = self.findIndexOfSurey(survey!)
+                                                    let indexForSurvey = self?.findIndexOfSurey(survey!)
                                                     if indexForSurvey != -1 {
-                                                        let indexPath = IndexPath(item: indexForSurvey, section: 0)
-                                                        let tableViewCell : SurveyTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
+                                                        let indexPath = IndexPath(item: indexForSurvey!, section: 0)
+                                                        let tableViewCell : SurveyTableViewCell? = self?.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
                                                         if (tableViewCell != nil){
                                                             tableViewCell?.progressBar?.progressTintColor = AppTheme.appBackgroundColor()        //theme for profgress bar
                                                             tableViewCell?.progressBar?.progress = Float(progress!)
@@ -909,7 +925,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                     
                                     
                                 }
-                                self.OfflineDownloadList.append(dataObject)
+                                self?.OfflineDownloadList.append(dataObject)
                             }
                         }
                     } else {
@@ -924,8 +940,14 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     func rightBarButtonItemSetUp() {
         // self.refreshButton = UIButton()
+        let refreshButtonItem = UIBarButtonItem()
+        var refreshButton = UIButton()
         
-        self.tabBarController?.navigationItem.setRightBarButton(self.refreshButtonItem, animated: true)
+        refreshButton.setImage(UIImage(named: "refresh"), for: .normal)
+        refreshButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        refreshButton.addTarget(self, action: #selector(refreshButtonAction), for: .touchUpInside)
+        refreshButtonItem.customView = refreshButton
+        self.tabBarController?.navigationItem.setRightBarButton(refreshButtonItem, animated: true)
     }
     
     func toDeleteorSaveNotification(_ toDelete : Bool) {
@@ -981,7 +1003,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         if status == "Success" {
                             DispatchQueue.main.async {
                                 self.hideBanner()
-                                UserDefaults.standard.set(0, forKey: isDownload)
+                                UserDefaults.standard.set(0, forKey: self.isDownload)
                                 self.shimmeringView?.isShimmering = true
                                 self.showBanner(progressTitle:NSLocalizedString("Sync in progress. Please wait!", comment: ""))
                                 self.createDummySurveyList()
@@ -1081,14 +1103,15 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     
     func startSpinning(){
+        let transform1 = CGAffineTransform(rotationAngle: CGFloat(-M_PI ))
+
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        options: [.repeat,.curveLinear],
                        animations: {
                         
-                        let transform1 = CGAffineTransform(rotationAngle: CGFloat(-M_PI ))
-                        self.refreshButtonItem.customView!.transform = transform1
-                        self.refreshButton.isUserInteractionEnabled = false
+                        self.tabBarController?.navigationItem.rightBarButtonItem?.customView!.transform = transform1
+                        self.tabBarController?.navigationItem.rightBarButtonItem?.customView?.isUserInteractionEnabled = false
                         self.view.layoutIfNeeded()
         },
                        completion: nil
@@ -1108,6 +1131,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     func hideBanner() {
         self.bannerView?.hideNotification()
+        self.bannerView = nil
+        //self.bannerTitle = nil
     }
     
     func stopSpinning(){
@@ -1116,8 +1141,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                        delay: 0,
                        options: [.curveLinear],
                        animations: {
-                        self.refreshButtonItem.customView!.transform = CGAffineTransform.identity
-                        self.refreshButton.isUserInteractionEnabled = true
+                        
+                        self.tabBarController?.navigationItem.rightBarButtonItem?.customView?.transform = CGAffineTransform.identity
+                        self.tabBarController?.navigationItem.rightBarButtonItem?.customView?.isUserInteractionEnabled = true
                         self.view.layoutIfNeeded()
                         
         },
@@ -1358,9 +1384,72 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let tableViewCell : SurveyTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Surveys") as! SurveyTableViewCell
-        if(tableView == self.tableView){
+        if(tableView == self.tableView)
+        {
+            if ( UIDevice.current.userInterfaceIdiom == .pad )
+            {
+                tableViewCell.selectButton.setImage(UIImage(named : "survey_nav_iPad.png"), for: .normal)
+                if(tableViewCell.selectButton.bounds.size.width < 61.0)
+                {
+                    //Apply default iPad width and height - TEMP FIX for app kill and come back to home page
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * 61.0
+                    tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * 61.0
+                }
+                else
+                {
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+                    tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
+                }
+            }
+            else
+            {
+                tableViewCell.selectButton.setImage(UIImage(named : "survey_nav.png"), for: .normal)
+                if(tableViewCell.selectButton.bounds.size.width > 45.0)
+                {
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * 45.0
+                    tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * 45.0
+                }
+                else
+                {
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+                    tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
+                }
+            }
+        }
+        else if (tableView == self.tableViewGeoFenced)
+        {
+            //Geo-fencing view
+            if ( UIDevice.current.userInterfaceIdiom == .pad )
+            {
+                tableViewCell.selectButton.setImage(UIImage(named : "survey_nav_iPad.png"), for: .normal)
+                if(tableViewCell.selectButton.bounds.size.width < 61.0)
+                {
+                    //Apply default iPad width and height - TEMP FIX for app kill and come back to home page
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * 61.0
+                }
+                else
+                {
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+                }
+            }
+            else
+            {
+                tableViewCell.selectButton.setImage(UIImage(named : "survey_nav.png"), for: .normal)
+                if(tableViewCell.selectButton.bounds.size.width > 45.0)
+                {
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * 45.0
+                }
+                else
+                {
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+                }
+            }
+        }
+
+        if(tableView == self.tableView)
+        {
             let survey : OPGSurvey = self.surveyFilteredList[indexPath.row] as! OPGSurvey
             tableViewCell.fillCell(survey)
             tableViewCell.btnSurveyDesc.tag = indexPath.row
@@ -1387,7 +1476,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 }
             }
         }
-        
+
         if(tableView == self.tableViewGeoFenced){
             let survey : OPGGeoFencingModel = self.geoFencedArrayFiltered[indexPath.row] as! OPGGeoFencingModel
             for item in self.surveyGeoAvailable {
@@ -1481,7 +1570,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
 
 
-    func didEnterRegion(_ regionEntered: OPGGeoFencingModel!) {
+    func didEnterRegion(_ regionEntered: OPGGeoFencingModel!)
+    {
         if (regionEntered != nil) {
             print("region entered is \(regionEntered.address!)")
             self.runThroughAddresses(regionEntered.address, true)
@@ -1495,24 +1585,25 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                            "Type" : 0,
                                            "AppNotificationID" : 1,
                                            "title" : regionEntered.surveyName,
-                                           "body" : "Welcome to \(regionEntered.address!)! You have survey available at this location",
-                    "IsRead" : "0"]
+                                           "body" : NSLocalizedString("Welcome to", comment: "") + "\(regionEntered.address!)!" + NSLocalizedString("You have a survey available at this location", comment: ""),
+                                           "IsRead" : "0"]
                 print("dict createsd \(dict)")
                 CollabrateDB.sharedInstance().saveLocalNotifications(dict)
             }
             else
             {
                 //if app is inactive, send notifications
-                if #available(iOS 10.0, *) {
+                if #available(iOS 10.0, *)
+                {
                     let content = UNMutableNotificationContent()
-                    
-                    content.title = "MySurveys 2.0"
-                    content.body = "Welcome to \(regionEntered.address!)! You have survey available at this location"
-                    
+
+                    content.title = NSLocalizedString("MySurveys", comment: "")
+                    content.body = NSLocalizedString("Welcome to", comment: "") + "\(regionEntered.address!)!" + NSLocalizedString("You have a survey available at this location", comment: "")
+
                     let trigger = UNTimeIntervalNotificationTrigger(
                         timeInterval: 0.3,
                         repeats: false)
-                    
+
                     let request = UNNotificationRequest(
                         identifier: regionEntered.address,
                         content: content,
@@ -1521,6 +1612,19 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     UNUserNotificationCenter.current().add(
                         request, withCompletionHandler: nil)
                 } // TODO: write code for iOS9.0 and below
+                else
+                {
+                    let notification = UILocalNotification()
+                    if #available(iOS 8.2, *) {
+                        notification.alertTitle = NSLocalizedString("MySurveys", comment: "")
+                    } else {
+                        // Fallback on earlier versions
+                    }
+                    notification.alertBody = NSLocalizedString("Welcome to", comment: "") + "\(regionEntered.address!)!" + NSLocalizedString("You have a survey available at this location", comment: "")
+                    notification.fireDate = NSDate(timeIntervalSinceNow:0.3) as Date
+                    UIApplication.shared.cancelAllLocalNotifications()
+                    UIApplication.shared.scheduledLocalNotifications = [notification]
+                }
             }
         }
         
@@ -1555,7 +1659,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func performGeoFencingPush(_ surveyReference : String?) {
         self.surveySelected = self.runThroughSurveyRef(surveyReference!)
         if (surveyReference != nil) && (self.surveySelected?.surveyReference == nil) {
-            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: "Selected survey is not under current Panel. Please change the panel to take survey!", alertAction: "OK")
+            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Selected survey is not under current Panel. Please change the panel to take survey!", comment: ""), alertAction: "OK")
             return
         }
         if (self.surveySelected?.isOffline.boolValue == false ) {
@@ -1685,11 +1789,14 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         self.geoFencedArrayFiltered = []
         var surveyNames : Array<String> = []
         for i in 0 ..< geofencedArrays.count {
-            let name = (geofencedArrays[i] as! OPGGeoFencingModel).surveyName            // check once PROM models updated
-            if !surveyNames.contains(name!) {
-                dummyArray.append(geofencedArrays[i])                       //filter to avoid mduplication
-                surveyNames.append(name!)
+            let surName = (geofencedArrays[i] as? OPGGeoFencingModel)?.surveyName            // check once PROM models updated
+            if let name = surName {
+                if !surveyNames.contains(name) {
+                    dummyArray.append(geofencedArrays[i])                       //filter to avoid mduplication
+                    surveyNames.append(name)
+                }
             }
+
         }
         
         self.geoFencedArrayFiltered = dummyArray.filter { dummy in
@@ -1826,7 +1933,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     if survey.isDeleted == 2 {
                         self.surveySelected = self.runThroAddressForAnnotationSelection(survey.surveyReference)
                         if (self.surveySelected?.surveyReference == "") || (self.surveySelected?.surveyReference == nil) {
-                            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: "Selected survey is not under current Panel. Please change the panel to take survey!", alertAction: NSLocalizedString("OK", comment: "OK"))
+                            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Selected survey is not under current Panel. Please change the panel to take survey!", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                         } else {
                             if (self.surveySelected?.isOffline.boolValue == false ) {
                                 self.performSegue(withIdentifier: "embedSurveyDetails", sender: self)
@@ -1860,4 +1967,12 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         
         view.layer.add(bounceAnimation, forKey: "bounce")
     }
+    
+    deinit {
+        print("DEINIT CALLEDDDDDDDDDDDD Survey")
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "NotificationIdentifier"), object: nil);
+
+    }
+    
+    
 }

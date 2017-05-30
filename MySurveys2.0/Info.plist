@@ -78,7 +78,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string></string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>${EXECUTABLE_NAME} would like to use your current location even in background.</string>
+	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>

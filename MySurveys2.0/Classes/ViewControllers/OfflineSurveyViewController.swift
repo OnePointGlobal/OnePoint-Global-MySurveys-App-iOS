@@ -40,6 +40,15 @@ class OfflineSurveyViewController : RootViewController
         // Do any additional setup after loading the view.
         self.navigationController?.hidesBarsOnSwipe = false
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateProgressBar(_:)), name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
+        self.btnUploadResults.setTitle(NSLocalizedString("Upload Results", comment: ""),for: .normal)
+        if ( UIDevice.current.userInterfaceIdiom == .pad )
+        {
+            self.btnTakeSurvey.setImage(UIImage(named : "surveydetail_nav_iPad.png"), for: .normal)
+        }
+        else
+        {
+            self.btnTakeSurvey.setImage(UIImage(named : "surveydetail_nav.png"), for: .normal)
+        }
     }
     
     
@@ -100,14 +109,14 @@ class OfflineSurveyViewController : RootViewController
         btnTakeSurvey.layer.cornerRadius = 0.5 * btnTakeSurvey.bounds.size.width
         
         lblSurveyName?.text = surveySelected?.surveyName
-        lblSurveyStatus?.text = surveySelected?.surveyDescription
+        lblSurveyStatus?.text = NSLocalizedString((surveySelected?.surveyDescription)!, comment: "")
 
         let startDateString = self.formatDate(dateString: (self.surveySelected?.startDate)!)
         let endDateString = self.formatDate(dateString: (self.surveySelected?.endDate)!)
         
         if ((startDateString == "6 Oct 2100") || (endDateString == "9 Oct 2100"))          //Default date value in case of Null or empty
         {
-            lblSurveyDate?.text = "Unscheduled"
+            lblSurveyDate?.text = NSLocalizedString("Unscheduled", comment: "")
         }
         else
         {
