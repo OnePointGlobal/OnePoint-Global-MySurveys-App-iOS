@@ -606,11 +606,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     print("In OperationQueue Main thread")
                     UserDefaults.standard.set(2, forKey: "isOperating")
                     let userLoggedIn : String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
-                    print("userLoggedIn \(userLoggedIn)")
 
                     if userLoggedIn == "0"
                     {
-                        print("userLoggedIn 0")
                         UserDefaults.standard.set("1", forKey: "isUserLoggedIN")
                     }
                     else{
@@ -1408,8 +1406,16 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             else
             {
                 tableViewCell.selectButton.setImage(UIImage(named : "survey_nav.png"), for: .normal)
-                tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
-                tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
+                if(tableViewCell.selectButton.bounds.size.width > 45.0)
+                {
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * 45.0
+                    tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * 45.0
+                }
+                else
+                {
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+                    tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
+                }
             }
         }
         else if (tableView == self.tableViewGeoFenced)
@@ -1431,7 +1437,14 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             else
             {
                 tableViewCell.selectButton.setImage(UIImage(named : "survey_nav.png"), for: .normal)
-                tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+                if(tableViewCell.selectButton.bounds.size.width > 45.0)
+                {
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * 45.0
+                }
+                else
+                {
+                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+                }
             }
         }
 

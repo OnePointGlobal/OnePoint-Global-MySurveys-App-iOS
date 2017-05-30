@@ -364,7 +364,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     //You will no longer be able to access any of the api via SDK after you logout.
     func logout()
     {
-
+        let isSocialLogin = UserDefaults.standard.value(forKey: "isSocialLogin") as? Int
         let deviceToken : String? = UserDefaults.standard.value(forKey: "DeviceTokenID") as? String
         let bgImagePath:String? = AppTheme.getLoginBGImagePath()
         let userLoggedIn : String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
@@ -376,17 +376,24 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             geoFence?.stop()
         }
         self.deleteTempDBFolders()
-        GIDSignIn.sharedInstance().signOut()                    //Sign Out when the authentication fails
-
-        let loginManager : FBSDKLoginManager = FBSDKLoginManager()
-        loginManager.logOut()
-        UserDefaults.standard.set(userLoggedIn, forKey: "isUserLoggedIN")           
+        if(isSocialLogin == 1)
+        {
+            let loginManager : FBSDKLoginManager = FBSDKLoginManager()
+            loginManager.logOut()                                           //Facebook logout
+        }
+        else if (isSocialLogin == 2)
+        {
+            GIDSignIn.sharedInstance().signOut()                    //Sign Out of Google
+        }
+        else
+        {
+            OPGSDK.logout()
+        }
+        UserDefaults.standard.set(userLoggedIn, forKey: "isUserLoggedIN")
         UserDefaults.standard.set(deviceToken, forKey: "DeviceTokenID")             // Before Logout, Re-assign DeviceTokenID as we get that only for one time
         AppTheme.setLoginBGImagePath(path: bgImagePath!)         // Before Logout, Re-assign login BG image path as it is to be shown after logout
         AppTheme.setLoginBtnTextColor(color: AppTheme.appBackgroundColor())
         UserDefaults.standard.synchronize()
-
-        OPGSDK.logout()
         _ = self.navigationController?.popViewController(animated: true)
     }
 
