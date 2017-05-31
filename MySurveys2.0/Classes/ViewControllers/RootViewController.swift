@@ -9,16 +9,15 @@
 import Foundation
 import UIKit
 
-/*!
-    This is the parent class for all other view controllers.
-*/
-class RootViewController: UIViewController
-{    
+/*
+ This is the parent class for all other view controllers.
+ */
+class RootViewController: UIViewController {
+    
     func isOnline() -> Bool {
         let reachability: OPGReachability = OPGReachability.forInternetConnection()
         let networkStatus: Int = reachability.currentReachabilityStatus().rawValue
         return networkStatus != 0
-        
     }
     
     func showAlert(alertTitle: String, alertMessage: String, alertAction: String) {
@@ -27,8 +26,8 @@ class RootViewController: UIViewController
         self.present(alert, animated: true, completion: nil)
     }
     
-    func showNoInternetConnectionAlert()
-    {
+    func showNoInternetConnectionAlert() {
         self.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("No internet connection. Please try again!", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
     }
+    
 }
