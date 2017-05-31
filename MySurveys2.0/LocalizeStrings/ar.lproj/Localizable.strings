@@ -54,7 +54,7 @@
 "New and Confirm passwords should be same" = "يجب أن تكون كلمة السر الجديدة والتأكيد متطابقة";
 "New Password" = "كلمة السر الجديدة";
 "No items selected." = "لم يتم إختيار أي عنصر";
-"No internet connection. Please try again!" = "!لا يوجد اتصال بالإنترنت. حاول مرة اخرى";
+"No internet connection. Please try again!" = "لا يوجد اتصال بالإنترنت. حاول مرة اخرى!";
 "No surveys available for the selected panel." = "لا تتوفر استطلاعات رأي لللوحة المختارة.";
 "No notifications so far." = "لا توجد إشعارات حتى الآن.";
 "Notifications" = "الإشعارات";
@@ -69,7 +69,7 @@
 "Password changed successfully!" = "تم تغيير كلمة السر بنجاح!";
 "Password cannot be empty" = "لا يمكن أن تكون كلمة السر فارغة!";
 "Pending" = "قيد الانتظار";
-"Please confirm your new password." = "الرجاء تأكيد كلمة السر الجديدة";
+"Please confirm your new password." = "الرجاء تأكيد كلمة السر الجديدة.";
 "Please enable location services from device Settings to take the survey." = "الرجاء ضبط خدمات الموقع من إعدادات الجهاز لإجراء الاستطلاع.";
 "Please enter a valid e-mail ID." = "يرجى إدخال معرف بريد إلكتروني صحيح.";
 "Please enter your e-mail ID" = "لرجاء إدخال معرف البريد الإلكتروني الخاص بك.";
