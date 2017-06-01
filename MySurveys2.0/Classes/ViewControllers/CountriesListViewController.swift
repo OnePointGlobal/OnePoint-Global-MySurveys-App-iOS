@@ -26,7 +26,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
     var countryArray: [OPGCountry] = []
     var countrySectionTitles: [String] = []
     var indexCountryDict = [String: Array<Any>]()
-    var indexCharacters = ["A", "B", "C", "D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","Y","Z"]          //There is no X
+    var indexCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "Y", "Z"]          //There is no X
     var arrayOfCountryNames: [String] = []
     weak var delegate: CountryChangedDelegate? = nil
     var navigationBar = UINavigationBar()

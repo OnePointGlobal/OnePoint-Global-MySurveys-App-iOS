@@ -17,9 +17,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblVersion: UILabel!
 
-    
     // MARK: - Properties for viewcontroller
-    var settingItems : [String] = []
+    var settingItems: [String] = []
     var urlString: String?
     var pageTitle: String?
 
@@ -29,8 +28,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     var aboutUsUrl = "https://framework.onepointglobal.com/appwebsite/about?location=mobile&culture="
     
     // MARK: - View Delegate Methods
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         settingItems += [NSLocalizedString("Change Panel", comment: ""), NSLocalizedString("Geo location", comment: ""), NSLocalizedString("Change Password", comment: ""), NSLocalizedString("Privacy", comment: ""), NSLocalizedString("Terms & Conditions", comment: ""), NSLocalizedString("AboutUs", comment: "")]
         self.tableView.layoutMargins = UIEdgeInsets.zero
@@ -41,8 +39,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     }
     
-    override func viewWillAppear(_ animated: Bool)
-    {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.hidesBarsOnSwipe = false
 
@@ -92,13 +89,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         switch indexPath.row {
         case 0:
             self.performSegue(withIdentifier: "changePanel", sender: self)
-            
         case 2:
             self.performSegue(withIdentifier: "changePassword", sender: self)
 
         case 3:
             let langStr = Locale.current.languageCode
-            self.urlString = self.privacyUrl.appending(langStr!)                                           //set url to load in the next screen
+            self.urlString = self.privacyUrl.appending(langStr!)                                           // set url to load in the next screen
             self.pageTitle = NSLocalizedString("Privacy", comment: "")
             self.performSegue(withIdentifier: "commonWebView", sender: self)
 
@@ -120,18 +116,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     // MARK: - Segue Operations
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if(segue.identifier == "commonWebView")
-        {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "commonWebView" {
             // Get common web view
-            let viewController : AboutUsViewController = segue.destination as! AboutUsViewController
+            let viewController: AboutUsViewController = segue.destination as! AboutUsViewController
             viewController.urlString=self.urlString
             viewController.pageTitle = self.pageTitle
         }
     }
     
-    func switchEvents(sender : AnyObject) {
+    func switchEvents(sender: AnyObject) {
         let switchControl = sender as! UISwitch
         if switchControl.isOn {
             print("GeoFencing started")
