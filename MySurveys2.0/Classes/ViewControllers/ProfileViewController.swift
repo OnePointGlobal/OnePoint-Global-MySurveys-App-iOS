@@ -367,7 +367,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         let isSocialLogin = UserDefaults.standard.value(forKey: "isSocialLogin") as? Int
         let deviceToken : String? = UserDefaults.standard.value(forKey: "DeviceTokenID") as? String
         let bgImagePath:String? = AppTheme.getLoginBGImagePath()
-        let userLoggedIn : String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
         self.unRegisterForAPNS(deviceToken)
         let appDomain = Bundle.main.bundleIdentifier
         UserDefaults.standard.removePersistentDomain(forName: appDomain!)
@@ -389,9 +388,9 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         {
             OPGSDK.logout()
         }
-        UserDefaults.standard.set(userLoggedIn, forKey: "isUserLoggedIN")
+        UserDefaults.standard.set("0", forKey: "isUserLoggedIN")                    // 0 indicates not logged in or logout
         UserDefaults.standard.set(deviceToken, forKey: "DeviceTokenID")             // Before Logout, Re-assign DeviceTokenID as we get that only for one time
-        AppTheme.setLoginBGImagePath(path: bgImagePath!)         // Before Logout, Re-assign login BG image path as it is to be shown after logout
+        AppTheme.setLoginBGImagePath(path: bgImagePath!)                            // Before Logout, Re-assign login BG image path as it is to be shown after logout
         AppTheme.setLoginBtnTextColor(color: AppTheme.appBackgroundColor())
         UserDefaults.standard.synchronize()
         _ = self.navigationController?.popViewController(animated: true)
