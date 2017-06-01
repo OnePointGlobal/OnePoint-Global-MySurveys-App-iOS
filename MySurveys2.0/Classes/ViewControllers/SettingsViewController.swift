@@ -12,19 +12,18 @@ import Foundation
 
 let geoFence = OPGGeoFencing.sharedInstance()
 
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
-{
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: - IBOutlets for View
-    @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblVersion: UILabel!
 
     
     // MARK: - Properties for viewcontroller
     var settingItems : [String] = []
-    var urlString : String?
-    var pageTitle : String?
+    var urlString: String?
+    var pageTitle: String?
 
-    //Append locale based on language selected.
+    // Append locale based on language selected.
     var privacyUrl = "https://framework.onepointglobal.com/appwebsite/privacy?location=mobile&culture="
     var tcUrl = "https://framework.onepointglobal.com/appwebsite/TermsOfUse?location=mobile&culture="
     var aboutUsUrl = "https://framework.onepointglobal.com/appwebsite/about?location=mobile&culture="
@@ -47,9 +46,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewWillAppear(animated)
         self.navigationController?.hidesBarsOnSwipe = false
 
-        //set theme color for the switch ON tint color
+        // set theme color for the switch ON tint color
         let indexPath = IndexPath(item: 1, section: 0)
-        let tableViewCell : SettingsTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SettingsTableViewCell
+        let tableViewCell: SettingsTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SettingsTableViewCell
         tableViewCell?.switchControl.onTintColor = AppTheme.appBackgroundColor()
 
     }
@@ -69,7 +68,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell : SettingsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "settingsCell") as! SettingsTableViewCell
+        let tableViewCell: SettingsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "settingsCell") as! SettingsTableViewCell
 
         if indexPath.row == 1 {
             tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
@@ -88,10 +87,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return tableViewCell
     }
     
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         switch indexPath.row {
         case 0:

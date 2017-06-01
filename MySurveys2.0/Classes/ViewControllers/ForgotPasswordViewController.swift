@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForgotPasswordViewController: RootViewController ,UITextFieldDelegate {
+class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
 
     // MARK: - IBOutlets for view
     @IBOutlet weak var btnSubmit: UIButton?
@@ -27,8 +27,7 @@ class ForgotPasswordViewController: RootViewController ,UITextFieldDelegate {
 
 
     // MARK: - View delegate methods
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         self.lblWeWillEmail?.text = NSLocalizedString("We will email you a link to reset your Password", comment: "")
         self.lblForgotYourPassword?.text = NSLocalizedString("Forgot your password?", comment: "")
@@ -90,11 +89,9 @@ class ForgotPasswordViewController: RootViewController ,UITextFieldDelegate {
 
     // MARK: - Private methods
     func sendForgotPassword(mail: String) {
-        if isValidEmail(mailID: mail)
-        {
+        if isValidEmail(mailID: mail) {
             self.activityIndicator.startAnimating()
-            DispatchQueue.global(qos: .default).async
-            {
+            DispatchQueue.global(qos: .default).async {
                 let sdk = OPGSDK()
                 var forgotPassword: OPGForgotPassword
                 do {
@@ -196,7 +193,7 @@ class ForgotPasswordViewController: RootViewController ,UITextFieldDelegate {
             }
         }
         else {
-            //iPad landscape
+            // iPad landscape
             if width == 1024.0 || width == 2048.0 {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.emailFieldTopSpace.constant = 5.0
@@ -207,7 +204,7 @@ class ForgotPasswordViewController: RootViewController ,UITextFieldDelegate {
                 })
             }
             else if width == 768.0 || width == 1536.0 {
-                //iPad portrait
+                // iPad portrait
                 UIView.animate(withDuration: 0.5, animations: {
                     self.emailFieldTopSpace.constant = 125.0
                     self.forgotYourPasswordBottomSpace.constant = 30.0
@@ -222,20 +219,16 @@ class ForgotPasswordViewController: RootViewController ,UITextFieldDelegate {
         let height = bounds.size.height
 
         self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.5, animations:
-            {
-                if UIDevice.current.userInterfaceIdiom == .pad
-                {
-                    if(height==1024 || height==2048)
-                    {
-                        //iPad portarit
+        UIView.animate(withDuration: 0.5, animations: {
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    if height == 1024 || height == 2048 {
+                        // iPad portarit
                         self.constraintViewTop.constant = 30
-                        //self.emailFieldTopSpace.constant = 0
+                        // self.emailFieldTopSpace.constant = 0
                         self.view.layoutIfNeeded()
                     }
-                    else
-                    {
-                        //iPad landscape
+                    else {
+                        // iPad landscape
                         self.constraintViewTop.constant = 0
                         self.emailFieldTopSpace.constant = 20
                         self.emailToLabelTopSpace.constant = 80.0
@@ -243,9 +236,8 @@ class ForgotPasswordViewController: RootViewController ,UITextFieldDelegate {
                     }
 
                 }
-                else
-                {
-                    //iPhone
+                else {
+                    // iPhone
                     self.constraintViewTop.constant = 0
                     self.emailFieldTopSpace.constant = 20
                     self.view.layoutIfNeeded()
