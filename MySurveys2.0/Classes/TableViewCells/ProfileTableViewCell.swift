@@ -8,17 +8,16 @@
 
 import UIKit
 
-class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate
-{
+class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate {
     
-    @IBOutlet weak var lblTitle : UILabel!
-    @IBOutlet weak var txtValue : UITextField!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var txtValue: UITextField!
     @IBOutlet weak var constarintNameTopSpace: NSLayoutConstraint!
     @IBOutlet weak var constarintNameToLabelTopSpace: NSLayoutConstraint!
 
-    var editedName : String = ""
-    var editedCountry : String = ""
-    var panelist:OPGPanellistProfile!
+    var editedName: String = ""
+    var editedCountry: String = ""
+    var panelist: OPGPanellistProfile!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,30 +31,23 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate
         // Configure the view for the selected state
     }
     
-    func fillCell(title : String,value : String, tagIdentifier:Int)
-    {
+    func fillCell(title :String, value: String, tagIdentifier: Int) {
         lblTitle.text = title
         txtValue.text = value
         txtValue.tag = tagIdentifier
     }
     
-    
-    
-    func textFieldDidBeginEditing(_ textField: UITextField)
-    {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField)
-    {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
         textField.resignFirstResponder()
         return true
-    }
-    
-    
+    }    
 
 }

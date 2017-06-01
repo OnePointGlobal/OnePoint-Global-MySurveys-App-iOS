@@ -8,17 +8,15 @@
 
 import Foundation
 extension UIImage{
+    
     class func appBGImage() -> UIImage? {
-        
         let defaults = UserDefaults.standard
         let bgImage = defaults.object(forKey: "bgImage")
-        var image:UIImage?
+        var image: UIImage?
         if bgImage != nil {
             image = UIImage(data: bgImage as! Data)!
 
-        }
-       
-        
+        }        
         return image
     }
 }

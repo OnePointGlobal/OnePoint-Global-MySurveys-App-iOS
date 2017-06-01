@@ -26,7 +26,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
     var countryArray: [OPGCountry] = []
     var countrySectionTitles: [String] = []
     var indexCountryDict = [String: Array<Any>]()
-    var indexCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "Y", "Z"]          //There is no X
+    var indexCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "Y", "Z"]          // There is no X
     var arrayOfCountryNames: [String] = []
     weak var delegate: CountryChangedDelegate? = nil
     var navigationBar = UINavigationBar()
@@ -191,7 +191,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
     
         let sectionTitle = self.indexCharacters[indexPath.section]
             let sectionCountries = self.indexCountryDict[sectionTitle]
-            let countryName : String = sectionCountries?[indexPath.row] as! String
+            let countryName: String = sectionCountries?[indexPath.row] as! String
         print("Selected Country : ", countryName)
         // call this method on whichever class implements our delegate protocol
         delegate?.userDidChangeCountry(newCountry: self.getCountryByName(name: countryName))

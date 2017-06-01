@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ThemeModel: NSObject
-{
+class ThemeModel: NSObject {
     var actionBtn: String?
     var headerLogo: String?
     var linksColor: String?
@@ -17,7 +16,7 @@ class ThemeModel: NSObject
     var logoText: String?
 
 
-    init(actionBtn: String?,headerLogo: String?,linksColor: String?, loginBackground: String?,logoText: String?){
+    init(actionBtn: String?,headerLogo: String?, linksColor: String?, loginBackground: String?, logoText: String? ){
         self.actionBtn = actionBtn
         self.headerLogo = headerLogo
         self.linksColor = linksColor
