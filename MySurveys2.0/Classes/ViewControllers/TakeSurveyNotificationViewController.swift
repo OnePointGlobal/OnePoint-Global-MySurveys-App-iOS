@@ -8,15 +8,14 @@
 
 import UIKit
 
-class TakeSurveyNotificationViewController: RootViewController, UITextViewDelegate
-{
+class TakeSurveyNotificationViewController: RootViewController, UITextViewDelegate {
 
     @IBOutlet weak var txtNotificationDesc: UITextView!
     @IBOutlet weak var btnTakeSurvey : UIButton!
 
 
-    var surveyReference : NSString!
-    var notificationDescription : String?
+    var surveyReference: NSString!
+    var notificationDescription: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,24 +31,18 @@ class TakeSurveyNotificationViewController: RootViewController, UITextViewDelega
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func takeSurveyAction(_ sender: Any)
-    {
+    @IBAction func takeSurveyAction(_ sender: Any) {
         print("Taking Survey")
         self.performSegue(withIdentifier: "TakeNotificationSurvey", sender: nil)
     }
-    
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if(segue.identifier == "TakeNotificationSurvey")
-        {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TakeNotificationSurvey" {
             // Get Survey view
-            let viewController : SurveyViewController = segue.destination as! SurveyViewController
-            //viewController.surveyReference=self.surveyReference as String
-            //viewController.surveyReference="SDKDemo"
-
+            let viewController: SurveyViewController = segue.destination as! SurveyViewController
+            // viewController.surveyReference=self.surveyReference as String
+            // viewController.surveyReference="SDKDemo"
         }
     }
-    
 
 }

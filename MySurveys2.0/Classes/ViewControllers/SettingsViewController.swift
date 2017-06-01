@@ -12,26 +12,23 @@ import Foundation
 
 let geoFence = OPGGeoFencing.sharedInstance()
 
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
-{
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: - IBOutlets for View
-    @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblVersion: UILabel!
 
-    
     // MARK: - Properties for viewcontroller
-    var settingItems : [String] = []
-    var urlString : String?
-    var pageTitle : String?
+    var settingItems: [String] = []
+    var urlString: String?
+    var pageTitle: String?
 
-    //Append locale based on language selected.
+    // Append locale based on language selected.
     var privacyUrl = "https://framework.onepointglobal.com/appwebsite/privacy?location=mobile&culture="
     var tcUrl = "https://framework.onepointglobal.com/appwebsite/TermsOfUse?location=mobile&culture="
     var aboutUsUrl = "https://framework.onepointglobal.com/appwebsite/about?location=mobile&culture="
     
     // MARK: - View Delegate Methods
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         settingItems += [NSLocalizedString("Change Panel", comment: ""), NSLocalizedString("Geo location", comment: ""), NSLocalizedString("Change Password", comment: ""), NSLocalizedString("Privacy", comment: ""), NSLocalizedString("Terms & Conditions", comment: ""), NSLocalizedString("AboutUs", comment: "")]
         self.tableView.layoutMargins = UIEdgeInsets.zero
@@ -42,14 +39,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     }
     
-    override func viewWillAppear(_ animated: Bool)
-    {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.hidesBarsOnSwipe = false
 
-        //set theme color for the switch ON tint color
+        // set theme color for the switch ON tint color
         let indexPath = IndexPath(item: 1, section: 0)
-        let tableViewCell : SettingsTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SettingsTableViewCell
+        let tableViewCell: SettingsTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SettingsTableViewCell
         tableViewCell?.switchControl.onTintColor = AppTheme.appBackgroundColor()
 
     }
@@ -69,7 +65,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableViewCell : SettingsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "settingsCell") as! SettingsTableViewCell
+        let tableViewCell: SettingsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "settingsCell") as! SettingsTableViewCell
 
         if indexPath.row == 1 {
             tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
@@ -88,21 +84,17 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return tableViewCell
     }
     
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         switch indexPath.row {
         case 0:
             self.performSegue(withIdentifier: "changePanel", sender: self)
-            
         case 2:
             self.performSegue(withIdentifier: "changePassword", sender: self)
 
         case 3:
             let langStr = Locale.current.languageCode
-            self.urlString = self.privacyUrl.appending(langStr!)                                           //set url to load in the next screen
+            self.urlString = self.privacyUrl.appending(langStr!)                                           // set url to load in the next screen
             self.pageTitle = NSLocalizedString("Privacy", comment: "")
             self.performSegue(withIdentifier: "commonWebView", sender: self)
 
@@ -124,18 +116,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     // MARK: - Segue Operations
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if(segue.identifier == "commonWebView")
-        {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "commonWebView" {
             // Get common web view
-            let viewController : AboutUsViewController = segue.destination as! AboutUsViewController
+            let viewController: AboutUsViewController = segue.destination as! AboutUsViewController
             viewController.urlString=self.urlString
             viewController.pageTitle = self.pageTitle
         }
     }
     
-    func switchEvents(sender : AnyObject) {
+    func switchEvents(sender: AnyObject) {
         let switchControl = sender as! UISwitch
         if switchControl.isOn {
             print("GeoFencing started")
