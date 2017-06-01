@@ -74,7 +74,7 @@ class SurveyDetailsViewController: RootViewController {
         
         if ((startDateString == "6 Oct 2100") || (endDateString == "9 Oct 2100"))
         {
-            lblSurveyDate?.text = "Unscheduled"                 //temporary for unscheduled surveys
+            lblSurveyDate?.text = NSLocalizedString("Unscheduled", comment: "")                 //temporary for unscheduled surveys
         }
         else
         {

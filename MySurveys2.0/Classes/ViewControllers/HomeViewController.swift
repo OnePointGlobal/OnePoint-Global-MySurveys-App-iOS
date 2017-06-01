@@ -264,7 +264,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         hideGeoFencePopUp()
         self.segmentedControl.tintColor = AppTheme.appBackgroundColor()
         self.segmentedControl.selectedSegmentIndex = 0
+        self.segmentedControl.subviews[0].tintColor = AppTheme.appBackgroundColor()
         self.segmentedControl.subviews[1].tintColor = AppTheme.appBackgroundColor()
+
     }
     
     func createDummySurveyList() {
@@ -740,7 +742,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     }
                     else {
                         UserDefaults.standard.set(0, forKey: isDownload)
-                        super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: (panellistPanels?.statusMessage)!, alertAction: NSLocalizedString("OK", comment: "OK"))
+                        if(panellistPanels?.statusMessage != nil)
+                        {
+                            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: (panellistPanels?.statusMessage)!, alertAction: NSLocalizedString("OK", comment: "OK"))
+                        }
                     }
                 } else {
                     UserDefaults.standard.set(0, forKey: isDownload)
