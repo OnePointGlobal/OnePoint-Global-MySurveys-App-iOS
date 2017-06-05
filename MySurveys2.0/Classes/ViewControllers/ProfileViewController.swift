@@ -443,8 +443,8 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             
         }
         
-        OPGSDK.setAppVersion("iOSSDK-IOS-1.0.0-O")
-        OPGSDK.initialize(withUserName: "mysurveys2.0", withSDKKey:"com.onepointsurveys.mysurveys2")
+        OPGSDK.setAppVersion("App_version")
+        OPGSDK.initialize(withUserName: "Username", withSDKKey: "Shared_Key")
     }
 
     func deletePreviousProfileImg(path : String?)
