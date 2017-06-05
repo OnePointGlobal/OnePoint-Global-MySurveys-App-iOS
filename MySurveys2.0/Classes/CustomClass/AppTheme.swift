@@ -12,26 +12,23 @@ let EMPTY_STRING = ""
 
 class AppTheme: NSObject {
     static var theme: ThemeModel?
-    static func initThemeModel(theme: NSDictionary) -> ThemeModel?
-    {
+    static func initThemeModel(theme: NSDictionary) -> ThemeModel? {
         let actionBtn: String? = theme.value(forKey: "Actionbtn") as! String?
         let headerLogo: String? =  theme.value(forKey: "Headerlogo") as! String?
         let linksColor: String? =  theme.value(forKey: "Linkscolor") as! String?
         let loginBackground: String? =  theme.value(forKey: "Loginbackground") as! String?
         let logoText: String? =  theme.value(forKey: "Logotext") as! String?
-        if headerLogo == nil || loginBackground == nil
-        {
+        if headerLogo == nil || loginBackground == nil {
             // fix for wrong keys coming in theme dict when someone creates theme in old adminsuite wrongly
             return nil
         }
-        else
-        {
+        else {
             let newTheme = ThemeModel(actionBtn: actionBtn, headerLogo: headerLogo, linksColor: linksColor, loginBackground: loginBackground, logoText: logoText)
             return newTheme
 
         }
     }
-    
+
     /* !
      This method downloads media(image) for a particular theme when the panel is changed.
      */
@@ -62,25 +59,23 @@ class AppTheme: NSObject {
                 }
         }
     }
-    
+
     /* !
      This method is called to set the new theme after a panel is changed.
      */
     static func setCurrentTheme(theme: NSDictionary) {
-        if theme.count > 0
-        {
+        if theme.count > 0 {
             let keys = theme.allKeys
             if keys.count == 5 {
-                //Construct theme object
+                // Construct theme object
                 self.theme = self.initThemeModel(theme: theme)
                 let panelName = UserDefaults.standard.value(forKey: "SelectedPanelName") as? String
-                if self.theme != nil {             //fix for wrong keys coming in theme dict when someone creates theme in old adminsuite wrongly
-                
+                if self.theme != nil {             // fix for wrong keys coming in theme dict when someone creates theme in old adminsuite wrongly
                     if Int((self.theme?.headerLogo)!)! > 0 {
-                        self.downloadThemeImage(mediaId: (self.theme?.headerLogo)!, isLoginBGImage:false, fileName:(panelName?.appending("ThemeHeaderLogo"))!)
+                        self.downloadThemeImage(mediaId: (self.theme?.headerLogo)!, isLoginBGImage: false, fileName: (panelName?.appending("ThemeHeaderLogo"))!)
                     }
                     if Int((self.theme?.loginBackground)!)!>0 {
-                        self.downloadThemeImage(mediaId: (self.theme?.loginBackground)!, isLoginBGImage: true, fileName:(panelName?.appending("ThemeLoginBG"))!)
+                        self.downloadThemeImage(mediaId: (self.theme?.loginBackground)!, isLoginBGImage: true, fileName: (panelName?.appending("ThemeLoginBG"))!)
                     }
                 }
                 else {
@@ -95,9 +90,9 @@ class AppTheme: NSObject {
             }
         }
     }
-    
+
     // Creates a UIColor from a Hex string.
-    static func colorWithHexString (hex:String) -> UIColor {
+    static func colorWithHexString (hex: String) -> UIColor {
         var cString: String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         if cString.hasPrefix("#") {
             cString = (cString as NSString).substring(from: 1)
@@ -114,17 +109,17 @@ class AppTheme: NSObject {
             alpha: CGFloat(1.0)
         )
     }
-    
+
     // MARK: - Getter/Setter methods
     static func appBackgroundColor() -> UIColor {
         if self.theme == nil {
-            return UIColor.appBGColor()                 //default color
+            return UIColor.appBGColor()                 // default color
         }
         else {
             return self.colorWithHexString(hex: (self.theme?.actionBtn)!)
         }
     }
-    
+
     static func getLoginBGImagePath() -> String {
         let bgImagePath: String? = UserDefaults.standard.value(forKey: "LoginBGImagePath") as? String
         if bgImagePath==nil || (bgImagePath?.isEmpty)! {
@@ -139,18 +134,18 @@ class AppTheme: NSObject {
             return (tempDirURL?.path)!
         }
     }
-    
-    static func setLoginBGImagePath(path : String) {
+
+    static func setLoginBGImagePath(path: String) {
         UserDefaults.standard.set(path, forKey: "LoginBGImagePath")
     }
-    
+
     static func getHeaderLogoImagePath() -> String {
         let headerImgPath: String? = UserDefaults.standard.value(forKey: "HeaderLogoImagePath") as? String
         if headerImgPath==nil || (headerImgPath?.isEmpty)! {
             return EMPTY_STRING
         }
         else {
-            //UDID of the device tmp folder path changes on every re-run
+            // UDID of the device tmp folder path changes on every re-run
             let filePath = (UserDefaults.standard.object(forKey: "HeaderLogoImagePath") as? String)!
             let filePathWithoutSpaces = filePath.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
             let filename =  NSURL(string: filePathWithoutSpaces!)?.lastPathComponent
@@ -158,17 +153,17 @@ class AppTheme: NSObject {
             return (tempDirURL?.path)!
         }
     }
-    
-    static func setHeaderLogoImagePath(path : String) {
+
+    static func setHeaderLogoImagePath(path: String) {
         UserDefaults.standard.set(path, forKey: "HeaderLogoImagePath")
     }
-    
+
     static func getLoginBtnTextColor() -> UIColor {
         return UserDefaults.standard.colorForKey("LoginBtnTextColor")!
     }
-    
-    static func setLoginBtnTextColor(color : UIColor) {
+
+    static func setLoginBtnTextColor(color: UIColor) {
         UserDefaults.standard.setColor(color, forKey: "LoginBtnTextColor")
     }
-    
+
 }

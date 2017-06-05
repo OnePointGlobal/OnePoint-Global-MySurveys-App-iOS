@@ -33,7 +33,7 @@ class OPGNotificationView: UIView {
     var collision = UICollisionBehavior()
     var itemBehavior = UIDynamicItemBehavior()
     var notificationType = AZNotificationType.upload
-    
+
     func initialisewithNavigation(title: String, referenceView: UIView, notificationType: AZNotificationType) {
         self.title = title
         self.referenceView = referenceView
@@ -50,7 +50,7 @@ class OPGNotificationView: UIView {
         gravity.gravityDirection = CGVector(dx: 0, dy: -1)
         animator.addBehavior(gravity)
     }
-    
+
     func applyDynamics() {
         let boundaryYAxis: CGFloat = showNotificationUnderNavigationBar == true ? 1 : 1
         animator = UIDynamicAnimator(referenceView: referenceView!)
@@ -64,7 +64,7 @@ class OPGNotificationView: UIView {
         animator.addBehavior(itemBehavior)
         // Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(AZNotificationView.hideNotification), userInfo: nil, repeats: false)
     }
-    
+
     func setup() {
         let screenBounds = UIScreen.main.bounds
         self.frame = CGRect(x: 0, y: showNotificationUnderNavigationBar == true ? 1 : -1 * notificationViewHeight, width: screenBounds.size.width, height: notificationViewHeight)
@@ -77,10 +77,9 @@ class OPGNotificationView: UIView {
         titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 17)
         titleLabel.textColor = UIColor.white
         titleLabel.textAlignment = NSTextAlignment.center
-        
         addSubview(titleLabel)
     }
-    
+
     func setupNotificationType() {
         switch notificationType {
         case .upload:
@@ -93,5 +92,5 @@ class OPGNotificationView: UIView {
             backgroundColor = UIColor.yellow
         }
     }
-    
+
 }

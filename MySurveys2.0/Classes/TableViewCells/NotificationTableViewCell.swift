@@ -8,8 +8,7 @@
 
 import UIKit
 
-class NotificationTableViewCell: UITableViewCell
-{
+class NotificationTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imgSelect: UIImageView!
     @IBOutlet weak var lblNotificationDesc: UILabel!
@@ -22,13 +21,11 @@ class NotificationTableViewCell: UITableViewCell
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-    
+
     // MARK: - IBOutlet Action methods
-    @IBAction func selectNotification(_ sender: Any)
-    {
+    @IBAction func selectNotification(_ sender: Any) {
         
     }
 

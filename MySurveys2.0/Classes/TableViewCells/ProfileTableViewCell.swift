@@ -31,7 +31,7 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Configure the view for the selected state
     }
     
-    func fillCell(title :String, value: String, tagIdentifier: Int) {
+    func fillCell(title: String, value: String, tagIdentifier: Int) {
         lblTitle.text = title
         txtValue.text = value
         txtValue.tag = tagIdentifier
@@ -45,7 +45,7 @@ class ProfileTableViewCell: UITableViewCell, UITextFieldDelegate {
         
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   // delegate method
         textField.resignFirstResponder()
         return true
     }    

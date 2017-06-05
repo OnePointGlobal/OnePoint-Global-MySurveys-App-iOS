@@ -385,7 +385,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             viewController.bgColor=self.bgColor
         }
     }
-    
+
     func hideKeyboard() -> UIToolbar {
         let toolbarDone = UIToolbar.init()
         toolbarDone.sizeToFit()
@@ -394,12 +394,12 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         toolbarDone.items = [barBtnDone]
         return toolbarDone
     }
-    
+
     func dismissKeyBoard() {
         self.txtUsername?.resignFirstResponder()
         self.txtPassword?.resignFirstResponder()
     }
-    
+
     // MARK: - TextField Delegate Methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
@@ -421,7 +421,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         }
         return false
     }
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.view.layoutIfNeeded()
         if textField.tag == 0 {

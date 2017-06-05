@@ -12,12 +12,11 @@ class UploadSurvey: NSObject {
     static let sharedInstance = UploadSurvey()
     let sdk = OPGSDK()
     private override init() {} // This prevents others from using
-    
 
     /* !
     This method uploads the the offline survey results and sends out upload progress to the listener.
     */
-    func uploadFile(surveyID: NSNumber, panellistID: String, fileName: String, filePath: String, totalUploadedCount: Int, fileCount: Int,pendingCount: Int, index: Int) {
+    func uploadFile(surveyID: NSNumber, panellistID: String, fileName: String, filePath: String, totalUploadedCount: Int, fileCount: Int, pendingCount: Int, index: Int) {
         var progress: Float = 0.0
         let panellistID: String = UserDefaults.standard.value(forKey: "PanelListID") as! String
         do {
@@ -28,11 +27,10 @@ class UploadSurvey: NSObject {
                 progress = Float(fileCount) / Float(totalUploadedCount)
                 // code to update progress bar
                 print("Upload Progress : \(progress*100)%")
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "NotificationIdentifier"), object: nil, userInfo: ["percentage":progress,"surveyReference": surveyID.intValue, "index": index,"numberOfFilesPending":pendingCount])
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "NotificationIdentifier"), object: nil, userInfo: ["percentage": progress, "surveyReference": surveyID.intValue, "index": index, "numberOfFilesPending": pendingCount])
             }
         }
-        catch let err as NSError
-        {
+        catch let err as NSError {
             print("Error: \(err)")
         }
     }
