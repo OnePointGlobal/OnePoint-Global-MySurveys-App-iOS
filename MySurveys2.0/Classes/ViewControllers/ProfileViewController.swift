@@ -82,10 +82,9 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         circularImage(imageView)
         let cameraIconWidth =  btnCameraIcon.bounds.size.width
         btnCameraIcon.layer.cornerRadius = 0.5 * cameraIconWidth
-        if UIDevice.current.userInterfaceIdiom == .pad
-        {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-            NotificationCenter.default.addObserver(self, selector:  #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         }
     }
     
@@ -100,7 +99,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         
         let isOperating : Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
         let array : Array<Any>? = UserDefaults.standard.value(forKey: "downloadSurveysArray") as? Array<Any>
-        if (isOperating == 2) && (array?.count == 0){
+        if (isOperating == 2) && (array?.count == 0) {
             if self.panelist?.firstName==nil || self.panelist?.countryName==nil
             {
                 self.getPanellistProfileFromDB()                        //get from DB again if profile was not loaded due to internet disconnetivity.
@@ -118,12 +117,10 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             self.tabBarController?.navigationItem.rightBarButtonItem = btnEdit
             self.tableview.separatorStyle = UITableViewCellSeparatorStyle.none
             self.tableview.allowsSelection = false
-            self.tableview.reloadData()                 //to disable editing after coming back to profile screen which was left in edit mode
+            self.tableview.reloadData()                 // to disable editing after coming back to profile screen which was left in edit mode
         }
-        
-        let path : String? = UserDefaults.standard.object(forKey: "profileImagePath") as? String
-        if path==nil || (path?.isEmpty)!
-        {
+        let path: String? = UserDefaults.standard.object(forKey: "profileImagePath") as? String
+        if path==nil || (path?.isEmpty)! {
             //Set default image
             self.imageView?.image = UIImage(named:"profile_default.png")
             //download again if profile pic was not loaded due to internet disconnetivity.
@@ -133,8 +130,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 self.downloadProfileImage(mediaId: self.panelist!.mediaID.description, didChangeProfilePic: false)              //media ID coming from DB is Int so need explicit cast(description).
             }
         }
-        else
-        {
+        else {
             let imgPath = self.getProfileImagePath()
             let fileExists = FileManager().fileExists(atPath: (imgPath))
             if fileExists
@@ -142,11 +138,9 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 self.imageView?.image = UIImage(contentsOfFile:(imgPath))
             }
         }
-       
     }
 
-    override func viewWillDisappear(_ animated: Bool)
-    {
+    override func viewWillDisappear(_ animated: Bool) {
         self.isEditable = false
     }
 
@@ -156,10 +150,8 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         coordinator.animate(alongsideTransition: nil, completion: { _ in
             let bounds = UIScreen.main.bounds
             let height = bounds.size.height
-            if (self.tableview != nil)
-            {
-                if(height==768 || height==1536)
-                {
+            if (self.tableview != nil) {
+                if(height==768 || height==1536) {
                     //enable scroll for iPad landscape
                     self.tableview.isScrollEnabled=true
                 }
@@ -367,7 +359,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         let isSocialLogin = UserDefaults.standard.value(forKey: "isSocialLogin") as? Int
         let deviceToken : String? = UserDefaults.standard.value(forKey: "DeviceTokenID") as? String
         let bgImagePath:String? = AppTheme.getLoginBGImagePath()
-        let userLoggedIn : String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
         self.unRegisterForAPNS(deviceToken)
         let appDomain = Bundle.main.bundleIdentifier
         UserDefaults.standard.removePersistentDomain(forName: appDomain!)
@@ -389,9 +380,9 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         {
             OPGSDK.logout()
         }
-        UserDefaults.standard.set(userLoggedIn, forKey: "isUserLoggedIN")
+        UserDefaults.standard.set("0", forKey: "isUserLoggedIN")                    // 0 indicates not logged in or logout
         UserDefaults.standard.set(deviceToken, forKey: "DeviceTokenID")             // Before Logout, Re-assign DeviceTokenID as we get that only for one time
-        AppTheme.setLoginBGImagePath(path: bgImagePath!)         // Before Logout, Re-assign login BG image path as it is to be shown after logout
+        AppTheme.setLoginBGImagePath(path: bgImagePath!)                            // Before Logout, Re-assign login BG image path as it is to be shown after logout
         AppTheme.setLoginBtnTextColor(color: AppTheme.appBackgroundColor())
         UserDefaults.standard.synchronize()
         _ = self.navigationController?.popViewController(animated: true)

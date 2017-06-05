@@ -262,6 +262,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         self.geoFencedView?.isHidden = true
         self.shimmeringView!.isHidden = false
         hideGeoFencePopUp()
+        self.segmentedControl.backgroundColor = UIColor.white
         self.segmentedControl.tintColor = AppTheme.appBackgroundColor()
         self.segmentedControl.selectedSegmentIndex = 0
         self.segmentedControl.subviews[0].tintColor = AppTheme.appBackgroundColor()
@@ -1749,13 +1750,13 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             {
                 if UIDevice.current.userInterfaceIdiom == .pad
                 {
-                    self.tableView?.isScrollEnabled = true
+                    self.tableViewGeoFenced?.isScrollEnabled = true
                     self.constraintGeotableViewHeight.constant = 210
                     self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)! - 211
                 }
                 else
                 {
-                    self.tableView?.isScrollEnabled = true
+                    self.tableViewGeoFenced?.isScrollEnabled = true
                     self.constraintGeotableViewHeight.constant = 180
                     self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)! - 181
                 }
@@ -1765,13 +1766,13 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             {
                 if UIDevice.current.userInterfaceIdiom == .pad
                 {
-                    self.tableView?.isScrollEnabled = false
+                    self.tableViewGeoFenced?.isScrollEnabled = false
                     self.constraintGeotableViewHeight.constant = 105
                     self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)! - 106
                 }
                 else
                 {
-                    self.tableView?.isScrollEnabled = false
+                    self.tableViewGeoFenced?.isScrollEnabled = false
                     self.constraintGeotableViewHeight.constant = 90
                     self.constraintMapViewHeight.constant = (self.geoFencedView?.bounds.size.height)! - 91
                 }
