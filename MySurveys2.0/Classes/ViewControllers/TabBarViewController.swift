@@ -32,7 +32,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
@@ -41,14 +41,14 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         UITabBar.appearance().tintColor = AppTheme.appBackgroundColor()
 
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
     }
-    
+
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print(item.tag)
         
@@ -56,7 +56,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
             // Do something if index is 0
             self.navigationItem.hidesBackButton = true
             self.setThemeBGImage()
-            
         }
         else if item == ((self.tabBar.items?[1])! as UITabBarItem) {
             // Do something if index is 1
@@ -79,7 +78,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
             self.navigationItem.hidesBackButton = true
         }
     }
-    
+
     func setThemeBGImage() {
         let headerLogoBGImagePath: String = AppTheme.getHeaderLogoImagePath()
         if headerLogoBGImagePath.isEmpty {

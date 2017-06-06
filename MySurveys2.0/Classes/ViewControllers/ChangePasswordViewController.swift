@@ -58,13 +58,13 @@ class ChangePasswordViewController: RootViewController, UITextFieldDelegate {
         self.btnOK.setTitle((NSLocalizedString("OK", comment: "")), for: .normal)
         self.btnCancel.setTitle((NSLocalizedString("Cancel", comment: "")), for: .normal)
     }
-    
+
     func resetUI() {
         self.txtOldPassword.text = ""
         self.txtNewPassword.text = ""
         self.txtConfirmPassword.text = ""
     }
-    
+
     // MARK: - IBOutlet Action methods
     @IBAction func changePasswordAction(_ sender: AnyObject) {
         var changePassowrdObj: OPGChangePassword!
@@ -147,7 +147,7 @@ class ChangePasswordViewController: RootViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.view.layoutIfNeeded()
         if textField.tag == 2 {
@@ -158,7 +158,7 @@ class ChangePasswordViewController: RootViewController, UITextFieldDelegate {
 
         }
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5, animations: {
@@ -166,4 +166,5 @@ class ChangePasswordViewController: RootViewController, UITextFieldDelegate {
             self.view.layoutIfNeeded()
         })
     }
+
 }

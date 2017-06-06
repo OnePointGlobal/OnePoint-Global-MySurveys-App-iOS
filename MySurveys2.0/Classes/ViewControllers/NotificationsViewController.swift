@@ -19,19 +19,19 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
     var selectedIndexArray: [Int] = []
     var isEditable: Bool = false
     var notificationDescription: String?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorInset = UIEdgeInsets.zero
         self.tableView.layoutMargins = UIEdgeInsets.zero
         self.tableView.tableFooterView = UIView()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         // thamarai changes
         let isOperating: Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
@@ -114,8 +114,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             self.tabBarController?.navigationItem.rightBarButtonItem = nil
         }
     }
-    
-    
+
      // MARK: - IBAction methods
     func editNotificationTable(sender: UIBarButtonItem) {
         if self.isEditable {
@@ -139,7 +138,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             self.tableView.reloadData()                                                             // change notification table from reminder icon to select icon when edit btn is clicked
         }
     }
-    
+
     func cancelEditing(sender: UIBarButtonItem) {
         self.tabBarController?.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Edit", comment: "")             // reset button from delete to Edit afetr clicking cancel
         self.tabBarController?.navigationItem.leftBarButtonItem = nil                                     // remove cancel button
@@ -148,7 +147,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
         self.tableView.reloadData()                                                                             // reset table
     }
 
-    
+
     // MARK: - Tableview Delegates
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -195,7 +194,6 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             else {
                 tableViewCell.imgSelect.image = UIImage(named: "notif_reminder_iPad.png")
             }
-            
 //            if (indexPath.row%2)==0                                                            // dummy condition to differentiate reminders and other notifs
 //            {
 //                tableViewCell.imgSelect.image = UIImage(named: "notif_reminder.png")
@@ -210,7 +208,6 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell: NotificationTableViewCell = tableView.cellForRow(at: indexPath) as! NotificationTableViewCell
-
         if self.isEditable {                                                                            // in edit mode, select the table view cells
             if self.selectedIndexArray.contains(indexPath.row) {
                 if UIDevice.current.userInterfaceIdiom == .phone {
@@ -244,12 +241,11 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             self.performSegue(withIdentifier: "ShowNotification", sender: nil)                      // in normal mode, perform segue on selection
         }
     }
-    
-    
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             // handle delete (by removing the data from your array and updating the tableview)
@@ -272,12 +268,10 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
         }
     }
 
-    
-
     // MARK: - Segue Operation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowNotification" {
-            //pass data here
+            // pass data here
             let viewController: ShowNotificationViewController = segue.destination as! ShowNotificationViewController
             viewController.notificationDescription = self.notificationDescription
         }

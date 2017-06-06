@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     var privacyUrl = "https://framework.onepointglobal.com/appwebsite/privacy?location=mobile&culture="
     var tcUrl = "https://framework.onepointglobal.com/appwebsite/TermsOfUse?location=mobile&culture="
     var aboutUsUrl = "https://framework.onepointglobal.com/appwebsite/about?location=mobile&culture="
-    
+
     // MARK: - View Delegate Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
 
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.hidesBarsOnSwipe = false
@@ -49,8 +49,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableViewCell?.switchControl.onTintColor = AppTheme.appBackgroundColor()
 
     }
-    
-    
+
     // MARK: - Table View Delegate Methods
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -59,11 +58,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             return 60.0
         }
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return settingItems.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tableViewCell: SettingsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "settingsCell") as! SettingsTableViewCell
 
@@ -83,7 +82,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
         return tableViewCell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         switch indexPath.row {
@@ -114,7 +113,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             break
         }
     }
-    
+
     // MARK: - Segue Operations
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "commonWebView" {
@@ -124,7 +123,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             viewController.pageTitle = self.pageTitle
         }
     }
-    
+
     func switchEvents(sender: AnyObject) {
         let switchControl = sender as! UISwitch
         if switchControl.isOn {
@@ -143,4 +142,5 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             print("GeoFencing stopped")
         }
     }
+    
 }

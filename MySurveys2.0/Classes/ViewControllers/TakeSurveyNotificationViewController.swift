@@ -11,7 +11,7 @@ import UIKit
 class TakeSurveyNotificationViewController: RootViewController, UITextViewDelegate {
 
     @IBOutlet weak var txtNotificationDesc: UITextView!
-    @IBOutlet weak var btnTakeSurvey : UIButton!
+    @IBOutlet weak var btnTakeSurvey: UIButton!
 
 
     var surveyReference: NSString!
@@ -24,13 +24,12 @@ class TakeSurveyNotificationViewController: RootViewController, UITextViewDelega
         self.btnTakeSurvey.layer.cornerRadius = 0.5 * btnTakeSurvey.bounds.size.width
         self.btnTakeSurvey.backgroundColor = AppTheme.appBackgroundColor()
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func takeSurveyAction(_ sender: Any) {
         print("Taking Survey")
         self.performSegue(withIdentifier: "TakeNotificationSurvey", sender: nil)

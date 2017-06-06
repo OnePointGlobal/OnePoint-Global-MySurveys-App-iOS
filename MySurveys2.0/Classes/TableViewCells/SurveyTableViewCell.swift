@@ -53,7 +53,7 @@ class SurveyTableViewCell: UITableViewCell {
                 }
                 else if survey.isOfflineDownloaded == 1 {
                     self.btnSurveyDesc.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
-                    self.btnSurveyDesc.setTitle(NSLocalizedString("Downloading...", comment: "")/*survey.surveyDescription*/,for: .normal)
+                    self.btnSurveyDesc.setTitle(NSLocalizedString("Downloading...", comment: "")/* survey.surveyDescription*/, for: .normal)
                   //      test download thamarai
                 }
                 else if survey.isOfflineDownloaded == 0 {
@@ -70,7 +70,6 @@ class SurveyTableViewCell: UITableViewCell {
         }
     }
 
-    
     func fillCellGeoFenced(_ survey: OPGGeoFencingModel) {
         selectButton.layer.cornerRadius = 0.5 * selectButton.bounds.size.width
         print("Geo check! For \(survey.surveyName) it is \(survey.isDeleted)")
@@ -93,4 +92,5 @@ class SurveyTableViewCell: UITableViewCell {
             self.btnSurveyDesc.setTitle(survey.createdDate, for: .normal)
         }
     }
+
 }

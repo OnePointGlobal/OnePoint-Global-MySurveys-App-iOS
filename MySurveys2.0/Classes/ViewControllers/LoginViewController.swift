@@ -306,17 +306,17 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         self.btnFacebookLogin.isUserInteractionEnabled = isInteractionEnabled
         self.btnGooglePlusLogin.isUserInteractionEnabled = isInteractionEnabled
     }
-    
+
     func startActivityIndicator() {
         self.activityIndicatorView?.isHidden = false
         self.activityIndicatorView?.startAnimating()
     }
-    
+
     func stopActivityIndicator() {
         self.activityIndicatorView?.isHidden = true
         self.activityIndicatorView?.stopAnimating()
     }
-    
+
     func setThemeElements() {
         let bgImagePath: String! = AppTheme.getLoginBGImagePath()
         if  bgImagePath.isEmpty {
@@ -441,7 +441,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             })
         }
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5, animations: {
@@ -451,7 +451,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             self.view.layoutIfNeeded()
         })
     }
-    
+
     // MARK: - GoogleSignin Delegate Methods
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         self.startActivityIndicator()
@@ -524,7 +524,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             }
         }
     }
-    
+
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Signin
         

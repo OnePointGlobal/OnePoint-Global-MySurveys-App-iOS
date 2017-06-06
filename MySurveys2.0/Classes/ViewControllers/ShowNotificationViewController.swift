@@ -14,10 +14,9 @@ class ShowNotificationViewController: RootViewController, UITextViewDelegate {
     var notificationDescription: String?
 
 
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
-        self.txtNotificationDesc.delegate=self
+        self.txtNotificationDesc.delegate = self
         self.txtNotificationDesc.text = self.notificationDescription
     }
 

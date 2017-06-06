@@ -46,7 +46,6 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
         self.activityIndicator.color = self.bgColor
         self.view.backgroundColor = self.bgColor
         self.bgView.backgroundColor = self.bgColor
-        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -67,7 +66,7 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.hidesBarsOnSwipe = false
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
@@ -136,7 +135,7 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Please enter a valid e-mail ID.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
         }
     }
-    
+
     func isValidEmail(mailID: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
@@ -213,7 +212,7 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
             }
         }
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         let bounds = UIScreen.main.bounds
         let height = bounds.size.height
@@ -244,4 +243,5 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
                 }
         })
     }
+
 }

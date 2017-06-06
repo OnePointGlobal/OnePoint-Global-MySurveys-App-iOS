@@ -33,7 +33,6 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
         getPanelsfromDB()
     }
     
-    
     // MARK: - Generic Private Methods
     func getPanelsfromDB() {
         panelsArray = (CollabrateDB.sharedInstance().getPanels() as? Array<OPGPanel>)!
@@ -54,9 +53,8 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
         }
     }
 
-        
     // MARK: - UITableView Delegates
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if UIDevice.current.userInterfaceIdiom == .pad {
             return 260.0
@@ -76,7 +74,7 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let paneltableViewCell: ChangePanelTableViewCell = tableView.dequeueReusableCell(withIdentifier: tableViewCell) as! ChangePanelTableViewCell
         paneltableViewCell.tag = indexPath.row
@@ -149,7 +147,7 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
         paneltableViewCell.selectionStyle = UITableViewCellSelectionStyle.default
         return paneltableViewCell
     }
-    
+
     func saveImagetoCache(_ image: UIImage, _ fileName: NSNumber) {
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let destinationFolderPath = path.appending("/PanelImages") as String
@@ -170,7 +168,7 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
             }
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tableViewCell = tableView.cellForRow(at: indexPath)!
         tableViewCell.contentView.backgroundColor = UIColor(white: 1, alpha: 0.5)
@@ -192,5 +190,5 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
 }
