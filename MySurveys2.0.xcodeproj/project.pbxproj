@@ -70,6 +70,9 @@
 		785B8B141E1E254800F09F20 /* libOnePointFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB081DBF7F7E0066A049 /* libOnePointFramework.a */; };
 		7869DB371E23BA05001F016F /* OPGResourceBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7812F82E1E1F98FF00CBFF36 /* OPGResourceBundle.bundle */; };
 		787D1E591E1E22120095DFFA /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 787D1E581E1E22120095DFFA /* libxml2.tbd */; };
+		787D6B751EE676E10055C69E /* OPGConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6B741EE676E10055C69E /* OPGConstants.swift */; };
+		787D6B761EE676E10055C69E /* OPGConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6B741EE676E10055C69E /* OPGConstants.swift */; };
+		787D6B771EE676E10055C69E /* OPGConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6B741EE676E10055C69E /* OPGConstants.swift */; };
 		787D88E21E09337800E15D22 /* number_of_times.png in Resources */ = {isa = PBXBuildFile; fileRef = 787D88DF1E09337800E15D22 /* number_of_times.png */; };
 		787D88E31E09337800E15D22 /* number_of_times@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787D88E01E09337800E15D22 /* number_of_times@2x.png */; };
 		787D88E41E09337800E15D22 /* number_of_times@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787D88E11E09337800E15D22 /* number_of_times@3x.png */; };
@@ -97,8 +100,8 @@
 		78CB25981EA5EE460002EC6D /* survey_calendar_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB25881EA5EE460002EC6D /* survey_calendar_iPad@2x.png */; };
 		78CB25991EA5EE460002EC6D /* survey_time_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB25891EA5EE460002EC6D /* survey_time_iPad.png */; };
 		78CB259A1EA5EE460002EC6D /* survey_time_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB258A1EA5EE460002EC6D /* survey_time_iPad@2x.png */; };
-		78D5EA161DC36091009125A7 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		78E2252D1DC3638400880AE0 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		78D5EA161DC36091009125A7 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		78E2252D1DC3638400880AE0 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		78E368461DF6DF4900D14F07 /* profile_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78E368451DF6DF4900D14F07 /* profile_default.png */; };
 		78E4F2731E1271FF001678FB /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E4F2721E1271FF001678FB /* UserNotifications.framework */; };
 		78E9F4CB1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F4CA1DDC61500004FC73 /* ProfileTableViewCountryCell.swift */; };
@@ -332,6 +335,7 @@
 		781401151EAE02A000799399 /* profile_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile_bg@3x.png"; path = "icons/profile_bg@3x.png"; sourceTree = "<group>"; };
 		7853A2751DB899B8005EC4D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		787D1E581E1E22120095DFFA /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		787D6B741EE676E10055C69E /* OPGConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OPGConstants.swift; path = Classes/ViewControllers/OPGConstants.swift; sourceTree = "<group>"; };
 		787D88DF1E09337800E15D22 /* number_of_times.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = number_of_times.png; path = icons/number_of_times.png; sourceTree = "<group>"; };
 		787D88E01E09337800E15D22 /* number_of_times@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "number_of_times@2x.png"; path = "icons/number_of_times@2x.png"; sourceTree = "<group>"; };
 		787D88E11E09337800E15D22 /* number_of_times@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "number_of_times@3x.png"; path = "icons/number_of_times@3x.png"; sourceTree = "<group>"; };
@@ -637,6 +641,7 @@
 		13FE6EE91D670CA100439C89 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				787D6B741EE676E10055C69E /* OPGConstants.swift */,
 				94C216E41DDF19DD004C1131 /* RootViewController.swift */,
 				94CD76101DB4A63B00C6F958 /* LoginViewController.swift */,
 				1399F9051DFA8B09006AFD4C /* ForgotPasswordViewController.swift */,
@@ -1276,7 +1281,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if hash tailor 2>/dev/null; then\n  tailor\nelse\n  echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
-			showEnvVarsInLog = 1;
 		};
 		D1301DE60E8965C1FD943128 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1319,7 +1323,7 @@
 				94CD76221DB4A63B00C6F958 /* LoginViewController.swift in Sources */,
 				94C216E51DDF19DD004C1131 /* RootViewController.swift in Sources */,
 				94CD762E1DB4A63B00C6F958 /* SurveyViewController.swift in Sources */,
-				78D5EA161DC36091009125A7 /* BuildFile in Sources */,
+				78D5EA161DC36091009125A7 /* (null) in Sources */,
 				789CCFEA1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */,
 				9408BB021DBF7EFE0066A049 /* NSString+NSDate.m in Sources */,
 				94CD75FD1DB4A51E00C6F958 /* UIImage.swift in Sources */,
@@ -1339,7 +1343,7 @@
 				78EAFECB1DD32E9E002158A1 /* TakeSurveyNotificationViewController.swift in Sources */,
 				94CD75FB1DB4A51E00C6F958 /* UIColor.swift in Sources */,
 				946474A61DBE497A00016F2C /* SettingsViewController.swift in Sources */,
-				78E2252D1DC3638400880AE0 /* BuildFile in Sources */,
+				78E2252D1DC3638400880AE0 /* (null) in Sources */,
 				94CD761A1DB4A63B00C6F958 /* AboutUsViewController.swift in Sources */,
 				78EAFEC51DD302CC002158A1 /* NotificationTableViewCell.swift in Sources */,
 				78C7540D1DC367E800832AD0 /* ProfileLogoutTableViewCell.swift in Sources */,
@@ -1347,6 +1351,7 @@
 				946474AA1DBE522A00016F2C /* ChangePanelViewController.swift in Sources */,
 				94CD76001DB4A58A00C6F958 /* OPGMapView.swift in Sources */,
 				946474AC1DBE524000016F2C /* ChangePasswordViewController.swift in Sources */,
+				787D6B751EE676E10055C69E /* OPGConstants.swift in Sources */,
 				94CD76301DB4A63B00C6F958 /* TabBarViewController.swift in Sources */,
 				94D620CC1DC321B500629E52 /* ChangePanelTableViewCell.swift in Sources */,
 				9408BAF71DBF7E9A0066A049 /* CollabrateDB.m in Sources */,
@@ -1361,6 +1366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787D6B761EE676E10055C69E /* OPGConstants.swift in Sources */,
 				78EAFEC61DD302CC002158A1 /* NotificationTableViewCell.swift in Sources */,
 				94CD76231DB4A63B00C6F958 /* LoginViewController.swift in Sources */,
 				78E9F4CC1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */,
@@ -1393,6 +1399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787D6B771EE676E10055C69E /* OPGConstants.swift in Sources */,
 				944B88081DD04DA900960EBD /* OfflineSurveyViewController.swift in Sources */,
 				9408BAF91DBF7E9A0066A049 /* CollabrateDB.m in Sources */,
 				1337DB491D07F4140075B356 /* MySurveys2_0UITests.swift in Sources */,

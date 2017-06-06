@@ -558,7 +558,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             }))
             alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.destructive, handler: nil))
             self.present(alert, animated: true, completion: nil)
-
         }
         else {
             super.showNoInternetConnectionAlert()
@@ -739,7 +738,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             let tableViewCell = tableView.dequeueReusableCell(withIdentifier: "Profile") as! ProfileTableViewCell
             return tableViewCell
         }
-
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -755,5 +753,5 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             viewController.delegate=self
         }
     }
-
+    
 }

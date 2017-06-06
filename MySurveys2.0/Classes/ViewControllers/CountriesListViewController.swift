@@ -76,7 +76,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         let navigationItem = UINavigationItem()             // Create a navigation item with a title
         navigationItem.title = NSLocalizedString("Country", comment: "Country")
         // Create left and right button for navigation item
-        let leftButton =  UIBarButtonItem(title: NSLocalizedString("Cancel", comment: "Cancel"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelBtn_clicked))
+        let leftButton =  UIBarButtonItem(title: NSLocalizedString("Cancel", comment: "Cancel"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelBtnClicked))
         navigationItem.leftBarButtonItem = leftButton
         // Assign the navigation item to the navigation bar
         navigationBar.items = [navigationItem]
