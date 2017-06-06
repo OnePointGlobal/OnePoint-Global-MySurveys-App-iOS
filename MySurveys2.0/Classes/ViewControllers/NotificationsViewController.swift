@@ -44,7 +44,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             self.lblNoNewNotifications?.isHidden = false
             self.tableView.isUserInteractionEnabled = false                         // disable selection when there are no notifications.
             self.tableView.backgroundView = self.lblNoNewNotifications
-            self.lblNoNewNotifications?.text = NSLocalizedString("No notifications so far.", comment: "No notifications so far.")
+            self.lblNoNewNotifications?.text = NSLocalizedString("No notifications so far.", comment: "")
             self.tabBarController?.navigationItem.rightBarButtonItem = nil
         }
         self.navigationController?.isNavigationBarHidden = false

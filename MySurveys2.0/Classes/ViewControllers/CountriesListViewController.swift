@@ -37,9 +37,8 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         self.activityIndicator.startAnimating()
         self.getCountries()
         self.tableView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
-        
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         self.createNavBarforiPad(width: Int(view.frame.size.width))
         self.activityIndicator.color = AppTheme.appBackgroundColor()
@@ -52,7 +51,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
     override func viewWillDisappear(_ animated: Bool) {
         delegate?.restoreEditMode()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -77,7 +76,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         let navigationItem = UINavigationItem()             // Create a navigation item with a title
         navigationItem.title = NSLocalizedString("Country", comment: "Country")
         // Create left and right button for navigation item
-        let leftButton =  UIBarButtonItem(title: NSLocalizedString("Cancel", comment: "Cancel"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelBtn_clicked))
+        let leftButton =  UIBarButtonItem(title: NSLocalizedString("Cancel", comment: "Cancel"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelBtnClicked))
         navigationItem.leftBarButtonItem = leftButton
         // Assign the navigation item to the navigation bar
         navigationBar.items = [navigationItem]
@@ -115,7 +114,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
             self.arrayOfCountryNames.append(country.name)
         }
     }
-    
+
     func getFilteredArray(startChar: String) -> [String] {
         var sectionArray: [String] = []
         for name in self.arrayOfCountryNames {
@@ -127,18 +126,18 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         }
         return sectionArray
     }
-    
-    func buildCountryDictionary() {                 //Alphabet Key abd country array as value {
+
+    func buildCountryDictionary() {                 // Alphabet Key abd country array as value
         for letter in self.indexCharacters {
             self.indexCountryDict[letter] = self.getFilteredArray(startChar: letter)
         }
     }
-    
-    func cancelBtn_clicked(_ sender: UIBarButtonItem) {
+
+    func cancelBtnClicked(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func getCountryByName(name : String) -> OPGCountry {
+    func getCountryByName(name: String) -> OPGCountry {
         let opgCountry: OPGCountry = OPGCountry()
         if self.countryArray.count > 0 {
             for country in self.countryArray {
@@ -149,8 +148,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         }
         return opgCountry
     }
-    
-     
+
     // MARK: - Table view data source
      func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -172,7 +170,6 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         return 0
     }
 
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if countryArray.count > 0 {
@@ -186,9 +183,8 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         }
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
         let sectionTitle = self.indexCharacters[indexPath.section]
             let sectionCountries = self.indexCountryDict[sectionTitle]
             let countryName: String = sectionCountries?[indexPath.row] as! String
@@ -197,15 +193,15 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         delegate?.userDidChangeCountry(newCountry: self.getCountryByName(name: countryName))
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return self.indexCharacters
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.indexCharacters[section]
     }
-    
+
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
        return self.indexCharacters.index(of: title)!
     }

@@ -11,6 +11,7 @@ import CoreData
 import FBSDKCoreKit
 import UserNotifications
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     var window: UIWindow?
@@ -42,9 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UIApplication.shared.statusBarStyle = .lightContent
         // Override point for customization after application launch.
         UIApplication.shared.applicationIconBadgeNumber = -1
-        OPGSDK.setAppVersion("App_Version")
         self.setAppViews()
-        OPGSDK.initialize(withUserName: "Username", withSDKKey: "Shared_Key")
+        OPGSDK.setAppVersion(OPGConstants.sdk.AppVersion)
+        OPGSDK.initialize(withUserName: OPGConstants.sdk.Username, withSDKKey:OPGConstants.sdk.SharedKey)
         self.registerForPushNotifications(application: application)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true

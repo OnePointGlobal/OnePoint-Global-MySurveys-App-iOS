@@ -46,19 +46,18 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
         self.activityIndicator.color = self.bgColor
         self.view.backgroundColor = self.bgColor
         self.bgView.backgroundColor = self.bgColor
-        
     }
 
     override func viewDidAppear(_ animated: Bool) {
         if UIDevice.current.userInterfaceIdiom == .pad {
             let bounds = UIScreen.main.bounds
             let width = bounds.size.width
-            if width == 1024 || width == 2048 {
+            if width == OPGConstants.device.iPadLandscapeWidth || width == OPGConstants.device.iPadRetinaLandscapeWidth {
                 self.setConstraintsForiPadLandscape()
             }
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
@@ -67,7 +66,7 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.hidesBarsOnSwipe = false
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
@@ -136,7 +135,7 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Please enter a valid e-mail ID.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
         }
     }
-    
+
     func isValidEmail(mailID: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
@@ -172,14 +171,14 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return false
     }
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.view.layoutIfNeeded()
         let height = self.view.bounds.height
         let width = self.view.bounds.width
 
         if UIDevice.current.userInterfaceIdiom == .phone {
-            if height > 480 {
+            if height > OPGConstants.device.iPhone4Height {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.constraintViewTop.constant = -70.0
                     self.view.layoutIfNeeded()
@@ -194,7 +193,7 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
         }
         else {
             // iPad landscape
-            if width == 1024.0 || width == 2048.0 {
+            if width == OPGConstants.device.iPadLandscapeWidth || width == OPGConstants.device.iPadRetinaLandscapeWidth {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.emailFieldTopSpace.constant = 5.0
                     self.emailToLabelTopSpace.constant = 5.0
@@ -203,7 +202,7 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
                     self.view.layoutIfNeeded()
                 })
             }
-            else if width == 768.0 || width == 1536.0 {
+            else if width == OPGConstants.device.iPadPortraitWidth || width == OPGConstants.device.iPadRetinaPortraitWidth {
                 // iPad portrait
                 UIView.animate(withDuration: 0.5, animations: {
                     self.emailFieldTopSpace.constant = 125.0
@@ -213,7 +212,7 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
             }
         }
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         let bounds = UIScreen.main.bounds
         let height = bounds.size.height
@@ -221,7 +220,7 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5, animations: {
                 if UIDevice.current.userInterfaceIdiom == .pad {
-                    if height == 1024 || height == 2048 {
+                    if height == OPGConstants.device.iPadPortraitHeight || height == OPGConstants.device.iPadRetinaPortraitHeight {
                         // iPad portarit
                         self.constraintViewTop.constant = 30
                         // self.emailFieldTopSpace.constant = 0

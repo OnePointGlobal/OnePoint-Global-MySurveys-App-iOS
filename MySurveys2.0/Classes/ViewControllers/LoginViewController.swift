@@ -45,11 +45,11 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             }
         }
     }
-    
+
     @IBAction func forgotPasswordAction(_ sender: AnyObject) {
         self.performSegue(withIdentifier: "embedForgot", sender: self)
     }
-    
+
     @IBAction func googleSignInAction(_ sender: AnyObject) {
         if super.isOnline() {
             GIDSignIn.sharedInstance().signIn()
@@ -89,7 +89,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             }
         }
     }
-    
+
     // MARK: - View delegate methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,7 +134,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         }
         self.setThemeElements()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.txtUsername?.text = ""
@@ -157,7 +157,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             let bounds = UIScreen.main.bounds
             let width = bounds.size.width
             if self.constarintForgotPassowrdTrailingSpace != nil { // temp fix
-                if width == 1024 || width == 2048 {
+                if width == OPGConstants.device.iPadLandscapeWidth || width == OPGConstants.device.iPadRetinaLandscapeWidth {
                     // iPad landscape
                     self.constarintForgotPassowrdTrailingSpace.constant = 250
                 }
@@ -174,13 +174,13 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         if  UIDevice.current.userInterfaceIdiom == .pad {
             let bounds = UIScreen.main.bounds
             let width = bounds.size.width
-            if width == 1024 || width == 2048 {
+            if width == OPGConstants.device.iPadLandscapeWidth || width == OPGConstants.device.iPadRetinaLandscapeWidth {
                 // iPad landscape
                 self.constarintForgotPassowrdTrailingSpace.constant = 250
             }
         }
     }
-    
+
     // MARK: - Generic Private methods
     func authenticate() {
         self.startActivityIndicator()    // start indicator when "Go" is pressed on keyboard
@@ -232,7 +232,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             }
         }
     }
-    
+
     func registerForAPNS() {
         let sdk = OPGSDK()
         let deviceToken: String? = UserDefaults.standard.value(forKey: "DeviceTokenID") as? String
@@ -245,7 +245,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             }
         }
     }
-    
+
     func authenticateWithFacebook(result: FBSDKLoginManagerLoginResult) {
         if result.token != nil {
 
@@ -306,17 +306,17 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         self.btnFacebookLogin.isUserInteractionEnabled = isInteractionEnabled
         self.btnGooglePlusLogin.isUserInteractionEnabled = isInteractionEnabled
     }
-    
+
     func startActivityIndicator() {
         self.activityIndicatorView?.isHidden = false
         self.activityIndicatorView?.startAnimating()
     }
-    
+
     func stopActivityIndicator() {
         self.activityIndicatorView?.isHidden = true
         self.activityIndicatorView?.stopAnimating()
     }
-    
+
     func setThemeElements() {
         let bgImagePath: String! = AppTheme.getLoginBGImagePath()
         if  bgImagePath.isEmpty {
@@ -338,19 +338,19 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         let height = bounds.size.height
         if  UIDevice.current.userInterfaceIdiom == .phone {
             switch height {
-            case 480.0:
+            case OPGConstants.device.iPhone4Height:
                 imgLoginBG?.image = UIImage(named: "Default@2x.png")
                 break
-            case 568.0:
+            case OPGConstants.device.iPhone5Height:
                 print("iPhone 5")
                 imgLoginBG?.image = UIImage(named: "Default-568h@2x.png")
                 break
-            case 667.0:
-                print("iPhone 6")
+            case OPGConstants.device.iPhone6And7Height:
+                print("iPhone 6 or 7")
                 imgLoginBG?.image = UIImage(named: "Default-667h@2x.png")
                 break
-            case 736.0:
-                print("iPhone 6+")
+            case OPGConstants.device.iPhone6PlusAnd7PlusHeight:
+                print("iPhone 6+ or 7+")
                 imgLoginBG?.image = UIImage(named: "Default-736@3x.png")
                 break
             default:
@@ -361,11 +361,11 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         }
         else if UIDevice.current.userInterfaceIdiom == .pad {
             switch height {
-            case 1024.0:
+            case OPGConstants.device.iPadPortraitHeight:
                 print("iPad Portrait")
                 imgLoginBG?.image = UIImage(named: "Default_iPad_Portrait.png")
                 break
-            case 768.0:
+            case OPGConstants.device.iPadLandscapeHeight:
                 print("iPad Landscape")
                 imgLoginBG?.image = UIImage(named: "Default_iPad_Landscape.png")
                 break
@@ -385,7 +385,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             viewController.bgColor=self.bgColor
         }
     }
-    
+
     func hideKeyboard() -> UIToolbar {
         let toolbarDone = UIToolbar.init()
         toolbarDone.sizeToFit()
@@ -394,12 +394,12 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         toolbarDone.items = [barBtnDone]
         return toolbarDone
     }
-    
+
     func dismissKeyBoard() {
         self.txtUsername?.resignFirstResponder()
         self.txtPassword?.resignFirstResponder()
     }
-    
+
     // MARK: - TextField Delegate Methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
@@ -421,7 +421,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         }
         return false
     }
-    
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.view.layoutIfNeeded()
         if textField.tag == 0 {
@@ -441,7 +441,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             })
         }
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.5, animations: {
@@ -451,7 +451,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             self.view.layoutIfNeeded()
         })
     }
-    
+
     // MARK: - GoogleSignin Delegate Methods
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         self.startActivityIndicator()
@@ -524,9 +524,9 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             }
         }
     }
-    
+
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Signin
-        
     }
+
 }
