@@ -16,7 +16,7 @@ class UploadSurvey: NSObject {
     /* !
     This method uploads the the offline survey results and sends out upload progress to the listener.
     */
-    func uploadFile(surveyID: NSNumber, panellistID: String, fileName: String, filePath: String, totalUploadedCount: Int, fileCount: Int, pendingCount: Int, index: Int) {
+    func uploadFile(surveyID: NSNumber, panellistID: String, fileName: String, filePath: String, totalUploadedCount: Int, fileCount: Int, pendingCount: Int, index: IndexPath) {
         var progress: Float = 0.0
         let panellistID: String = UserDefaults.standard.value(forKey: "PanelListID") as! String
         do {
@@ -35,7 +35,7 @@ class UploadSurvey: NSObject {
         }
     }
 
-    func uploadOfflineSurvey(_ surveyReference: NSNumber, panelistID: String, index: Int) {
+    func uploadOfflineSurvey(_ surveyReference: NSNumber, panelistID: String, index: IndexPath) {
         let sdk = OPGSDK()
         let offlineResultFiles: NSArray = sdk.getResultFiles(forOfflineSurvey: surveyReference) as NSArray
         let offlineMediaFiles: NSArray = sdk.getMediaFiles(forOfflineSurvey:  surveyReference) as NSArray

@@ -25,7 +25,7 @@ class OfflineSurveyViewController: RootViewController {
     @IBOutlet weak var progressView: UIProgressView!
     var surveyID: NSNumber?
     var surveySelected: OPGSurvey?
-    var selectedSurveyIndex: Int?
+    var selectedSurveyIndex: IndexPath?
     var surveyCounter: NSNumber?
     var totalNumberOfFiles = 0
     var numberOfFilesPending  = 0

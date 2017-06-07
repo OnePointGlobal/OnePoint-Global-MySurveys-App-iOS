@@ -60,6 +60,9 @@ class SurveyTableViewCell: UITableViewCell {
                     self.btnSurveyDesc.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
                     self.btnSurveyDesc.setTitle(NSLocalizedString(survey.surveyDescription, comment: ""), for: .normal)
                 }
+                else {
+                    self.btnSurveyDesc.setTitle(NSLocalizedString(survey.surveyDescription, comment: ""), for: .normal)
+                }
             }
             else {
                 self.btnSurveyDesc.setTitle(NSLocalizedString(survey.surveyDescription, comment: ""), for: .normal)
@@ -91,6 +94,8 @@ class SurveyTableViewCell: UITableViewCell {
             self.lblSurveyName.text=survey.surveyName
             self.btnSurveyDesc.setTitle(survey.createdDate, for: .normal)
         }
+        self.selectButton.backgroundColor = AppTheme.appBackgroundColor()
+
     }
 
 }

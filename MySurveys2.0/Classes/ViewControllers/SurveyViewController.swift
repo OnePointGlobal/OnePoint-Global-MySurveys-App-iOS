@@ -75,7 +75,7 @@ class SurveyViewController: OPGViewController, OPGSurveyDelegate {
     func updateSurveyInDB() {
         if surveySelected?.isOffline == 0 {
           //  CollabrateDB.sharedInstance().updateSurvey(surveySelected?.surveyID, withStatus: "Completed")                 thamarai dB
-            CollabrateDB.sharedInstance().updateSurvey(surveySelected?.surveyID, withStatus: "Completed", withDownloadStatus: 99)
+            CollabrateDB.sharedInstance().updateSurvey(surveySelected?.surveyID, withStatus: "Completed", withDownloadStatus: 2)
         } else {
           //  CollabrateDB.sharedInstance().updateSurvey(surveySelected?.surveyID, withStatus: "Upload Results")            thamarai dB
             CollabrateDB.sharedInstance().updateSurvey(surveySelected?.surveyID, withStatus: "Upload Results", withDownloadStatus: 99)

@@ -21,6 +21,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var viewHeight: NSLayoutConstraint!
     @IBOutlet weak var btnCameraIcon: UIButton!
+
     // MARK: - Properties for viewcontroller
     var titleArray: [String] = []
     var panelist: OPGPanellistProfile?
@@ -133,7 +134,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             let bounds = UIScreen.main.bounds
             let height = bounds.size.height
             if self.tableview != nil {
-                if height==768 || height==1536 {
+                if height==OPGConstants.device.iPadLandscapeHeight || height==OPGConstants.device.iPadRetinaLandscapeHeight {
                     // enable scroll for iPad landscape
                     self.tableview.isScrollEnabled=true
                 }
@@ -157,7 +158,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         // only for iPad
         let bounds = UIScreen.main.bounds
         let width = bounds.size.width
-        if width == 1024 || width == 2048 {
+        if width==OPGConstants.device.iPadLandscapeWidth || width==OPGConstants.device.iPadRetinaLandscapeWidth {
             // only for iPad landscape
             let indexPath = IndexPath(item: 0, section: 0)
             let tableViewCell: ProfileTableViewCell? = self.tableview?.cellForRow(at: indexPath) as? ProfileTableViewCell
@@ -169,10 +170,11 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     }
 
     func keyboardWillHide(notification: NSNotification) {
+
         // only for iPad
         let bounds = UIScreen.main.bounds
         let width = bounds.size.width
-        if width==1024 || width==2048 {
+        if width==OPGConstants.device.iPadLandscapeWidth || width==OPGConstants.device.iPadRetinaLandscapeWidth {
             // only for iPad landscape
             let indexPath = IndexPath(item: 0, section: 0)
             let tableViewCell: ProfileTableViewCell? = self.tableview?.cellForRow(at: indexPath) as? ProfileTableViewCell
@@ -191,13 +193,13 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         let width = bounds.size.width
 
         if UIDevice.current.userInterfaceIdiom == .pad {
-            if width==1024 || width==2048 {
+            if width==OPGConstants.device.iPadLandscapeWidth || width==OPGConstants.device.iPadRetinaLandscapeWidth {
                 // enable scroll if iPad landscape is loaded first time
                 self.tableview.isScrollEnabled=true
             }
         }
         else {
-            if height == 480 {
+            if height == OPGConstants.device.iPhone4Height {
                 // Enable scroll only for 4S
                 self.tableview.isScrollEnabled=true
             }
@@ -373,8 +375,8 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 print("Error occured while copying and the error is \(err.description)")
             }
         }
-        OPGSDK.setAppVersion("iOSSDK-IOS-1.0.0-O")
-        OPGSDK.initialize(withUserName: "mysurveys2.0", withSDKKey: "com.onepointsurveys.mysurveys2")
+        OPGSDK.setAppVersion(OPGConstants.sdk.AppVersion)
+        OPGSDK.initialize(withUserName: OPGConstants.sdk.Username, withSDKKey: OPGConstants.sdk.SharedKey)
     }
 
     func deletePreviousProfileImg(path: String?) {
@@ -400,6 +402,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             return
         }
         self.panelist?.mediaID = mediaID
+
         DispatchQueue.global(qos: .default).async {
                 let sdk = OPGSDK()
                 do {
@@ -652,6 +655,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         self.isEditable = true
         self.tableview.reloadData()
     }
+
 
     // MARK: - Tableview Delegates
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -127,17 +127,17 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         return sectionArray
     }
 
-    func buildCountryDictionary() {                 //Alphabet Key abd country array as value {
+    func buildCountryDictionary() {                 // Alphabet Key abd country array as value
         for letter in self.indexCharacters {
             self.indexCountryDict[letter] = self.getFilteredArray(startChar: letter)
         }
     }
 
-    func cancelBtn_clicked(_ sender: UIBarButtonItem) {
+    func cancelBtnClicked(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-
-    func getCountryByName(name : String) -> OPGCountry {
+    
+    func getCountryByName(name: String) -> OPGCountry {
         let opgCountry: OPGCountry = OPGCountry()
         if self.countryArray.count > 0 {
             for country in self.countryArray {

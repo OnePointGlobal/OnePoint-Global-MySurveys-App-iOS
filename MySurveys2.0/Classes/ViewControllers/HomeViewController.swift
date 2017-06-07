@@ -52,7 +52,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     var OfflineDownloadList:Array<Any> = []
     var notificationsArray : [NSDictionary]?
     var alertsArray : Array<Any> = []
-    var selectedOfflineSurveyIndex : Int?
+    var selectedOfflineSurveyIndex : IndexPath?
     
     var bannerTitle : NSString?             //class var to show during orientation transition
     
@@ -217,7 +217,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         guard let userInfo = notification.userInfo,
             let percentage  = userInfo["percentage"] as? Float,
             let surveyID     = userInfo["surveyReference"] as? Int,
-            let index     = userInfo["index"] as? Int,
+            let index     = userInfo["index"] as? IndexPath,
             let numberOfFilesPending = userInfo["numberOfFilesPending"] as? Int else {
                 print("No userInfo found in notification")
                 return
@@ -226,9 +226,15 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         DispatchQueue.main.async
             {
                 print("progress Delegate Called")
-                let indexPath = IndexPath(item: index , section: 0)
-                
-                let tableViewCell : SurveyTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
+                let indexPath = IndexPath(item: index.row , section: 0)
+                let tableViewCell : SurveyTableViewCell?
+                if index.section == 0 {
+                   tableViewCell = self.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
+                }
+                else {
+                    tableViewCell = self.tableViewGeoFenced?.cellForRow(at: indexPath) as? SurveyTableViewCell
+
+                }
                 if (tableViewCell != nil)
                 {
                     tableViewCell?.progressBar?.progress = percentage
@@ -242,7 +248,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         tableViewCell?.btnSurveyDesc.setTitleColor(UIColor.lightGray, for: .normal)
                         tableViewCell?.btnSurveyDesc.setTitle(NSLocalizedString("Completed", comment: ""),for: .normal)
                         // CollabrateDB.sharedInstance().updateSurvey(NSNumber(value: surveyID), withStatus: "Completed") thamarai dB
-                        CollabrateDB.sharedInstance().updateSurvey(NSNumber(value: surveyID), withStatus: "Completed", withDownloadStatus: 99)
+                        CollabrateDB.sharedInstance().updateSurvey(NSNumber(value: surveyID), withStatus: "Completed", withDownloadStatus: 2)
                         tableViewCell?.constarintCounterBtnSpace.constant = 15          //reset constarint after upload is done
                         tableViewCell?.setNeedsDisplay()
                     }
@@ -1301,7 +1307,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
     
     
-    func updateOfflineCounter(survey:OPGSurvey, indexPath: IndexPath )
+    func updateOfflineCounter(survey:OPGSurvey, indexPath: IndexPath, tableview: UITableView )
     {
         print(indexPath)
         DispatchQueue.global(qos: .default).async
@@ -1314,7 +1320,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         {
                             if (count.intValue) > 0
                             {
-                                let cell : SurveyTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
+                                let cell : SurveyTableViewCell? = tableview.cellForRow(at: indexPath) as? SurveyTableViewCell
                                 cell?.offlineFileCountButton.isHidden = false                //show counter if there is any survey to be uploaded
                                 cell?.offlineFileCountButton.setTitle(count.stringValue, for: UIControlState.normal)
                                 cell?.setNeedsDisplay()
@@ -1325,43 +1331,35 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         
     }
     
-    func uploadResults(sender:UIButton!)
-    {
+    func uploadResults(sender: UIButton!) {
         let indexPath = IndexPath(item: sender.tag, section: 0)
-        let tableViewCell : SurveyTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
+        let tableViewCell: SurveyTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
         tableViewCell?.btnSurveyDesc.isUserInteractionEnabled = false
         let survey = self.surveyFilteredList[sender.tag] as! OPGSurvey
-        
         if survey.surveyID == nil {
-            return;
+            return
         }
-        
-        DispatchQueue.global(qos: .default).async
-            {
-                let upload = UploadSurvey.sharedInstance
-                let panellistID : String? = UserDefaults.standard.value(forKey: "PanelListID") as? String
-                CollabrateDB.sharedInstance().updateSurvey(survey.surveyID, withStatus: "Uploading", withDownloadStatus: 99)
-                upload.uploadOfflineSurvey(survey.surveyID, panelistID:panellistID!,index:sender.tag)       // check with chinthan for optional(thamarai)
+        DispatchQueue.global(qos: .default).async {
+            let upload = UploadSurvey.sharedInstance
+            let panellistID: String? = UserDefaults.standard.value(forKey: "PanelListID") as? String
+            CollabrateDB.sharedInstance().updateSurvey(survey.surveyID, withStatus: "Uploading", withDownloadStatus: 99)
+            upload.uploadOfflineSurvey(survey.surveyID, panelistID:panellistID!, index:indexPath)       // check with chinthan for optional(thamarai)
         }
     }
     
-    func uploadGeoFenceOfflineResults(sender:UIButton!)
-    {
-        let indexPath = IndexPath(item: sender.tag, section: 0)
-        let tableViewCell : SurveyTableViewCell? = self.tableViewGeoFenced?.cellForRow(at: indexPath) as? SurveyTableViewCell
+    func uploadGeoFenceOfflineResults(sender: UIButton!) {
+        let indexPath = IndexPath(item: sender.tag, section: 1)
+        let tableViewCell: SurveyTableViewCell? = self.tableViewGeoFenced?.cellForRow(at: indexPath) as? SurveyTableViewCell
         tableViewCell?.btnSurveyDesc.isUserInteractionEnabled = false
         let survey = self.geoFencedArrayFiltered[sender.tag] as! OPGGeoFencingModel
-        
         if survey.surveyID == nil {
-            return;
+            return
         }
-        
-        DispatchQueue.global(qos: .default).async
-            {
-                let upload = UploadSurvey.sharedInstance
-                let panellistID : String? = UserDefaults.standard.value(forKey: "PanelListID") as? String
-                CollabrateDB.sharedInstance().updateSurvey(survey.surveyID, withStatus: "Uploading", withDownloadStatus: 99)
-                upload.uploadOfflineSurvey(survey.surveyID, panelistID:panellistID!,index:sender.tag)
+        DispatchQueue.global(qos: .default).async {
+            let upload = UploadSurvey.sharedInstance
+            let panellistID : String? = UserDefaults.standard.value(forKey: "PanelListID") as? String
+            CollabrateDB.sharedInstance().updateSurvey(survey.surveyID, withStatus: "Uploading", withDownloadStatus: 99)
+            upload.uploadOfflineSurvey(survey.surveyID, panelistID:panellistID!, index:indexPath)
         }
     }
     
@@ -1390,116 +1388,84 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let tableViewCell : SurveyTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Surveys") as! SurveyTableViewCell
-        if(tableView == self.tableView)
-        {
-            if ( UIDevice.current.userInterfaceIdiom == .pad )
-            {
-                tableViewCell.selectButton.setImage(UIImage(named : "survey_nav_iPad.png"), for: .normal)
-                if(tableViewCell.selectButton.bounds.size.width < 61.0)
-                {
-                    //Apply default iPad width and height - TEMP FIX for app kill and come back to home page
-                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * 61.0
-                    tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * 61.0
-                }
-                else
-                {
-                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
-                    tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
-                }
+        
+        let tableViewCell: SurveyTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Surveys") as! SurveyTableViewCell
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            tableViewCell.selectButton.setImage(UIImage(named : "survey_nav_iPad.png"), for: .normal)
+            if tableViewCell.selectButton.bounds.size.width < 61.0 {
+                // Apply default iPad width and height - TEMP FIX for app kill and come back to home page
+                tableViewCell.selectButton.layer.cornerRadius = 0.5 * 61.0
+                tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * 61.0
             }
-            else
-            {
-                tableViewCell.selectButton.setImage(UIImage(named : "survey_nav.png"), for: .normal)
-                if(tableViewCell.selectButton.bounds.size.width > 45.0)
-                {
-                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * 45.0
-                    tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * 45.0
-                }
-                else
-                {
-                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
-                    tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
-                }
+            else {
+                tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+                tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
             }
         }
-        else if (tableView == self.tableViewGeoFenced)
-        {
-            //Geo-fencing view
-            if ( UIDevice.current.userInterfaceIdiom == .pad )
-            {
-                tableViewCell.selectButton.setImage(UIImage(named : "survey_nav_iPad.png"), for: .normal)
-                if(tableViewCell.selectButton.bounds.size.width < 61.0)
-                {
-                    //Apply default iPad width and height - TEMP FIX for app kill and come back to home page
-                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * 61.0
-                }
-                else
-                {
-                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
-                }
+        else {
+            tableViewCell.selectButton.setImage(UIImage(named : "survey_nav.png"), for: .normal)
+            if tableViewCell.selectButton.bounds.size.width > 45.0 {
+                tableViewCell.selectButton.layer.cornerRadius = 0.5 * 45.0
+                tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * 45.0
             }
-            else
-            {
-                tableViewCell.selectButton.setImage(UIImage(named : "survey_nav.png"), for: .normal)
-                if(tableViewCell.selectButton.bounds.size.width > 45.0)
-                {
-                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * 45.0
-                }
-                else
-                {
-                    tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
-                }
+            else {
+                tableViewCell.selectButton.layer.cornerRadius = 0.5 * tableViewCell.selectButton.bounds.size.width
+                tableViewCell.offlineFileCountButton.layer.cornerRadius = 0.5 * tableViewCell.offlineFileCountButton.bounds.size.width
             }
         }
-
-        if(tableView == self.tableView)
-        {
-            let survey : OPGSurvey = self.surveyFilteredList[indexPath.row] as! OPGSurvey
+        
+        if(tableView == self.tableView) {
+            let survey: OPGSurvey = self.surveyFilteredList[indexPath.row] as! OPGSurvey
             tableViewCell.fillCell(survey)
             tableViewCell.btnSurveyDesc.tag = indexPath.row
             tableViewCell.offlineFileCountButton.setTitle("", for: .normal)
             tableViewCell.offlineFileCountButton.isHidden=true
-            if (survey.isOffline == 1 && survey.surveyDescription == "Upload Results")
-            {
+            if survey.isOffline == 1 && survey.surveyDescription == "Upload Results" {
                 tableViewCell.btnSurveyDesc.isUserInteractionEnabled = true
                 tableViewCell.btnSurveyDesc.isEnabled = true
                 tableViewCell.btnSurveyDesc.addTarget(self, action: #selector(self.uploadResults(sender:)), for: .touchUpInside)
-                self.updateOfflineCounter(survey: survey, indexPath: indexPath)                 //get count only for surveys with upload results status.
-                tableViewCell.constarintCounterBtnSpace.constant = (tableViewCell.offlineFileCountButton.frame.width+20)    //reduce surveyName field size to accomodate counter
+                self.updateOfflineCounter(survey: survey, indexPath: indexPath, tableview: self.tableView!)                 // get count only for surveys with upload results status.
+                tableViewCell.constarintCounterBtnSpace.constant = (tableViewCell.offlineFileCountButton.frame.width+20)    // reduce surveyName field size to accomodate counter
             }
-            else
-            {
-                tableViewCell.constarintCounterBtnSpace.constant = 15          //default constarint after refresh/reload
+            else {
+                tableViewCell.constarintCounterBtnSpace.constant = 15          // default constarint after refresh/reload
             }
-            if (survey.isOffline == 1)
-            {
+            if survey.isOffline == 1 {
                 if survey.isOfflineDownloaded != 1 {
-                    if(survey.surveyReference != nil || survey.surveyReference != "" ){
+                    if survey.surveyReference != nil || survey.surveyReference != "" {
                         print("indexPathCell: \(indexPath.row)")
                     }
                 }
             }
         }
-
-        if(tableView == self.tableViewGeoFenced){
+        
+        if tableView == self.tableViewGeoFenced {
             let survey : OPGGeoFencingModel = self.geoFencedArrayFiltered[indexPath.row] as! OPGGeoFencingModel
+            //tableViewCell.fillCellGeoFenced(survey)
+            tableViewCell.btnSurveyDesc.tag = indexPath.row
+            tableViewCell.offlineFileCountButton.setTitle("", for: .normal)
+            tableViewCell.offlineFileCountButton.isHidden = true
             for item in self.surveyGeoAvailable {
                 let normalSurvey : OPGSurvey = item as! OPGSurvey
                 if survey.surveyID == normalSurvey.surveyID {
+                    tableViewCell.fillCell(normalSurvey)
+
                     survey.createdDate = normalSurvey.surveyDescription
-                    if (normalSurvey.isOffline == 1 && normalSurvey.surveyDescription == "Upload Results")
-                    {
+                    if normalSurvey.isOffline == 1 && normalSurvey.surveyDescription == "Upload Results" {
                         tableViewCell.btnSurveyDesc.isUserInteractionEnabled = true
                         tableViewCell.btnSurveyDesc.isEnabled = true
                         tableViewCell.btnSurveyDesc.addTarget(self, action: #selector(self.uploadGeoFenceOfflineResults(sender:)), for: .touchUpInside)
-                        tableViewCell.constarintCounterBtnSpace.constant = (tableViewCell.offlineFileCountButton.frame.width+20)    //reduce surveyName field size to accomodate counter
+                        self.updateOfflineCounter(survey: normalSurvey, indexPath: indexPath, tableview: self.tableViewGeoFenced!)                 // get count only for surveys with upload results status.
+                        tableViewCell.constarintCounterBtnSpace.constant = (tableViewCell.offlineFileCountButton.frame.width+20)    // reduce surveyName field size to accomodate counter
                     }
+                    
+                }
+                else {
+                    tableViewCell.constarintCounterBtnSpace.constant = 15          // default constarint after refresh/reload
                 }
             }
-            tableViewCell.fillCellGeoFenced(survey)
-            tableViewCell.btnSurveyDesc.tag = indexPath.row
+            
         }
         tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
         return tableViewCell
@@ -1517,7 +1483,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 
             } else
             {
-                self.selectedOfflineSurveyIndex = indexPath.row
+                let index = IndexPath(item: indexPath.row , section: 0) // section 0 is normal tableview
+                self.selectedOfflineSurveyIndex = index
                 self.performSegue(withIdentifier: "embedOfflineSurveyDetails", sender: self)
             }
         } else {
@@ -1525,7 +1492,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             if survey != nil {
                 if survey?.isDeleted == 2 {                     // if survey entered
                     // goto survey details screen based on selection
-                    self.selectedOfflineSurveyIndex = indexPath.row
+                    let index = IndexPath(item: indexPath.row , section: 1) // section 1 is Geofenced tableview
+                    self.selectedOfflineSurveyIndex = index
                     self.performGeoFencingPush(survey?.surveyReference)
                 } else {
                     super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("You are not in this location to take the survey!", comment: ""), alertAction: NSLocalizedString("OK", comment: ""))
