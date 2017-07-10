@@ -12,7 +12,7 @@ class OPGConstants {
 
     struct sdk {
     // SDK Constants define here.
-     static let AppVersion = "App_Version"
+    static let AppVersion = "App_Version"
     static let Username = "SDK_Username"
     static let SharedKey = "SDK_Key"
 
