@@ -11,115 +11,93 @@ import CoreData
 import FBSDKCoreKit
 import UserNotifications
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate
-{
 
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     var window: UIWindow?
     internal var shouldRotate = false
-    
-    func setAppViews()
-    {
+
+    func setAppViews() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let logInViewController: LoginViewController = storyboard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
         let tabBarController: TabBarViewController = storyboard.instantiateViewController(withIdentifier: "TabBarViewController") as! TabBarViewController
-        
-        var userLoggedIn : String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
-        if userLoggedIn==nil || (userLoggedIn?.isEmpty)!
-        {
+        var userLoggedIn: String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
+        if userLoggedIn==nil || (userLoggedIn?.isEmpty)! {
             let defaults = UserDefaults.standard
             defaults.set("0", forKey: "isUserLoggedIN")
             defaults.synchronize()
             userLoggedIn = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
-            
         }
-        var controllers : Array<Any> = []
-        if userLoggedIn == "1"
-        {
+        var controllers: Array<Any> = []
+        if userLoggedIn == "1" {
             controllers = [logInViewController, tabBarController]
         }
-        else
-        {
+        else {
             controllers = [logInViewController]
         }
         let navigationController = self.window?.rootViewController as! UINavigationController
         navigationController.viewControllers = controllers as! [UIViewController]
     }
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
-    {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.statusBarStyle = .lightContent
         // Override point for customization after application launch.
         UIApplication.shared.applicationIconBadgeNumber = -1
-        OPGSDK.setAppVersion("App_Version")
         self.setAppViews()
-        OPGSDK.initialize(withUserName: "Username", withSDKKey:"Shared_Key")
+        OPGSDK.setAppVersion(OPGConstants.sdk.AppVersion)
+        OPGSDK.initialize(withUserName: OPGConstants.sdk.Username, withSDKKey:OPGConstants.sdk.SharedKey)
         self.registerForPushNotifications(application: application)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
 
-    func registerForPushNotifications(application : UIApplication)
-    {
-        if #available(iOS 10.0, *)
-        {
+    func registerForPushNotifications(application: UIApplication) {
+        if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self
-            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert], completionHandler: {(granted, error) in
-            if (granted)
-            {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert], completionHandler: {( granted, error) in
+            if granted {
                 UIApplication.shared.registerForRemoteNotifications()
             }
-            else
-            {
-                //Do stuff if unsuccessful...
+            else {
+                // Do stuff if unsuccessful...
                 print("User did not grant permission for notifications.")
             }
             })
         }
-        else
-        {
-            //If user is not on iOS 10 use the old methods we've been using
+        else {
+            // If user is not on iOS 10 use the old methods we've been using
             let notificationTypes: UIUserNotificationType = [UIUserNotificationType.alert, UIUserNotificationType.badge, UIUserNotificationType.sound]
             let pushNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
             application.registerUserNotificationSettings(pushNotificationSettings)
             application.registerForRemoteNotifications()
         }
     }
-    
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error)
-    {
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("APNs registeration failed \(error.localizedDescription)")
     }
-    
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
-    {
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenChars = (deviceToken as NSData).bytes.bindMemory(to: CChar.self, capacity: deviceToken.count)
         var tokenString = ""
-        
         for i in 0..<deviceToken.count {
             tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
         }
-        
         print("Device Token:", tokenString)
         UserDefaults.standard.set(tokenString, forKey: "DeviceTokenID")
     }
 
-    //for iOS 9 and below
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any])
-    {
-        application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1;
-        if application.applicationState == UIApplicationState.active
-        {
-
+    // for iOS 9 and below
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1
+        if application.applicationState == UIApplicationState.active {
              DispatchQueue.global(qos: .default).sync {
-                 CollabrateDB.sharedInstance().saveNotifications(userInfo as [AnyHashable : Any])
+                 CollabrateDB.sharedInstance().saveNotifications(userInfo as [AnyHashable: Any])
             }
         }
     }
 
-    func application(_ application: UIApplication, didReceive notification: UILocalNotification)
-    {
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
         if #available(iOS 8.2, *) {
             print(notification.alertTitle!)
         }
@@ -127,33 +105,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
     @available(iOS 10.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
-    {
-        //Handle the notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // Handle the notification
         print(notification.request.content.title)
         print(notification.request.content.userInfo)
         DispatchQueue.global(qos: .default).sync {
-                 CollabrateDB.sharedInstance().saveNotifications(notification.request.content.userInfo as [AnyHashable : Any])
+                 CollabrateDB.sharedInstance().saveNotifications(notification.request.content.userInfo as [AnyHashable: Any])
             }
     }
 
     @available(iOS 10.0, *)
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void)
-    {
-        //Handle the notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // Handle the notification
         print(response.notification.request.content.userInfo)
-
-        DispatchQueue.global(qos: .default).sync {
-                 CollabrateDB.sharedInstance().saveNotifications(response.notification.request.content.userInfo as [AnyHashable : Any])
+        if response.notification.request.content.userInfo.count != 0 {
+            DispatchQueue.global(qos: .default).sync {
+                 CollabrateDB.sharedInstance().saveNotifications(response.notification.request.content.userInfo as [AnyHashable: Any])
             }
-
+        }
     }
 
-    //openUrl method for iOS 9 and above
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool
-    {
-        var googleDidHandle : Bool = false
-        var facebookDidHandle : Bool = false
+    // openUrl method for iOS 9 and above
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
+        var googleDidHandle: Bool = false
+        var facebookDidHandle: Bool = false
         if #available(iOS 9.0, *) {
             googleDidHandle = GIDSignIn.sharedInstance().handle(url,
                                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String,
@@ -166,18 +141,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                                                                                           annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         }
         return googleDidHandle || facebookDidHandle
-
     }
 
 
     // openUrl method for iOS 8
     func application(application: UIApplication,
-                     openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool
-    {
+                     openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         if #available(iOS 9.0, *) {
             var options: [String: AnyObject] = [UIApplicationOpenURLOptionsKey.sourceApplication.rawValue: sourceApplication as AnyObject,
                                                 UIApplicationOpenURLOptionsKey.annotation.rawValue: annotation!]
-        } 
+    }
        let googleDidHandle = GIDSignIn.sharedInstance().handle(url as URL!,
                                                     sourceApplication: sourceApplication,
                                                     annotation: annotation)
@@ -188,28 +161,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return googleDidHandle || facebookDidHandle
     }
 
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask
-    {
-        if ( UIDevice.current.userInterfaceIdiom == .phone )
-        {
-            if shouldRotate
-            {
-                //only when inside the survey
-                return UIInterfaceOrientationMask.all;
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            if shouldRotate {
+                // only when inside the survey
+                return UIInterfaceOrientationMask.all
             }
-            else
-            {
-                //all other screens outside the survey
-                return UIInterfaceOrientationMask.portrait;
+            else {
+                // all other screens outside the survey
+                return UIInterfaceOrientationMask.portrait
             }
         }
-        else
-        {
-            return UIInterfaceOrientationMask.all;      //for iPad
+        else {
+            return UIInterfaceOrientationMask.all      // for iPad
         }
 
     }
-
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -237,9 +204,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     // MARK: - Generic Private Methods
     @available(iOS 10.0, *)
-    func getUserinfoFromNotification(notification : UNNotification) -> [AnyHashable: Any]
-    {
-        let userinfo : [AnyHashable: Any] =  [
+    func getUserinfoFromNotification(notification: UNNotification) -> [AnyHashable: Any] {
+        let userinfo: [AnyHashable: Any] =  [
         AnyHashable("title"): notification.request.content.title,
         AnyHashable("body"): notification.request.content.body]
         return userinfo
@@ -282,7 +248,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
             abort()
         }
-        
         return coordinator
     }()
 
@@ -296,7 +261,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     // MARK: - Core Data Saving support
 
-    func saveContext () {
+    func saveContext() {
         if managedObjectContext.hasChanges {
             do {
                 try managedObjectContext.save()
@@ -309,6 +274,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
     }
-
 }
-

@@ -8,17 +8,15 @@
 
 import UIKit
 
-class ShowNotificationViewController: RootViewController, UITextViewDelegate
-{
+class ShowNotificationViewController: RootViewController, UITextViewDelegate {
 
     @IBOutlet weak var txtNotificationDesc: UITextView!
-    var notificationDescription : String?
+    var notificationDescription: String?
 
 
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
-        self.txtNotificationDesc.delegate=self
+        self.txtNotificationDesc.delegate = self
         self.txtNotificationDesc.text = self.notificationDescription
     }
 

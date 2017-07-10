@@ -444,6 +444,22 @@ self.surveyList = [sdk getCountries:&error];
 
 
 /*!
+ @brief This method returns an array of OPGGeofenceSurvey objects based on your current location.
+ @discussion This method returns an array of OPGGeofenceSurvey objects based on your current location.
+ This has to be invoked with the SDK object.
+ @param  lattitude lattitude of your location
+ @param  longitude longitude of your location
+ @param  error An NSError object encapsulates information about an error condition in an extendable, object-oriented manner..
+ @code
+ NSArray *geoArray = [sdk getGeofenceSurveys:@"lattitude" longitude:@"longitude" error:&error];
+ @endcode
+ @return NSArray
+ */
+-(NSArray*) getGeofenceSurveys: (float) lattitude
+                    longitude:(float) longitude
+                         error:(NSError **)error;
+
+/*!
  @brief It checks for internet connectivity.
  @discussion This synchronous method check for internet connectivity.
  This method can be written in an Utility class.

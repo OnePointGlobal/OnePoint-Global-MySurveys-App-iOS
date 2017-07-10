@@ -31,6 +31,7 @@
 #import <OnePoint.PROM/GeofenceSurveyFactory.h>
 #import <OnePoint.PROM/GeofenceSurveyFactoryBase.h>
 #import <OnePointFramework/SqlQueryCommand.h>
+#import <OnePointFramework/OPGDB.h>
 #import <OnePoint.PROM/ProjectSurvey.h>
 #import <OnePoint.PROM/ProjectSurveyFactory.h>
 #import <OnePoint.PROM/AddressListFactory.h>
@@ -44,7 +45,7 @@
 #import <OnePointSDK/OPGSurveyPanel.h>
 #import <OnePointSDK/OPGPanellistProfile.h>
 #import <OnePointSDK/OPGCountry.h>
-#import <OnePointSDK/OPGGeoFencingModel.h>
+#import <OnePointSDK/OPGGeofenceSurvey.h>
 #import <OnePoint.POM/CountryFactory.h>
 #import <OnePoint.POM/Country.h>
 
@@ -103,14 +104,13 @@
 
 -(void)updateNotifications:(NSNumber *)notificationID;
 
--(void)saveGeoFenceSurveys:(OPGGeoFencingModel*)geoFencedSurveys;
+-(void)saveGeoFenceSurveys:(OPGGeofenceSurvey *)geoFencedSurveys;
 
 -(NSArray*)getAllGeoFenceSurveys;
 
--(OPGGeoFencingModel*)getGeofenceSurvey:(NSNumber*)surveyID;
+-(OPGGeofenceSurvey*)getGeofenceSurvey:(NSNumber*)surveyID;
 
--(void)updateGeoFenceSurvey:(NSNumber *)geoFenceID
-                 withStatus:(NSNumber *)isEntered;
+-(void)updateGeoFenceSurvey:(NSNumber *)geoFenceID withSurveyReference:(NSString *)surveyReference withStatus:(NSNumber *)isEntered;
 
 -(void)deleteGeoFenceSurvey:(NSNumber*)geoFencedSurveyID;
 

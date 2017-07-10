@@ -19,9 +19,9 @@
 #import "OPGParseResult.h"
 
 #import "OPGTheme.h"
-#import "OPGGeoFencingModel.h"
 #import "OPGReachability.h"
-#import "OPGGeoFencing.h"
+#import "OPGGeoFence.h"
+#import "OPGGeofenceSurvey.h"
 
 #import "FBShimmering.h"
 #import "FBShimmeringLayer.h"
@@ -61,6 +61,7 @@
 #import <OnePoint.PROM/GeofenceSurveyFactory.h>
 #import <OnePoint.PROM/GeofenceSurveyFactoryBase.h>
 #import <OnePointFramework/SqlQueryCommand.h>
+#import <OnePointFramework/OPGDB.h>
 #import <OnePoint.PROM/ProjectSurvey.h>
 #import <OnePoint.PROM/ProjectSurveyFactory.h>
 #import <OnePoint.PROM/AddressListFactory.h>
