@@ -39,6 +39,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         // self.selectedIndex = 1
         self.view.backgroundColor = AppTheme.appBackgroundColor()
         UITabBar.appearance().tintColor = AppTheme.appBackgroundColor()
+        self.tabBar.tintColor = AppTheme.appBackgroundColor()
 
     }
 
@@ -82,11 +83,25 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     func setThemeBGImage() {
         let headerLogoBGImagePath: String = AppTheme.getHeaderLogoImagePath()
         if headerLogoBGImagePath.isEmpty {
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
-            imageView.contentMode = .scaleAspectFit
-            let image = UIImage(named: "applogo.png")
-            imageView.image = image                                             // set default logo Image
-            self.navigationItem.titleView = imageView
+            let logoText: String = AppTheme.getLogoText()
+            if logoText.isEmpty {
+                // set default logo Image
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
+                imageView.contentMode = .scaleAspectFit
+                let image = UIImage(named: "applogo.png")
+                imageView.image = image
+                self.navigationItem.titleView = imageView
+            }
+            else {
+                let label = UILabel(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
+                label.numberOfLines = 1
+                label.textAlignment = .center
+                label.adjustsFontSizeToFitWidth = true
+                label.text = logoText
+                label.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
+                label.textColor = UIColor.white
+                self.navigationItem.titleView = label
+            }
         }
         else {
             let fileExists = FileManager().fileExists(atPath: headerLogoBGImagePath)

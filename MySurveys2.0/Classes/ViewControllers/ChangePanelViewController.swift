@@ -82,8 +82,8 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
         paneltableViewCell.fillCell(panel: panelsArray[indexPath.row])
         let logoID: NSNumber  = self.panelsArray[indexPath.row].logoID as NSNumber
         let mediaID: NSNumber = self.panelsArray[indexPath.row].mediaID as NSNumber
-        let logoUrl: String = self.panelsArray[indexPath.row].logoUrl
-        let mediaUrl: String = self.panelsArray[indexPath.row].mediaUrl
+        let logoUrl: String? = self.panelsArray[indexPath.row].logoUrl
+        let mediaUrl: String? = self.panelsArray[indexPath.row].mediaUrl
         if logoUrl != "" {
             // load the logo image from cache folder if image available else hit API and get it
             let path  = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
@@ -91,16 +91,17 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
             let logoImagePath = destinationFolderPath.appending("/\(self.panelsArray[indexPath.row].logoID!).png")
             if !(FileManager.default.fileExists(atPath: logoImagePath)) {
                 // call API n get the image
-                if logoUrl.isEmpty == false {
-                    let urlRequest = NSURLRequest(url: NSURL(string: logoUrl) as! URL)
+                if let url = logoUrl {
+                    let urlRequest = NSURLRequest(url: NSURL(string: url) as! URL)
                     let task = URLSession.shared.dataTask(with: urlRequest as URLRequest, completionHandler: { data, response, error -> Void in
                         if error == nil {
-                            print("Logo for Panel is downloaded sucessfully and the data is \(data)")
                             let image = UIImage(data: data!)
-                            self.saveImagetoCache(image!, logoID)
-                            DispatchQueue.main.async {
-                                if paneltableViewCell.tag == indexPath.row {
-                                    paneltableViewCell.imgPanelImage?.image = image
+                            if let img = image {
+                                self.saveImagetoCache(img, logoID)
+                                DispatchQueue.main.async {
+                                    if paneltableViewCell.tag == indexPath.row {
+                                        paneltableViewCell.imgPanelImage?.image = img
+                                    }
                                 }
                             }
                         }
@@ -121,18 +122,20 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
             let bgImagePath = destinationFolderPath.appending("/\(self.panelsArray[indexPath.row].mediaID!).png")
             if !(FileManager.default.fileExists(atPath: bgImagePath)) {
                 // call API n get the image
-                if mediaUrl.isEmpty == false {
-                    let urlRequest = NSURLRequest(url: NSURL(string: mediaUrl) as! URL)
+                if let mediaurl = mediaUrl {
+                    let urlRequest = NSURLRequest(url: NSURL(string: mediaurl) as! URL)
                     let task = URLSession.shared.dataTask(with: urlRequest as URLRequest, completionHandler: { data, response, error -> Void in
                         if error == nil {
-                            print("Logo for Panel is downloaded sucessfully and the data is \(data)")
                             let image = UIImage(data: data!)
-                            self.saveImagetoCache(image!, mediaID)
-                            DispatchQueue.main.async {
-                                if paneltableViewCell.tag == indexPath.row {
-                                    paneltableViewCell.imgBackgroundView?.image  = image
+                            if let img = image {
+                                self.saveImagetoCache(img, mediaID)
+                                DispatchQueue.main.async {
+                                    if paneltableViewCell.tag == indexPath.row {
+                                        paneltableViewCell.imgBackgroundView?.image  = img
+                                    }
                                 }
                             }
+
                         }
                     })
                     task.resume()

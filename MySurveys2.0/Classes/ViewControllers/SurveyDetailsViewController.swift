@@ -92,7 +92,9 @@ class SurveyDetailsViewController: RootViewController {
             setUpViews()
         } else {
             // take from dB
-            self.surveySelected = CollabrateDB.sharedInstance().getSurvey(surveyID)
+            dispatchQueue.async(flags: .barrier) {
+                self.surveySelected = CollabrateDB.sharedInstance().getSurvey(self.surveyID)
+            }
             setUpViews()
         }
 
@@ -113,8 +115,9 @@ class SurveyDetailsViewController: RootViewController {
     }
     
     func updateSurveyPendingInDB() {
-       // CollabrateDB.sharedInstance().updateSurvey(surveySelected?.surveyID, withStatus: "Pending")
-        CollabrateDB.sharedInstance().updateSurvey(surveySelected?.surveyID, withStatus: "Pending", withDownloadStatus: 99)
+        dispatchQueue.async(flags: .barrier) {
+            CollabrateDB.sharedInstance().updateSurvey(self.surveySelected?.surveyID, withStatus: "Pending", withDownloadStatus: 99)
+        }
     }
 
     

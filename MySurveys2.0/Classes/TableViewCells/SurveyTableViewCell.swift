@@ -73,7 +73,7 @@ class SurveyTableViewCell: UITableViewCell {
         }
     }
 
-    func fillCellGeoFenced(_ survey: OPGGeoFencingModel) {
+    func fillCellGeoFenced(_ survey: OPGGeofenceSurvey) {
         selectButton.layer.cornerRadius = 0.5 * selectButton.bounds.size.width
         print("Geo check! For \(survey.surveyName) it is \(survey.isDeleted)")
         if survey.isDeleted == 2 {                                              // isDeleted is used for Enter/Exit operations
@@ -94,8 +94,5 @@ class SurveyTableViewCell: UITableViewCell {
             self.lblSurveyName.text=survey.surveyName
             self.btnSurveyDesc.setTitle(survey.createdDate, for: .normal)
         }
-        self.selectButton.backgroundColor = AppTheme.appBackgroundColor()
-
     }
-
 }

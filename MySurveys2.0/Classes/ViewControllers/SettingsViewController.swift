@@ -7,12 +7,12 @@
 //
 
 import Foundation
+import CoreLocation
 
 
+let geoFence = OPGGeoFence.sharedInstance()
 
-let geoFence = OPGGeoFencing.sharedInstance()
-
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingsViewController: RootViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     // MARK: - IBOutlets for View
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblVersion: UILabel!
@@ -21,6 +21,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     var settingItems: [String] = []
     var urlString: String?
     var pageTitle: String?
+    var geofencedArrays : Array<Any> = []
+    var myLocation: CLLocationCoordinate2D?
 
     // Append locale based on language selected.
     var privacyUrl = "https://framework.onepointglobal.com/appwebsite/privacy?location=mobile&culture="
@@ -34,9 +36,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.layoutMargins = UIEdgeInsets.zero
         self.tableView.separatorInset = UIEdgeInsets.zero
         self.tableView.tableFooterView = UIView()
-        self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 1.6 " + "Alpha"
-
-
+        self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 1.7 " + "Alpha"
+        geoFence?.initialiseGeofencing()            //Ask for location permission
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -124,23 +125,105 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
 
+     // MARK: - Geofencing Operations
     func switchEvents(sender: AnyObject) {
         let switchControl = sender as! UISwitch
         if switchControl.isOn {
             print("GeoFencing started")
-            UserDefaults.standard.set("1", forKey: "isGeoFenced")
-            geoFence?.start()
-        } else {
-            let array = CollabrateDB.sharedInstance().getAllGeoFenceSurveys() as! Array<OPGGeoFencingModel>
+            if super.isOnline() {
+                if (geoFence?.isMonitoringAllowed())! {
+                    UserDefaults.standard.set("1", forKey: "isGeoFenced")
+                    self.getGeofencedSurveys()
+                }
+                else {
+                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Please enable location services from device Settings to take the survey.", comment: ""), alertAction: NSLocalizedString("OK", comment: ""))
+                    switchControl.setOn(false, animated: true)
+                }
+            }
+            else {
+                super.showNoInternetConnectionAlert()
+                switchControl.setOn(false, animated: true)
+            }
+        }
+        else {
+            let array = CollabrateDB.sharedInstance().getAllGeoFenceSurveys() as! Array<OPGGeofenceSurvey>
             DispatchQueue.global(qos: .default).sync {
                 for element in array {
                     CollabrateDB.sharedInstance().deleteGeoFenceSurvey(element.surveyID)
                 }
             }
             UserDefaults.standard.set("0", forKey: "isGeoFenced")
-            geoFence?.stop()
+            geoFence?.stopMonitorForGeoFencing()
             print("GeoFencing stopped")
         }
     }
+
+    func getGeofencedSurveys() {
+        let locationManager = CLLocationManager()
+        self.myLocation = locationManager.location?.coordinate
+        if self.myLocation != nil {
+            var arrayLocations : NSArray = []
+            dispatchQueue.async(flags: .barrier) {
+                let sdk = OPGSDK()
+                do {
+                    arrayLocations = try sdk.getGeofenceSurveys(Float((self.myLocation?.latitude)!), longitude: Float((self.myLocation?.longitude)!)) as NSArray
+                    DispatchQueue.main.async {
+                        if arrayLocations.count > 0 {
+                            self.saveGeofenceSurveysToDB(arrayLocations as! [OPGGeofenceSurvey])
+                        }
+                        else {
+                            //Do nothing if there are no geo surveys for this panellist
+                            print("No geofenced survey locations to monitor")
+                        }
+                    }
+                }
+                catch let err as NSError {
+                    DispatchQueue.main.async {
+                        print("Error: \(err)")
+                        super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                        self.resetUISwitch(toStatus: false)
+                    }
+                }
+            }
+        }
+        
+    }
+
+    func saveGeofenceSurveysToDB(_ locations: [OPGGeofenceSurvey]!) {
+        let array : Array<OPGGeofenceSurvey> = (locations)!
+        if (array.count) > 0 {
+            dispatchQueue.async(flags: .barrier) {
+                let concurrentQueue = DispatchQueue(label: "saveGeoFenceSurveys")
+                for survey in array {
+                    concurrentQueue.sync() {
+                        CollabrateDB.sharedInstance().saveGeoFenceSurveys(survey)
+                    }
+                }
+                concurrentQueue.sync() {
+                    self.geofencedArrays = CollabrateDB.sharedInstance().getAllGeoFenceSurveys()
+                }
+                DispatchQueue.main.async {
+                    var error: NSError?
+                    if self.geofencedArrays.count > 0 {
+                        let dictionary = ["geoArray" : self.geofencedArrays]
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OPGGeofencedArraysObtained"), object: nil, userInfo: dictionary)
+                        geoFence?.startMonitor(forGeoFencing: self.geofencedArrays as! [OPGGeofenceSurvey], error: &error)
+                        if error != nil {
+                            print(error.debugDescription)
+                            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                            self.resetUISwitch(toStatus: false)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    func resetUISwitch(toStatus: Bool) {
+        let indexPath = IndexPath(item: 1, section: 0)
+        let tableViewCell: SettingsTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SettingsTableViewCell
+        tableViewCell?.switchControl.setOn(toStatus, animated: true)
+    }
+
     
 }

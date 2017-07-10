@@ -39,7 +39,7 @@ class AppTheme: NSObject {
                 do {
                     print("downloaded login screen mediaId: \(mediaId)")
                     
-                    mediaObj  = try sdk.downloadMediaFile(mediaId, mediaType: "png", fileName: fileName) as OPGDownloadMedia
+                    mediaObj  = try sdk.downloadMediaFile(mediaId, mediaType: "jpg", fileName: fileName) as OPGDownloadMedia
                     DispatchQueue.main.async {
                             if mediaObj?.isSuccess == 1 {
                                 if mediaObj!.mediaFilePath != nil {
@@ -77,15 +77,20 @@ class AppTheme: NSObject {
                     if Int((self.theme?.loginBackground)!)!>0 {
                         self.downloadThemeImage(mediaId: (self.theme?.loginBackground)!, isLoginBGImage: true, fileName: (panelName?.appending("ThemeLoginBG"))!)
                     }
+                    if let logoText = self.theme?.logoText {
+                        self.setLogoText(text: logoText)
+                    }
                 }
                 else {
                     self.setLoginBGImagePath(path: EMPTY_STRING)                // defaultBG image
                     self.setHeaderLogoImagePath(path: EMPTY_STRING)        // default header logo image
+                    self.setLogoText(text: EMPTY_STRING)
                 }
             }
             else if keys.count == 15 {                           // Not a new adminsuite theme
                 self.setLoginBGImagePath(path: EMPTY_STRING)                // defaultBG image
                 self.setHeaderLogoImagePath(path: EMPTY_STRING)        // default header logo image
+                self.setLogoText(text: EMPTY_STRING)
                 self.theme = nil                                        // no theme
             }
         }
@@ -164,6 +169,18 @@ class AppTheme: NSObject {
 
     static func setLoginBtnTextColor(color: UIColor) {
         UserDefaults.standard.setColor(color, forKey: "LoginBtnTextColor")
+    }
+
+    static func setLogoText(text: String) {
+        UserDefaults.standard.set(text, forKey: "ThemeLogoText")
+    }
+
+    static func getLogoText() -> String {
+        let logoText = UserDefaults.standard.value(forKey: "ThemeLogoText") as? String
+        if logoText != nil {
+            return logoText!
+        }
+        return EMPTY_STRING
     }
 
 }

@@ -36,29 +36,31 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
         // thamarai changes
         let isOperating: Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
         let array: Array<Any>? = UserDefaults.standard.value(forKey: "downloadSurveysArray") as? Array<Any>
+        self.navigationController?.isNavigationBarHidden = false
+        let btnEdit =  UIBarButtonItem(title: NSLocalizedString("Edit", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(editNotificationTable))
+        self.checkEditMode()
         if (isOperating == 2) && (array?.count == 0) {
-            self.getNotificationsFromDB()
+            dispatchQueue.async(flags: .barrier) {
+                self.getNotificationsFromDB()
+                DispatchQueue.main.async {
+                    self.checkforAvailableNotifications()
+                    if self.notificationArray.count > 0 { // show edit button only if there are notifications.
+                        self.tabBarController?.navigationItem.rightBarButtonItem = btnEdit
+                        self.tabBarController?.navigationItem.rightBarButtonItem?.isEnabled = true
+                    }
+                    self.tableView.reloadData()
+                }
+            }
         }
         else {
+            self.checkforAvailableNotifications()
             self.notificationArray.removeAll()                      // clear local notificationArray during refresh
+            self.tableView.reloadData()
             self.lblNoNewNotifications?.isHidden = false
             self.tableView.isUserInteractionEnabled = false                         // disable selection when there are no notifications.
             self.tableView.backgroundView = self.lblNoNewNotifications
             self.lblNoNewNotifications?.text = NSLocalizedString("No notifications so far.", comment: "")
             self.tabBarController?.navigationItem.rightBarButtonItem = nil
-        }
-        self.navigationController?.isNavigationBarHidden = false
-        let btnEdit =  UIBarButtonItem(title: NSLocalizedString("Edit", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(editNotificationTable))
-        self.checkforAvailableNotifications()
-        if self.notificationArray.count > 0 { // show edit button only if there are notifications.
-            self.tabBarController?.navigationItem.rightBarButtonItem = btnEdit
-            self.tabBarController?.navigationItem.rightBarButtonItem?.isEnabled = true
-        }
-
-        if self.isEditable == false {
-            self.tabBarController?.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Edit", comment: "")         // restore normal mode even when user changes screen and come back
-            self.tabBarController?.navigationItem.leftBarButtonItem = nil
-            self.tableView.reloadData()
         }
     }
 
@@ -68,6 +70,16 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
     }
 
     // MARK: - Generic Private Methods
+    func checkEditMode() {
+        if self.isEditable == false {
+            self.tabBarController?.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Edit", comment: "")         // restore normal mode even when user changes screen and come back
+            self.tabBarController?.navigationItem.leftBarButtonItem = nil
+//            if self.notificationArray.count > 0 {
+//                self.tableView.reloadData()
+//            }
+        }
+    }
+
     func deleteSelectedItems() {
         // Pressing delete without selecting any items, throw an alert.
         if self.selectedIndexArray.count == 0 {
@@ -236,7 +248,9 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
         }
         else {
             let dict: NSDictionary = notificationArray[indexPath.row] as NSDictionary
-            CollabrateDB.sharedInstance().updateNotifications(dict["AppNotificationID"] as? NSNumber)            // update DB with notification ID as read.
+            dispatchQueue.async(flags: .barrier) {
+                CollabrateDB.sharedInstance().updateNotifications(dict["AppNotificationID"] as? NSNumber)            // update DB with notification ID as read.
+            }
             self.notificationDescription = dict["Body"] as? String
             self.performSegue(withIdentifier: "ShowNotification", sender: nil)                      // in normal mode, perform segue on selection
         }

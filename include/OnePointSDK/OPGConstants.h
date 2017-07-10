@@ -11,17 +11,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-
-/*--------------- Interview URLs ------------------------------- */
-
-
-
 #define ErrorDomain @"com.OnePointSDK.ErrorDomain"
 
+/*--------------- SDK Versions ------------------------------- */
+#define LiteSDKVersion @"OnePointSDKv1.5"
+#define FullSDKVersion @"OnePointSDKv1.0"
 
+/*--------------- SDK Error Descriptions ------------------------------- */
 #define NoSurveyMessage @"No Surveys available for Information provided"
-#define LiteSDKVersionMessage @"OnePointSDKv1.5"
-#define FullSDKVersionMessage @"OnePointSDKv1.0"
 #define AuthenticationFailedMessage @"Authentication Failed"
 #define UsernamePasswordMessage @"Username/Password cannot be empty"
 #define UsernameSharedKeyMessage @"Username/Shared Key cannot be empty"
@@ -39,8 +36,15 @@
 #define NewPasswordMessage @"New password cannot be empty"
 #define GenericError @"Something wrong in input ID or server"
 #define InvalidEmail @"Invalid Email. Try again"
-#define SamePasswordsMessage @"Old and new passwords must be different";
+#define SamePasswordsMessage @"Old and new passwords must be different"
+#define LocationNilMessage @"Lattitude/Longitude values cannot be nil or empty"
+#define NoRegionsToMonitor @"Geofence survey list cannot be nil or empty"
+#define LocationSettingsDisabled @"The location services seems to be disabled from the settings. "
+#define LocationAuthorizationDenied @"Location authorization status has been denied"
+#define LocationAuthorizationNotDetermined @"Location authorization status is not determioned"
+#define LocationAuthorizationRestricted @"Location authorization status has been restricted"
 
+/*--------------- HTTP Request Type ------------------------------- */
 #define GET @"GET" 
 #define POST @"POST"
 #define DELETE @"DELETE"
@@ -61,5 +65,6 @@
 #define UploadResults @"Result/Post"
 #define registerNotification @"PushNotification/Post"
 #define unregisterNotification @"PushNotification/Delete"
-#define GeoFencing @"SurveyLocation"
+#define GeoFencing @"Geofencing"
 #define GetCountries @"UpdatePanelList/Country"
+

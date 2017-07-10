@@ -118,10 +118,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         // Handle the notification
         print(response.notification.request.content.userInfo)
-        DispatchQueue.global(qos: .default).sync {
+        if response.notification.request.content.userInfo.count != 0 {
+            DispatchQueue.global(qos: .default).sync {
                  CollabrateDB.sharedInstance().saveNotifications(response.notification.request.content.userInfo as [AnyHashable: Any])
             }
-
+        }
     }
 
     // openUrl method for iOS 9 and above

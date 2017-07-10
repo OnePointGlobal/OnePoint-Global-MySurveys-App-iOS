@@ -147,10 +147,12 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
 
     // MARK: - DB methods
     func getPanellistProfileFromDB() {
-       self.panelist = CollabrateDB.sharedInstance().getPanellistProfile()
-        let country: OPGCountry = CollabrateDB.sharedInstance().getCountry()                // country details stored in Country table, not in Panellist Profile table.
-        self.panelist?.std = country.std
-        self.panelist?.countryName = country.name
+        dispatchQueue.async(flags: .barrier) {
+            self.panelist = CollabrateDB.sharedInstance().getPanellistProfile()
+            let country: OPGCountry = CollabrateDB.sharedInstance().getCountry()                // country details stored in Country table, not in Panellist Profile table.
+            self.panelist?.std = country.std
+            self.panelist?.countryName = country.name
+        }
     }
 
     // MARK: - Keyboard Notification selector methods
@@ -281,10 +283,12 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 self.panelist = try sdk.getPanellistProfile() as OPGPanellistProfile
                 DispatchQueue.main.async {
                     if self.panelist != nil {
-                         DispatchQueue.global(qos: .default).async {
+                         dispatchQueue.async(flags: .barrier) {
                             CollabrateDB.sharedInstance().update(self.panelist!)                     // Update DB only after successfully updating the server.
                             DispatchQueue.main.async {
-                                CollabrateDB.sharedInstance().updateCountry(self.panelist?.countryName, withStd: self.panelist?.std)
+                                dispatchQueue.async(flags: .barrier) {
+                                    CollabrateDB.sharedInstance().updateCountry(self.panelist?.countryName, withStd: self.panelist?.std)
+                                }
                             }
 
                         }
@@ -302,12 +306,14 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     func logout() {
         let isSocialLogin = UserDefaults.standard.value(forKey: "isSocialLogin") as? Int
         let deviceToken: String? = UserDefaults.standard.value(forKey: "DeviceTokenID") as? String
+        let panelID: String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String              //fetch the updated panelID again
+        let panelName: String? = UserDefaults.standard.value(forKey: selectedPanelName) as? String
         let bgImagePath: String? = AppTheme.getLoginBGImagePath()
         self.unRegisterForAPNS(deviceToken)
         let appDomain = Bundle.main.bundleIdentifier
         UserDefaults.standard.removePersistentDomain(forName: appDomain!)
         if geoFence?.fencingDelegate != nil {
-            geoFence?.stop()
+            geoFence?.stopMonitorForGeoFencing()
         }
         self.deleteTempDBFolders()
         if isSocialLogin == 1 {
@@ -319,6 +325,12 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
         else {
             OPGSDK.logout()
+        }
+        if panelName != nil {
+            UserDefaults.standard.set(panelName, forKey: selectedPanelName)
+        }
+        if panelID != nil {
+            UserDefaults.standard.set(panelID, forKey: selectedPanelID)
         }
         UserDefaults.standard.set("0", forKey: "isUserLoggedIN")                    // 0 indicates not logged in or logout
         UserDefaults.standard.set(deviceToken, forKey: "DeviceTokenID")             // Before Logout, Re-assign DeviceTokenID as we get that only for one time
@@ -343,9 +355,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     func deleteTempDBFolders() {
         let filemanager = FileManager.default
         let documentsPath: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let filepath = documentsPath.appending("/Framework.db")
-        let filepath1 = documentsPath.appending("/Framework.db-shm")
-        let filepath2 = documentsPath.appending("/Framework.db-wal")
         let panelImagePath = documentsPath.appending("/PanelImages")
         if filemanager.fileExists(atPath: panelImagePath) {
             do {
@@ -354,27 +363,8 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 print("Error occured while copying and the error is \(err.description)")
             }
         }
-        if filemanager.fileExists(atPath: filepath) {
-            do {
-                try filemanager.removeItem(atPath: filepath)
-            } catch let err as NSError {
-                print("Error occured while copying and the error is \(err.description)")
-            }
-        }
-        if filemanager.fileExists(atPath: filepath1) {
-            do {
-                try filemanager.removeItem(atPath: filepath1)
-            } catch let err as NSError {
-                print("Error occured while copying and the error is \(err.description)")
-            }
-        }
-        if filemanager.fileExists(atPath: filepath2) {
-            do {
-                try filemanager.removeItem(atPath: filepath2)
-            } catch let err as NSError {
-                print("Error occured while copying and the error is \(err.description)")
-            }
-        }
+        OPGDB.deleteOldDatabase()
+        OPGDB.initialize(withDBVersion: OPGConstants.sdk.DatabaseVersion)
         OPGSDK.setAppVersion(OPGConstants.sdk.AppVersion)
         OPGSDK.initialize(withUserName: OPGConstants.sdk.Username, withSDKKey: OPGConstants.sdk.SharedKey)
     }
@@ -573,7 +563,9 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         var surveyList: Array<Any> = []
         let panelID: String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String
         if panelID != nil {
-            surveyList = CollabrateDB.sharedInstance().getAllSurveys(panelID)
+            dispatchQueue.async(flags: .barrier) {
+                surveyList = CollabrateDB.sharedInstance().getAllSurveys(panelID)
+            }
         }
         if surveyList.count > 0 {
             for survey in surveyList {

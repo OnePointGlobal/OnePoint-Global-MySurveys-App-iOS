@@ -18,7 +18,7 @@
 #import "OPGPanel.h"
 #import "OPGTheme.h"
 #import "OPGSurveyPanel.h"
-#import "OPGGeoFencingModel.h"
+#import "OPGGeofenceSurvey.h"
 #import "OPGPanellistPanel.h"
 #import "OPGCountry.h"
 
