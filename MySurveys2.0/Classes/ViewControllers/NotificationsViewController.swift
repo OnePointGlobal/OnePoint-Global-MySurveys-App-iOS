@@ -67,6 +67,8 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.navigationItem.leftBarButtonItem = nil
         self.isEditable = false
+        // remove all selected items and leave the screen
+        self.selectedIndexArray.removeAll()
     }
 
     // MARK: - Generic Private Methods
@@ -74,9 +76,6 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
         if self.isEditable == false {
             self.tabBarController?.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Edit", comment: "")         // restore normal mode even when user changes screen and come back
             self.tabBarController?.navigationItem.leftBarButtonItem = nil
-//            if self.notificationArray.count > 0 {
-//                self.tableView.reloadData()
-//            }
         }
     }
 
@@ -87,11 +86,11 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             self.tableView.reloadData()
             return
         }
-        for selectedIndex in self.selectedIndexArray {
-            let notifDict: NSDictionary = self.notificationArray[selectedIndex]
-            let notifID: NSNumber = notifDict["AppNotificationID"] as! NSNumber
+        for selectedItem in self.selectedIndexArray {
+//            let notifDict: NSDictionary = self.notificationArray[selectedIndex]
+//            let notifID: NSNumber = notifDict["AppNotificationID"] as! NSNumber
             DispatchQueue.global(qos: .default).sync {
-                CollabrateDB.sharedInstance().deleteNotifications(notifID)
+                CollabrateDB.sharedInstance().deleteNotifications(selectedItem as NSNumber)
             }
         }
         self.getNotificationsFromDB()
@@ -104,6 +103,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
     }
 
     func getNotificationsFromDB() {
+        self.notificationArray.removeAll()
         self.notificationArray = CollabrateDB.sharedInstance().loadNotifications() as! [NSDictionary]
         if self.notificationArray.count > 0 {
             for dict in self.notificationArray {
@@ -124,6 +124,23 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             self.tableView.backgroundView = self.lblNoNewNotifications
             self.lblNoNewNotifications?.text = NSLocalizedString("No notifications so far.", comment: "No notifications so far.")
             self.tabBarController?.navigationItem.rightBarButtonItem = nil
+        }
+    }
+
+    func selectCell(cell: NotificationTableViewCell) {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            cell.imgSelect.image = UIImage(named: "notif_select.png")                   // select cell
+        }
+        else {
+            cell.imgSelect.image = UIImage(named: "notif_select_iPad.png")
+        }
+    }
+
+    func deSelectCell(cell: NotificationTableViewCell) {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            cell.imgSelect.image = UIImage(named: "notif_deselect.png")
+        } else {
+            cell.imgSelect.image = UIImage(named: "notif_deselect_iPad.png")
         }
     }
 
@@ -177,6 +194,8 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
         let tableViewCell: NotificationTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! NotificationTableViewCell
         let dict: NSDictionary = notificationArray[indexPath.row] as NSDictionary
         let isRead: String = dict["IsRead"] as! String
+        let notificationID = dict["AppNotificationID"]
+
         if isRead == "1" {
             let color: UIColor = UIColor(colorLiteralRed: 160/255.0, green: 158/255.0, blue: 158/255.0, alpha: 1)     // for Hex A09E9E
             tableViewCell.lblNotificationDesc.textColor = color                          // change color if notification is read
@@ -185,16 +204,25 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             let color: UIColor = UIColor(colorLiteralRed: 96/255.0, green: 96/255.0, blue: 96/255.0, alpha: 1)     // for Hex 606060
             tableViewCell.lblNotificationDesc.textColor = color                          // color if notification is unread
         }
+
         tableViewCell.lblNotificationDesc.text = dict["Title"] as? String
         tableViewCell.layoutMargins = UIEdgeInsets.zero
         tableViewCell.accessoryType = .disclosureIndicator
         tableViewCell.selectionStyle = .none
+
         if self.isEditable {
-            if UIDevice.current.userInterfaceIdiom == .phone {
-                tableViewCell.imgSelect.image = UIImage(named: "notif_deselect.png")                // deselect all cells on clicking cancel button
+            if self.selectedIndexArray.contains(notificationID as! Int) {
+                // already selected
+                self.selectCell(cell: tableViewCell)
+                let color: UIColor = UIColor(colorLiteralRed: 196/255.0, green: 196/255.0, blue: 196/255.0, alpha: 1)     // for Hex C4C4C4
+                tableViewCell.contentView.backgroundColor = color
+                tableViewCell.backgroundColor = color
             }
             else {
-                tableViewCell.imgSelect.image = UIImage(named: "notif_deselect_iPad.png")
+                // cells are reused so reset the properties when a cell is not in the selected list otherwise they also get the selection bg colors applied
+                self.deSelectCell(cell: tableViewCell)
+                tableViewCell.contentView.backgroundColor = UIColor.clear
+                tableViewCell.backgroundColor = UIColor.clear
             }
         }
         else {
@@ -206,41 +234,33 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             else {
                 tableViewCell.imgSelect.image = UIImage(named: "notif_reminder_iPad.png")
             }
-//            if (indexPath.row%2)==0                                                            // dummy condition to differentiate reminders and other notifs
-//            {
-//                tableViewCell.imgSelect.image = UIImage(named: "notif_reminder.png")
-//            }
-//            else
-//            {
-//                tableViewCell.imgSelect.image = UIImage(named: "notif_others.png")
-//            }
         }
         return tableViewCell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell: NotificationTableViewCell = tableView.cellForRow(at: indexPath) as! NotificationTableViewCell
-        if self.isEditable {                                                                            // in edit mode, select the table view cells
-            if self.selectedIndexArray.contains(indexPath.row) {
-                if UIDevice.current.userInterfaceIdiom == .phone {
-                    cell.imgSelect.image = UIImage(named: "notif_deselect.png")                             // deselect cell again after selecting
-                }
-                else {
-                    cell.imgSelect.image = UIImage(named: "notif_deselect_iPad.png")
-                }
+        let notif: NSDictionary = self.notificationArray[indexPath.row]
+        let notifID = notif["AppNotificationID"]
+        if self.isEditable {
+            // in edit mode, select the table view cells
+            if self.selectedIndexArray.contains(notifID as! Int) {
+                // deselcting
+                self.deSelectCell(cell: cell)
                 cell.contentView.backgroundColor = UIColor.clear
                 cell.backgroundColor = UIColor.clear
-                let indexOfElelement = self.selectedIndexArray.index(of: indexPath.row)
-                self.selectedIndexArray.remove(at: indexOfElelement!)                                       // provide index to remove an item
+                if notifID != nil {
+                    let indexOfElelement = self.selectedIndexArray.index(of: notifID as! Int)
+                    self.selectedIndexArray.remove(at: indexOfElelement!)
+                }
             }
             else {
-                self.selectedIndexArray.append(indexPath.row)
-                if UIDevice.current.userInterfaceIdiom == .phone {
-                    cell.imgSelect.image = UIImage(named: "notif_select.png")                   // select cell
+                // selecting a cell
+                // add notification ID to selected array
+                if notifID != nil {
+                    self.selectedIndexArray.append(notifID as! Int)
                 }
-                else {
-                    cell.imgSelect.image = UIImage(named: "notif_select_iPad.png")
-                }
+                self.selectCell(cell: cell)
                 let color: UIColor = UIColor(colorLiteralRed: 196/255.0, green: 196/255.0, blue: 196/255.0, alpha: 1)     // for Hex C4C4C4
                 cell.contentView.backgroundColor = color
                 cell.backgroundColor = color

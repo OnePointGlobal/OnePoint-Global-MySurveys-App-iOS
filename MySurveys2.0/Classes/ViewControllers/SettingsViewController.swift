@@ -146,11 +146,8 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
             }
         }
         else {
-            let array = CollabrateDB.sharedInstance().getAllGeoFenceSurveys() as! Array<OPGGeofenceSurvey>
-            DispatchQueue.global(qos: .default).sync {
-                for element in array {
-                    CollabrateDB.sharedInstance().deleteGeoFenceSurvey(element.surveyID)
-                }
+            dispatchQueue.async(flags: .barrier) {
+                CollabrateDB.sharedInstance().deleteGeoFenceTable()
             }
             UserDefaults.standard.set("0", forKey: "isGeoFenced")
             geoFence?.stopMonitorForGeoFencing()

@@ -672,4 +672,15 @@
         [surveyFactory Delete:survey];
     }
 }
+
+-(void)deleteGeoFenceTable{
+    @synchronized (self) {
+        GeofenceSurveyFactory *surveyFactory = [[GeofenceSurveyFactory alloc]init];
+        NSArray* geoFencedSurveys = (NSArray*)[surveyFactory FindAllObjects];
+        for (GeofenceSurvey *survey in geoFencedSurveys ) {
+            [surveyFactory Delete:survey];
+        }
+    }
+}
+
 @end

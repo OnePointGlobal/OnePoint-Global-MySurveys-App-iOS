@@ -114,6 +114,8 @@
 
 -(void)deleteGeoFenceSurvey:(NSNumber*)geoFencedSurveyID;
 
+-(void)deleteGeoFenceTable;
+
 -(NSMutableDictionary*) getThemesForPanelID:(NSString*)panelID
                             themeTemplateID:(NSString*)themeTemplateID;
 

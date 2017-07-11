@@ -106,8 +106,24 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             AppTheme.setCurrentTheme(theme: dict!)
             self.setThemeForViews()
         }
+
+        // For testing purposes only
+        //self.fireLocalNotification()
     }
-    
+
+    func fireLocalNotification() {
+        let notification = UILocalNotification()
+        if #available(iOS 8.2, *) {
+            notification.alertTitle = NSLocalizedString("MySurveys", comment: "")
+        } else {
+            // Fallback on earlier versions
+        }
+        notification.alertBody = NSLocalizedString("Welcome to", comment: "") + " BTM Layout " + NSLocalizedString("You have a survey available at this location", comment: "")
+        notification.fireDate = NSDate(timeIntervalSinceNow:0.3) as Date
+        UIApplication.shared.cancelAllLocalNotifications()
+        UIApplication.shared.scheduledLocalNotifications = [notification]
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         self.tableView?.setContentOffset(CGPoint.zero, animated: true)
         let defaults = UserDefaults.standard
