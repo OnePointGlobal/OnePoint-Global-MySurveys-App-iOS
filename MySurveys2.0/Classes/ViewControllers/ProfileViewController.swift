@@ -309,6 +309,8 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         let panelID: String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String              //fetch the updated panelID again
         let panelName: String? = UserDefaults.standard.value(forKey: selectedPanelName) as? String
         let bgImagePath: String? = AppTheme.getLoginBGImagePath()
+        let logoImgPath: String? = AppTheme.getHeaderLogoImagePath()
+        let logoText: String? = AppTheme.getLogoText()
         self.unRegisterForAPNS(deviceToken)
         let appDomain = Bundle.main.bundleIdentifier
         UserDefaults.standard.removePersistentDomain(forName: appDomain!)
@@ -336,6 +338,8 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         UserDefaults.standard.set(deviceToken, forKey: "DeviceTokenID")             // Before Logout, Re-assign DeviceTokenID as we get that only for one time
         AppTheme.setLoginBGImagePath(path: bgImagePath!)                            // Before Logout, Re-assign login BG image path as it is to be shown after logout
         AppTheme.setLoginBtnTextColor(color: AppTheme.appBackgroundColor())
+        AppTheme.setHeaderLogoImagePath(path: logoImgPath!)
+        AppTheme.setLogoText(text: logoText!)
         UserDefaults.standard.synchronize()
         _ = self.navigationController?.popViewController(animated: true)
     }

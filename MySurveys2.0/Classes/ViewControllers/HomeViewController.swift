@@ -18,7 +18,8 @@ class MyPointAnnotation : MKPointAnnotation {
     var identifier: String?
 }
 
-class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableViewDelegate,UITableViewDataSource,OPGGeoFenceSurveyDelegate {
+class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableViewDelegate,UITableViewDataSource,OPGGeoFenceSurveyDelegate, LogoImageDownloadDelegate {
+
     let isDownload = "isDownloaded"
     let queue = OperationQueue()
     // MARK: - IBOutlets for view
@@ -66,6 +67,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         geoFence?.fencingDelegate = self
+        AppTheme.delelgate = self
 
         queue.maxConcurrentOperationCount = 1
         self.geoFencedView?.isHidden = true
@@ -103,8 +105,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             let panelID: String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String
             let themeTempID: String? = UserDefaults.standard.value(forKey: "selectedThemeTemplateID") as? String
             let dict = CollabrateDB.sharedInstance().getThemesForPanelID(panelID, themeTemplateID: themeTempID)            //set theme after login if there is any available
-            AppTheme.setCurrentTheme(theme: dict!)
-            self.setThemeForViews()
+            if ((dict?.count)! > 0) {
+                AppTheme.setCurrentTheme(theme: dict!)
+                self.setThemeForViews(theme: dict!)
+            }
         }
 
         // For testing purposes only
@@ -195,7 +199,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
     }
 
-    func setThemeForViews(){
+    func setThemeForViews(theme: NSDictionary){
         self.tabBarController?.tabBar.tintColor = AppTheme.appBackgroundColor()
         self.segmentedControl.tintColor = AppTheme.appBackgroundColor()
         self.segmentedControl.subviews[0].tintColor = AppTheme.appBackgroundColor()
@@ -419,6 +423,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             }
         }
     }
+
+    func logoImageDidDownload() {
+        self.setThemeBGImage()
+    }
     
     func setThemeBGImage() {
         let headerLogoBGImagePath: String = AppTheme.getHeaderLogoImagePath()
@@ -481,33 +489,35 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
 
             let blockTakeFromDB = BlockOperation {
                 for item in array {
-                    let surveysArray: Array<Survey> = surveyFactory.find(bySurveyID:item.surveyID) as! Array<Survey>
-                    for survey in surveysArray {
-                        let opgSurvey: OPGSurvey =  OPGSurvey()
-                        opgSurvey.surveyName = survey.name
-                        opgSurvey.surveyDescription = survey.status;
-                        opgSurvey.surveyReference = survey.description;
-                        opgSurvey.lastUpdatedDate = self.stringFromDate(survey.lastUpdatedDate as NSDate)
-                        if (survey.createdDate == nil) {
-                            opgSurvey.createdDate = ""
-                            opgSurvey.startDate = ""
-                        } else {
-                            opgSurvey.createdDate = self.stringFromDate(survey.createdDate as NSDate)
-                            opgSurvey.startDate = self.stringFromDate(survey.createdDate as NSDate)   // check once why its used the same again
+                    DispatchQueue.global(qos: .default).sync {
+                        let surveysArray: Array<Survey> = surveyFactory.find(bySurveyID:item.surveyID) as! Array<Survey>
+                        for survey in surveysArray {
+                            let opgSurvey: OPGSurvey =  OPGSurvey()
+                            opgSurvey.surveyName = survey.name
+                            opgSurvey.surveyDescription = survey.status;
+                            opgSurvey.surveyReference = survey.description;
+                            opgSurvey.lastUpdatedDate = self.stringFromDate(survey.lastUpdatedDate as NSDate)
+                            if (survey.createdDate == nil) {
+                                opgSurvey.createdDate = ""
+                                opgSurvey.startDate = ""
+                            } else {
+                                opgSurvey.createdDate = self.stringFromDate(survey.createdDate as NSDate)
+                                opgSurvey.startDate = self.stringFromDate(survey.createdDate as NSDate)   // check once why its used the same again
+                            }
+                            if (survey.deadLine == nil) {
+                                opgSurvey.endDate = ""
+                                opgSurvey.deadline = ""
+                            } else {
+                                opgSurvey.endDate = self.stringFromDate(survey.deadLine as NSDate)
+                                opgSurvey.deadline = self.stringFromDate(survey.deadLine as NSDate)
+                            }
+                            opgSurvey.isOffline = NSNumber(value:Int(survey.isOffline))
+                            opgSurvey.isGeoFencing = NSNumber(value:Int(survey.isGeofencing))
+                            opgSurvey.surveyID = survey.surveyID;
+                            opgSurvey.estimatedTime = survey.estimatedTime;
+                            opgSurvey.isOfflineDownloaded = NSNumber(value:Int(survey.occurences))
+                            dummyList.append(opgSurvey)
                         }
-                        if (survey.deadLine == nil) {
-                            opgSurvey.endDate = ""
-                            opgSurvey.deadline = ""
-                        } else {
-                            opgSurvey.endDate = self.stringFromDate(survey.deadLine as NSDate)
-                            opgSurvey.deadline = self.stringFromDate(survey.deadLine as NSDate)
-                        }
-                        opgSurvey.isOffline = NSNumber(value:Int(survey.isOffline))
-                        opgSurvey.isGeoFencing = NSNumber(value:Int(survey.isGeofencing))
-                        opgSurvey.surveyID = survey.surveyID;
-                        opgSurvey.estimatedTime = survey.estimatedTime;
-                        opgSurvey.isOfflineDownloaded = NSNumber(value:Int(survey.occurences))
-                        dummyList.append(opgSurvey)
                     }
                 }
 
@@ -594,9 +604,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     func getPanelsfromDB()  {
         print("getPanelsfromDB")
-        let panelName : String? = UserDefaults.standard.value(forKey: selectedPanelName) as? String
-        let panelID : String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String
-        var themeTempID : String? = UserDefaults.standard.value(forKey: "selectedThemeTemplateID") as? String
+        let panelName: String? = UserDefaults.standard.value(forKey: selectedPanelName) as? String
+        let panelID: String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String
+        var themeTempID: String? = UserDefaults.standard.value(forKey: "selectedThemeTemplateID") as? String
 
         if themeTempID == nil {
             let panelsArray : Array<OPGPanel> = (CollabrateDB.sharedInstance().getPanels() as? Array<OPGPanel>)!
@@ -625,7 +635,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     if ((dict?.count)! > 0) {
                         AppTheme.setCurrentTheme(theme: dict!)
                         DispatchQueue.main.async {
-                            self.setThemeForViews()
+                            self.setThemeForViews(theme: dict!)
                         }
                     }
                     print("SelectedPanelID is \(panelID)")
