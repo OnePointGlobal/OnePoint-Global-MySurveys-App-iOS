@@ -21,7 +21,7 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
     var settingItems: [String] = []
     var urlString: String?
     var pageTitle: String?
-    var geofencedArrays : Array<Any> = []
+    var geofencedArrays: Array<Any> = []
     var myLocation: CLLocationCoordinate2D?
 
     // Append locale based on language selected.
@@ -36,8 +36,8 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
         self.tableView.layoutMargins = UIEdgeInsets.zero
         self.tableView.separatorInset = UIEdgeInsets.zero
         self.tableView.tableFooterView = UIView()
-        self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 1.7 " + "Alpha"
-        geoFence?.initialiseGeofencing()            //Ask for location permission
+        self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 2.0.0 "
+        geoFence?.initialiseGeofencing()            // Ask for location permission
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -10,7 +10,12 @@ import UIKit
 
 let EMPTY_STRING = ""
 
+protocol LogoImageDownloadDelegate : class {    // 'class' means only class types can implement it
+  func logoImageDidDownload()
+}
+
 class AppTheme: NSObject {
+    static var delelgate: LogoImageDownloadDelegate? = nil
     static var theme: ThemeModel?
     static func initThemeModel(theme: NSDictionary) -> ThemeModel? {
         let actionBtn: String? = theme.value(forKey: "Actionbtn") as! String?
@@ -25,7 +30,6 @@ class AppTheme: NSObject {
         else {
             let newTheme = ThemeModel(actionBtn: actionBtn, headerLogo: headerLogo, linksColor: linksColor, loginBackground: loginBackground, logoText: logoText)
             return newTheme
-
         }
     }
 
@@ -48,6 +52,7 @@ class AppTheme: NSObject {
                                     }
                                     else {
                                         self.setHeaderLogoImagePath(path: (mediaObj?.mediaFilePath)!)
+                                        delelgate?.logoImageDidDownload()
                                     }
                                 }
                             }
@@ -71,14 +76,29 @@ class AppTheme: NSObject {
                 self.theme = self.initThemeModel(theme: theme)
                 let panelName = UserDefaults.standard.value(forKey: "SelectedPanelName") as? String
                 if self.theme != nil {             // fix for wrong keys coming in theme dict when someone creates theme in old adminsuite wrongly
-                    if Int((self.theme?.headerLogo)!)! > 0 {
-                        self.downloadThemeImage(mediaId: (self.theme?.headerLogo)!, isLoginBGImage: false, fileName: (panelName?.appending("ThemeHeaderLogo"))!)
+                    if let headerLogo = self.theme?.headerLogo {
+                        if Int(headerLogo)! > 0 {
+                            self.downloadThemeImage(mediaId: headerLogo, isLoginBGImage: false, fileName: (panelName?.appending("ThemeHeaderLogo"))!)
+                        }
+                        else {
+                            self.setHeaderLogoImagePath(path: EMPTY_STRING)
+                        }
                     }
-                    if Int((self.theme?.loginBackground)!)!>0 {
-                        self.downloadThemeImage(mediaId: (self.theme?.loginBackground)!, isLoginBGImage: true, fileName: (panelName?.appending("ThemeLoginBG"))!)
+
+                    if let loginBgMediaId = self.theme?.loginBackground {
+                        if Int(loginBgMediaId)!>0 {
+                            self.downloadThemeImage(mediaId: loginBgMediaId, isLoginBGImage: true, fileName: (panelName?.appending("ThemeLoginBG"))!)
+                        }
+                        else {
+                            self.setLoginBGImagePath(path: EMPTY_STRING)
+                        }
                     }
+
                     if let logoText = self.theme?.logoText {
                         self.setLogoText(text: logoText)
+                    }
+                    else {
+                        self.setLogoText(text: EMPTY_STRING)
                     }
                 }
                 else {
