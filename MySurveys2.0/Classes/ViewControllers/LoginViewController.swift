@@ -146,7 +146,6 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         self.txtPassword?.text = ""
         self.txtPassword?.resignFirstResponder()
         self.txtUsername?.resignFirstResponder()
-
         AppTheme.theme=nil              // reset theme after showing custom BG image
     }
 

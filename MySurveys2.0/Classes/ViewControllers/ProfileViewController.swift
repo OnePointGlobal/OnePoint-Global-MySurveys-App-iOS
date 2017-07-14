@@ -50,7 +50,10 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     func getDateString() -> String {
         let date = NSDate()
         let dateFormatter = DateFormatter()
+        let utcTimeZone = NSTimeZone(abbreviation: "UTC")
+        dateFormatter.timeZone = utcTimeZone! as TimeZone
         dateFormatter.dateFormat = "HH_mm_ss"
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US") as Locale!
         return dateFormatter.string(from: date as Date)
     }
 
