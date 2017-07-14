@@ -107,7 +107,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             let dict = CollabrateDB.sharedInstance().getThemesForPanelID(panelID, themeTemplateID: themeTempID)            //set theme after login if there is any available
             if ((dict?.count)! > 0) {
                 AppTheme.setCurrentTheme(theme: dict!)
-                self.setThemeForViews(theme: dict!)
+                self.setThemeForViews()
             }
         }
 
@@ -199,12 +199,14 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
     }
 
-    func setThemeForViews(theme: NSDictionary){
+    func setThemeForViews(){
         self.tabBarController?.tabBar.tintColor = AppTheme.appBackgroundColor()
         self.segmentedControl.tintColor = AppTheme.appBackgroundColor()
         self.segmentedControl.subviews[0].tintColor = AppTheme.appBackgroundColor()
         self.segmentedControl.subviews[1].tintColor = AppTheme.appBackgroundColor()
         self.navigationController?.navigationBar.barTintColor = AppTheme.appBackgroundColor()
+        // set theme header logo
+        self.setThemeBGImage()
     }
 
 
@@ -481,8 +483,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             let surveyFactory: SurveyFactory = SurveyFactory()
             let myInteger = Int(panelID)
             let myNumber = NSNumber(value:myInteger!)
-//            dispatchQueue.async(flags: .barrier) {
-//            }
+
             let array: Array<SurveyPanel> = surveyPanelFactory.find(byPanelID:myNumber) as! Array<SurveyPanel>
             var dummyList:Array<Any> = []
             self.surveyList = []
@@ -635,7 +636,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     if ((dict?.count)! > 0) {
                         AppTheme.setCurrentTheme(theme: dict!)
                         DispatchQueue.main.async {
-                            self.setThemeForViews(theme: dict!)
+                            self.setThemeForViews()
                         }
                     }
                     print("SelectedPanelID is \(panelID)")
@@ -1132,6 +1133,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     self.uploadResultsToServer(surveysToUpload, completionHandler: { status in
                         if status == "Success" {
                             DispatchQueue.main.async {
+                                UserDefaults.standard.set(nil, forKey: "selectedThemeTemplateID")
                                 self.hideBanner()
                                 UserDefaults.standard.set(0, forKey: self.isDownload)
                                 self.shimmeringView?.isShimmering = true
@@ -1157,6 +1159,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 }
                 /*******************************************************/
             } else {
+                UserDefaults.standard.set(nil, forKey: "selectedThemeTemplateID")
                 UserDefaults.standard.set(0, forKey: isDownload)
                 self.shimmeringView?.isShimmering = true
                 self.showBanner(progressTitle:NSLocalizedString("Sync in progress. Please wait!", comment: ""))
@@ -1170,6 +1173,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     self.getGeofencedSurveys()
                 }
             }
+
         } else {
             super.showNoInternetConnectionAlert()
         }
@@ -1320,18 +1324,23 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
 
     func uploadResults(sender: UIButton!) {
-        let indexPath = IndexPath(item: sender.tag, section: 0)
-        let tableViewCell: SurveyTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
-        tableViewCell?.btnSurveyDesc.isUserInteractionEnabled = false
-        let survey = self.surveyFilteredList[sender.tag] as! OPGSurvey
-        if survey.surveyID == nil {
-            return
+        if super.isOnline() {
+            let indexPath = IndexPath(item: sender.tag, section: 0)
+            let tableViewCell: SurveyTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
+            tableViewCell?.btnSurveyDesc.isUserInteractionEnabled = false
+            let survey = self.surveyFilteredList[sender.tag] as! OPGSurvey
+            if survey.surveyID == nil {
+                return
+            }
+            dispatchQueue.async(flags: .barrier) {
+                let upload = UploadSurvey.sharedInstance
+                let panellistID: String? = UserDefaults.standard.value(forKey: "PanelListID") as? String
+                CollabrateDB.sharedInstance().updateSurvey(survey.surveyID, withStatus: "Uploading", withDownloadStatus: 99)
+                upload.uploadOfflineSurvey(survey.surveyID, panelistID:panellistID!, index:indexPath)
+            }
         }
-        dispatchQueue.async(flags: .barrier) {
-            let upload = UploadSurvey.sharedInstance
-            let panellistID: String? = UserDefaults.standard.value(forKey: "PanelListID") as? String
-            CollabrateDB.sharedInstance().updateSurvey(survey.surveyID, withStatus: "Uploading", withDownloadStatus: 99)
-            upload.uploadOfflineSurvey(survey.surveyID, panelistID:panellistID!, index:indexPath)       // check with chinthan for optional(thamarai)
+        else {
+            super.showNoInternetConnectionAlert()
         }
     }
     
