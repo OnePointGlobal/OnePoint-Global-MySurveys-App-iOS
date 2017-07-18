@@ -189,7 +189,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         let sectionTitle = self.indexCharacters[indexPath.section]
             let sectionCountries = self.indexCountryDict[sectionTitle]
             let countryName: String = sectionCountries?[indexPath.row] as! String
-        print("Selected Country : ", countryName)
+
         // call this method on whichever class implements our delegate protocol
         delegate?.userDidChangeCountry(newCountry: self.getCountryByName(name: countryName))
         self.dismiss(animated: true, completion: nil)

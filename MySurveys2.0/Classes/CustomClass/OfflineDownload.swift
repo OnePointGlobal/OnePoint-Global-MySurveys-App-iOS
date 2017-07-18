@@ -77,9 +77,9 @@ class OfflineDownload: NSObject, URLSessionDelegate, URLSessionDataDelegate {
                 if NSString(data: buffer as Data, encoding: String.Encoding.utf8.rawValue) != nil {
                     let json = try JSONSerialization.jsonObject(with: buffer as Data, options: .mutableContainers) as! [AnyHashable: Any]
                     let result: OPGScript = try script.parseAndDownloadScript(json, for: self.surveyObj)
-                    if result.isSuccess == 1 {
-                        print(result)
-                    }
+//                    if result.isSuccess == 1 {
+//                        print(result)
+//                    }
                 }
             } catch {
                 print(error)

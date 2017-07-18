@@ -158,8 +158,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         } else if (isOperating == 3){
             // refresh leave as it is
         }
-        let documentsPath: String? = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true)[0]
-        print(documentsPath!)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -212,7 +210,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
 
     //This method uploads the offline survey results and shows the progress of upload.
     func uploadSurveyResults(_ notification: NSNotification) {
-        print("methodOfReceivedNotification\(notification.userInfo)")
         guard let userInfo = notification.userInfo,
             let percentage  = userInfo["percentage"] as? Float,
             let surveyID  = userInfo["surveyReference"] as? Int,
@@ -223,7 +220,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
         
         DispatchQueue.main.async {
-                print("progress Delegate Called")
                 let indexPath = IndexPath(item: index.row , section: 0)
                 let tableViewCell: SurveyTableViewCell?
                 if index.section == 0 {
@@ -292,36 +288,30 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
     
     func performAPIOperations() {
-        print("Called APIOpr")
         let blockOperationPanles = BlockOperation {
-            print("blockOperationPanles")
             self.getPanellistPanels()
         }
         queue.addOperation(blockOperationPanles)
         
         let blockOperationSurveys = BlockOperation {
-            print("blockOperationSurveys")
             self.getSurveys()
         }
         queue.addOperation(blockOperationSurveys)
         blockOperationSurveys.addDependency(blockOperationPanles)
         
         let blockOperationProfile = BlockOperation {
-            print("blockOperationProfile")
             self.getPanellistProfile()
         }
         queue.addOperation(blockOperationProfile)
         blockOperationProfile.addDependency(blockOperationSurveys)
         
         let blockOperationPanlesfromDB = BlockOperation {
-            print("blockOperationPanlesfromDB")
             self.getPanelsfromDB()
         }
         queue.addOperation(blockOperationPanlesfromDB)
         blockOperationPanlesfromDB.addDependency(blockOperationProfile)
         
         let blockOperationSurveysFromDB = BlockOperation {
-            print("blockOperationSurveysFromDB")
             self.getSurveysFromDB()
         }
         queue.addOperation(blockOperationSurveysFromDB)
@@ -331,7 +321,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
 
     func checkforAvailableSurveys() {
-        print("checkforAvailableSurveys \(self.surveyFilteredList.count)")
         if self.surveyFilteredList.count > 0 {
             self.lblNoSurveys?.isHidden = true
         } else {
@@ -376,14 +365,13 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func getSurveys() {
         let isAlreadyDownload: Int? = UserDefaults.standard.value(forKey: isDownload) as? Int
         if isAlreadyDownload != 1 {
-            print("Downloading Surveys")
             let sdk = OPGSDK()
             do {
                 if super.isOnline() {
                     let surveyList: Array<OPGSurvey> = try sdk.getUserSurveyList() as! Array
                     if surveyList.count > 0 {
                         for (index,element) in surveyList.enumerated() {
-                            print("getSurveys\(index)")
+                            //print("getSurveys\(index)")
                             isOfflineDownloaded.append(0)
                             CollabrateDB.sharedInstance().saveSurveys(element, with: true)
                         }
@@ -402,13 +390,12 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func getPanellistProfile() {
         let isAlreadyDownload: Int? = UserDefaults.standard.value(forKey: isDownload) as? Int
         if isAlreadyDownload != 1 {
-            print("Downloading Panellist Profile")
             let sdk = OPGSDK()
             do {
                 if super.isOnline() {
                     let panelist:OPGPanellistProfile = try sdk.getPanellistProfile() as OPGPanellistProfile
                     if (panelist.countryName != nil && panelist.std != nil) {
-                        print(panelist)
+                        //print(panelist)
                         CollabrateDB.sharedInstance().save(panelist)
                         CollabrateDB.sharedInstance().saveCountry(panelist.countryName, withStd: panelist.std)
                         UserDefaults.standard.set(1, forKey: isDownload)
@@ -475,7 +462,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
     
     func getSurveysFromDB() {
-        print("getSurveysFromDB")
         let panelid: String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String
 
         if let panelID = panelid {
@@ -523,7 +509,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 }
 
                 OperationQueue.main.addOperation({
-                    print("In OperationQueue Main thread")
                     UserDefaults.standard.set(2, forKey: "isOperating")
                     let userLoggedIn: String? = UserDefaults.standard.object(forKey: "isUserLoggedIN") as? String
 
@@ -577,7 +562,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func checkForGeoFencing() {
         for i in 0 ..< surveyList.count {
             let survey: OPGSurvey = surveyList[i] as! OPGSurvey
-            print(survey.isGeoFencing);
             if survey.isGeoFencing == 1 {
                 UserDefaults.standard.set(true, forKey: "isGeoFencingAvailable")
                 return
@@ -604,8 +588,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
     
     func getPanelsfromDB()  {
-        print("getPanelsfromDB")
-        let panelName: String? = UserDefaults.standard.value(forKey: selectedPanelName) as? String
         let panelID: String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String
         var themeTempID: String? = UserDefaults.standard.value(forKey: "selectedThemeTemplateID") as? String
 
@@ -639,7 +621,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                             self.setThemeForViews()
                         }
                     }
-                    print("SelectedPanelID is \(panelID)")
                 }
             }
         }
@@ -651,7 +632,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             let sdk  =  OPGSDK()
             do {
                 if super.isOnline() {
-                    print("Fetching Panellist Panels from API")
                     let panellistPanels: OPGPanellistPanel? =  try sdk.getPanellistPanel() as OPGPanellistPanel
                     if panellistPanels?.isSuccess == 1 {
                         if ((panellistPanels?.surveyPanelArray.count)! > 0) || (panellistPanels?.surveyPanelArray != nil) {
@@ -701,7 +681,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     func stopDownloadSurveys(){
         if self.OfflineDownloadList.count > 0{
-            for (index, items) in self.surveyList.enumerated() {
+            for (index, _) in self.surveyList.enumerated() {
                 if ((self.surveyList[index] as! OPGSurvey).isOffline == 1) {
                     if (self.surveyList[index] as! OPGSurvey).isOfflineDownloaded == 1 {
                         (self.OfflineDownloadList[index] as? OfflineDownload)?.stopDownloadingSurvey()
@@ -754,7 +734,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         if survey?.isGeoFencing != 1 {
                             let indexForSurvey = self.findIndexOfSurey(survey!)
                             if indexForSurvey != -1 {
-                                print("changing cell for non geofence survey \(survey?.surveyName)")
                                 let indexPath = IndexPath(item: indexForSurvey, section: 0)
                                 let tableViewCell: SurveyTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
                                 tableViewCell?.btnSurveyDesc.setTitle(NSLocalizedString("Downloading...", comment: ""),for: .normal)
@@ -854,7 +833,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                                                 tableViewCell?.btnSurveyDesc.isUserInteractionEnabled = true
                                                                 tableViewCell?.btnSurveyDesc.isEnabled = true
                                                                 tableViewCell?.btnSurveyDesc.removeTarget(self, action: nil, for: .touchUpInside)
-                                                                print("progressCompleted:\(progress)")
+                                                                //print("progressCompleted:\(progress)")
                                                                 tableViewCell?.setNeedsDisplay()
                                                             }
                                                             else{
@@ -863,7 +842,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                                         }
                                                     }
                                                 } else {
-                                                    print("Downloaded a geofencing survey \(survey?.surveyName)")
+                                                    //print("Downloaded a geofencing survey \(survey?.surveyName)")
                                                 }
                                                 
                                             }
@@ -1181,8 +1160,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
 
     // MARK: - Filtering Methods for geo-fencing
     func runThroughAddresses(address: String, surveyReference:String, isEntered: Bool) {
-        print("runThroughAddresses")
-
         if geofencedArrays.count > 0 {
             if isEntered == true {
                 for i in 0 ..< geofencedArrays.count {
@@ -1190,13 +1167,11 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     let surveyRef: String = (geofencedArrays[i] as! OPGGeofenceSurvey).surveyReference as String
                     if address.contains(addresses!) &&  surveyReference == surveyRef {
                         (geofencedArrays[i] as! OPGGeofenceSurvey).isDeleted = 2
-                        print("Entered \(String(describing: addresses)) \(String(describing: surveyReference)) ")
+                        //print("Entered \(String(describing: addresses)) \(String(describing: surveyReference)) ")
                          let concurrentQueue = DispatchQueue(label: "updateGeoFenceSurvey2")
                             concurrentQueue.sync() {
                             CollabrateDB.sharedInstance().updateGeoFenceSurvey((self.geofencedArrays[i] as! OPGGeofenceSurvey).addressID, withSurveyReference: surveyRef, withStatus: 2)   //2 = entered
                         }
-                        print("updateGeoFenceSurvey2Completed")
-
                     }
                 }
             } else {
@@ -1209,8 +1184,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         concurrentQueue.sync() {
                             CollabrateDB.sharedInstance().updateGeoFenceSurvey((self.geofencedArrays[i] as! OPGGeofenceSurvey).addressID, withSurveyReference: surveyRef, withStatus: 1)       //1 = exited
                         }
-                        print("updateGeoFenceSurvey1Completed")
-
                     }
                 }
 
@@ -1222,8 +1195,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
 
     func runThroughSurveyName(surveyName: String, isEntered: Bool) {
-                    print("runThroughSurveyName")
-
         if geoFencedArrayFiltered.count > 0 {
             if isEntered == true {
                 for i in 0 ..< geoFencedArrayFiltered.count {
@@ -1245,10 +1216,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
              concurrentQueue.sync() {
                 self.geofencedArrays = CollabrateDB.sharedInstance().getAllGeoFenceSurveys()
              }
-            print("getAllSurveysCompleted")
-
         }
-
     }
     
     func runThroughSurveyRef(_ surveyRef:String) -> OPGSurvey {
@@ -1306,7 +1274,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     
     func updateOfflineCounter(survey:OPGSurvey, indexPath: IndexPath, tableview: UITableView ) {
-        print(indexPath)
         dispatchQueue.async(flags: .barrier) {
             let sdk = OPGSDK()
             do {
@@ -1426,13 +1393,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             else {
                 tableViewCell.constarintCounterBtnSpace.constant = 15          // default constarint after refresh/reload
             }
-            if survey.isOffline == 1 {
-                if survey.isOfflineDownloaded != 1 {
-                    if survey.surveyReference != nil || survey.surveyReference != "" {
-                        print("indexPathCell: \(indexPath.row)")
-                    }
-                }
-            }
         }
         
         if tableView == self.tableViewGeoFenced {
@@ -1518,8 +1478,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
 
     func didEnterSurveyRegion(_ regionEntered: OPGGeofenceSurvey!) {
-                    print("didEnterSurveyRegion")
-
         dispatchQueue.async(flags: .barrier) {
             if (regionEntered != nil) {
                 self.runThroughAddresses(address: regionEntered.address, surveyReference: regionEntered.surveyReference, isEntered: true)
@@ -1531,7 +1489,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                                "title": regionEntered.surveyName,
                                                "body": NSLocalizedString("Welcome to", comment: "") + " \(regionEntered.address!)! " + NSLocalizedString("You have a survey available at this location", comment: ""),
                                                "IsRead": "0"]
-                    print("dict created \(dict)")
 
                 if appState == UIApplicationState.active {
                     let concurrentQueue = DispatchQueue(label: "getAllSurveys")
@@ -1540,8 +1497,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     }
                 }
                 DispatchQueue.main.async {
-                    print("Dispach main")
-
                     self.tableViewGeoFenced?.reloadData()       //enable surveys with orange color
                     if appState == UIApplicationState.active {
                         self.showGeoAlerts(regionEntered)
@@ -1639,7 +1594,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         if CLLocationManager.locationServicesEnabled() {
             switch(CLLocationManager.authorizationStatus()) {
             case .notDetermined, .restricted, .denied:
-                print("No Location access")
                 self.setUpGeoFeningView(false)
                 showGeoFencePopUp(NSLocalizedString("Please enable location services from device Settings to take the survey.", comment: ""))
                 return
@@ -1892,7 +1846,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
 
     deinit {
-        print("DEINIT CALLEDDDDDDDDDDDD Survey")
         NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "NotificationIdentifier"), object: nil);
         NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "OPGGeofencedArraysObtained"), object: nil);
     }
