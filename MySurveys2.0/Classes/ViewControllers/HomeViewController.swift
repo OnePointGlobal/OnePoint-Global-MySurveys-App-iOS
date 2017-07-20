@@ -14,9 +14,12 @@ import CoreLocation
 
 let dispatchQueue = DispatchQueue(label: "com.dispatchQueue.barrier")
 
+let geoFence = OPGGeoFence.sharedInstance()
+
 class MyPointAnnotation : MKPointAnnotation {
     var identifier: String?
 }
+
 
 class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableViewDelegate,UITableViewDataSource,OPGGeoFenceSurveyDelegate, LogoImageDownloadDelegate {
 
@@ -110,22 +113,17 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 self.setThemeForViews()
             }
         }
-
-        // For testing purposes only
-        //self.fireLocalNotification()
-    }
-
-    func fireLocalNotification() {
-        let notification = UILocalNotification()
-        if #available(iOS 8.2, *) {
-            notification.alertTitle = NSLocalizedString("MySurveys", comment: "")
-        } else {
-            // Fallback on earlier versions
+        // monitor geofencing again after app kill and reopen
+        if UserDefaults.standard.value(forKey: "isGeoFenced") as? String == "1" && super.isOnline() {
+            dispatchQueue.async(flags: .barrier) {
+                CollabrateDB.sharedInstance().deleteGeoFenceTable()
+                DispatchQueue.main.async {
+                    // stop and then start monitoring otherwise invalid state
+                    geoFence?.stopMonitorForGeoFencing()
+                    self.getGeofencedSurveys()
+                }
+            }
         }
-        notification.alertBody = NSLocalizedString("Welcome to", comment: "") + " BTM Layout " + NSLocalizedString("You have a survey available at this location", comment: "")
-        notification.fireDate = NSDate(timeIntervalSinceNow:0.3) as Date
-        UIApplication.shared.cancelAllLocalNotifications()
-        UIApplication.shared.scheduledLocalNotifications = [notification]
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -927,6 +925,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 }
             }
         }
+        else {
+            print("Current location is nil")
+        }
         
     }
 
@@ -1205,12 +1206,14 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 }
 
             } else {
+                print("geoFencedArrayFiltered \(geoFencedArrayFiltered), \(surveyName) ")
                 for i in 0 ..< geoFencedArrayFiltered.count {
                     let name = (geoFencedArrayFiltered[i] as! OPGGeofenceSurvey).surveyName
-                    if !surveyName.contains(name!) {
+                    if surveyName.contains(name!) {
                         (geoFencedArrayFiltered[i] as! OPGGeofenceSurvey).isDeleted = 1              // isDeleted is used for Enter/Exit operations
                     }
                 }
+                print("geoFencedArrayFiltered1 \(geoFencedArrayFiltered), \(surveyName) ")
             }
             let concurrentQueue = DispatchQueue(label: "getAllSurveys")
              concurrentQueue.sync() {
@@ -1477,7 +1480,14 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
     }
 
+     /*
+     MARK: - Geofence Survey Delegate Methods
+     
+     Geofence Survey Delegate Methods Enter region Exit survey region
+     */
+
     func didEnterSurveyRegion(_ regionEntered: OPGGeofenceSurvey!) {
+    print("didEnterSurveyRegion called")
         dispatchQueue.async(flags: .barrier) {
             if (regionEntered != nil) {
                 self.runThroughAddresses(address: regionEntered.address, surveyReference: regionEntered.surveyReference, isEntered: true)
@@ -1496,44 +1506,50 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         CollabrateDB.sharedInstance().saveLocalNotifications(dict)
                     }
                 }
+                else{
+                    if #available(iOS 10.0, *) {
+                        let content = UNMutableNotificationContent()
+                        let application = UIApplication.shared
+
+                        content.title = NSLocalizedString("MySurveys", comment: "")
+                        content.body = NSLocalizedString("Welcome to", comment: "") + " \(regionEntered.address!)! " + NSLocalizedString("You have a survey available at this location", comment: "")
+                        content.userInfo = dict
+                        content.badge = NSNumber(value:application.applicationIconBadgeNumber+1)
+                        let trigger = UNTimeIntervalNotificationTrigger(
+                            timeInterval: 0.3,
+                            repeats: false)
+
+                        let request = UNNotificationRequest(
+                            identifier: regionEntered.address,
+                            content: content,
+                            trigger: trigger
+                        )
+                        let center = UNUserNotificationCenter.current()
+                        center.removeAllPendingNotificationRequests()
+                        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in }
+                        application.registerForRemoteNotifications()
+                        application.applicationIconBadgeNumber = 1
+                        center.add(request, withCompletionHandler: nil)
+
+
+                    } // TODO: write code for iOS9.0 and below
+                    else {
+                        let notification = UILocalNotification()
+                        if #available(iOS 8.2, *) {
+                            notification.alertTitle = NSLocalizedString("MySurveys", comment: "")
+                        } else {
+                            // Fallback on earlier versions
+                        }
+                        notification.alertBody = NSLocalizedString("Welcome to", comment: "") + " \(regionEntered.address!)! " + NSLocalizedString("You have a survey available at this location", comment: "")
+                        notification.fireDate = NSDate(timeIntervalSinceNow:0.3) as Date
+                        UIApplication.shared.cancelAllLocalNotifications()
+                        UIApplication.shared.scheduledLocalNotifications = [notification]
+                    }
+                }
                 DispatchQueue.main.async {
                     self.tableViewGeoFenced?.reloadData()       //enable surveys with orange color
                     if appState == UIApplicationState.active {
                         self.showGeoAlerts(regionEntered)
-                    }
-                    else {
-                        //if app is inactive, send notifications
-                        if #available(iOS 10.0, *) {
-                            let content = UNMutableNotificationContent()
-
-                            content.title = NSLocalizedString("MySurveys", comment: "")
-                            content.body = NSLocalizedString("Welcome to", comment: "") + " \(regionEntered.address!)! " + NSLocalizedString("You have a survey available at this location", comment: "")
-                            content.userInfo = dict
-                            let trigger = UNTimeIntervalNotificationTrigger(
-                                timeInterval: 0.3,
-                                repeats: false)
-
-                            let request = UNNotificationRequest(
-                                identifier: regionEntered.address,
-                                content: content,
-                                trigger: trigger
-                            )
-                            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-                            UNUserNotificationCenter.current().add(
-                                request, withCompletionHandler: nil)
-                        } // TODO: write code for iOS9.0 and below
-                        else {
-                            let notification = UILocalNotification()
-                            if #available(iOS 8.2, *) {
-                                notification.alertTitle = NSLocalizedString("MySurveys", comment: "")
-                            } else {
-                                // Fallback on earlier versions
-                            }
-                            notification.alertBody = NSLocalizedString("Welcome to", comment: "") + " \(regionEntered.address!)! " + NSLocalizedString("You have a survey available at this location", comment: "")
-                            notification.fireDate = NSDate(timeIntervalSinceNow:0.3) as Date
-                            UIApplication.shared.cancelAllLocalNotifications()
-                            UIApplication.shared.scheduledLocalNotifications = [notification]
-                        }
                     }
                 }
             }
@@ -1541,8 +1557,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
 
     func didExitSurveyRegion(_ regionExited: OPGGeofenceSurvey) {
-        print("region exited is \(regionExited.address)")
+        print("region exited is \(regionExited.address) \(regionExited.surveyName)")
         dispatchQueue.async(flags: .barrier) {
+            self.runThroughAddresses(address: regionExited.address, surveyReference: regionExited.surveyReference, isEntered: false)
             self.runThroughSurveyName(surveyName: regionExited.surveyName, isEntered: false)
             DispatchQueue.main.async {
                 self.tableViewGeoFenced?.reloadData()               //disnable surveys with gray color

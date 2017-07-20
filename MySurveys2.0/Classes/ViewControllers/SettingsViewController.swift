@@ -10,7 +10,6 @@ import Foundation
 import CoreLocation
 
 
-let geoFence = OPGGeoFence.sharedInstance()
 
 class SettingsViewController: RootViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     // MARK: - IBOutlets for View
