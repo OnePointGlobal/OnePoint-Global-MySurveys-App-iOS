@@ -292,7 +292,6 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
                 }
                 notificationArray.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-                print("Deleted a row")
                 self.tableView.endUpdates()
                 if notificationArray.count == 0 {
                     self.checkforAvailableNotifications()               // set no notifications label in the center

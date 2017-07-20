@@ -655,7 +655,7 @@
                 geoSurvey = survey;
                 if (geoSurvey != nil) {
                     geoSurvey.IsEntered = [NSNumber numberWithInt:[isEntered intValue]];
-                    NSLog(@"Survey updated in DB with status %@", geoSurvey.IsEntered);
+                    //NSLog(@"Survey updated in DB with status %@", geoSurvey.IsEntered);
                     [surveyFactory Save:geoSurvey];
                 }
             }

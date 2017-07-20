@@ -11,6 +11,8 @@ import FBSDKLoginKit
 
 class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     // MARK: - IBOutlets for view
+    @IBOutlet weak var imgLogo: UIImageView?
+    @IBOutlet weak var lblLogoText: UILabel?
     @IBOutlet weak var imgLoginBG: UIImageView?
     @IBOutlet weak var imgApp: UIImageView?
     @IBOutlet weak var imgSeparator: UIImage?
@@ -26,6 +28,8 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
     @IBOutlet weak var constraintImageViewBottom: NSLayoutConstraint!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView?
     @IBOutlet weak var constarintForgotPassowrdTrailingSpace: NSLayoutConstraint!
+    @IBOutlet weak var constraintLogoText: NSLayoutConstraint!
+    @IBOutlet weak var constraintLogoImage: NSLayoutConstraint!
     // MARK: - Properties for viewcontroller
     var loginManager: FBSDKLoginManager?
     var bgColor: UIColor?
@@ -133,6 +137,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             lblGlobalAppNameText?.text = name
         }
         self.setThemeElements()
+        self.checkForLogoImgAndText()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -141,7 +146,6 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         self.txtPassword?.text = ""
         self.txtPassword?.resignFirstResponder()
         self.txtUsername?.resignFirstResponder()
-
         AppTheme.theme=nil              // reset theme after showing custom BG image
     }
 
@@ -248,10 +252,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
 
     func authenticateWithFacebook(result: FBSDKLoginManagerLoginResult) {
         if result.token != nil {
-
             print("the token received is \(result.token.tokenString)")
-            print("the user id is \(result.token.userID)")
-
             DispatchQueue.global(qos: .default).async {
                 let sdk = OPGSDK()
                 do {
@@ -330,7 +331,45 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         }
         self.btnLogin?.setTitleColor(AppTheme.getLoginBtnTextColor(), for: .normal)       // set theme login btn color
         self.bgColor = AppTheme.getLoginBtnTextColor()
+    }
 
+    func checkForLogoImgAndText() {
+        let headerLogoBGImagePath: String = AppTheme.getHeaderLogoImagePath()
+        if (headerLogoBGImagePath.isEmpty) {
+            let logoText: String = AppTheme.getLogoText()
+            if logoText.isEmpty {
+                // set default logo Image
+                self.imgLogo?.contentMode = .scaleAspectFit
+                if  UIDevice.current.userInterfaceIdiom == .phone {
+                    let image = UIImage(named: "LoginPageLogo.png")
+                    self.imgLogo?.image = image
+                }
+                else {
+                    let image = UIImage(named: "LoginPageLogo_iPad.png")
+                    self.imgLogo?.image = image
+                }
+                self.imgLogo?.isHidden = false
+                self.lblLogoText?.isHidden = true
+            }
+            else {
+                // set logo text
+                self.lblLogoText?.adjustsFontSizeToFitWidth = true
+                self.lblLogoText?.text = logoText
+                self.imgLogo?.isHidden = true
+                self.lblLogoText?.isHidden = false
+            }
+        }
+        else {
+            let fileExists = FileManager().fileExists(atPath: headerLogoBGImagePath)
+            if fileExists {
+                // set logo Image
+                self.imgLogo?.contentMode = .scaleAspectFit
+                self.imgLogo?.image = UIImage(contentsOfFile:headerLogoBGImagePath)           //set theme logo  image
+                self.imgLogo?.backgroundColor = UIColor.clear
+                self.imgLogo?.isHidden = false
+                self.lblLogoText?.isHidden = true
+            }
+        }
     }
 
     func setBackgroundImageforView() {
@@ -339,39 +378,32 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         if  UIDevice.current.userInterfaceIdiom == .phone {
             switch height {
             case OPGConstants.device.iPhone4Height:
-                imgLoginBG?.image = UIImage(named: "Default@2x.png")
+                imgLoginBG?.image = UIImage(named: "LoginBg@2x.png")
                 break
             case OPGConstants.device.iPhone5Height:
-                print("iPhone 5")
-                imgLoginBG?.image = UIImage(named: "Default-568h@2x.png")
+                imgLoginBG?.image = UIImage(named: "LoginBg-568h@2x.png")
                 break
             case OPGConstants.device.iPhone6And7Height:
-                print("iPhone 6 or 7")
-                imgLoginBG?.image = UIImage(named: "Default-667h@2x.png")
+                imgLoginBG?.image = UIImage(named: "LoginBg-667h@2x.png")
                 break
             case OPGConstants.device.iPhone6PlusAnd7PlusHeight:
-                print("iPhone 6+ or 7+")
-                imgLoginBG?.image = UIImage(named: "Default-736@3x.png")
+                imgLoginBG?.image = UIImage(named: "LoginBg-736@3x.png")
                 break
             default:
-                print("not an iPhone")
-                imgLoginBG?.image = UIImage(named: "Default.png")
+                imgLoginBG?.image = UIImage(named: "LoginBg.png")
                 break
             }
         }
         else if UIDevice.current.userInterfaceIdiom == .pad {
             switch height {
             case OPGConstants.device.iPadPortraitHeight:
-                print("iPad Portrait")
-                imgLoginBG?.image = UIImage(named: "Default_iPad_Portrait.png")
+                imgLoginBG?.image = UIImage(named: "LoginBg_iPad_Portrait.png")
                 break
             case OPGConstants.device.iPadLandscapeHeight:
-                print("iPad Landscape")
-                imgLoginBG?.image = UIImage(named: "Default_iPad_Landscape.png")
+                imgLoginBG?.image = UIImage(named: "LoginBg_iPad_Landscape.png")
                 break
             default:
-                print("not an iPad")
-                imgLoginBG?.image = UIImage(named: "Default-736@3x.png")
+                imgLoginBG?.image = UIImage(named: "LoginBg-736@3x.png")
                 break
             }
         }
@@ -429,6 +461,14 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                 self.constraintLoginViewCentre.constant = -50.0
                 self.constraintImageViewTop.constant = -50.0
                 self.constraintImageViewBottom.constant = 55.0
+                if  UIDevice.current.userInterfaceIdiom == .pad {
+                    self.constraintLogoText.constant = 90
+                    self.constraintLogoImage.constant = 90
+                }
+                else {
+                    self.constraintLogoText.constant = 40.0
+                    self.constraintLogoImage.constant = 40.0
+                }
                 self.view.layoutIfNeeded()
             })
         }
@@ -437,6 +477,14 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                 self.constraintLoginViewCentre.constant = -60.0
                 self.constraintImageViewTop.constant = -60.0
                 self.constraintImageViewBottom.constant = 65.0
+                if  UIDevice.current.userInterfaceIdiom == .pad {
+                    self.constraintLogoText.constant = 80
+                    self.constraintLogoImage.constant = 80
+                }
+                else {
+                    self.constraintLogoText.constant = 30.0
+                    self.constraintLogoImage.constant = 30.0
+                }
                 self.view.layoutIfNeeded()
             })
         }
@@ -448,6 +496,15 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             self.constraintLoginViewCentre.constant = 0
             self.constraintImageViewTop.constant = 0
             self.constraintImageViewBottom.constant = 0
+            if  UIDevice.current.userInterfaceIdiom == .pad {
+                self.constraintLogoText.constant = 140
+                self.constraintLogoImage.constant = 140
+            }
+            else {
+                self.constraintLogoText.constant = 70
+                self.constraintLogoImage.constant = 70
+            }
+
             self.view.layoutIfNeeded()
         })
     }
@@ -461,12 +518,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Can't sign in. Try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
             return
         }
-        print("Email : " + user.profile.email + "\n")
-        print(user.profile.imageURL(withDimension: 400))
-        print("\n")
-        print("ID Token : " + user.authentication.idToken + "\n")    // Safe to send to the server
-        print("User ID : " + user.userID + "\n")                     // For client-side use only!
-        print("Profile Name : " + user.profile.name + "\n")
+        
         if user.authentication.idToken.isEmpty {
             self.stopActivityIndicator()
             if super.isOnline()==false {

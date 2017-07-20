@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.statusBarStyle = .lightContent
         // Override point for customization after application launch.
-        UIApplication.shared.applicationIconBadgeNumber = -1
+        UIApplication.shared.applicationIconBadgeNumber = 0
         self.setAppViews()
         OPGSDK.setAppVersion(OPGConstants.sdk.AppVersion)
         OPGSDK.initialize(withUserName: OPGConstants.sdk.Username, withSDKKey:OPGConstants.sdk.SharedKey)
@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     // for iOS 9 and below
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1
+        application.applicationIconBadgeNumber = application.applicationIconBadgeNumber + 1
         if application.applicationState == UIApplicationState.active {
              DispatchQueue.global(qos: .default).sync {
                  CollabrateDB.sharedInstance().saveNotifications(userInfo as [AnyHashable: Any])
@@ -98,6 +98,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        application.applicationIconBadgeNumber = application.applicationIconBadgeNumber + 1
+
         if #available(iOS 8.2, *) {
             print(notification.alertTitle!)
         }
@@ -190,6 +192,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
