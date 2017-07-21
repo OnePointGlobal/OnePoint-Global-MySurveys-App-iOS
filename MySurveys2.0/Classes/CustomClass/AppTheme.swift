@@ -41,8 +41,6 @@ class AppTheme: NSObject {
                 let sdk = OPGSDK()
                 var mediaObj: OPGDownloadMedia?
                 do {
-                    print("downloaded login screen mediaId: \(mediaId)")
-                    
                     mediaObj  = try sdk.downloadMediaFile(mediaId, mediaType: "jpg", fileName: fileName) as OPGDownloadMedia
                     DispatchQueue.main.async {
                             if mediaObj?.isSuccess == 1 {

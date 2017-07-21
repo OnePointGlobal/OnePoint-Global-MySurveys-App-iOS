@@ -144,7 +144,6 @@ class OfflineSurveyViewController: RootViewController {
     }
 
     func updateProgressBar(_ notification: NSNotification) {
-        print("methodOfReceivedNotification\(notification.userInfo)")
         guard let userInfo = notification.userInfo,
             let percentage  = userInfo["percentage"] as? Float,
             let _ = userInfo["numberOfFilesPending"] as? Int else {
@@ -168,7 +167,6 @@ class OfflineSurveyViewController: RootViewController {
     // MARK: - IBAction Methods
      @IBAction func takeSurveyAction(_ sender: UIButton) {
         let survey: OPGSurvey = CollabrateDB.sharedInstance().getSurvey(surveySelected?.surveyID)
-        print("Downloaded\(survey)")
         if survey.isOfflineDownloaded == 2 {
             self.updateSurveyPendingInDB()
             self.performSegue(withIdentifier: "takeOfflineSurvey", sender: self)

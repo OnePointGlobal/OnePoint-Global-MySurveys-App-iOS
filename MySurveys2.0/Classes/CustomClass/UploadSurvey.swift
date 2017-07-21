@@ -21,8 +21,7 @@ class UploadSurvey: NSObject {
         let panellistID: String = UserDefaults.standard.value(forKey: "PanelListID") as! String
         do {
             let resultObj: OPGUploadResult = try sdk.uploadOfflineResultFile(surveyID.stringValue, panelistId: panellistID, fileName: fileName, filePath: filePath)
-            // self.setOfflineCounter()
-            print("Offline survey result file uploaded to server")
+
             if resultObj.isSuccess == 1 {
                 progress = Float(fileCount) / Float(totalUploadedCount)
                 // code to update progress bar

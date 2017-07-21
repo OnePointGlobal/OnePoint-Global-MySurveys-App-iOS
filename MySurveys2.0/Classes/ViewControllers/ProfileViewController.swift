@@ -405,7 +405,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 do {
                     try sdk.update(self.panelist)                             // Updating the profile with new media ID
                     DispatchQueue.main.async {
-                        print("Profile with Media updated to server")
                         self.getPanellistProfileFromServer()                  // After server update is done, update DB
                     }
                 }
@@ -436,7 +435,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 let sdk = OPGSDK()
                 var mediaObj: OPGDownloadMedia?
                 do {
-                    print("downloaded mediaId: \(mediaId)")
                     mediaObj = try sdk.downloadMediaFile(mediaId, mediaType: "jpg", fileName: "ProfileImg"+self.getDateString())
                    // mediaObj  = try sdk.downloadMediaFile(mediaId, mediaType: "jpg") as OPGDownloadMedia
                     DispatchQueue.main.async {
@@ -525,8 +523,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     // MARK: - Image Picker Delegates
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        print("documentsPath: \(documentsPath)")
-
         let image: UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let photoURL          = NSURL(fileURLWithPath: documentDirectory)

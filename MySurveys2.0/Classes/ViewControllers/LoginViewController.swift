@@ -252,10 +252,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
 
     func authenticateWithFacebook(result: FBSDKLoginManagerLoginResult) {
         if result.token != nil {
-
             print("the token received is \(result.token.tokenString)")
-            print("the user id is \(result.token.userID)")
-
             DispatchQueue.global(qos: .default).async {
                 let sdk = OPGSDK()
                 do {
@@ -384,19 +381,15 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                 imgLoginBG?.image = UIImage(named: "LoginBg@2x.png")
                 break
             case OPGConstants.device.iPhone5Height:
-                print("iPhone 5")
                 imgLoginBG?.image = UIImage(named: "LoginBg-568h@2x.png")
                 break
             case OPGConstants.device.iPhone6And7Height:
-                print("iPhone 6 or 7")
                 imgLoginBG?.image = UIImage(named: "LoginBg-667h@2x.png")
                 break
             case OPGConstants.device.iPhone6PlusAnd7PlusHeight:
-                print("iPhone 6+ or 7+")
                 imgLoginBG?.image = UIImage(named: "LoginBg-736@3x.png")
                 break
             default:
-                print("not an iPhone")
                 imgLoginBG?.image = UIImage(named: "LoginBg.png")
                 break
             }
@@ -404,15 +397,12 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         else if UIDevice.current.userInterfaceIdiom == .pad {
             switch height {
             case OPGConstants.device.iPadPortraitHeight:
-                print("iPad Portrait")
                 imgLoginBG?.image = UIImage(named: "LoginBg_iPad_Portrait.png")
                 break
             case OPGConstants.device.iPadLandscapeHeight:
-                print("iPad Landscape")
                 imgLoginBG?.image = UIImage(named: "LoginBg_iPad_Landscape.png")
                 break
             default:
-                print("not an iPad")
                 imgLoginBG?.image = UIImage(named: "LoginBg-736@3x.png")
                 break
             }
@@ -528,12 +518,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Can't sign in. Try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
             return
         }
-        print("Email : " + user.profile.email + "\n")
-        print(user.profile.imageURL(withDimension: 400))
-        print("\n")
-        print("ID Token : " + user.authentication.idToken + "\n")    // Safe to send to the server
-        print("User ID : " + user.userID + "\n")                     // For client-side use only!
-        print("Profile Name : " + user.profile.name + "\n")
+        
         if user.authentication.idToken.isEmpty {
             self.stopActivityIndicator()
             if super.isOnline()==false {
