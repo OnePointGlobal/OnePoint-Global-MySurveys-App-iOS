@@ -51,6 +51,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     var surveyFilteredList: Array<Any> = []
     var surveyGeoAvailable: Array<Any> = []
     var surveyListGeoArray: Array<Any> = []
+    var arrayOfDownloadingScripts: Array<Int> = []
+
     var surveyReference: NSString?
     var surveyStatus: NSString?
     var surveySelected: OPGSurvey?
@@ -712,25 +714,20 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         for (index, items) in surveyList.enumerated() {
             let dataObject = OfflineDownload()
             dataObject.surveyObj = (items as! OPGSurvey)
-            
-            
+
             if ((self.surveyList[index] as! OPGSurvey).isOffline == 1) {
                 if (self.surveyList[index] as! OPGSurvey).isOfflineDownloaded == 0  || self.isAppKilled == true {
                     if super.isOnline() {
-                        
+
                         var array: Array<Any>? = UserDefaults.standard.value(forKey: "downloadSurveysArray") as? Array<Any>
                         array?.append((self.surveyList[index] as! OPGSurvey).surveyID)
                         UserDefaults.standard.set(array, forKey: "downloadSurveysArray")
-                        dispatchQueue.async(flags: .barrier) {
-                            CollabrateDB.sharedInstance().updateSurvey(((items as! OPGSurvey).surveyID), withStatus: "Downloading...", withDownloadStatus: 1)
-                        }
 
-                        //  let sur:OPGSurvey = CollabrateDB.sharedInstance().getSurvey((items as! OPGSurvey).surveyID)
                         let survey:OPGSurvey? = self.surveyList[index] as? OPGSurvey
                         survey?.surveyDescription = "Downloading..."
                         survey?.isOfflineDownloaded = 1
                         self.surveyList[index] = survey // reassign to array instead of dB call
-                        
+
                         if survey?.isGeoFencing != 1 {
                             let indexForSurvey = self.findIndexOfSurey(survey!)
                             if indexForSurvey != -1 {
@@ -740,128 +737,142 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                 tableViewCell?.setNeedsDisplay()
                             }
                         }
-                        
-                        dispatchQueue.async(flags: .barrier) {
-                            dataObject.downloadOfflineSurvey(self.surveyList[index] as! OPGSurvey) { [weak self] progress, survey, error in
-                                
-                                if error != nil {
-                                    let isOperating: Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
-                                    print("Error in download operations \(error?.localizedDescription)")
-                                    dispatchQueue.async(flags: .barrier) {
-                                        CollabrateDB.sharedInstance().updateSurvey(survey?.surveyID, withStatus: "Download", withDownloadStatus: 0)
-                                    }
-                                    let array: Array<Any>? = UserDefaults.standard.value(forKey: "downloadSurveysArray") as? Array<Any>
-                                    if array == nil {
-                                        return
-                                    }
-                                    if (array?.count)! > 0 {
-                                        let filteredArray: Array<Any> = (array?.filter { ($0 as? NSNumber) != survey?.surveyID })!
-                                        UserDefaults.standard.set(filteredArray, forKey: "downloadSurveysArray")
-                                    } else {
-                                        self?.isAppKilled = false
-                                    }
-                                    
-                                    if isOperating == 2 {
-                                        let currentSurvey:OPGSurvey? = self?.surveyList[index] as? OPGSurvey
-                                        if currentSurvey != nil {
-                                            if (currentSurvey?.surveyName == survey?.surveyName){
-                                                currentSurvey?.surveyDescription = NSLocalizedString("Download", comment: "")
-                                                currentSurvey?.isOfflineDownloaded = 0
-                                                self?.surveyList[index] = currentSurvey
-                                                if survey?.isGeoFencing != 1 {
-                                                    let indexForSurvey = self?.findIndexOfSurey(survey!)
-                                                    if indexForSurvey != -1 {
-                                                        let indexPath = IndexPath(item: indexForSurvey!, section: 0)
-                                                        let tableViewCell: SurveyTableViewCell? = self?.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
-                                                        if (tableViewCell != nil){
-                                                            tableViewCell?.progressBar?.progress = 0.0
-                                                            tableViewCell?.btnSurveyDesc.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
-                                                            tableViewCell?.btnSurveyDesc.setTitle(NSLocalizedString("Download", comment: ""),for: .normal)
-                                                            tableViewCell?.btnSurveyDesc.isUserInteractionEnabled = true
-                                                            tableViewCell?.btnSurveyDesc.isEnabled = true
-                                                            tableViewCell?.btnSurveyDesc.addTarget(self, action: #selector(self?.reDownloadOfflineSurvey(sender:)), for: .touchUpInside)
-                                                            tableViewCell?.setNeedsDisplay()
-                                                        }
-                                                    }
-                                                } else {
-                                                    print("Download failed for a geofencing survey \(survey?.surveyName)")
-                                                }
-                                            }
+
+                        // download script only if the survey ID is not there in the downloading list already (to avoid repetitive downloading)
+                        if self.arrayOfDownloadingScripts.contains(Int((self.surveyList[index] as! OPGSurvey).surveyID)) == false {
+                            self.arrayOfDownloadingScripts.append((self.surveyList[index] as! OPGSurvey).surveyID as! Int)        // add survey ID to list of downloading arrays
+                            dispatchQueue.async(flags: .barrier) {
+                                dataObject.downloadOfflineSurvey(self.surveyList[index] as! OPGSurvey) { [weak self] progress, survey, error in
+
+                                    if error != nil {
+                                        let isOperating: Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
+                                        print("Error in download operations \(error?.localizedDescription)")
+                                        dispatchQueue.async(flags: .barrier) {
+                                            CollabrateDB.sharedInstance().updateSurvey(survey?.surveyID, withStatus: "Download", withDownloadStatus: 0)
                                         }
-                                    }
-                                    
-                                } else {
-                                    
-                                    if progress == 1.0{
                                         let array: Array<Any>? = UserDefaults.standard.value(forKey: "downloadSurveysArray") as? Array<Any>
                                         if array == nil {
                                             return
                                         }
                                         if (array?.count)! > 0 {
-                                            let surveyID: NSNumber? = survey?.surveyID
-                                            let filteredArray: Array<Any> = (array?.filter { ($0 as? NSNumber) != surveyID })!
+                                            let filteredArray: Array<Any> = (array?.filter { ($0 as? NSNumber) != survey?.surveyID })!
                                             UserDefaults.standard.set(filteredArray, forKey: "downloadSurveysArray")
+                                        } else {
+                                            self?.isAppKilled = false
                                         }
-                                        dispatchQueue.async(flags: .barrier) {
-                                            CollabrateDB.sharedInstance().updateSurvey(survey?.surveyID, withStatus: "New", withDownloadStatus: 2)
-                                        }
-                                    }
-                                    
-                                    let isIndexValid = self?.surveyList.indices.contains(index)
-                                    if ( isIndexValid )!{
-                                        
-                                        let currentSurvey:OPGSurvey? = self?.surveyList[index] as? OPGSurvey
-                                        if (currentSurvey != nil){
-                                            if (currentSurvey?.surveyReference == survey?.surveyReference){
-                                                if progress == 1.0{
-                                                    currentSurvey?.surveyDescription = NSLocalizedString("New", comment: "")
-                                                    currentSurvey?.isOfflineDownloaded = 2
+
+                                        if isOperating == 2 {
+                                            let currentSurvey:OPGSurvey? = self?.surveyList[index] as? OPGSurvey
+                                            if currentSurvey != nil {
+                                                if (currentSurvey?.surveyName == survey?.surveyName){
+                                                    currentSurvey?.surveyDescription = NSLocalizedString("Download", comment: "")
+                                                    currentSurvey?.isOfflineDownloaded = 0
                                                     self?.surveyList[index] = currentSurvey
-                                                }
-                                                if survey?.isGeoFencing != 1 {
-                                                    let indexForSurvey = self?.findIndexOfSurey(survey!)
-                                                    if indexForSurvey != -1 {
-                                                        let indexPath = IndexPath(item: indexForSurvey!, section: 0)
-                                                        let tableViewCell: SurveyTableViewCell? = self?.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
-                                                        if (tableViewCell != nil){
-                                                            tableViewCell?.progressBar?.progressTintColor = AppTheme.appBackgroundColor()        //theme for profgress bar
-                                                            tableViewCell?.progressBar?.progress = Float(progress!)
-                                                            if progress == 1.0{
+                                                    if survey?.isGeoFencing != 1 {
+                                                        let indexForSurvey = self?.findIndexOfSurey(survey!)
+
+                                                        // remove survey id from the list after download has failed
+                                                        if (self?.arrayOfDownloadingScripts.contains(Int(survey!.surveyID)))! {
+                                                        let index: Int = (self?.arrayOfDownloadingScripts.index(of: survey!.surveyID as! Int))!
+                                                        self?.arrayOfDownloadingScripts.remove(at: index)
+                                                        }
+
+                                                        if indexForSurvey != -1 {
+                                                            let indexPath = IndexPath(item: indexForSurvey!, section: 0)
+                                                            let tableViewCell: SurveyTableViewCell? = self?.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
+                                                            if (tableViewCell != nil){
                                                                 tableViewCell?.progressBar?.progress = 0.0
-                                                                tableViewCell?.btnSurveyDesc.setTitleColor(UIColor.lightGray, for: .normal)
-                                                                tableViewCell?.btnSurveyDesc.setTitle(NSLocalizedString("New", comment: ""),for: .normal)
+                                                                tableViewCell?.btnSurveyDesc.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
+                                                                tableViewCell?.btnSurveyDesc.setTitle(NSLocalizedString("Download", comment: ""),for: .normal)
                                                                 tableViewCell?.btnSurveyDesc.isUserInteractionEnabled = true
                                                                 tableViewCell?.btnSurveyDesc.isEnabled = true
-                                                                tableViewCell?.btnSurveyDesc.removeTarget(self, action: nil, for: .touchUpInside)
-                                                                //print("progressCompleted:\(progress)")
-                                                                tableViewCell?.setNeedsDisplay()
-                                                            }
-                                                            else{
+                                                                tableViewCell?.btnSurveyDesc.addTarget(self, action: #selector(self?.reDownloadOfflineSurvey(sender:)), for: .touchUpInside)
                                                                 tableViewCell?.setNeedsDisplay()
                                                             }
                                                         }
+                                                    } else {
+                                                        print("Download failed for a geofencing survey \(survey?.surveyName)")
                                                     }
-                                                } else {
-                                                    //print("Downloaded a geofencing survey \(survey?.surveyName)")
                                                 }
-                                                
+                                            }
+                                        }
+
+                                    } else {
+
+                                        if progress == 1.0{
+                                            let array: Array<Any>? = UserDefaults.standard.value(forKey: "downloadSurveysArray") as? Array<Any>
+                                            if array == nil {
+                                                return
+                                            }
+                                            if (array?.count)! > 0 {
+                                                let surveyID: NSNumber? = survey?.surveyID
+                                                let filteredArray: Array<Any> = (array?.filter { ($0 as? NSNumber) != surveyID })!
+                                                UserDefaults.standard.set(filteredArray, forKey: "downloadSurveysArray")
+                                            }
+                                            dispatchQueue.async(flags: .barrier) {
+                                                CollabrateDB.sharedInstance().updateSurvey(survey?.surveyID, withStatus: "New", withDownloadStatus: 2)
+                                            }
+                                           // remove survey id from the list after download is complete
+                                            let surveyID: NSNumber = (survey as! OPGSurvey).surveyID
+                                            if (self?.arrayOfDownloadingScripts.contains(Int(surveyID)))! {
+                                                let index: Int = (self?.arrayOfDownloadingScripts.index(of: surveyID as! Int))!
+                                                self?.arrayOfDownloadingScripts.remove(at: index)
+                                            }
+                                        }
+
+                                        let isIndexValid = self?.surveyList.indices.contains(index)
+                                        if ( isIndexValid )!{
+
+                                            let currentSurvey:OPGSurvey? = self?.surveyList[index] as? OPGSurvey
+                                            if (currentSurvey != nil){
+                                                if (currentSurvey?.surveyReference == survey?.surveyReference){
+                                                    if progress == 1.0{
+                                                        currentSurvey?.surveyDescription = NSLocalizedString("New", comment: "")
+                                                        currentSurvey?.isOfflineDownloaded = 2
+                                                        self?.surveyList[index] = currentSurvey
+                                                    }
+                                                    if survey?.isGeoFencing != 1 {
+                                                        let indexForSurvey = self?.findIndexOfSurey(survey!)
+                                                        if indexForSurvey != -1 {
+                                                            let indexPath = IndexPath(item: indexForSurvey!, section: 0)
+                                                            let tableViewCell: SurveyTableViewCell? = self?.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
+                                                            if (tableViewCell != nil){
+                                                                tableViewCell?.progressBar?.progressTintColor = AppTheme.appBackgroundColor()        //theme for profgress bar
+                                                                tableViewCell?.progressBar?.progress = Float(progress!)
+                                                                if progress == 1.0{
+                                                                    tableViewCell?.progressBar?.progress = 0.0
+                                                                    tableViewCell?.btnSurveyDesc.setTitleColor(UIColor.lightGray, for: .normal)
+                                                                    tableViewCell?.btnSurveyDesc.setTitle(NSLocalizedString("New", comment: ""),for: .normal)
+                                                                    tableViewCell?.btnSurveyDesc.isUserInteractionEnabled = true
+                                                                    tableViewCell?.btnSurveyDesc.isEnabled = true
+                                                                    tableViewCell?.btnSurveyDesc.removeTarget(self, action: nil, for: .touchUpInside)
+                                                                    //print("progressCompleted:\(progress)")
+                                                                    tableViewCell?.setNeedsDisplay()
+                                                                }
+                                                                else{
+                                                                    tableViewCell?.setNeedsDisplay()
+                                                                }
+                                                            }
+                                                        }
+                                                    } else {
+                                                        //print("Downloaded a geofencing survey \(survey?.surveyName)")
+                                                    }
+
+                                                }
                                             }
                                         }
                                     }
-                                    
-                                    
+                                    self?.OfflineDownloadList.append(dataObject)
                                 }
-                                self?.OfflineDownloadList.append(dataObject)
                             }
                         }
-                    } else {
+                    }
+                    else {
                         super.showNoInternetConnectionAlert()
-                        
                     }
                 }
             }
         }
-        
     }
     
     func rightBarButtonItemSetUp() {
