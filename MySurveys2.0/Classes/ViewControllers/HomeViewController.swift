@@ -1133,7 +1133,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                 self.createDummySurveyList()
                                 self.tableView?.reloadData()
                                 self.tableViewGeoFenced?.reloadData()
-                                //   self.toDeleteorSaveNotification(true)
                                 self.deleteTempDBFolders()
                                 self.performAPIOperations()
                                 if UserDefaults.standard.value(forKey: "isGeoFenced") as? String == "1" {
