@@ -1181,14 +1181,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 let surveyRef: String = (geofencedArrays[i] as! OPGGeofenceSurvey).surveyReference as String
                 if address.contains(addresses!) &&  surveyReference == surveyRef {
                     if isEntered == true {
-                        (geofencedArrays[i] as! OPGGeofenceSurvey).isDeleted = 2
+                        (geofencedArrays[i] as! OPGGeofenceSurvey).isDeleted = 2 // Entered
                     }
                     else{
-                        (geofencedArrays[i] as! OPGGeofenceSurvey).isDeleted = 1
-//                        let concurrentQueue = DispatchQueue(label: "updateGeoFenceSurvey1")
-//                        concurrentQueue.sync() {
-//                            CollabrateDB.sharedInstance().updateGeoFenceSurvey((self.geofencedArrays[i] as! OPGGeofenceSurvey).addressID, withSurveyReference: surveyRef, withStatus: 1)       //1 = exited
-//                        }
+                        (geofencedArrays[i] as! OPGGeofenceSurvey).isDeleted = 1 // Exited
                     }
                 }
             }

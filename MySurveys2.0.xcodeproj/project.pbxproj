@@ -37,6 +37,9 @@
 		13AB83D01DE6ECE5002A3108 /* Default-736@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AB83CB1DE6ECE5002A3108 /* Default-736@3x.png */; };
 		13AB83D11DE6ECE5002A3108 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AB83CC1DE6ECE5002A3108 /* Default.png */; };
 		13AB83D21DE6ECE5002A3108 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AB83CD1DE6ECE5002A3108 /* Default@2x.png */; };
+		13BEEFD81F21E0D000ED0D3F /* Bangalore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */; };
+		13BEEFD91F21E0D000ED0D3F /* Bangalore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */; };
+		13BEEFDA1F21E0D000ED0D3F /* Bangalore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */; };
 		13F4472A1E28B90000B24B8E /* UploadSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F447291E28B90000B24B8E /* UploadSurvey.swift */; };
 		13F9A4671DF943A40017C42C /* logout@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4661DF943A40017C42C /* logout@3x.png */; };
 		13F9A4691DF9442A0017C42C /* profile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4681DF9442A0017C42C /* profile@3x.png */; };
@@ -313,6 +316,7 @@
 		13AB83CB1DE6ECE5002A3108 /* Default-736@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-736@3x.png"; path = "icons/Default-736@3x.png"; sourceTree = "<group>"; };
 		13AB83CC1DE6ECE5002A3108 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = icons/Default.png; sourceTree = "<group>"; };
 		13AB83CD1DE6ECE5002A3108 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "icons/Default@2x.png"; sourceTree = "<group>"; };
+		13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bangalore.gpx; sourceTree = "<group>"; };
 		13F447291E28B90000B24B8E /* UploadSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadSurvey.swift; sourceTree = "<group>"; };
 		13F9A4661DF943A40017C42C /* logout@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout@3x.png"; path = "icons/logout@3x.png"; sourceTree = "<group>"; };
 		13F9A4681DF9442A0017C42C /* profile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile@3x.png"; path = "icons/profile@3x.png"; sourceTree = "<group>"; };
@@ -732,6 +736,7 @@
 			children = (
 				9428C40E1E1E4F3500DEF65D /* Location.gpx */,
 				9428C40F1E1E4F3500DEF65D /* NewLocation.gpx */,
+				13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -1145,6 +1150,7 @@
 				787D88E31E09337800E15D22 /* number_of_times@2x.png in Resources */,
 				13F9A46E1DF945ED0017C42C /* profile_orange@2x.png in Resources */,
 				78F5490A1DF8128B00E4EB35 /* google@2x.png in Resources */,
+				13BEEFD81F21E0D000ED0D3F /* Bangalore.gpx in Resources */,
 				1399F90A1DFA9078006AFD4C /* profile_default@3x.png in Resources */,
 				781401111EADDD2D00799399 /* survey_nav_iPad@2x.png in Resources */,
 				94CB0D761DCB1B84007AF73F /* splash@2x.png in Resources */,
@@ -1211,6 +1217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				135B71051DB9FC6A00F48E94 /* Localizable.strings in Resources */,
+				13BEEFD91F21E0D000ED0D3F /* Bangalore.gpx in Resources */,
 				94CD76391DB4A6A400C6F958 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1220,6 +1227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				135B71061DB9FC6A00F48E94 /* Localizable.strings in Resources */,
+				13BEEFDA1F21E0D000ED0D3F /* Bangalore.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
