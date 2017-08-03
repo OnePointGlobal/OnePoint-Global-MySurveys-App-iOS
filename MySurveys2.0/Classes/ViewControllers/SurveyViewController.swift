@@ -23,21 +23,15 @@ class SurveyViewController: OPGViewController, OPGSurveyDelegate {
         self.surveyDelegate = self
         self.navigationController?.navigationBar.topItem?.backBarButtonItem?.title = NSLocalizedString("Back", comment: "Back")
 
-        if self.surveySelected?.isOffline == 0 {
+        self.panelIdStr = UserDefaults.standard.value(forKey: "SelectedPanelID") as? String
+        self.panellistIdStr  = UserDefaults.standard.value(forKey: "PanelListID") as? String
+        let panelNumber = self.stringToNSNumber(str: self.panelIdStr!)
+        let panellistNumber = self.stringToNSNumber(str: self.panellistIdStr!)
 
-            self.panelIdStr = UserDefaults.standard.value(forKey: "SelectedPanelID") as? String
-            self.panellistIdStr  = UserDefaults.standard.value(forKey: "PanelListID") as? String
-            let panelNumber = self.stringToNSNumber(str: self.panelIdStr!)
-            let panellistNumber = self.stringToNSNumber(str: self.panellistIdStr!)
-            // self.loadSurvey(self.surveyReference)
+        if self.surveySelected?.isOffline == 0 {
             self.loadSurvey(self.surveyReference, panelID: panelNumber, panellistID: panellistNumber)
         }
         else {
-            self.panelIdStr = UserDefaults.standard.value(forKey: "SelectedPanelID") as? String
-            self.panellistIdStr  = UserDefaults.standard.value(forKey: "PanelListID") as? String
-
-            let panelNumber = self.stringToNSNumber(str: self.panelIdStr!)
-            let panellistNumber = self.stringToNSNumber(str: self.panellistIdStr!)
             self.loadOfflineSurvey(self.getScriptPath(), surveyName: self.surveySelected!.surveyName, surveyID: self.surveySelected!.surveyID , panelID: panelNumber, panellistID: panellistNumber)
         }
     }
