@@ -161,8 +161,13 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.tableView?.contentInset = UIEdgeInsetsMake(60,0,0,0);
-
+        let isAvailable: Bool? = UserDefaults.standard.value(forKey: "isGeoFencingAvailable") as? Bool
+        if isAvailable == true {
+            self.tableView?.contentInset = UIEdgeInsetsMake(105,0,0,0);
+        }
+        else {
+            self.tableView?.contentInset = UIEdgeInsetsMake(60,0,0,0);
+        }
         let defaults = UserDefaults.standard
         let name: String? = defaults.value(forKey: "appName") as? String
         if name != nil {
@@ -195,6 +200,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     override func viewWillDisappear(_ animated: Bool) {
         self.isAppKilled = false
+        previousPresnetedCell = 0
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
