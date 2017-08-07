@@ -40,11 +40,12 @@ class OPGNotificationView: UIView {
         self.notificationType = notificationType
         self.showNotificationUnderNavigationBar = true
         self.alpha = 0.8
-       // super.init(frame: CGRect(x: 0, y: 0, width: referenceView.bounds.size.width, height: notificationViewHeight))
+        self.frame.origin.y = 60
         setup()
     }
     
     func hideNotification() {
+        self.alpha = 0
         animator.removeBehavior(gravity)
         gravity = UIGravityBehavior(items: [self])
         gravity.gravityDirection = CGVector(dx: 0, dy: -1)
@@ -57,17 +58,17 @@ class OPGNotificationView: UIView {
         gravity = UIGravityBehavior(items: [self])
         collision = UICollisionBehavior(items: [self])
         itemBehavior = UIDynamicItemBehavior(items: [self])
-        itemBehavior.elasticity = 0.5
-        collision.addBoundary(withIdentifier: "AZNotificationBoundary" as NSCopying, from: CGPoint(x: 0, y: self.bounds.size.height * boundaryYAxis), to: CGPoint(x: (referenceView?.bounds.size.width)!, y: self.bounds.size.height * boundaryYAxis))
-        animator.addBehavior(gravity)
-        animator.addBehavior(collision)
+        itemBehavior.elasticity = 0.4
+        //collision.addBoundary(withIdentifier: "AZNotificationBoundary" as NSCopying, from: CGPoint(x: 0, y: self.bounds.size.height * boundaryYAxis), to: CGPoint(x: (referenceView?.bounds.size.width)!, y: self.bounds.size.height * boundaryYAxis))
+        //animator.addBehavior(gravity)
+        //animator.addBehavior(collision)
         animator.addBehavior(itemBehavior)
         // Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(AZNotificationView.hideNotification), userInfo: nil, repeats: false)
     }
 
     func setup() {
         let screenBounds = UIScreen.main.bounds
-        self.frame = CGRect(x: 0, y: showNotificationUnderNavigationBar == true ? 1 : -1 * notificationViewHeight, width: screenBounds.size.width, height: notificationViewHeight)
+        self.frame = CGRect(x: -2, y: showNotificationUnderNavigationBar == true ? 62 : -1 * notificationViewHeight, width: screenBounds.size.width+4, height: notificationViewHeight)
         setupNotificationType()
         let labelRect = CGRect(x: 5, y: 5, width: screenBounds.size.width-10, height: notificationViewHeight - 10)
         titleLabel.frame = labelRect
