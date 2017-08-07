@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPGScript : NSObject
+@interface OPGScript : NSObject<NSCoding>
 /*!
  * @brief surveyReference : The survey reference to the Survey.
  */

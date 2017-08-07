@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPGAuthenticate : NSObject
+@interface OPGAuthenticate : NSObject<NSCoding>
 
 /*! @brief httpStatusCode : HTTP Status Code */
 @property (nonatomic,strong) NSNumber *httpStatusCode;

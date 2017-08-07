@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPGSurveyPanel : NSObject
+@interface OPGSurveyPanel : NSObject<NSCoding>
 /*!
  * @brief surveyPanelID : surveyPanelID
  */

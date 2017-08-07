@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPGGeofenceSurvey : NSObject
+@interface OPGGeofenceSurvey : NSObject<NSCoding>
 /*! @brief surveyName : Name of the survey. */
 @property(nonatomic, strong) NSString* surveyName;
 /*! @brief surveyReference : Survey Reference. */
