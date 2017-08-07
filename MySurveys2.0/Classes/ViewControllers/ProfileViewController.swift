@@ -15,12 +15,12 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var lblUsername: UILabel?
     @IBOutlet weak var lblCountry: UILabel?
     @IBOutlet weak var lblEmail: UILabel?
-    @IBOutlet weak var tableview: UITableView!
-    @IBOutlet weak var btnEdit: UIBarButtonItem!
+    @IBOutlet weak var tableview: UITableView?
+    @IBOutlet weak var btnEdit: UIBarButtonItem?
     @IBOutlet weak var bgImage: UIImageView?
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var viewHeight: NSLayoutConstraint!
-    @IBOutlet weak var btnCameraIcon: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView?
+    @IBOutlet weak var viewHeight: NSLayoutConstraint?
+    @IBOutlet weak var btnCameraIcon: UIButton?
 
     // MARK: - Properties for viewcontroller
     var titleArray: [String] = []
@@ -61,12 +61,12 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         self.titleArray += [NSLocalizedString("Name", comment: ""), NSLocalizedString("Country", comment: ""), NSLocalizedString("E-mail Id", comment: "")]
-        self.tableview.delegate=self
-        self.tableview.dataSource=self
-        self.tableview.allowsSelection = false                  // Disable table view selection
-        self.tableview.separatorStyle = UITableViewCellSeparatorStyle.none
-        self.tableview.isScrollEnabled=false
-        self.activityIndicator.color = AppTheme.appBackgroundColor()
+        self.tableview?.delegate=self
+        self.tableview?.dataSource=self
+        self.tableview?.allowsSelection = false                  // Disable table view selection
+        self.tableview?.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.tableview?.isScrollEnabled=false
+        self.activityIndicator?.color = AppTheme.appBackgroundColor()
         self.configureUI()
         self.getPanellistProfileFromDB()
         if self.panelist != nil {
@@ -75,8 +75,8 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         self.isEditable=false
         self.view.layoutIfNeeded()
         circularImage(imageView)
-        let cameraIconWidth =  btnCameraIcon.bounds.size.width
-        btnCameraIcon.layer.cornerRadius = 0.5 * cameraIconWidth
+        let cameraIconWidth =  btnCameraIcon?.bounds.size.width
+        btnCameraIcon?.layer.cornerRadius = 0.5 * cameraIconWidth!
         if UIDevice.current.userInterfaceIdiom == .pad {
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -104,9 +104,9 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         else {
             let btnEdit =  UIBarButtonItem(title: NSLocalizedString("Edit", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(editProfile))
             self.tabBarController?.navigationItem.rightBarButtonItem = btnEdit
-            self.tableview.separatorStyle = UITableViewCellSeparatorStyle.none
-            self.tableview.allowsSelection = false
-            self.tableview.reloadData()                 // to disable editing after coming back to profile screen which was left in edit mode
+            self.tableview?.separatorStyle = UITableViewCellSeparatorStyle.none
+            self.tableview?.allowsSelection = false
+            self.tableview?.reloadData()                 // to disable editing after coming back to profile screen which was left in edit mode
         }
         let path: String? = UserDefaults.standard.object(forKey: "profileImagePath") as? String
         if path==nil || (path?.isEmpty)! {
@@ -114,7 +114,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             self.imageView?.image = UIImage(named: "profile_default.png")
             // download again if profile pic was not loaded due to internet disconnetivity.
             if  self.panelist?.mediaID != nil && self.panelist?.mediaID != "0" && self.panelist?.mediaID != "" {
-                self.activityIndicator.startAnimating()
+                self.activityIndicator?.startAnimating()
                 self.downloadProfileImage(mediaId: self.panelist!.mediaID.description, didChangeProfilePic: false)              // media ID coming from DB is Int so need explicit cast(description).
             }
         }
@@ -139,10 +139,10 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             if self.tableview != nil {
                 if height==OPGConstants.device.iPadLandscapeHeight || height==OPGConstants.device.iPadRetinaLandscapeHeight {
                     // enable scroll for iPad landscape
-                    self.tableview.isScrollEnabled=true
+                    self.tableview?.isScrollEnabled=true
                 }
                 else {
-                    self.tableview.isScrollEnabled=false
+                    self.tableview?.isScrollEnabled=false
                 }
             }
         })
@@ -200,13 +200,13 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         if UIDevice.current.userInterfaceIdiom == .pad {
             if width==OPGConstants.device.iPadLandscapeWidth || width==OPGConstants.device.iPadRetinaLandscapeWidth {
                 // enable scroll if iPad landscape is loaded first time
-                self.tableview.isScrollEnabled=true
+                self.tableview?.isScrollEnabled=true
             }
         }
         else {
             if height == OPGConstants.device.iPhone4Height {
                 // Enable scroll only for 4S
-                self.tableview.isScrollEnabled=true
+                self.tableview?.isScrollEnabled=true
             }
         }
     }
@@ -250,14 +250,14 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     func updateProfile() {
         if super.isOnline() == false {
             super.showNoInternetConnectionAlert()
-            self.tableview.reloadData()
+            self.tableview?.reloadData()
             return
         }
-        let nameCell = self.tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! ProfileTableViewCell
+        let nameCell = self.tableview?.cellForRow(at: IndexPath(row: 0, section: 0)) as! ProfileTableViewCell
         if nameCell.txtValue.text!.isEmpty {
             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Name is empty", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
             // If name is edited to an empty string, don't update profile
-            self.tableview.reloadData()
+            self.tableview?.reloadData()
         }
         else {
             DispatchQueue.global(qos: .default).async {
@@ -267,7 +267,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                         try sdk.update(self.panelist)                               // update profile to server
                         DispatchQueue.main.async {
                                 self.getPanellistProfileFromServer()                // get profile from server and update DB
-                                self.tableview.reloadData()
+                                self.tableview?.reloadData()
                         }
                     }
                     catch let err as NSError
@@ -394,7 +394,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     // This method updates the panellist profile object with the new media ID after the user changes the profile picture.
     func updatePanellistProfileWithMedia(mediaID: String) {
         if super.isOnline() == false {
-            self.activityIndicator.stopAnimating()
+            self.activityIndicator?.stopAnimating()
             super.showNoInternetConnectionAlert()
             return
         }
@@ -411,7 +411,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 catch let err as NSError {
                     print("Error: \(err)")
                     DispatchQueue.main.async {
-                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator?.stopAnimating()
                         super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                     }
                 }
@@ -423,7 +423,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     func downloadProfileImage(mediaId: String, didChangeProfilePic: Bool) {
         var previousProfileImgPath: String?
         if super.isOnline() == false {
-            self.activityIndicator.stopAnimating()
+            self.activityIndicator?.stopAnimating()
             super.showNoInternetConnectionAlert()
             return
         }
@@ -439,12 +439,12 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                    // mediaObj  = try sdk.downloadMediaFile(mediaId, mediaType: "jpg") as OPGDownloadMedia
                     DispatchQueue.main.async {
                             if super.isOnline()==false {
-                                self.activityIndicator.stopAnimating()
+                                self.activityIndicator?.stopAnimating()
                                 super.showNoInternetConnectionAlert()
                                 return
                             }
                             if mediaObj?.isSuccess == 1 {
-                                self.activityIndicator.stopAnimating()
+                                self.activityIndicator?.stopAnimating()
                                 self.profileImgPath = mediaObj!.mediaFilePath
                                 if mediaObj!.mediaFilePath != nil {
                                     self.setProfileImagePath(path: mediaObj!.mediaFilePath)
@@ -459,7 +459,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                                 }
                             }
                             else {
-                                self.activityIndicator.stopAnimating()
+                                self.activityIndicator?.stopAnimating()
                                 super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                             }
                     }
@@ -468,7 +468,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                     print("Error: \(err)")
                     DispatchQueue.main.async {
                             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
-                            self.activityIndicator.stopAnimating()
+                            self.activityIndicator?.stopAnimating()
                     }
                 }
         }
@@ -488,7 +488,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             catch let err as NSError {
                 DispatchQueue.main.async {
                     print("Error: \(err)")
-                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator?.stopAnimating()
                     super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                 }
             }
@@ -499,7 +499,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                     self.downloadProfileImage(mediaId: self.profileImgMediaID!, didChangeProfilePic: true)
                 }
                 else {
-                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator?.stopAnimating()
                     super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                 }
             }
@@ -536,7 +536,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             // Catch exception here and act accordingly
         }
         if !((localPath?.absoluteString.isEmpty)!) {
-            self.activityIndicator.startAnimating()
+            self.activityIndicator?.startAnimating()
             self.uploadProfileImage(path: (localPath?.absoluteString)!)
         }
         self.dismiss(animated: true, completion: nil)
@@ -607,18 +607,18 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             if self.isEditable! {
                 self.isEditable = false
                 self.tabBarController?.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Edit", comment: "")
-                self.tableview.allowsSelection = false
-                self.tableview.separatorStyle = UITableViewCellSeparatorStyle.none
+                self.tableview?.allowsSelection = false
+                self.tableview?.separatorStyle = UITableViewCellSeparatorStyle.none
                 self.hideKeyboard()                 // dismiss keyboard first and then update profile
                 self.updateProfile()
             }
             else {
                 self.isEditable = true
                 self.tabBarController?.navigationItem.rightBarButtonItem?.title=NSLocalizedString("Save", comment: "")
-                self.tableview.allowsSelection = true
-                self.tableview.isScrollEnabled=true
-                self.tableview.separatorStyle = UITableViewCellSeparatorStyle.singleLine
-                self.tableview.reloadData()                 // to enable country btn and name txtfld after hitting edit
+                self.tableview?.allowsSelection = true
+                self.tableview?.isScrollEnabled=true
+                self.tableview?.separatorStyle = UITableViewCellSeparatorStyle.singleLine
+                self.tableview?.reloadData()                 // to enable country btn and name txtfld after hitting edit
             }
         }
         else {
@@ -626,10 +626,10 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
 
                 self.isEditable = false
                 self.tabBarController?.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Edit", comment: "")
-                self.tableview.allowsSelection = false
-                self.tableview.separatorStyle = UITableViewCellSeparatorStyle.none
+                self.tableview?.allowsSelection = false
+                self.tableview?.separatorStyle = UITableViewCellSeparatorStyle.none
                 self.getPanellistProfileFromDB()                    // get from DB again because profile object is edited locally in the class
-                self.tableview.reloadData()
+                self.tableview?.reloadData()
             }
             super.showNoInternetConnectionAlert()
         }
@@ -640,15 +640,15 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
          if newCountry.name.characters.count > 0 {
             self.panelist?.countryName = newCountry.name
             self.panelist?.std = newCountry.std
-            let nameCell = self.tableview.cellForRow(at: IndexPath(row: 0, section: 0)) as! ProfileTableViewCell
+            let nameCell = self.tableview?.cellForRow(at: IndexPath(row: 0, section: 0)) as! ProfileTableViewCell
             self.panelist?.firstName = nameCell.txtValue.text!
-            self.tableview.reloadData()
+            self.tableview?.reloadData()
         }
     }
 
     func restoreEditMode() {
         self.isEditable = true
-        self.tableview.reloadData()
+        self.tableview?.reloadData()
     }
 
 
@@ -669,7 +669,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         if UIDevice.current.userInterfaceIdiom == .pad {
             return 110.0
         } else {
-            return self.tableview.rowHeight
+            return (self.tableview?.rowHeight)!
         }
     }
 

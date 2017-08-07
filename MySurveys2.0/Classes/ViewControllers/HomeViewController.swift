@@ -20,6 +20,21 @@ class MyPointAnnotation : MKPointAnnotation {
     var identifier: String?
 }
 
+extension UIImage{
+    static func imageFromColor(color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        
+        // create a 1 by 1 pixel context
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+        
+    }
+}
 
 class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableViewDelegate,UITableViewDataSource,OPGGeoFenceSurveyDelegate, LogoImageDownloadDelegate {
 
@@ -27,6 +42,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     let queue = OperationQueue()
     // MARK: - IBOutlets for view
     @IBOutlet weak var shimmeringView: FBShimmeringView?
+    @IBOutlet weak var segmentedView: UIView?
     @IBOutlet weak var tableView: UITableView?
     @IBOutlet weak var bgImage: UIImageView?
     @IBOutlet weak var global: UILabel?
@@ -66,8 +82,11 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     var alertsArray: Array<Any> = []
     var selectedOfflineSurveyIndex: IndexPath?
     var bannerTitle: NSString?             //class var to show during orientation transition
+    var previousPresnetedCell:Int = 0
 
     // MARK: - ViewController LifeCycle Methods
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +111,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
 
         shimmeringView?.shimmeringBeginFadeDuration = 0.1
         shimmeringView?.shimmeringEndFadeDuration = 0.3
+        
+        self.segmentedView?.isHidden = true
+        self.segmentedView?.alpha = 0.91
+
         segmentedControl.subviews.last?.tintColor =  AppTheme.appBackgroundColor()
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.setThemeBGImage()
@@ -115,6 +138,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 self.setThemeForViews()
             }
         }
+        
+        self.setNavigationBarTheme()
+        
         // monitor geofencing again after app kill and reopen
         if UserDefaults.standard.value(forKey: "isGeoFenced") as? String == "1" && super.isOnline() {
             dispatchQueue.async(flags: .barrier) {
@@ -126,10 +152,17 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 }
             }
         }
+//        self.locationManager.delegate = self
+//        self.locationManager.startMonitoringSignificantLocationChanges()
+//        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        self.locationManager.distanceFilter = 100
+
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.tableView?.setContentOffset(CGPoint.zero, animated: true)
+        self.tableView?.contentInset = UIEdgeInsetsMake(60,0,0,0);
+
         let defaults = UserDefaults.standard
         let name: String? = defaults.value(forKey: "appName") as? String
         if name != nil {
@@ -196,13 +229,24 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             self.geofencedArrays = notification.userInfo!["geoArray"] as! Array<Any>
         }
     }
+    
+    func setTableViewContentOffset() {
+        let isAvailable: Bool? = UserDefaults.standard.value(forKey: "isGeoFencingAvailable") as? Bool
+        if isAvailable == true {
+            self.tableView?.setContentOffset(CGPoint(x: 0, y: -105), animated: true)
+        }
+        else{
+            self.tableView?.setContentOffset(CGPoint(x: 0, y: -60), animated: true)
+        }
+        self.view.layoutIfNeeded()
+    }
 
     func setThemeForViews(){
         self.tabBarController?.tabBar.tintColor = AppTheme.appBackgroundColor()
         self.segmentedControl.tintColor = AppTheme.appBackgroundColor()
         self.segmentedControl.subviews[0].tintColor = AppTheme.appBackgroundColor()
         self.segmentedControl.subviews[1].tintColor = AppTheme.appBackgroundColor()
-        self.navigationController?.navigationBar.barTintColor = AppTheme.appBackgroundColor()
+         self.setNavigationBarTheme()
         // set theme header logo
         self.setThemeBGImage()
     }
@@ -332,20 +376,29 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func setUpSegmentedController() {
         let isAvailable: Bool? = UserDefaults.standard.value(forKey: "isGeoFencingAvailable") as? Bool
         if isAvailable == true {
+            self.segmentedView?.isHidden = false
             self.segmentedControl.isHidden = false
             self.view.layoutIfNeeded()
 
             UIView.animate(withDuration: 0.5, animations: {
-                self.constraintShimmeringTop.constant = 45.0
-                self.constraintGeoFenceTop.constant = 45.0
+                self.constraintShimmeringTop.constant = -60.0
+                self.constraintGeoFenceTop.constant = -60.0
+                self.tableView?.contentInset = UIEdgeInsetsMake(105,0,0,0);
                 self.view.layoutIfNeeded()
             })
         } else {
+            self.segmentedView?.isHidden = true
             self.segmentedControl.isHidden = true
             self.view.layoutIfNeeded()
+
             UIView.animate(withDuration: 0.5, animations: {
-                self.constraintShimmeringTop.constant = 0
-                self.constraintGeoFenceTop.constant = 0
+                self.constraintShimmeringTop.constant =  -60.0
+                self.view.layoutIfNeeded()
+
+                self.tableView?.contentInset = UIEdgeInsetsMake(60,0,0,0);
+                self.view.layoutIfNeeded()
+
+                self.constraintGeoFenceTop.constant = -60.0
                 self.view.layoutIfNeeded()
             })
         }
@@ -414,7 +467,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
 
     func logoImageDidDownload() {
-        self.setThemeBGImage()
+        // set logoimage via this delegate only if we are in Home screen
+        if self.tabBarController?.selectedIndex == 0 {
+            self.setThemeBGImage()
+        }
     }
     
     func setThemeBGImage() {
@@ -450,6 +506,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 self.tabBarController?.navigationItem.titleView = imageView
             }
         }
+        
     }
     
     func stringFromDate(_ date: NSDate) -> String {
@@ -528,12 +585,14 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     self.downloadSurveys()
                     //self.checkForGeoFencing()
                     self.shimmeringView?.isShimmering = false
+
                     self.tableView?.isUserInteractionEnabled = true     //Enable table after refresh/shimmer
                     self.tableView?.layoutIfNeeded()
                     self.tableView!.reloadData()
                     self.tableViewGeoFenced?.reloadData()
-                    self.checkforAvailableSurveys()
                     self.setUpSegmentedController()
+                    self.setTableViewContentOffset()
+                    self.checkforAvailableSurveys()
                     if self.bannerView != nil
                     {
                         self.hideBanner()
@@ -1342,6 +1401,22 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
     }
+    
+    //func tableView(_tableView: UITableView!, willDisplayCell cell: UITableViewCell!, forRowAtIndexPath indexPath: NSIndexPath!) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if (indexPath.row < previousPresnetedCell) {
+            print(" ** Scrolled up")
+        } else {
+            print(" ** Scrolled down")
+            cell.layer.transform = CATransform3DMakeScale(0.7,0.7,1)
+            UIView.animate(withDuration: 0.3, animations: {
+                cell.layer.transform = CATransform3DMakeScale(1,1,1)
+            },completion: { finished in
+                
+            })
+        }
+        previousPresnetedCell = indexPath.row;
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -1853,6 +1928,17 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         bounceAnimation.isRemovedOnCompletion = false
         view.layer.add(bounceAnimation, forKey: "bounce")
     }
+    
+    
+//    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        print("locations \(locations)")
+//        let locValue:CLLocationCoordinate2D = (manager.location?.coordinate)!
+//        print("locValue \(locValue)")
+//
+//
+//        
+//    }
+
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "NotificationIdentifier"), object: nil);

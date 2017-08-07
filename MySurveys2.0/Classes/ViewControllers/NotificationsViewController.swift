@@ -10,9 +10,9 @@ import UIKit
 import MapKit
 import UserNotifications
 
-class NotificationsViewController: RootViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
+class NotificationsViewController: RootViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: - IBOutlets for View
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var notifTableView: UITableView!
     @IBOutlet weak var lblNoNewNotifications: UILabel!
     // MARK: - Properties for viewcontroller
     var notificationArray: [NSDictionary] = []
@@ -22,9 +22,10 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.separatorInset = UIEdgeInsets.zero
-        self.tableView.layoutMargins = UIEdgeInsets.zero
-        self.tableView.tableFooterView = UIView()
+        self.notifTableView.separatorInset = UIEdgeInsets.zero
+        self.notifTableView.layoutMargins = UIEdgeInsets.zero
+        
+        self.notifTableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +35,9 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
 
     override func viewWillAppear(_ animated: Bool) {
         // thamarai changes
+        self.notifTableView?.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+        self.notifTableView?.contentInset = UIEdgeInsetsMake(0,0,0,0);
+
         let isOperating: Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
         let array: Array<Any>? = UserDefaults.standard.value(forKey: "downloadSurveysArray") as? Array<Any>
         self.navigationController?.isNavigationBarHidden = false
@@ -48,20 +52,21 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
                         self.tabBarController?.navigationItem.rightBarButtonItem = btnEdit
                         self.tabBarController?.navigationItem.rightBarButtonItem?.isEnabled = true
                     }
-                    self.tableView.reloadData()
+                    self.notifTableView.reloadData()
                 }
             }
         }
         else {
             self.checkforAvailableNotifications()
             self.notificationArray.removeAll()                      // clear local notificationArray during refresh
-            self.tableView.reloadData()
+            self.notifTableView.reloadData()
             self.lblNoNewNotifications?.isHidden = false
-            self.tableView.isUserInteractionEnabled = false                         // disable selection when there are no notifications.
-            self.tableView.backgroundView = self.lblNoNewNotifications
+            self.notifTableView.isUserInteractionEnabled = false                         // disable selection when there are no notifications.
+            self.notifTableView.backgroundView = self.lblNoNewNotifications
             self.lblNoNewNotifications?.text = NSLocalizedString("No notifications so far.", comment: "")
             self.tabBarController?.navigationItem.rightBarButtonItem = nil
         }
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,7 +88,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
         // Pressing delete without selecting any items, throw an alert.
         if self.selectedIndexArray.count == 0 {
             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("No items selected.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
-            self.tableView.reloadData()
+            self.notifTableView.reloadData()
             return
         }
         for selectedItem in self.selectedIndexArray {
@@ -98,7 +103,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
         if notificationArray.count == 0 {
             self.checkforAvailableNotifications()               // set no notifications label in the center
         }
-        self.tableView.reloadData()
+        self.notifTableView.reloadData()
 
     }
 
@@ -116,12 +121,12 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
 
     func checkforAvailableNotifications() {
         if self.notificationArray.count > 0 {
-            self.tableView.isUserInteractionEnabled = true
+            self.notifTableView.isUserInteractionEnabled = true
             self.lblNoNewNotifications?.isHidden = true
         } else {
             self.lblNoNewNotifications?.isHidden = false
-            self.tableView.isUserInteractionEnabled = false                         // disable selection when there are no notifications.
-            self.tableView.backgroundView = self.lblNoNewNotifications
+            self.notifTableView.isUserInteractionEnabled = false                         // disable selection when there are no notifications.
+            self.notifTableView.backgroundView = self.lblNoNewNotifications
             self.lblNoNewNotifications?.text = NSLocalizedString("No notifications so far.", comment: "No notifications so far.")
             self.tabBarController?.navigationItem.rightBarButtonItem = nil
         }
@@ -164,7 +169,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             self.tabBarController?.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Delete", comment: "")                 // Toggle to delete button title
             let btnCancel =  UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelEditing))
             self.tabBarController?.navigationItem.leftBarButtonItem = btnCancel
-            self.tableView.reloadData()                                                             // change notification table from reminder icon to select icon when edit btn is clicked
+            self.notifTableView.reloadData()                                                             // change notification table from reminder icon to select icon when edit btn is clicked
         }
     }
 
@@ -173,7 +178,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
         self.tabBarController?.navigationItem.leftBarButtonItem = nil                                     // remove cancel button
         self.isEditable = false
         self.selectedIndexArray.removeAll()                                                 // clear selected items array after user cancels
-        self.tableView.reloadData()                                                                             // reset table
+        self.notifTableView.reloadData()                                                                             // reset table
     }
 
 
@@ -283,19 +288,19 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             // handle delete (by removing the data from your array and updating the tableview)
-            if self.tableView != nil {
-                self.tableView.beginUpdates()
+            if self.notifTableView != nil {
+                self.notifTableView.beginUpdates()
                 let notifDict: NSDictionary = self.notificationArray[indexPath.row]            // Delete notification on swipe
                 let notifID: NSNumber = notifDict["AppNotificationID"] as! NSNumber
                 DispatchQueue.global(qos: .default).sync {
                     CollabrateDB.sharedInstance().deleteNotifications(notifID)
                 }
                 notificationArray.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-                self.tableView.endUpdates()
+                self.notifTableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                self.notifTableView.endUpdates()
                 if notificationArray.count == 0 {
                     self.checkforAvailableNotifications()               // set no notifications label in the center
-                    self.tableView.reloadData()
+                    self.notifTableView.reloadData()
                 }
             }
         }

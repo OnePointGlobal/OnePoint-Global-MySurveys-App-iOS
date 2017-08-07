@@ -13,7 +13,7 @@ import CoreLocation
 
 class SettingsViewController: RootViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     // MARK: - IBOutlets for View
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var settingsTableView: UITableView!
     @IBOutlet weak var lblVersion: UILabel!
 
     // MARK: - Properties for viewcontroller
@@ -32,11 +32,13 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         settingItems += [NSLocalizedString("Change Panel", comment: ""), NSLocalizedString("Geo location", comment: ""), NSLocalizedString("Change Password", comment: ""), NSLocalizedString("Privacy", comment: ""), NSLocalizedString("Terms & Conditions", comment: ""), NSLocalizedString("AboutUs", comment: "")]
-        self.tableView.layoutMargins = UIEdgeInsets.zero
-        self.tableView.separatorInset = UIEdgeInsets.zero
-        self.tableView.tableFooterView = UIView()
+        //self.settingsTableView.layoutMargins = UIEdgeInsets.zero
+        //self.settingsTableView.separatorInset = UIEdgeInsets.zero
+        self.settingsTableView.tableFooterView = UIView()
         self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 2.0.0 "
         geoFence?.initialiseGeofencing()            // Ask for location permission
+        
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -45,7 +47,7 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
 
         // set theme color for the switch ON tint color
         let indexPath = IndexPath(item: 1, section: 0)
-        let tableViewCell: SettingsTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SettingsTableViewCell
+        let tableViewCell: SettingsTableViewCell? = self.settingsTableView?.cellForRow(at: indexPath) as? SettingsTableViewCell
         tableViewCell?.switchControl.onTintColor = AppTheme.appBackgroundColor()
 
     }
@@ -217,7 +219,7 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
 
     func resetUISwitch(toStatus: Bool) {
         let indexPath = IndexPath(item: 1, section: 0)
-        let tableViewCell: SettingsTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SettingsTableViewCell
+        let tableViewCell: SettingsTableViewCell? = self.settingsTableView?.cellForRow(at: indexPath) as? SettingsTableViewCell
         tableViewCell?.switchControl.setOn(toStatus, animated: true)
     }
 

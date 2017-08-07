@@ -40,6 +40,9 @@
 		13BEEFD81F21E0D000ED0D3F /* Bangalore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */; };
 		13BEEFD91F21E0D000ED0D3F /* Bangalore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */; };
 		13BEEFDA1F21E0D000ED0D3F /* Bangalore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */; };
+		13D18F911F31A41F00237390 /* LongDistance.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13D18F901F31A41F00237390 /* LongDistance.gpx */; };
+		13D18F921F31A41F00237390 /* LongDistance.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13D18F901F31A41F00237390 /* LongDistance.gpx */; };
+		13D18F931F31A41F00237390 /* LongDistance.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13D18F901F31A41F00237390 /* LongDistance.gpx */; };
 		13F4472A1E28B90000B24B8E /* UploadSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F447291E28B90000B24B8E /* UploadSurvey.swift */; };
 		13F9A4671DF943A40017C42C /* logout@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4661DF943A40017C42C /* logout@3x.png */; };
 		13F9A4691DF9442A0017C42C /* profile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4681DF9442A0017C42C /* profile@3x.png */; };
@@ -317,6 +320,7 @@
 		13AB83CC1DE6ECE5002A3108 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = icons/Default.png; sourceTree = "<group>"; };
 		13AB83CD1DE6ECE5002A3108 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "icons/Default@2x.png"; sourceTree = "<group>"; };
 		13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bangalore.gpx; sourceTree = "<group>"; };
+		13D18F901F31A41F00237390 /* LongDistance.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LongDistance.gpx; sourceTree = "<group>"; };
 		13F447291E28B90000B24B8E /* UploadSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadSurvey.swift; sourceTree = "<group>"; };
 		13F9A4661DF943A40017C42C /* logout@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout@3x.png"; path = "icons/logout@3x.png"; sourceTree = "<group>"; };
 		13F9A4681DF9442A0017C42C /* profile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile@3x.png"; path = "icons/profile@3x.png"; sourceTree = "<group>"; };
@@ -737,6 +741,7 @@
 				9428C40E1E1E4F3500DEF65D /* Location.gpx */,
 				9428C40F1E1E4F3500DEF65D /* NewLocation.gpx */,
 				13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */,
+				13D18F901F31A41F00237390 /* LongDistance.gpx */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -1139,6 +1144,7 @@
 				9428C4111E1E4F3500DEF65D /* NewLocation.gpx in Resources */,
 				7853A2761DB899B8005EC4D1 /* GoogleService-Info.plist in Resources */,
 				94CB0D491DCB1389007AF73F /* notif_others.png in Resources */,
+				13D18F911F31A41F00237390 /* LongDistance.gpx in Resources */,
 				948102EC1E435B5F00605F18 /* icon-40@2x.png in Resources */,
 				78D4C0BB1F1786FF002E6AF4 /* LoginPageLogo@2x.png in Resources */,
 				948102F71E435B5F00605F18 /* icon@2x.png in Resources */,
@@ -1216,6 +1222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13D18F921F31A41F00237390 /* LongDistance.gpx in Resources */,
 				135B71051DB9FC6A00F48E94 /* Localizable.strings in Resources */,
 				13BEEFD91F21E0D000ED0D3F /* Bangalore.gpx in Resources */,
 				94CD76391DB4A6A400C6F958 /* Info.plist in Resources */,
@@ -1226,6 +1233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13D18F931F31A41F00237390 /* LongDistance.gpx in Resources */,
 				135B71061DB9FC6A00F48E94 /* Localizable.strings in Resources */,
 				13BEEFDA1F21E0D000ED0D3F /* Bangalore.gpx in Resources */,
 			);
@@ -1539,8 +1547,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
@@ -1563,7 +1571,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
+				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1591,8 +1599,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
@@ -1608,7 +1616,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
+				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1654,7 +1662,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
+				PROVISIONING_PROFILE = "32956e40-a063-4640-9533-4b337950063b";
 				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1700,7 +1708,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
+				PROVISIONING_PROFILE = "32956e40-a063-4640-9533-4b337950063b";
 				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
