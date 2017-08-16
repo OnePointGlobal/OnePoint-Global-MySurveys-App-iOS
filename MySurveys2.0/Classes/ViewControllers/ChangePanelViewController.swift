@@ -205,8 +205,8 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
             let panelIdStr = UserDefaults.standard.value(forKey: selectedPanelID) as? String
             let themeTempID: String? = UserDefaults.standard.value(forKey: selectedThemeTemplateID) as? String
             let dict = CollabrateDB.sharedInstance().getThemesForPanelID(panelIdStr, themeTemplateID: themeTempID)
-            if (dict?.count)!>0 {
-                AppTheme.setCurrentTheme(theme: dict!)
+             if let theme = dict {
+                AppTheme.setCurrentTheme(theme: theme)
                 self.navigationController?.navigationBar.barTintColor = AppTheme.appBackgroundColor()
                 self.setNavigationBarTheme()
             }
