@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPGCountry : NSObject
+@interface OPGCountry : NSObject<NSCoding>
 /*! @brief countryID : Country ID. */
 @property (nonatomic,strong) NSNumber *countryID;
 /*! @brief name : Name of the country. */

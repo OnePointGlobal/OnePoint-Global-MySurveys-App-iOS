@@ -29,5 +29,13 @@ class RootViewController: UIViewController {
     func showNoInternetConnectionAlert() {
         self.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("No internet connection. Please try again!", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
     }
+    
+    func setNavigationBarTheme() {
+        self.navigationController?.navigationBar.isTranslucent = true
+        let navAlpha = 0.85// Your appropriate calculation
+        let image = UIImage.imageFromColor(color: AppTheme.appBackgroundColor().withAlphaComponent(CGFloat(navAlpha)))
+        self.navigationController?.navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.barStyle = .default
+    }
 
 }

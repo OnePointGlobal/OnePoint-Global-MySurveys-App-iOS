@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPGUploadResult : NSObject
+@interface OPGUploadResult : NSObject<NSCoding>
 /*! @brief isSuccess : bool value of true indicates success and false indicates failure. */
 @property (nonatomic,strong) NSNumber *isSuccess;
 /*! @brief statusMessage : Authentication Status. */

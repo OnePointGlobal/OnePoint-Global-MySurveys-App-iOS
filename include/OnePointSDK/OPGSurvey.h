@@ -14,7 +14,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPGSurvey : NSObject
+@interface OPGSurvey : NSObject<NSCoding>
 /*!
  * @brief isGeoFencing : bool value true indicates GeoFenced and false indicates it is not.
  */

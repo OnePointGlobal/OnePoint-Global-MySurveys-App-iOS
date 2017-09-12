@@ -24,6 +24,7 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var lblCurrentPanel: UILabel!
     
     var panelsArray: Array<OPGPanel> = []
+    var previousCell:Int = 0
 
     // MARK: - ViewController LifeCycle Methods
     override func viewDidLoad() {
@@ -73,6 +74,24 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
             return panelsArray.count
         }
         return 0
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if (indexPath.row < previousCell) {
+            //print(" ** Scrolled up")
+        } else {
+            //print(" ** Scrolled down")
+            cell.layer.transform = CATransform3DMakeScale(0.7,0.7,1)
+            UIView.animate(withDuration: 0.3, animations: {
+                cell.layer.transform = CATransform3DMakeScale(1.05,1.05,1)
+                
+            },completion: { finished in
+                UIView.animate(withDuration: 0.2, animations: {
+                    cell.layer.transform = CATransform3DMakeScale(1,1,1)
+                })
+            })
+        }
+        previousCell = indexPath.row;
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -186,9 +205,10 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
             let panelIdStr = UserDefaults.standard.value(forKey: selectedPanelID) as? String
             let themeTempID: String? = UserDefaults.standard.value(forKey: selectedThemeTemplateID) as? String
             let dict = CollabrateDB.sharedInstance().getThemesForPanelID(panelIdStr, themeTemplateID: themeTempID)
-            if (dict?.count)!>0 {
-                AppTheme.setCurrentTheme(theme: dict!)
+             if let theme = dict {
+                AppTheme.setCurrentTheme(theme: theme)
                 self.navigationController?.navigationBar.barTintColor = AppTheme.appBackgroundColor()
+                self.setNavigationBarTheme()
             }
         }
         tableView.deselectRow(at: indexPath, animated: true)

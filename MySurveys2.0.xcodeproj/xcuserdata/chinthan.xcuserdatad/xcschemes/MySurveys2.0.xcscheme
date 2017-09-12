@@ -91,7 +91,7 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "../MySurveys2.0/Others/Bangalore.gpx"
+         identifier = "../MySurveys2.0/Others/LongDistance.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>

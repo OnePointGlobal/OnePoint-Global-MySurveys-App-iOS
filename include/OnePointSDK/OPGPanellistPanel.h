@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPGPanellistPanel : NSObject
+@interface OPGPanellistPanel : NSObject<NSCoding>
 /*! @brief statusMessage : Authentication Status. */
 @property (nonatomic,strong) NSString *statusMessage;
 

@@ -23,7 +23,7 @@ class AppTheme: NSObject {
         let linksColor: String? =  theme.value(forKey: "Linkscolor") as! String?
         let loginBackground: String? =  theme.value(forKey: "Loginbackground") as! String?
         let logoText: String? =  theme.value(forKey: "Logotext") as! String?
-        if headerLogo == nil || loginBackground == nil {
+        if loginBackground == nil {
             // fix for wrong keys coming in theme dict when someone creates theme in old adminsuite wrongly
             return nil
         }
@@ -105,15 +105,19 @@ class AppTheme: NSObject {
                     self.setLogoText(text: EMPTY_STRING)
                 }
             }
-            else if keys.count == 15 {                           // Not a new adminsuite theme
-                self.setLoginBGImagePath(path: EMPTY_STRING)                // defaultBG image
-                self.setHeaderLogoImagePath(path: EMPTY_STRING)        // default header logo image
-                self.setLogoText(text: EMPTY_STRING)
-                self.theme = nil                                        // no theme
+            else if keys.count == 15 {
+               // Old adminsuite theme
+               self.setDefaultThemeProperties()
             }
+        }
+        else {
+            // no theme is set for panel in new adminsuite so set default theme
+            self.setDefaultThemeProperties()
         }
     }
 
+
+    // MARK: - Private methods
     // Creates a UIColor from a Hex string.
     static func colorWithHexString (hex: String) -> UIColor {
         var cString: String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
@@ -131,6 +135,13 @@ class AppTheme: NSObject {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+
+    static func setDefaultThemeProperties() {
+        self.setLoginBGImagePath(path: EMPTY_STRING)                // defaultBG image
+        self.setHeaderLogoImagePath(path: EMPTY_STRING)        // default header logo image
+        self.setLogoText(text: EMPTY_STRING)
+        self.theme = nil                                        // no theme
     }
 
     // MARK: - Getter/Setter methods

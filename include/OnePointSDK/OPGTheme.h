@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPGTheme : NSObject
+@interface OPGTheme : NSObject<NSCoding>
 /*!
  * @brief themeID : themeID
  */
