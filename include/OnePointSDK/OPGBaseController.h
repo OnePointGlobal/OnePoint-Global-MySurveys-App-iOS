@@ -42,7 +42,6 @@
     OPGCommandQueue* _commandQueue;
     NSString* _userAgent;
     NSString* surveyReference;
-
 }
 
 @property (nonatomic, strong) IBOutlet UIWebView* webView;
@@ -57,6 +56,10 @@
 @property (nonatomic, readwrite, copy) NSString* startPage;
 @property (nonatomic, readonly, strong) OPGCommandQueue* commandQueue;
 @property (nonatomic, readonly, strong) id <OPGCommandDelegate> commandDelegate;
+
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIView *imageBgView;
+@property (nonatomic, strong) UIButton* closeButton;
 
 /**
  The complete user agent that Cordova will use when sending web requests.
@@ -98,6 +101,21 @@
  This method is used to append dictionary of query parameters to load the online survey.
  */
 -(void)loadSurvey:(NSString *)surveyRef
+   withDictionary:(NSDictionary *)values;
+
+/*!
+ This method is used to load the online survey and facilitates resuming the survey where it was stopped.
+ */
+-(void)loadSurvey:(NSString *)surveyRef
+          panelID:(NSNumber*)panelID
+      panellistID:(NSNumber*)panellistID;
+
+/*!
+ This method is used to append dictionary of query parameters to load the online survey and facilitates resuming the survey where it was stopped.
+ */
+-(void)loadSurvey:(NSString *)surveyRef
+          panelID:(NSNumber*)panelID
+      panellistID:(NSNumber*)panellistID
    withDictionary:(NSDictionary *)values;
 
 /*!

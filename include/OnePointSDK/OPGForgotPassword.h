@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPGForgotPassword : NSObject
+@interface OPGForgotPassword : NSObject<NSCoding>
 /*! @brief httpStatusCode : HTTP Status Code */
 @property (nonatomic,strong) NSNumber *httpStatusCode;
 /*!

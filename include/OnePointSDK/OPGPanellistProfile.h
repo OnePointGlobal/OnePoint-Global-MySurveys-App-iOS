@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OPGCountry.h"
 
-@interface OPGPanellistProfile : NSObject
+@interface OPGPanellistProfile : NSObject<NSCoding>
 /*!
  * @brief title : //Mr/Ms/Mrs values 1/2/3 respectively.
  */
@@ -60,6 +60,4 @@
 
 /*! @brief std : STD Code of the country. */
 @property (nonatomic,strong) NSString *std;
-
-
 @end

@@ -81,7 +81,6 @@
  This method returns the dictionary of key value pairs that are used in creating a request object for geofencing api.
  */
 -(NSMutableDictionary *) getGeoFencingEntity:(NSString *)uniqueID
-                               withSurveyIDs:(NSMutableString *)surveyIDs
                                 withLatitude:(NSString *)Latitude
                                withLongitude:(NSString *)Longitude;
 

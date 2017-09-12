@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPGPanelPanellist : NSObject
+@interface OPGPanelPanellist : NSObject<NSCoding>
 /*!
  * @brief panelPanellistID : panelPanellistID
  */

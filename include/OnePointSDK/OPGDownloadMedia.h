@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OPGDownloadMedia : NSObject
+@interface OPGDownloadMedia : NSObject<NSCoding>
 /*!
  * @brief isSuccess : bool value of true indicates success and false indicates failure.
  */
