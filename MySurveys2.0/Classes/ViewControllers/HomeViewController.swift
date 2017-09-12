@@ -1411,9 +1411,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     //func tableView(_tableView: UITableView!, willDisplayCell cell: UITableViewCell!, forRowAtIndexPath indexPath: NSIndexPath!) {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if (indexPath.row < previousPresnetedCell) {
-            print(" ** Scrolled up")
+            //print(" ** Scrolled up")
         } else {
-            print(" ** Scrolled down")
+            //print(" ** Scrolled down")
             cell.layer.transform = CATransform3DMakeScale(0.7,0.7,1)
             UIView.animate(withDuration: 0.3, animations: {
                 cell.layer.transform = CATransform3DMakeScale(1,1,1)

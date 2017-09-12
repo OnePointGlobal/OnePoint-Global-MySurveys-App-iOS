@@ -23,7 +23,7 @@ class AppTheme: NSObject {
         let linksColor: String? =  theme.value(forKey: "Linkscolor") as! String?
         let loginBackground: String? =  theme.value(forKey: "Loginbackground") as! String?
         let logoText: String? =  theme.value(forKey: "Logotext") as! String?
-        if headerLogo == nil || loginBackground == nil {
+        if loginBackground == nil {
             // fix for wrong keys coming in theme dict when someone creates theme in old adminsuite wrongly
             return nil
         }

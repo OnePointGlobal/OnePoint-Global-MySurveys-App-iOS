@@ -78,9 +78,9 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if (indexPath.row < previousCell) {
-            print(" ** Scrolled up")
+            //print(" ** Scrolled up")
         } else {
-            print(" ** Scrolled down")
+            //print(" ** Scrolled down")
             cell.layer.transform = CATransform3DMakeScale(0.7,0.7,1)
             UIView.animate(withDuration: 0.3, animations: {
                 cell.layer.transform = CATransform3DMakeScale(1.05,1.05,1)
