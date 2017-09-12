@@ -56,7 +56,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>5</string>
 	<key>FacebookAppID</key>
 	<string>241219919681635</string>
 	<key>FacebookDisplayName</key>
@@ -75,18 +75,23 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Bluetooth Access Alert</string>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>Camera Access Alert</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>${EXECUTABLE_NAME} would like to use your current location even in background.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>${EXECUTABLE_NAME} would like to use your current location when in use.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string></string>
+	<string>Microphone Access Alert</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>Photo Library Access Alert</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
 		<string>location</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
@@ -94,11 +99,20 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

@@ -9,26 +9,33 @@
 import Foundation
 import UIKit
 
-/*!
-    This is the parent class for all other view controllers.
-*/
-class RootViewController: UIViewController
-{    
+/*
+ This is the parent class for all other view controllers.
+ */
+class RootViewController: UIViewController {
+
     func isOnline() -> Bool {
         let reachability: OPGReachability = OPGReachability.forInternetConnection()
         let networkStatus: Int = reachability.currentReachabilityStatus().rawValue
         return networkStatus != 0
-        
     }
-    
+
     func showAlert(alertTitle: String, alertMessage: String, alertAction: String) {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: alertAction, style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    func showNoInternetConnectionAlert()
-    {
+
+    func showNoInternetConnectionAlert() {
         self.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("No internet connection. Please try again!", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
     }
+    
+    func setNavigationBarTheme() {
+        self.navigationController?.navigationBar.isTranslucent = true
+        let navAlpha = 0.85// Your appropriate calculation
+        let image = UIImage.imageFromColor(color: AppTheme.appBackgroundColor().withAlphaComponent(CGFloat(navAlpha)))
+        self.navigationController?.navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.barStyle = .default
+    }
+
 }

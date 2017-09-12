@@ -8,6 +8,7 @@
 
 #import "CollabrateDB.h"
 
+
 @implementation CollabrateDB
 
 +(CollabrateDB*)sharedInstance
@@ -17,6 +18,8 @@
     dispatch_once(&onceToken, ^{
         sharedInstance = [[CollabrateDB alloc] init];
         // Do any other initialisation stuff here
+        [OPGDB initializeWithDBVersion: 2];
+        
     });
     return sharedInstance;
 }
@@ -474,41 +477,48 @@
     @synchronized (self)
     {
         NSDictionary* dictReceived = [payload valueForKey:@"aps"];
-        AppNotification *appNotification = [AppNotification new];
-        appNotification.Title = [[payload valueForKey:@"title"] stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
-        appNotification.Body = [[dictReceived objectForKey:@"alert"]stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
-        appNotification.LastUpdated = [NSString stringToDate:[NSString stringFromDate:[NSDate date]]];
-        appNotification.IsRead = @0;
-        AppNotificationFactory *appNotificationFactory = [AppNotificationFactory new];
-        [appNotificationFactory Save:appNotification];
+        if (dictReceived != nil) {
+            AppNotification *appNotification = [AppNotification new];
+            appNotification.Title = [[payload valueForKey:@"title"] stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+            appNotification.Body = [[dictReceived objectForKey:@"alert"]stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+            appNotification.LastUpdated = [NSString stringToDate:[NSString stringFromDate:[NSDate date]]];
+            appNotification.IsRead = @0;
+            AppNotificationFactory *appNotificationFactory = [AppNotificationFactory new];
+            [appNotificationFactory Save:appNotification];
+        }
+        else {
+            [self saveLocalNotifications:payload];
+        }
     }
 }
 
 -(void)saveLocalNotifications:(NSDictionary *)info
 {
     @synchronized (self) {
-    AppNotification* notification = [AppNotification new];
-    notification.Title = [info valueForKey:@"title"];
-    notification.Body = [info valueForKey:@"body"];
-    if ([info objectForKey:@"LastUpdated"])
-    {
-        notification.LastUpdated =[NSString stringToDate:[NSString stringFromDate:[info objectForKey:@"LastUpdated"]]] ;
-    }
-    else
-    {
-        notification.LastUpdated = [NSString stringToDate:[NSString stringFromDate:[NSDate date]]];
-    }
-    if ([info objectForKey:@"IsRead"])
-    {
-        notification.IsRead = [info objectForKey:@"IsRead"];
-    }
-    else
-    {
-         notification.IsRead = @0;
-    }
-   
-    AppNotificationFactory *notificationFactory = [AppNotificationFactory new];
-    [notificationFactory Save:notification];
+        AppNotification* notification = [AppNotification new];
+        // save notification only if there is a valid title
+        if ([info valueForKey:@"title"] != nil && ![[info valueForKey:@"title"]  isEqual: @""]) {
+            notification.Title = [info valueForKey:@"title"];
+            notification.Body = [info valueForKey:@"body"];
+            if ([info objectForKey:@"LastUpdated"])
+            {
+                notification.LastUpdated =[NSString stringToDate:[NSString stringFromDate:[info objectForKey:@"LastUpdated"]]] ;
+            }
+            else
+            {
+                notification.LastUpdated = [NSString stringToDate:[NSString stringFromDate:[NSDate date]]];
+            }
+            if ([info objectForKey:@"IsRead"])
+            {
+                notification.IsRead = [info objectForKey:@"IsRead"];
+            }
+            else
+            {
+                notification.IsRead = @0;
+            }
+            AppNotificationFactory *notificationFactory = [AppNotificationFactory new];
+            [notificationFactory Save:notification];
+        }
     }
 }
 
@@ -557,7 +567,7 @@
 }
 
 #pragma mark - dB methods for GeoFencing
--(void)saveGeoFenceSurveys:(OPGMSGeoFencingModel*)geoFencedSurveys {
+-(void)saveGeoFenceSurveys:(OPGGeofenceSurvey*)geoFencedSurveys {
     @synchronized (self) {
         GeofenceSurveyFactory *surveyFactory=[[GeofenceSurveyFactory alloc]init];
         GeofenceSurvey *survey = [[GeofenceSurvey alloc]init];
@@ -588,7 +598,7 @@
 
             if (survey) {
                 // TODO: add geofencingID to OPGMSGeoFencingModel class
-                OPGMSGeoFencingModel *opgsurvey = [OPGMSGeoFencingModel new];
+                OPGGeofenceSurvey *opgsurvey = [OPGGeofenceSurvey new];
                 opgsurvey.address = survey.Address;
                 opgsurvey.addressID = survey.AddressID;
                 opgsurvey.surveyID = survey.SurveyID;
@@ -610,11 +620,11 @@
     }
 }
 
--(OPGMSGeoFencingModel *)getGeofenceSurvey:(NSNumber *)surveyID {
+-(OPGGeofenceSurvey *)getGeofenceSurvey:(NSNumber *)surveyID {
     @synchronized (self) {
         GeofenceSurveyFactory *surveyFactory = [[GeofenceSurveyFactory alloc]init];
         GeofenceSurvey  *survey = (GeofenceSurvey*)[surveyFactory FindObject:surveyID];
-        OPGMSGeoFencingModel *opgsurvey = [OPGMSGeoFencingModel new];
+        OPGGeofenceSurvey *opgsurvey = [OPGGeofenceSurvey new];
         opgsurvey.address = survey.Address;
         opgsurvey.addressID = survey.AddressID;
         opgsurvey.surveyID = survey.SurveyID;
@@ -632,13 +642,25 @@
     }
 }
 
--(void)updateGeoFenceSurvey:(NSNumber *)geoFenceID withStatus:(NSNumber *)isEntered {
+-(void)updateGeoFenceSurvey:(NSNumber *)geoFenceID withSurveyReference:(NSString *)surveyReference withStatus:(NSNumber *)isEntered {
     @synchronized (self) {
         GeofenceSurveyFactory *surveyFactory = [[GeofenceSurveyFactory alloc]init];
+        GeofenceSurvey* geoSurvey;
+        // for a particular address, get all the surveys
+
         NSArray  *surveyArray = (NSArray*)[surveyFactory FindByAddressID:geoFenceID];
-        GeofenceSurvey* survey = surveyArray.firstObject;
-        survey.IsEntered = [NSNumber numberWithInt:[isEntered intValue]];
-        [surveyFactory Save:survey];
+        for (GeofenceSurvey *survey in surveyArray) {
+            // among the surveys, find if your survey is there. then update it
+            if ([surveyReference isEqualToString:survey.SurveyReference]) {
+                geoSurvey = survey;
+                if (geoSurvey != nil) {
+                    geoSurvey.IsEntered = [NSNumber numberWithInt:[isEntered intValue]];
+                    //NSLog(@"Survey updated in DB with status %@", geoSurvey.IsEntered);
+                    [surveyFactory Save:geoSurvey];
+                }
+            }
+        }
+        
     }
 }
 
@@ -650,4 +672,15 @@
         [surveyFactory Delete:survey];
     }
 }
+
+-(void)deleteGeoFenceTable{
+    @synchronized (self) {
+        GeofenceSurveyFactory *surveyFactory = [[GeofenceSurveyFactory alloc]init];
+        NSArray* geoFencedSurveys = (NSArray*)[surveyFactory FindAllObjects];
+        for (GeofenceSurvey *survey in geoFencedSurveys ) {
+            [surveyFactory Delete:survey];
+        }
+    }
+}
+
 @end

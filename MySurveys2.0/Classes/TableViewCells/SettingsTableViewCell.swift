@@ -9,13 +9,12 @@
 import Foundation
 import UIKit
 
-class SettingsTableViewCell : UITableViewCell
-{
-    @IBOutlet weak var lblSettingsItems : UILabel!
-    @IBOutlet weak var switchControl : UISwitch!
+class SettingsTableViewCell : UITableViewCell {
+    @IBOutlet weak var lblSettingsItems: UILabel!
+    @IBOutlet weak var switchControl: UISwitch!
     
     
-    func fillCell(items : String, isGeoFencing : Bool)
+    func fillCell(items: String, isGeoFencing: Bool)
     {
         if isGeoFencing == true {
             let isGeoFence = UserDefaults.standard.value(forKey: "isGeoFenced") as? String
@@ -28,6 +27,5 @@ class SettingsTableViewCell : UITableViewCell
             
         }
         lblSettingsItems.text = items
-        
     }
 }

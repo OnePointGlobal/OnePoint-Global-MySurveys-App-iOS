@@ -8,16 +8,12 @@
 
 import UIKit
 
-class ProfileLogoutTableViewCell: UITableViewCell
-{
-    
+class ProfileLogoutTableViewCell: UITableViewCell {
     @IBOutlet weak var imgLogout: UIImageView!
     @IBOutlet weak var btnLogout: UIButton!
     
-    
     func logout()
     {
-        
     }
 
     override func awakeFromNib() {

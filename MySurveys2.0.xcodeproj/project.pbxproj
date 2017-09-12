@@ -37,6 +37,12 @@
 		13AB83D01DE6ECE5002A3108 /* Default-736@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AB83CB1DE6ECE5002A3108 /* Default-736@3x.png */; };
 		13AB83D11DE6ECE5002A3108 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AB83CC1DE6ECE5002A3108 /* Default.png */; };
 		13AB83D21DE6ECE5002A3108 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AB83CD1DE6ECE5002A3108 /* Default@2x.png */; };
+		13BEEFD81F21E0D000ED0D3F /* Bangalore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */; };
+		13BEEFD91F21E0D000ED0D3F /* Bangalore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */; };
+		13BEEFDA1F21E0D000ED0D3F /* Bangalore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */; };
+		13D18F911F31A41F00237390 /* LongDistance.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13D18F901F31A41F00237390 /* LongDistance.gpx */; };
+		13D18F921F31A41F00237390 /* LongDistance.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13D18F901F31A41F00237390 /* LongDistance.gpx */; };
+		13D18F931F31A41F00237390 /* LongDistance.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13D18F901F31A41F00237390 /* LongDistance.gpx */; };
 		13F4472A1E28B90000B24B8E /* UploadSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F447291E28B90000B24B8E /* UploadSurvey.swift */; };
 		13F9A4671DF943A40017C42C /* logout@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4661DF943A40017C42C /* logout@3x.png */; };
 		13F9A4691DF9442A0017C42C /* profile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4681DF9442A0017C42C /* profile@3x.png */; };
@@ -57,24 +63,65 @@
 		13F9A48B1DF962A10017C42C /* surveydetail_nav@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4881DF962A10017C42C /* surveydetail_nav@3x.png */; };
 		1687868231AF9FEE3FC9403E /* libPods-MySurveys2.0Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F2B9E895E12A5F50246EA1B /* libPods-MySurveys2.0Tests.a */; };
 		6EE233761C56BD469DCAFC14 /* libPods-MySurveys2.0UITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B0DD1BD844238B023825F6 /* libPods-MySurveys2.0UITests.a */; };
+		7801C24E1ED6E47E009FEC59 /* surveydetail_nav_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7801C24C1ED6E47E009FEC59 /* surveydetail_nav_iPad.png */; };
+		7801C24F1ED6E47E009FEC59 /* surveydetail_nav_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7801C24D1ED6E47E009FEC59 /* surveydetail_nav_iPad@2x.png */; };
+		7803418F1EA62AF200F3CCE1 /* libOnePoint.PROM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB071DBF7F7E0066A049 /* libOnePoint.PROM.a */; };
+		781401101EADDD2D00799399 /* survey_nav_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7814010E1EADDD2D00799399 /* survey_nav_iPad.png */; };
+		781401111EADDD2D00799399 /* survey_nav_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7814010F1EADDD2D00799399 /* survey_nav_iPad@2x.png */; };
+		781401161EAE02A000799399 /* profile_bg_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 781401121EAE02A000799399 /* profile_bg_iPad.png */; };
+		781401171EAE02A000799399 /* profile_bg_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 781401131EAE02A000799399 /* profile_bg_iPad@2x.png */; };
+		781401181EAE02A000799399 /* profile_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 781401141EAE02A000799399 /* profile_bg@2x.png */; };
+		781401191EAE02A000799399 /* profile_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 781401151EAE02A000799399 /* profile_bg@3x.png */; };
 		7853A2761DB899B8005EC4D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7853A2751DB899B8005EC4D1 /* GoogleService-Info.plist */; };
+		78599CC01F18E2E6007A2276 /* libOnePointSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E7E3861E7BE757004F6934 /* libOnePointSDK.a */; };
 		785B8B141E1E254800F09F20 /* libOnePointFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB081DBF7F7E0066A049 /* libOnePointFramework.a */; };
 		7869DB371E23BA05001F016F /* OPGResourceBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7812F82E1E1F98FF00CBFF36 /* OPGResourceBundle.bundle */; };
 		787D1E591E1E22120095DFFA /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 787D1E581E1E22120095DFFA /* libxml2.tbd */; };
+		787D6B751EE676E10055C69E /* OPGConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6B741EE676E10055C69E /* OPGConstants.swift */; };
+		787D6B761EE676E10055C69E /* OPGConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6B741EE676E10055C69E /* OPGConstants.swift */; };
+		787D6B771EE676E10055C69E /* OPGConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6B741EE676E10055C69E /* OPGConstants.swift */; };
 		787D88E21E09337800E15D22 /* number_of_times.png in Resources */ = {isa = PBXBuildFile; fileRef = 787D88DF1E09337800E15D22 /* number_of_times.png */; };
 		787D88E31E09337800E15D22 /* number_of_times@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787D88E01E09337800E15D22 /* number_of_times@2x.png */; };
 		787D88E41E09337800E15D22 /* number_of_times@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787D88E11E09337800E15D22 /* number_of_times@3x.png */; };
+		78822D1E1EAA0ED500E84831 /* forgotpwd_key_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78822D1D1EAA0ED500E84831 /* forgotpwd_key_iPad.png */; };
 		789CCFEA1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */; };
 		789CCFEB1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */; };
 		789CCFEC1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */; };
 		78A92B9F1E530D8B000890CB /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A92B9E1E530D8B000890CB /* ThemeModel.swift */; };
 		78B7B3E61E54282D00A3FA9A /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7B3E51E54282D00A3FA9A /* AppTheme.swift */; };
 		78C7540D1DC367E800832AD0 /* ProfileLogoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C7540C1DC367E800832AD0 /* ProfileLogoutTableViewCell.swift */; };
+		78CB258B1EA5EE460002EC6D /* Default_iPad_Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB257B1EA5EE460002EC6D /* Default_iPad_Landscape.png */; };
+		78CB258C1EA5EE460002EC6D /* Default_iPad_Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB257C1EA5EE460002EC6D /* Default_iPad_Portrait.png */; };
+		78CB258D1EA5EE460002EC6D /* notif_deselect_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB257D1EA5EE460002EC6D /* notif_deselect_iPad.png */; };
+		78CB258E1EA5EE460002EC6D /* notif_deselect_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB257E1EA5EE460002EC6D /* notif_deselect_iPad@2x.png */; };
+		78CB258F1EA5EE460002EC6D /* notif_others_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB257F1EA5EE460002EC6D /* notif_others_iPad.png */; };
+		78CB25901EA5EE460002EC6D /* notif_others_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB25801EA5EE460002EC6D /* notif_others_iPad@2x.png */; };
+		78CB25911EA5EE460002EC6D /* notif_reminder_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB25811EA5EE460002EC6D /* notif_reminder_iPad.png */; };
+		78CB25921EA5EE460002EC6D /* notif_reminder_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB25821EA5EE460002EC6D /* notif_reminder_iPad@2x.png */; };
+		78CB25931EA5EE460002EC6D /* notif_select_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB25831EA5EE460002EC6D /* notif_select_iPad.png */; };
+		78CB25941EA5EE460002EC6D /* notif_select_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB25841EA5EE460002EC6D /* notif_select_iPad@2x.png */; };
+		78CB25951EA5EE460002EC6D /* number_of_times_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB25851EA5EE460002EC6D /* number_of_times_iPad.png */; };
+		78CB25961EA5EE460002EC6D /* number_of_times_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB25861EA5EE460002EC6D /* number_of_times_iPad@2x.png */; };
+		78CB25971EA5EE460002EC6D /* survey_calendar_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB25871EA5EE460002EC6D /* survey_calendar_iPad.png */; };
+		78CB25981EA5EE460002EC6D /* survey_calendar_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB25881EA5EE460002EC6D /* survey_calendar_iPad@2x.png */; };
+		78CB25991EA5EE460002EC6D /* survey_time_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB25891EA5EE460002EC6D /* survey_time_iPad.png */; };
+		78CB259A1EA5EE460002EC6D /* survey_time_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78CB258A1EA5EE460002EC6D /* survey_time_iPad@2x.png */; };
+		78D4C0B51F1786FF002E6AF4 /* LoginBg-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0AD1F1786FF002E6AF4 /* LoginBg-568h@2x.png */; };
+		78D4C0B61F1786FF002E6AF4 /* LoginBg-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0AE1F1786FF002E6AF4 /* LoginBg-667h@2x.png */; };
+		78D4C0B71F1786FF002E6AF4 /* LoginBg-736@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0AF1F1786FF002E6AF4 /* LoginBg-736@3x.png */; };
+		78D4C0B81F1786FF002E6AF4 /* LoginBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0B01F1786FF002E6AF4 /* LoginBg.png */; };
+		78D4C0B91F1786FF002E6AF4 /* LoginBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0B11F1786FF002E6AF4 /* LoginBg@2x.png */; };
+		78D4C0BA1F1786FF002E6AF4 /* LoginPageLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0B21F1786FF002E6AF4 /* LoginPageLogo.png */; };
+		78D4C0BB1F1786FF002E6AF4 /* LoginPageLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0B31F1786FF002E6AF4 /* LoginPageLogo@2x.png */; };
+		78D4C0BC1F1786FF002E6AF4 /* LoginPageLogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0B41F1786FF002E6AF4 /* LoginPageLogo@3x.png */; };
+		78D4C0C21F179558002E6AF4 /* LoginBg_iPad_Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0BE1F179558002E6AF4 /* LoginBg_iPad_Landscape.png */; };
+		78D4C0C31F179559002E6AF4 /* LoginBg_iPad_Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0BF1F179558002E6AF4 /* LoginBg_iPad_Portrait.png */; };
+		78D4C0C41F179559002E6AF4 /* LoginPageLogo_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0C01F179558002E6AF4 /* LoginPageLogo_iPad.png */; };
+		78D4C0C51F179559002E6AF4 /* LoginPageLogo_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0C11F179558002E6AF4 /* LoginPageLogo_iPad@2x.png */; };
 		78D5EA161DC36091009125A7 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		78E2252D1DC3638400880AE0 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		78E368461DF6DF4900D14F07 /* profile_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78E368451DF6DF4900D14F07 /* profile_default.png */; };
 		78E4F2731E1271FF001678FB /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E4F2721E1271FF001678FB /* UserNotifications.framework */; };
-		78E7E3871E7BE757004F6934 /* libOnePointSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E7E3861E7BE757004F6934 /* libOnePointSDK.a */; };
 		78E9F4CB1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F4CA1DDC61500004FC73 /* ProfileTableViewCountryCell.swift */; };
 		78E9F4CC1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F4CA1DDC61500004FC73 /* ProfileTableViewCountryCell.swift */; };
 		78E9F4CD1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F4CA1DDC61500004FC73 /* ProfileTableViewCountryCell.swift */; };
@@ -107,7 +154,6 @@
 		9408BB041DBF7EFE0066A049 /* NSString+NSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408BB011DBF7EFE0066A049 /* NSString+NSDate.m */; };
 		9408BB091DBF7F7E0066A049 /* libOnePoint.MOM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB051DBF7F7E0066A049 /* libOnePoint.MOM.a */; };
 		9408BB0A1DBF7F7E0066A049 /* libOnePoint.POM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB061DBF7F7E0066A049 /* libOnePoint.POM.a */; };
-		9408BB0B1DBF7F7E0066A049 /* libOnePoint.PROM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB071DBF7F7E0066A049 /* libOnePoint.PROM.a */; };
 		9428C4101E1E4F3500DEF65D /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 9428C40E1E1E4F3500DEF65D /* Location.gpx */; };
 		9428C4111E1E4F3500DEF65D /* NewLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 9428C40F1E1E4F3500DEF65D /* NewLocation.gpx */; };
 		942DBBEC1DE5725400A0BD98 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 942DBBEB1DE5725400A0BD98 /* Images.xcassets */; };
@@ -273,6 +319,8 @@
 		13AB83CB1DE6ECE5002A3108 /* Default-736@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-736@3x.png"; path = "icons/Default-736@3x.png"; sourceTree = "<group>"; };
 		13AB83CC1DE6ECE5002A3108 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = icons/Default.png; sourceTree = "<group>"; };
 		13AB83CD1DE6ECE5002A3108 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "icons/Default@2x.png"; sourceTree = "<group>"; };
+		13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bangalore.gpx; sourceTree = "<group>"; };
+		13D18F901F31A41F00237390 /* LongDistance.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LongDistance.gpx; sourceTree = "<group>"; };
 		13F447291E28B90000B24B8E /* UploadSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadSurvey.swift; sourceTree = "<group>"; };
 		13F9A4661DF943A40017C42C /* logout@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout@3x.png"; path = "icons/logout@3x.png"; sourceTree = "<group>"; };
 		13F9A4681DF9442A0017C42C /* profile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile@3x.png"; path = "icons/profile@3x.png"; sourceTree = "<group>"; };
@@ -296,16 +344,60 @@
 		5DFF8E719D670DBD62A8BD58 /* libPods-MySurveys2.0.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MySurveys2.0.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		638B1F2BB0BBF3C008A42B25 /* Pods-MySurveys2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurveys2.0.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0.debug.xcconfig"; sourceTree = "<group>"; };
 		71B0DD1BD844238B023825F6 /* libPods-MySurveys2.0UITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MySurveys2.0UITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7801C24C1ED6E47E009FEC59 /* surveydetail_nav_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = surveydetail_nav_iPad.png; path = icons/surveydetail_nav_iPad.png; sourceTree = "<group>"; };
+		7801C24D1ED6E47E009FEC59 /* surveydetail_nav_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "surveydetail_nav_iPad@2x.png"; path = "icons/surveydetail_nav_iPad@2x.png"; sourceTree = "<group>"; };
 		7812F82E1E1F98FF00CBFF36 /* OPGResourceBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = OPGResourceBundle.bundle; sourceTree = "<group>"; };
+		7814010E1EADDD2D00799399 /* survey_nav_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = survey_nav_iPad.png; path = icons/survey_nav_iPad.png; sourceTree = "<group>"; };
+		7814010F1EADDD2D00799399 /* survey_nav_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "survey_nav_iPad@2x.png"; path = "icons/survey_nav_iPad@2x.png"; sourceTree = "<group>"; };
+		781401121EAE02A000799399 /* profile_bg_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile_bg_iPad.png; path = icons/profile_bg_iPad.png; sourceTree = "<group>"; };
+		781401131EAE02A000799399 /* profile_bg_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile_bg_iPad@2x.png"; path = "icons/profile_bg_iPad@2x.png"; sourceTree = "<group>"; };
+		781401141EAE02A000799399 /* profile_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile_bg@2x.png"; path = "icons/profile_bg@2x.png"; sourceTree = "<group>"; };
+		781401151EAE02A000799399 /* profile_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile_bg@3x.png"; path = "icons/profile_bg@3x.png"; sourceTree = "<group>"; };
 		7853A2751DB899B8005EC4D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		787D1E581E1E22120095DFFA /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		787D6B741EE676E10055C69E /* OPGConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OPGConstants.swift; path = Classes/ViewControllers/OPGConstants.swift; sourceTree = "<group>"; };
 		787D88DF1E09337800E15D22 /* number_of_times.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = number_of_times.png; path = icons/number_of_times.png; sourceTree = "<group>"; };
 		787D88E01E09337800E15D22 /* number_of_times@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "number_of_times@2x.png"; path = "icons/number_of_times@2x.png"; sourceTree = "<group>"; };
 		787D88E11E09337800E15D22 /* number_of_times@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "number_of_times@3x.png"; path = "icons/number_of_times@3x.png"; sourceTree = "<group>"; };
+		78822D1D1EAA0ED500E84831 /* forgotpwd_key_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forgotpwd_key_iPad.png; path = icons/forgotpwd_key_iPad.png; sourceTree = "<group>"; };
 		789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = Classes/TableViewCells/ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		78A054E51ECC565900D81C2F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		78A054E61ECC565A00D81C2F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		78A054E71ECC565B00D81C2F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		78A92B9E1E530D8B000890CB /* ThemeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		78B7B3E51E54282D00A3FA9A /* AppTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		78C7540C1DC367E800832AD0 /* ProfileLogoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileLogoutTableViewCell.swift; path = Classes/TableViewCells/ProfileLogoutTableViewCell.swift; sourceTree = "<group>"; };
+		78CB257B1EA5EE460002EC6D /* Default_iPad_Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default_iPad_Landscape.png; path = icons/Default_iPad_Landscape.png; sourceTree = "<group>"; };
+		78CB257C1EA5EE460002EC6D /* Default_iPad_Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default_iPad_Portrait.png; path = icons/Default_iPad_Portrait.png; sourceTree = "<group>"; };
+		78CB257D1EA5EE460002EC6D /* notif_deselect_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = notif_deselect_iPad.png; path = icons/notif_deselect_iPad.png; sourceTree = "<group>"; };
+		78CB257E1EA5EE460002EC6D /* notif_deselect_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "notif_deselect_iPad@2x.png"; path = "icons/notif_deselect_iPad@2x.png"; sourceTree = "<group>"; };
+		78CB257F1EA5EE460002EC6D /* notif_others_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = notif_others_iPad.png; path = icons/notif_others_iPad.png; sourceTree = "<group>"; };
+		78CB25801EA5EE460002EC6D /* notif_others_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "notif_others_iPad@2x.png"; path = "icons/notif_others_iPad@2x.png"; sourceTree = "<group>"; };
+		78CB25811EA5EE460002EC6D /* notif_reminder_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = notif_reminder_iPad.png; path = icons/notif_reminder_iPad.png; sourceTree = "<group>"; };
+		78CB25821EA5EE460002EC6D /* notif_reminder_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "notif_reminder_iPad@2x.png"; path = "icons/notif_reminder_iPad@2x.png"; sourceTree = "<group>"; };
+		78CB25831EA5EE460002EC6D /* notif_select_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = notif_select_iPad.png; path = icons/notif_select_iPad.png; sourceTree = "<group>"; };
+		78CB25841EA5EE460002EC6D /* notif_select_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "notif_select_iPad@2x.png"; path = "icons/notif_select_iPad@2x.png"; sourceTree = "<group>"; };
+		78CB25851EA5EE460002EC6D /* number_of_times_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = number_of_times_iPad.png; path = icons/number_of_times_iPad.png; sourceTree = "<group>"; };
+		78CB25861EA5EE460002EC6D /* number_of_times_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "number_of_times_iPad@2x.png"; path = "icons/number_of_times_iPad@2x.png"; sourceTree = "<group>"; };
+		78CB25871EA5EE460002EC6D /* survey_calendar_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = survey_calendar_iPad.png; path = icons/survey_calendar_iPad.png; sourceTree = "<group>"; };
+		78CB25881EA5EE460002EC6D /* survey_calendar_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "survey_calendar_iPad@2x.png"; path = "icons/survey_calendar_iPad@2x.png"; sourceTree = "<group>"; };
+		78CB25891EA5EE460002EC6D /* survey_time_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = survey_time_iPad.png; path = icons/survey_time_iPad.png; sourceTree = "<group>"; };
+		78CB258A1EA5EE460002EC6D /* survey_time_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "survey_time_iPad@2x.png"; path = "icons/survey_time_iPad@2x.png"; sourceTree = "<group>"; };
+		78CDF6E11EC5BBC900B8C8BC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		78CDF6E21EC5BBC900B8C8BC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		78CDF6E31EC5BBCA00B8C8BC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		78D4C0AD1F1786FF002E6AF4 /* LoginBg-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LoginBg-568h@2x.png"; path = "icons/LoginBg-568h@2x.png"; sourceTree = "<group>"; };
+		78D4C0AE1F1786FF002E6AF4 /* LoginBg-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LoginBg-667h@2x.png"; path = "icons/LoginBg-667h@2x.png"; sourceTree = "<group>"; };
+		78D4C0AF1F1786FF002E6AF4 /* LoginBg-736@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LoginBg-736@3x.png"; path = "icons/LoginBg-736@3x.png"; sourceTree = "<group>"; };
+		78D4C0B01F1786FF002E6AF4 /* LoginBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoginBg.png; path = icons/LoginBg.png; sourceTree = "<group>"; };
+		78D4C0B11F1786FF002E6AF4 /* LoginBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LoginBg@2x.png"; path = "icons/LoginBg@2x.png"; sourceTree = "<group>"; };
+		78D4C0B21F1786FF002E6AF4 /* LoginPageLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoginPageLogo.png; path = icons/LoginPageLogo.png; sourceTree = "<group>"; };
+		78D4C0B31F1786FF002E6AF4 /* LoginPageLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LoginPageLogo@2x.png"; path = "icons/LoginPageLogo@2x.png"; sourceTree = "<group>"; };
+		78D4C0B41F1786FF002E6AF4 /* LoginPageLogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LoginPageLogo@3x.png"; path = "icons/LoginPageLogo@3x.png"; sourceTree = "<group>"; };
+		78D4C0BE1F179558002E6AF4 /* LoginBg_iPad_Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoginBg_iPad_Landscape.png; path = icons/LoginBg_iPad_Landscape.png; sourceTree = "<group>"; };
+		78D4C0BF1F179558002E6AF4 /* LoginBg_iPad_Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoginBg_iPad_Portrait.png; path = icons/LoginBg_iPad_Portrait.png; sourceTree = "<group>"; };
+		78D4C0C01F179558002E6AF4 /* LoginPageLogo_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoginPageLogo_iPad.png; path = icons/LoginPageLogo_iPad.png; sourceTree = "<group>"; };
+		78D4C0C11F179558002E6AF4 /* LoginPageLogo_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LoginPageLogo_iPad@2x.png"; path = "icons/LoginPageLogo_iPad@2x.png"; sourceTree = "<group>"; };
 		78E368451DF6DF4900D14F07 /* profile_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile_default.png; path = icons/profile_default.png; sourceTree = "<group>"; };
 		78E4F2711E127099001678FB /* MySurveys2.0.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MySurveys2.0.entitlements; sourceTree = "<group>"; };
 		78E4F2721E1271FF001678FB /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -430,13 +522,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78E7E3871E7BE757004F6934 /* libOnePointSDK.a in Frameworks */,
+				78599CC01F18E2E6007A2276 /* libOnePointSDK.a in Frameworks */,
+				7803418F1EA62AF200F3CCE1 /* libOnePoint.PROM.a in Frameworks */,
 				785B8B141E1E254800F09F20 /* libOnePointFramework.a in Frameworks */,
 				787D1E591E1E22120095DFFA /* libxml2.tbd in Frameworks */,
 				78E4F2731E1271FF001678FB /* UserNotifications.framework in Frameworks */,
 				9408BB091DBF7F7E0066A049 /* libOnePoint.MOM.a in Frameworks */,
 				9408BB0A1DBF7F7E0066A049 /* libOnePoint.POM.a in Frameworks */,
-				9408BB0B1DBF7F7E0066A049 /* libOnePoint.PROM.a in Frameworks */,
 				94F07BE01DBDE3CB00EEE189 /* FBSDKCoreKit.framework in Frameworks */,
 				94F07BC41DBDD89100EEE189 /* libPods-MySurveys2.0Tests.a in Frameworks */,
 				94F07BC51DBDD89100EEE189 /* libPods-MySurveys2.0UITests.a in Frameworks */,
@@ -581,6 +673,7 @@
 		13FE6EE91D670CA100439C89 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				787D6B741EE676E10055C69E /* OPGConstants.swift */,
 				94C216E41DDF19DD004C1131 /* RootViewController.swift */,
 				94CD76101DB4A63B00C6F958 /* LoginViewController.swift */,
 				1399F9051DFA8B09006AFD4C /* ForgotPasswordViewController.swift */,
@@ -647,6 +740,8 @@
 			children = (
 				9428C40E1E1E4F3500DEF65D /* Location.gpx */,
 				9428C40F1E1E4F3500DEF65D /* NewLocation.gpx */,
+				13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */,
+				13D18F901F31A41F00237390 /* LongDistance.gpx */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -694,6 +789,43 @@
 		94CD76601DB4AB9F00C6F958 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				78D4C0BE1F179558002E6AF4 /* LoginBg_iPad_Landscape.png */,
+				78D4C0BF1F179558002E6AF4 /* LoginBg_iPad_Portrait.png */,
+				78D4C0C01F179558002E6AF4 /* LoginPageLogo_iPad.png */,
+				78D4C0C11F179558002E6AF4 /* LoginPageLogo_iPad@2x.png */,
+				78D4C0AD1F1786FF002E6AF4 /* LoginBg-568h@2x.png */,
+				78D4C0AE1F1786FF002E6AF4 /* LoginBg-667h@2x.png */,
+				78D4C0AF1F1786FF002E6AF4 /* LoginBg-736@3x.png */,
+				78D4C0B01F1786FF002E6AF4 /* LoginBg.png */,
+				78D4C0B11F1786FF002E6AF4 /* LoginBg@2x.png */,
+				78D4C0B21F1786FF002E6AF4 /* LoginPageLogo.png */,
+				78D4C0B31F1786FF002E6AF4 /* LoginPageLogo@2x.png */,
+				78D4C0B41F1786FF002E6AF4 /* LoginPageLogo@3x.png */,
+				7801C24C1ED6E47E009FEC59 /* surveydetail_nav_iPad.png */,
+				7801C24D1ED6E47E009FEC59 /* surveydetail_nav_iPad@2x.png */,
+				781401121EAE02A000799399 /* profile_bg_iPad.png */,
+				781401131EAE02A000799399 /* profile_bg_iPad@2x.png */,
+				781401141EAE02A000799399 /* profile_bg@2x.png */,
+				781401151EAE02A000799399 /* profile_bg@3x.png */,
+				7814010E1EADDD2D00799399 /* survey_nav_iPad.png */,
+				7814010F1EADDD2D00799399 /* survey_nav_iPad@2x.png */,
+				78822D1D1EAA0ED500E84831 /* forgotpwd_key_iPad.png */,
+				78CB257B1EA5EE460002EC6D /* Default_iPad_Landscape.png */,
+				78CB257C1EA5EE460002EC6D /* Default_iPad_Portrait.png */,
+				78CB257D1EA5EE460002EC6D /* notif_deselect_iPad.png */,
+				78CB257E1EA5EE460002EC6D /* notif_deselect_iPad@2x.png */,
+				78CB257F1EA5EE460002EC6D /* notif_others_iPad.png */,
+				78CB25801EA5EE460002EC6D /* notif_others_iPad@2x.png */,
+				78CB25811EA5EE460002EC6D /* notif_reminder_iPad.png */,
+				78CB25821EA5EE460002EC6D /* notif_reminder_iPad@2x.png */,
+				78CB25831EA5EE460002EC6D /* notif_select_iPad.png */,
+				78CB25841EA5EE460002EC6D /* notif_select_iPad@2x.png */,
+				78CB25851EA5EE460002EC6D /* number_of_times_iPad.png */,
+				78CB25861EA5EE460002EC6D /* number_of_times_iPad@2x.png */,
+				78CB25871EA5EE460002EC6D /* survey_calendar_iPad.png */,
+				78CB25881EA5EE460002EC6D /* survey_calendar_iPad@2x.png */,
+				78CB25891EA5EE460002EC6D /* survey_time_iPad.png */,
+				78CB258A1EA5EE460002EC6D /* survey_time_iPad@2x.png */,
 				78F230A11E445B00001E24EC /* default_panel_bg.png */,
 				78F230A21E445B00001E24EC /* default_panel_bg@2x.png */,
 				78F230A31E445B00001E24EC /* default_panel_bg@3x.png */,
@@ -820,6 +952,7 @@
 				1337DB201D07F4130075B356 /* Resources */,
 				1568608111712FFE26DB5391 /* [CP] Embed Pods Frameworks */,
 				D1301DE60E8965C1FD943128 /* [CP] Copy Pods Resources */,
+				A5A3A8880276F34A0BD56B6F /* Tailor */,
 			);
 			buildRules = (
 			);
@@ -885,6 +1018,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 7FK8U2PHL6;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -916,6 +1050,8 @@
 				en,
 				Base,
 				de,
+				ar,
+				fr,
 			);
 			mainGroup = 1337DB191D07F4130075B356;
 			productRefGroup = 1337DB231D07F4130075B356 /* Products */;
@@ -934,14 +1070,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78CB25991EA5EE460002EC6D /* survey_time_iPad.png in Resources */,
 				7869DB371E23BA05001F016F /* OPGResourceBundle.bundle in Resources */,
 				13F9A46B1DF9453E0017C42C /* profile_camera@3x.png in Resources */,
+				78CB259A1EA5EE460002EC6D /* survey_time_iPad@2x.png in Resources */,
 				787D88E41E09337800E15D22 /* number_of_times@3x.png in Resources */,
 				942DBBEE1DE5A17B00A0BD98 /* applogo.png in Resources */,
 				94CB0D541DCB1389007AF73F /* settings.png in Resources */,
+				781401181EAE02A000799399 /* profile_bg@2x.png in Resources */,
+				78D4C0BA1F1786FF002E6AF4 /* LoginPageLogo.png in Resources */,
 				94CB0D561DCB1389007AF73F /* survey_calender.png in Resources */,
+				78CB25901EA5EE460002EC6D /* notif_others_iPad@2x.png in Resources */,
 				948102F01E435B5F00605F18 /* icon-60@2x.png in Resources */,
+				781401171EAE02A000799399 /* profile_bg_iPad@2x.png in Resources */,
+				78D4C0C51F179559002E6AF4 /* LoginPageLogo_iPad@2x.png in Resources */,
 				94CB0D4A1DCB1389007AF73F /* notif_reminder.png in Resources */,
+				78CB25961EA5EE460002EC6D /* number_of_times_iPad@2x.png in Resources */,
 				787D88E21E09337800E15D22 /* number_of_times.png in Resources */,
 				94CB0D481DCB1389007AF73F /* notif_deselect.png in Resources */,
 				948102F31E435B5F00605F18 /* icon-72@2x.png in Resources */,
@@ -952,12 +1096,15 @@
 				78F230A91E445B00001E24EC /* default_panel_bg@3x.png in Resources */,
 				948102E91E435B5F00605F18 /* Icon-29@2x.png in Resources */,
 				1337DB331D07F4140075B356 /* LaunchScreen.storyboard in Resources */,
+				78CB25981EA5EE460002EC6D /* survey_calendar_iPad@2x.png in Resources */,
 				948102E81E435B5F00605F18 /* icon-29.png in Resources */,
 				13F9A47F1DF95FE60017C42C /* survey_calender@3x.png in Resources */,
 				948102F51E435B5F00605F18 /* Icon-76@2x.png in Resources */,
 				13F9A4731DF95BD60017C42C /* notif_others@3x.png in Resources */,
 				78F5490B1DF8128B00E4EB35 /* google@3x.png in Resources */,
 				13F9A4791DF95DE60017C42C /* notification@3x.png in Resources */,
+				781401191EAE02A000799399 /* profile_bg@3x.png in Resources */,
+				7801C24E1ED6E47E009FEC59 /* surveydetail_nav_iPad.png in Resources */,
 				94CB0D721DCB1B84007AF73F /* profile_camera@2x.png in Resources */,
 				94CB0D6B1DCB1B84007AF73F /* logout@2x.png in Resources */,
 				94CB0D571DCB1389007AF73F /* survey_nav.png in Resources */,
@@ -966,17 +1113,27 @@
 				13F9A4711DF95AA10017C42C /* notif_deselect@3x.png in Resources */,
 				94CD76381DB4A6A400C6F958 /* Info.plist in Resources */,
 				78F230A71E445B00001E24EC /* default_panel_bg.png in Resources */,
+				78D4C0C21F179558002E6AF4 /* LoginBg_iPad_Landscape.png in Resources */,
+				78D4C0BC1F1786FF002E6AF4 /* LoginPageLogo@3x.png in Resources */,
+				78CB25951EA5EE460002EC6D /* number_of_times_iPad.png in Resources */,
 				78E368461DF6DF4900D14F07 /* profile_default.png in Resources */,
 				13F9A48A1DF962A10017C42C /* surveydetail_nav@2x.png in Resources */,
+				78CB25931EA5EE460002EC6D /* notif_select_iPad.png in Resources */,
 				13F9A4831DF961300017C42C /* survey_time@3x.png in Resources */,
 				13F9A4691DF9442A0017C42C /* profile@3x.png in Resources */,
+				78822D1E1EAA0ED500E84831 /* forgotpwd_key_iPad.png in Resources */,
 				94CB0D701DCB1B84007AF73F /* notification@2x.png in Resources */,
+				78CB25971EA5EE460002EC6D /* survey_calendar_iPad.png in Resources */,
 				78F230AC1E445B00001E24EC /* default_theme_image@3X.png in Resources */,
+				78D4C0B81F1786FF002E6AF4 /* LoginBg.png in Resources */,
 				13F9A47B1DF95E8D0017C42C /* settings@3x.png in Resources */,
+				78D4C0B91F1786FF002E6AF4 /* LoginBg@2x.png in Resources */,
+				78CB258F1EA5EE460002EC6D /* notif_others_iPad.png in Resources */,
 				94CD75F51DB4A4F700C6F958 /* PublicArt.json in Resources */,
 				1399F90E1DFA94EA006AFD4C /* forgotpwd_key.png in Resources */,
 				94CB0D4E1DCB1389007AF73F /* opglogo.png in Resources */,
 				94CB0D551DCB1389007AF73F /* splash.png in Resources */,
+				78CB25921EA5EE460002EC6D /* notif_reminder_iPad@2x.png in Resources */,
 				94CB0D711DCB1B84007AF73F /* opglogo@2x.png in Resources */,
 				94CB0D6E1DCB1B84007AF73F /* notif_reminder@2x.png in Resources */,
 				78F230AA1E445B00001E24EC /* default_theme_image.png in Resources */,
@@ -987,7 +1144,9 @@
 				9428C4111E1E4F3500DEF65D /* NewLocation.gpx in Resources */,
 				7853A2761DB899B8005EC4D1 /* GoogleService-Info.plist in Resources */,
 				94CB0D491DCB1389007AF73F /* notif_others.png in Resources */,
+				13D18F911F31A41F00237390 /* LongDistance.gpx in Resources */,
 				948102EC1E435B5F00605F18 /* icon-40@2x.png in Resources */,
+				78D4C0BB1F1786FF002E6AF4 /* LoginPageLogo@2x.png in Resources */,
 				948102F71E435B5F00605F18 /* icon@2x.png in Resources */,
 				94CB0D521DCB1389007AF73F /* refresh.png in Resources */,
 				13F9A48B1DF962A10017C42C /* surveydetail_nav@3x.png in Resources */,
@@ -997,20 +1156,31 @@
 				787D88E31E09337800E15D22 /* number_of_times@2x.png in Resources */,
 				13F9A46E1DF945ED0017C42C /* profile_orange@2x.png in Resources */,
 				78F5490A1DF8128B00E4EB35 /* google@2x.png in Resources */,
+				13BEEFD81F21E0D000ED0D3F /* Bangalore.gpx in Resources */,
 				1399F90A1DFA9078006AFD4C /* profile_default@3x.png in Resources */,
+				781401111EADDD2D00799399 /* survey_nav_iPad@2x.png in Resources */,
 				94CB0D761DCB1B84007AF73F /* splash@2x.png in Resources */,
 				13608E581DFE7ECC00F7DF05 /* profile_bg.png in Resources */,
 				1399F9101DFA94EA006AFD4C /* forgotpwd_key@3x.png in Resources */,
 				13F9A4851DF962940017C42C /* survey@3x.png in Resources */,
+				781401161EAE02A000799399 /* profile_bg_iPad.png in Resources */,
+				78D4C0B71F1786FF002E6AF4 /* LoginBg-736@3x.png in Resources */,
 				94CB0D791DCB1B84007AF73F /* survey_time@2x.png in Resources */,
+				78CB25941EA5EE460002EC6D /* notif_select_iPad@2x.png in Resources */,
+				78CB258B1EA5EE460002EC6D /* Default_iPad_Landscape.png in Resources */,
 				94CB0D751DCB1B84007AF73F /* settings@2x.png in Resources */,
 				78F549091DF8128B00E4EB35 /* google@1x.png in Resources */,
 				9428C4101E1E4F3500DEF65D /* Location.gpx in Resources */,
 				94CB0D4D1DCB1389007AF73F /* notification.png in Resources */,
+				78D4C0C41F179559002E6AF4 /* LoginPageLogo_iPad.png in Resources */,
+				78CB258D1EA5EE460002EC6D /* notif_deselect_iPad.png in Resources */,
+				78CB258C1EA5EE460002EC6D /* Default_iPad_Portrait.png in Resources */,
+				78D4C0C31F179559002E6AF4 /* LoginBg_iPad_Portrait.png in Resources */,
 				948102F21E435B5F00605F18 /* icon-72.png in Resources */,
 				13F9A4811DF961200017C42C /* survey_nav@3x.png in Resources */,
 				1399F9091DFA9078006AFD4C /* profile_default@2x.png in Resources */,
 				948102EB1E435B5F00605F18 /* icon-40.png in Resources */,
+				78CB258E1EA5EE460002EC6D /* notif_deselect_iPad@2x.png in Resources */,
 				13AB83D21DE6ECE5002A3108 /* Default@2x.png in Resources */,
 				78F549071DF8128B00E4EB35 /* facebook@2x.png in Resources */,
 				94CB0D511DCB1389007AF73F /* profile.png in Resources */,
@@ -1022,13 +1192,18 @@
 				948102F41E435B5F00605F18 /* icon-76.png in Resources */,
 				78F549081DF8128B00E4EB35 /* facebook@3x.png in Resources */,
 				94CB0D6D1DCB1B84007AF73F /* notif_others@2x.png in Resources */,
+				78D4C0B51F1786FF002E6AF4 /* LoginBg-568h@2x.png in Resources */,
 				1399F90F1DFA94EA006AFD4C /* forgotpwd_key@2x.png in Resources */,
+				781401101EADDD2D00799399 /* survey_nav_iPad.png in Resources */,
 				948102F61E435B5F00605F18 /* icon.png in Resources */,
 				948102EE1E435B5F00605F18 /* icon-50.png in Resources */,
 				135B71041DB9FC6A00F48E94 /* Localizable.strings in Resources */,
 				78F549061DF8128B00E4EB35 /* facebook@1x.png in Resources */,
+				78D4C0B61F1786FF002E6AF4 /* LoginBg-667h@2x.png in Resources */,
 				948102F11E435B5F00605F18 /* icon-60@3x.png in Resources */,
+				78CB25911EA5EE460002EC6D /* notif_reminder_iPad.png in Resources */,
 				78F230A81E445B00001E24EC /* default_panel_bg@2x.png in Resources */,
+				7801C24F1ED6E47E009FEC59 /* surveydetail_nav_iPad@2x.png in Resources */,
 				13F9A4771DF95D3B0017C42C /* notif_select@3x.png in Resources */,
 				94CB0D6C1DCB1B84007AF73F /* notif_deselect@2x.png in Resources */,
 				1337DB2B1D07F4140075B356 /* Main.storyboard in Resources */,
@@ -1047,7 +1222,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13D18F921F31A41F00237390 /* LongDistance.gpx in Resources */,
 				135B71051DB9FC6A00F48E94 /* Localizable.strings in Resources */,
+				13BEEFD91F21E0D000ED0D3F /* Bangalore.gpx in Resources */,
 				94CD76391DB4A6A400C6F958 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1056,7 +1233,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13D18F931F31A41F00237390 /* LongDistance.gpx in Resources */,
 				135B71061DB9FC6A00F48E94 /* Localizable.strings in Resources */,
+				13BEEFDA1F21E0D000ED0D3F /* Bangalore.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1153,6 +1332,20 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		A5A3A8880276F34A0BD56B6F /* Tailor */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Tailor;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "if hash tailor 2>/dev/null; then\n  tailor\nelse\n  echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
+		};
 		D1301DE60E8965C1FD943128 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1222,6 +1415,7 @@
 				946474AA1DBE522A00016F2C /* ChangePanelViewController.swift in Sources */,
 				94CD76001DB4A58A00C6F958 /* OPGMapView.swift in Sources */,
 				946474AC1DBE524000016F2C /* ChangePasswordViewController.swift in Sources */,
+				787D6B751EE676E10055C69E /* OPGConstants.swift in Sources */,
 				94CD76301DB4A63B00C6F958 /* TabBarViewController.swift in Sources */,
 				94D620CC1DC321B500629E52 /* ChangePanelTableViewCell.swift in Sources */,
 				9408BAF71DBF7E9A0066A049 /* CollabrateDB.m in Sources */,
@@ -1236,6 +1430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787D6B761EE676E10055C69E /* OPGConstants.swift in Sources */,
 				78EAFEC61DD302CC002158A1 /* NotificationTableViewCell.swift in Sources */,
 				94CD76231DB4A63B00C6F958 /* LoginViewController.swift in Sources */,
 				78E9F4CC1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */,
@@ -1268,6 +1463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787D6B771EE676E10055C69E /* OPGConstants.swift in Sources */,
 				944B88081DD04DA900960EBD /* OfflineSurveyViewController.swift in Sources */,
 				9408BAF91DBF7E9A0066A049 /* CollabrateDB.m in Sources */,
 				1337DB491D07F4140075B356 /* MySurveys2_0UITests.swift in Sources */,
@@ -1299,6 +1495,8 @@
 			children = (
 				1337DB2A1D07F4140075B356 /* Base */,
 				135B70FD1DB9F90900F48E94 /* de */,
+				78CDF6E21EC5BBC900B8C8BC /* ar */,
+				78A054E51ECC565900D81C2F /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1308,6 +1506,8 @@
 			children = (
 				1337DB321D07F4140075B356 /* Base */,
 				135B70FE1DB9F90A00F48E94 /* de */,
+				78CDF6E31EC5BBCA00B8C8BC /* ar */,
+				78A054E61ECC565A00D81C2F /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1317,6 +1517,8 @@
 			children = (
 				135B71071DB9FC6A00F48E94 /* Base */,
 				135B710A1DB9FC7C00F48E94 /* de */,
+				78CDF6E11EC5BBC900B8C8BC /* ar */,
+				78A054E71ECC565B00D81C2F /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1345,8 +1547,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
@@ -1369,7 +1571,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "9c87f1be-caa4-4c78-b012-576b3a296254";
+				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1397,8 +1599,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
@@ -1414,7 +1616,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "9c87f1be-caa4-4c78-b012-576b3a296254";
+				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1427,10 +1629,10 @@
 			baseConfigurationReference = 638B1F2BB0BBF3C008A42B25 /* Pods-MySurveys2.0.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = SplashImage;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1460,8 +1662,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0216e734-acef-4c09-b18c-ad8904239af8";
-				PROVISIONING_PROFILE_SPECIFIER = "MySurveys1.0 dev 2017";
+				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1473,10 +1675,10 @@
 			baseConfigurationReference = 3B8517C75D5C341107BACB3F /* Pods-MySurveys2.0.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = SplashImage;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1506,8 +1708,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0216e734-acef-4c09-b18c-ad8904239af8";
-				PROVISIONING_PROFILE_SPECIFIER = "MySurveys1.0 dev 2017";
+				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
