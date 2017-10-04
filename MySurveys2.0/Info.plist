@@ -83,6 +83,8 @@
 	<string>${EXECUTABLE_NAME} would like to use your current location even in background.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>${EXECUTABLE_NAME} would like to use your current location when in use.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>${EXECUTABLE_NAME} would like to use your current location even in background.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone Access Alert</string>
 	<key>NSPhotoLibraryUsageDescription</key>

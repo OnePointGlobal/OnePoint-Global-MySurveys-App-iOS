@@ -2,7 +2,7 @@
 //  OPGNotificationView.swift
 //  OPGNotificationBanner
 //
-//  Created by ThamaraiD on 16/11/16.
+//  Created by Chinthan on 16/11/16.
 //  Copyright © 2016 OnePointGlobal. All rights reserved.
 //
 

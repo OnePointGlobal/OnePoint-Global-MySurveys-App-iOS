@@ -2,8 +2,8 @@
 //  ChangePanelTableViewCell.swift
 //  MySurveys2.0
 //
-//  Created by ThamaraiD on 28/10/16.
-//  Copyright © 2016 Chinthan. All rights reserved.
+//  Created by Chinthan on 28/10/16.
+//  Copyright © 2016 OnePoint Global. All rights reserved.
 //
 
 import Foundation

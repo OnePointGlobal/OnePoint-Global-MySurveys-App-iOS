@@ -2,8 +2,8 @@
 //  OfflineSurveyViewController.swift
 //  MySurveys2.0
 //
-//  Created by ThamaraiD on 07/11/16.
-//  Copyright © 2016 Chinthan. All rights reserved.
+//  Created by Chinthan on 07/11/16.
+//  Copyright © 2016 OnePoint Global. All rights reserved.
 //
 
 import Foundation
@@ -143,7 +143,7 @@ class OfflineSurveyViewController: RootViewController {
         return timeStamp
     }
 
-    func updateProgressBar(_ notification: NSNotification) {
+    @objc func updateProgressBar(_ notification: NSNotification) {
         guard let userInfo = notification.userInfo,
             let percentage  = userInfo["percentage"] as? Float,
             let _ = userInfo["numberOfFilesPending"] as? Int else {
