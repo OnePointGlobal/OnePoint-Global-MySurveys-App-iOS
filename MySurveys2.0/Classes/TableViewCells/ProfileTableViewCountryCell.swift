@@ -3,7 +3,7 @@
 //  MySurveys2.0
 //
 //  Created by Manjunath on 16/11/16.
-//  Copyright © 2016 Chinthan. All rights reserved.
+//  Copyright © 2016 OnePoint Global. All rights reserved.
 //
 
 import UIKit

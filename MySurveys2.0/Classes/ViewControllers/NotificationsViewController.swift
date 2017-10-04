@@ -3,7 +3,7 @@
 //  MySurveys2.0
 //
 //  Created by Chinthan on 20/06/16.
-//  Copyright © 2016 Chinthan. All rights reserved.
+//  Copyright © 2016 OnePoint Global. All rights reserved.
 //
 
 import UIKit
@@ -150,7 +150,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
     }
 
      // MARK: - IBAction methods
-    func editNotificationTable(sender: UIBarButtonItem) {
+    @objc func editNotificationTable(sender: UIBarButtonItem) {
         if self.isEditable {
             self.isEditable = false
             self.deleteSelectedItems()
@@ -173,7 +173,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
         }
     }
 
-    func cancelEditing(sender: UIBarButtonItem) {
+    @objc func cancelEditing(sender: UIBarButtonItem) {
         self.tabBarController?.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Edit", comment: "")             // reset button from delete to Edit afetr clicking cancel
         self.tabBarController?.navigationItem.leftBarButtonItem = nil                                     // remove cancel button
         self.isEditable = false
@@ -202,11 +202,11 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
         let notificationID = dict["AppNotificationID"]
 
         if isRead == "1" {
-            let color: UIColor = UIColor(colorLiteralRed: 160/255.0, green: 158/255.0, blue: 158/255.0, alpha: 1)     // for Hex A09E9E
+            let color: UIColor = UIColor(red: 160/255.0, green: 158/255.0, blue: 158/255.0, alpha: 1)     // for Hex A09E9E
             tableViewCell.lblNotificationDesc.textColor = color                          // change color if notification is read
         }
         else {
-            let color: UIColor = UIColor(colorLiteralRed: 96/255.0, green: 96/255.0, blue: 96/255.0, alpha: 1)     // for Hex 606060
+            let color: UIColor = UIColor(red: 96/255.0, green: 96/255.0, blue: 96/255.0, alpha: 1)     // for Hex 606060
             tableViewCell.lblNotificationDesc.textColor = color                          // color if notification is unread
         }
 
@@ -219,7 +219,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             if self.selectedIndexArray.contains(notificationID as! Int) {
                 // already selected
                 self.selectCell(cell: tableViewCell)
-                let color: UIColor = UIColor(colorLiteralRed: 196/255.0, green: 196/255.0, blue: 196/255.0, alpha: 1)     // for Hex C4C4C4
+                let color: UIColor = UIColor(red: 196/255.0, green: 196/255.0, blue: 196/255.0, alpha: 1)     // for Hex C4C4C4
                 tableViewCell.contentView.backgroundColor = color
                 tableViewCell.backgroundColor = color
             }
@@ -266,7 +266,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
                     self.selectedIndexArray.append(notifID as! Int)
                 }
                 self.selectCell(cell: cell)
-                let color: UIColor = UIColor(colorLiteralRed: 196/255.0, green: 196/255.0, blue: 196/255.0, alpha: 1)     // for Hex C4C4C4
+                let color: UIColor = UIColor(red: 196/255.0, green: 196/255.0, blue: 196/255.0, alpha: 1)     // for Hex C4C4C4
                 cell.contentView.backgroundColor = color
                 cell.backgroundColor = color
             }

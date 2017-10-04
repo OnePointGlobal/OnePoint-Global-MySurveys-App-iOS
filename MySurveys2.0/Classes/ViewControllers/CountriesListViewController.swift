@@ -3,7 +3,7 @@
 //  MySurveys2.0
 //
 //  Created by Manjunath on 16/11/16.
-//  Copyright © 2016 Chinthan. All rights reserved.
+//  Copyright © 2016 OnePoint Global. All rights reserved.
 //
 
 import UIKit
@@ -71,7 +71,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         self.navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: width, height: 60))
        navigationBar.barTintColor = AppTheme.appBackgroundColor()
         navigationBar.tintColor = UIColor.white
-        navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
 
         let navigationItem = UINavigationItem()             // Create a navigation item with a title
         navigationItem.title = NSLocalizedString("Country", comment: "Country")
@@ -133,7 +133,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         }
     }
 
-    func cancelBtnClicked(_ sender: UIBarButtonItem) {
+    @objc func cancelBtnClicked(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     

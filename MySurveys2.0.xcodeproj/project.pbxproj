@@ -43,6 +43,9 @@
 		13D18F911F31A41F00237390 /* LongDistance.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13D18F901F31A41F00237390 /* LongDistance.gpx */; };
 		13D18F921F31A41F00237390 /* LongDistance.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13D18F901F31A41F00237390 /* LongDistance.gpx */; };
 		13D18F931F31A41F00237390 /* LongDistance.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 13D18F901F31A41F00237390 /* LongDistance.gpx */; };
+		13D781B41F7B8AF40026BF43 /* refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13D781B21F7B8AF30026BF43 /* refresh@2x.png */; };
+		13D781B51F7B8AF40026BF43 /* refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13D781B31F7B8AF30026BF43 /* refresh@3x.png */; };
+		13DC10251F7D016A0097F56D /* LoginBgX.png in Resources */ = {isa = PBXBuildFile; fileRef = 13DC10241F7D01680097F56D /* LoginBgX.png */; };
 		13F4472A1E28B90000B24B8E /* UploadSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F447291E28B90000B24B8E /* UploadSurvey.swift */; };
 		13F9A4671DF943A40017C42C /* logout@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4661DF943A40017C42C /* logout@3x.png */; };
 		13F9A4691DF9442A0017C42C /* profile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4681DF9442A0017C42C /* profile@3x.png */; };
@@ -295,10 +298,7 @@
 		1337DB481D07F4140075B356 /* MySurveys2_0UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySurveys2_0UITests.swift; sourceTree = "<group>"; };
 		1337DB4A1D07F4140075B356 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		133D0A7F1D1977E000C72DD9 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		135B70FD1DB9F90900F48E94 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
-		135B70FE1DB9F90A00F48E94 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		135B71071DB9FC6A00F48E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		135B710A1DB9FC7C00F48E94 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		13608E571DFE7ECC00F7DF05 /* profile_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile_bg.png; path = icons/profile_bg.png; sourceTree = "<group>"; };
 		136163061D1D611A005C41D0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		137B87521E0D2D7F0023C818 /* OfflineDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineDownload.swift; sourceTree = "<group>"; };
@@ -321,6 +321,9 @@
 		13AB83CD1DE6ECE5002A3108 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "icons/Default@2x.png"; sourceTree = "<group>"; };
 		13BEEFD71F21E0D000ED0D3F /* Bangalore.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bangalore.gpx; sourceTree = "<group>"; };
 		13D18F901F31A41F00237390 /* LongDistance.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LongDistance.gpx; sourceTree = "<group>"; };
+		13D781B21F7B8AF30026BF43 /* refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "refresh@2x.png"; path = "icons/refresh@2x.png"; sourceTree = "<group>"; };
+		13D781B31F7B8AF30026BF43 /* refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "refresh@3x.png"; path = "icons/refresh@3x.png"; sourceTree = "<group>"; };
+		13DC10241F7D01680097F56D /* LoginBgX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoginBgX.png; path = icons/LoginBgX.png; sourceTree = "<group>"; };
 		13F447291E28B90000B24B8E /* UploadSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadSurvey.swift; sourceTree = "<group>"; };
 		13F9A4661DF943A40017C42C /* logout@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logout@3x.png"; path = "icons/logout@3x.png"; sourceTree = "<group>"; };
 		13F9A4681DF9442A0017C42C /* profile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile@3x.png"; path = "icons/profile@3x.png"; sourceTree = "<group>"; };
@@ -796,6 +799,7 @@
 				78D4C0AD1F1786FF002E6AF4 /* LoginBg-568h@2x.png */,
 				78D4C0AE1F1786FF002E6AF4 /* LoginBg-667h@2x.png */,
 				78D4C0AF1F1786FF002E6AF4 /* LoginBg-736@3x.png */,
+				13DC10241F7D01680097F56D /* LoginBgX.png */,
 				78D4C0B01F1786FF002E6AF4 /* LoginBg.png */,
 				78D4C0B11F1786FF002E6AF4 /* LoginBg@2x.png */,
 				78D4C0B21F1786FF002E6AF4 /* LoginPageLogo.png */,
@@ -887,6 +891,8 @@
 				13F9A46C1DF945ED0017C42C /* profile_orange@2x.png */,
 				13F9A46D1DF945ED0017C42C /* profile_orange@3x.png */,
 				94CB0D3C1DCB1389007AF73F /* refresh.png */,
+				13D781B21F7B8AF30026BF43 /* refresh@2x.png */,
+				13D781B31F7B8AF30026BF43 /* refresh@3x.png */,
 				94CB0D321DCB1389007AF73F /* notif_deselect.png */,
 				94CB0D5C1DCB1B84007AF73F /* notif_deselect@2x.png */,
 				13F9A4701DF95AA10017C42C /* notif_deselect@3x.png */,
@@ -1017,7 +1023,7 @@
 					1337DB211D07F4130075B356 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 7FK8U2PHL6;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1031,13 +1037,13 @@
 					1337DB381D07F4140075B356 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 7FK8U2PHL6;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						TestTargetID = 1337DB211D07F4130075B356;
 					};
 					1337DB431D07F4140075B356 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 7FK8U2PHL6;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						TestTargetID = 1337DB211D07F4130075B356;
 					};
 				};
@@ -1049,7 +1055,6 @@
 			knownRegions = (
 				en,
 				Base,
-				de,
 				ar,
 				fr,
 			);
@@ -1151,6 +1156,7 @@
 				94CB0D521DCB1389007AF73F /* refresh.png in Resources */,
 				13F9A48B1DF962A10017C42C /* surveydetail_nav@3x.png in Resources */,
 				94CB0D4F1DCB1389007AF73F /* profile_camera.png in Resources */,
+				13DC10251F7D016A0097F56D /* LoginBgX.png in Resources */,
 				13AB83CE1DE6ECE5002A3108 /* Default-568h@2x.png in Resources */,
 				942DBBEC1DE5725400A0BD98 /* Images.xcassets in Resources */,
 				787D88E31E09337800E15D22 /* number_of_times@2x.png in Resources */,
@@ -1177,7 +1183,9 @@
 				78CB258C1EA5EE460002EC6D /* Default_iPad_Portrait.png in Resources */,
 				78D4C0C31F179559002E6AF4 /* LoginBg_iPad_Portrait.png in Resources */,
 				948102F21E435B5F00605F18 /* icon-72.png in Resources */,
+				13D781B51F7B8AF40026BF43 /* refresh@3x.png in Resources */,
 				13F9A4811DF961200017C42C /* survey_nav@3x.png in Resources */,
+				13D781B41F7B8AF40026BF43 /* refresh@2x.png in Resources */,
 				1399F9091DFA9078006AFD4C /* profile_default@2x.png in Resources */,
 				948102EB1E435B5F00605F18 /* icon-40.png in Resources */,
 				78CB258E1EA5EE460002EC6D /* notif_deselect_iPad@2x.png in Resources */,
@@ -1494,7 +1502,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				1337DB2A1D07F4140075B356 /* Base */,
-				135B70FD1DB9F90900F48E94 /* de */,
 				78CDF6E21EC5BBC900B8C8BC /* ar */,
 				78A054E51ECC565900D81C2F /* fr */,
 			);
@@ -1505,7 +1512,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				1337DB321D07F4140075B356 /* Base */,
-				135B70FE1DB9F90A00F48E94 /* de */,
 				78CDF6E31EC5BBCA00B8C8BC /* ar */,
 				78A054E61ECC565A00D81C2F /* fr */,
 			);
@@ -1516,7 +1522,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				135B71071DB9FC6A00F48E94 /* Base */,
-				135B710A1DB9FC7C00F48E94 /* de */,
 				78CDF6E11EC5BBC900B8C8BC /* ar */,
 				78A054E71ECC565B00D81C2F /* fr */,
 			);
@@ -1568,7 +1573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
@@ -1614,7 +1619,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
 				SDKROOT = iphoneos;
@@ -1665,7 +1670,8 @@
 				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
 				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1711,7 +1717,8 @@
 				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
 				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1729,7 +1736,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chinthu.MySurveys2-0Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MySurveys2.0.app/MySurveys2.0";
 			};
 			name = Debug;
@@ -1747,7 +1755,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chinthu.MySurveys2-0Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MySurveys2.0.app/MySurveys2.0";
 			};
 			name = Release;
@@ -1766,7 +1775,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chinthu.MySurveys2-0UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = MySurveys2.0;
 			};
 			name = Debug;
@@ -1784,7 +1794,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chinthu.MySurveys2-0UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = MySurveys2.0;
 			};
 			name = Release;

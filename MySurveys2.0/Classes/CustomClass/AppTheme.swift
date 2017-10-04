@@ -3,7 +3,7 @@
 //  MySurveys2.0
 //
 //  Created by Manjunath on 15/02/17.
-//  Copyright © 2017 Chinthan. All rights reserved.
+//  Copyright © 2017 OnePoint Global. All rights reserved.
 //
 
 import UIKit
@@ -41,7 +41,7 @@ class AppTheme: NSObject {
                 let sdk = OPGSDK()
                 var mediaObj: OPGDownloadMedia?
                 do {
-                    mediaObj  = try sdk.downloadMediaFile(mediaId, mediaType: "jpg", fileName: fileName) as OPGDownloadMedia
+                    mediaObj  = try sdk.downloadMediaFile(mediaId, mediaType: "png", fileName: fileName) as OPGDownloadMedia
                     DispatchQueue.main.async {
                             if mediaObj?.isSuccess == 1 {
                                 if mediaObj!.mediaFilePath != nil {

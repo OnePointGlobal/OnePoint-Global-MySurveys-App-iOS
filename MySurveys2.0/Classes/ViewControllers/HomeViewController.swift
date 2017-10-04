@@ -3,7 +3,7 @@
 //  MySurveys2.0
 //
 //  Created by Chinthan on 10/06/16.
-//  Copyright © 2016 Chinthan. All rights reserved.
+//  Copyright © 2016 OnePoint Global. All rights reserved.
 //
 
 import UIKit
@@ -92,7 +92,11 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         super.viewDidLoad()
         geoFence?.fencingDelegate = self
         AppTheme.delelgate = self
-
+        
+        if #available(iOS 11, *) {
+            self.tableView?.contentInsetAdjustmentBehavior =  UIScrollViewContentInsetAdjustmentBehavior.never
+        }
+        
         queue.maxConcurrentOperationCount = 1
         self.geoFencedView?.isHidden = true
         self.mapView.showsUserLocation = true;
@@ -230,7 +234,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
     
     // MARK: - Generic private methods
-    func assignGeofencedArrays(_ notification: NSNotification) {
+    @objc func assignGeofencedArrays(_ notification: NSNotification) {
         if notification.userInfo != nil {
             self.geofencedArrays = notification.userInfo!["geoArray"] as! Array<Any>
         }
@@ -259,7 +263,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
 
 
     //This method uploads the offline survey results and shows the progress of upload.
-    func uploadSurveyResults(_ notification: NSNotification) {
+    @objc func uploadSurveyResults(_ notification: NSNotification) {
         guard let userInfo = notification.userInfo,
             let percentage  = userInfo["percentage"] as? Float,
             let surveyID  = userInfo["surveyReference"] as? Int,
@@ -381,6 +385,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     func setUpSegmentedController() {
         let isAvailable: Bool? = UserDefaults.standard.value(forKey: "isGeoFencingAvailable") as? Bool
+        if #available(iOS 11, *) {
+            self.tableView?.contentInsetAdjustmentBehavior =  UIScrollViewContentInsetAdjustmentBehavior.never
+        }
         if isAvailable == true {
             self.segmentedView?.isHidden = false
             self.segmentedControl.isHidden = false
@@ -771,7 +778,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         return -1
     }
     
-    func reDownloadOfflineSurvey(sender:UIButton!) {
+    @objc func reDownloadOfflineSurvey(sender:UIButton!) {
         self.downloadSurveys()
     }
     
@@ -943,7 +950,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func rightBarButtonItemSetUp() {
         let refreshButtonItem = UIBarButtonItem()
         var refreshButton = UIButton()
-        refreshButton.setImage(UIImage(named: "refresh"), for: .normal)
+        refreshButton.setImage(UIImage(named: "refresh.png"), for: .normal)
         refreshButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         refreshButton.addTarget(self, action: #selector(refreshButtonAction), for: .touchUpInside)
         refreshButtonItem.customView = refreshButton
@@ -1165,7 +1172,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
 
 
-    func refreshButtonAction() {
+    @objc func refreshButtonAction() {
         let array: Array<Any>? = UserDefaults.standard.value(forKey: "downloadSurveysArray") as? Array<Any>
         if (array?.count)! > 0 {
             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Downloading surveys. Please wait!", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
@@ -1349,7 +1356,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
     }
 
-    func uploadResults(sender: UIButton!) {
+    @objc func uploadResults(sender: UIButton!) {
         if super.isOnline() {
             let indexPath = IndexPath(item: sender.tag, section: 0)
             let tableViewCell: SurveyTableViewCell? = self.tableView?.cellForRow(at: indexPath) as? SurveyTableViewCell
@@ -1370,7 +1377,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
     }
     
-    func uploadGeoFenceOfflineResults(sender: UIButton!) {
+    @objc func uploadGeoFenceOfflineResults(sender: UIButton!) {
         let indexPath = IndexPath(item: sender.tag, section: 1)
         let tableViewCell: SurveyTableViewCell? = self.tableViewGeoFenced?.cellForRow(at: indexPath) as? SurveyTableViewCell
         tableViewCell?.btnSurveyDesc.isUserInteractionEnabled = false
@@ -1612,7 +1619,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         } else {
                             // Fallback on earlier versions
                         }
-                        notification.alertBody = NSLocalizedString("Welcome to", comment: "") + " \(regionEntered.address!)! " + NSLocalizedString("You have a survey available at this location", comment: "")
+                        notification.alertBody = NSLocalizedString("Welcome to", comment: "") + " \(regionEntered.address!)! \(NSLocalizedString("You have a survey available at this location", comment: ""))"
                         notification.fireDate = NSDate(timeIntervalSinceNow:0.3) as Date
                         UIApplication.shared.cancelAllLocalNotifications()
                         UIApplication.shared.scheduledLocalNotifications = [notification]
@@ -1681,13 +1688,14 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     //  MARK: - GeoFence Survey Methods
     func startGeoFencingView() {
         self.lblNoSurveys?.isHidden = true
+        locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             switch(CLLocationManager.authorizationStatus()) {
-            case .notDetermined, .restricted, .denied:
+            case .notDetermined, .restricted, .denied, .authorizedWhenInUse:
                 self.setUpGeoFeningView(false)
                 showGeoFencePopUp(NSLocalizedString("Please enable location services from device Settings to take the survey.", comment: ""))
                 return
-            case .authorizedAlways, .authorizedWhenInUse:
+            case .authorizedAlways:
                 print("Location Access granted")
             }
         } else {
@@ -1803,7 +1811,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         
     }
 
-    func hideGeoFencePopUp() {
+    @objc func hideGeoFencePopUp() {
         if self.noGeoFenceView != nil {
             self.noGeoFenceView?.removeFromSuperview()
         }
@@ -1846,15 +1854,15 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         self.mapView.add(circle)
     }
 
-    func mapView(_ mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    @objc func mapView(_ mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         let circleRenderer = MKCircleRenderer(overlay: overlay)
         circleRenderer.fillColor = AppTheme.appBackgroundColor().withAlphaComponent(0.2)
         circleRenderer.strokeColor = AppTheme.appBackgroundColor().withAlphaComponent(0.7)
         circleRenderer.lineWidth = 2
         return circleRenderer
     }
-
-    func mapView(_ mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView! {
+    
+    @objc func mapView(_ mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView! {
         let identifier = "pin"
         var view: MKPinAnnotationView
         if annotation.isMember(of: MKUserLocation.self) {

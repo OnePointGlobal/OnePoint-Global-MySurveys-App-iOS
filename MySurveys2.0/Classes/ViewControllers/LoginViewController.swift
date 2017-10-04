@@ -3,7 +3,7 @@
 //  MySurveys2.0
 //
 //  Created by Chinthan on 08/06/16.
-//  Copyright © 2016 Chinthan. All rights reserved.
+//  Copyright © 2016 OnePoint Global. All rights reserved.
 //
 
 import UIKit
@@ -107,9 +107,9 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         self.txtUsername?.inputAccessoryView = self.hideKeyboard()
         self.txtPassword?.inputAccessoryView = self.hideKeyboard()
         self.txtUsername?.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Username/EmailID", comment: "Username/EmailID"),
-                                                                     attributes: [NSForegroundColorAttributeName: UIColor.white])
+                                                                     attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         self.txtPassword?.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Password", comment: "Password"),
-                                                                     attributes: [NSForegroundColorAttributeName: UIColor.white])
+                                                                     attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         self.btnLogin?.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
         self.btnLogin?.layer.borderColor = UIColor.white.cgColor
         self.btnLogin?.layer.borderWidth = 1.0
@@ -189,11 +189,14 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
     func authenticate() {
         self.startActivityIndicator()    // start indicator when "Go" is pressed on keyboard
         self.setLoginControls(isInteractionEnabled: false)
+        let userNameText = self.txtUsername?.text
+        let passwordtext = self.txtPassword?.text
+        
         DispatchQueue.global(qos: .default).async {
             let sdk = OPGSDK()
             var authenticate: OPGAuthenticate
             do {
-                authenticate = try sdk.authenticate(self.txtUsername?.text, password: self.txtPassword?.text) as OPGAuthenticate
+                authenticate = try sdk.authenticate(userNameText, password: passwordtext) as OPGAuthenticate
                 DispatchQueue.main.async {
                     self.stopActivityIndicator()
                     self.setLoginControls(isInteractionEnabled: true)
@@ -389,6 +392,9 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             case OPGConstants.device.iPhone6PlusAnd7PlusHeight:
                 imgLoginBG?.image = UIImage(named: "LoginBg-736@3x.png")
                 break
+            case OPGConstants.device.iPhoneXHeight:
+                imgLoginBG?.image = UIImage(named: "LoginBgX.png")
+                break
             default:
                 imgLoginBG?.image = UIImage(named: "LoginBg.png")
                 break
@@ -427,7 +433,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         return toolbarDone
     }
 
-    func dismissKeyBoard() {
+    @objc func dismissKeyBoard() {
         self.txtUsername?.resignFirstResponder()
         self.txtPassword?.resignFirstResponder()
     }

@@ -3,7 +3,7 @@
 //  MySurveys2.0
 //
 //  Created by Chinthan on 20/06/16.
-//  Copyright © 2016 Chinthan. All rights reserved.
+//  Copyright © 2016 OnePoint Global. All rights reserved.
 //
 
 import UIKit
@@ -159,7 +159,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     }
 
     // MARK: - Keyboard Notification selector methods
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         // only for iPad
         let bounds = UIScreen.main.bounds
         let width = bounds.size.width
@@ -174,7 +174,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
     }
 
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
 
         // only for iPad
         let bounds = UIScreen.main.bounds
@@ -582,7 +582,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         return false
     }
 
-    func showAlert(sender: UIButton!) {
+    @objc func showAlert(sender: UIButton!) {
         let uploadPending = self.isUploadResultPending()
         if uploadPending {
             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Please upload offline survey results before logout.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
@@ -602,7 +602,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func editProfile() {
+    @objc func editProfile() {
         if super.isOnline() {
             if self.isEditable! {
                 self.isEditable = false
