@@ -37,5 +37,7 @@ class OPGConstants {
     static let iPhone5Height: CGFloat = 568
     static let iPhone6And7Height: CGFloat = 667
     static let iPhone6PlusAnd7PlusHeight: CGFloat = 736
+    static let iPhoneXHeight: CGFloat = 812
+
    }
 }
