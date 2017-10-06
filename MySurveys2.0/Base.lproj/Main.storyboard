@@ -1769,9 +1769,9 @@
                                 <constraints>
                                     <constraint firstItem="x4b-p3-76U" firstAttribute="width" secondItem="wWZ-yX-9gF" secondAttribute="width" multiplier="1.5:4" id="1u0-Lp-DVN"/>
                                     <constraint firstItem="MNj-gc-Zuv" firstAttribute="height" secondItem="9p6-8e-Ama" secondAttribute="height" id="AGE-WE-xau"/>
+                                    <constraint firstItem="9QP-cM-6gN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wWZ-yX-9gF" secondAttribute="leading" constant="20" symbolic="YES" id="CNv-WI-E1z"/>
                                     <constraint firstItem="x4b-p3-76U" firstAttribute="height" secondItem="wWZ-yX-9gF" secondAttribute="height" multiplier="1.9:8" id="EnJ-Wk-gSi"/>
                                     <constraint firstItem="9p6-8e-Ama" firstAttribute="centerY" secondItem="wWZ-yX-9gF" secondAttribute="centerY" constant="-13" id="FEt-Q0-Sur"/>
-                                    <constraint firstItem="9QP-cM-6gN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wWZ-yX-9gF" secondAttribute="leading" constant="20" symbolic="YES" id="IjB-tv-YpT"/>
                                     <constraint firstItem="EFb-tY-6dD" firstAttribute="leading" secondItem="9p6-8e-Ama" secondAttribute="leading" id="Ipo-YF-GL1"/>
                                     <constraint firstItem="9p6-8e-Ama" firstAttribute="width" secondItem="wWZ-yX-9gF" secondAttribute="width" multiplier="6.3:8" id="RbJ-jp-rsH"/>
                                     <constraint firstItem="MNj-gc-Zuv" firstAttribute="width" secondItem="9p6-8e-Ama" secondAttribute="width" id="UE9-DX-1b0"/>

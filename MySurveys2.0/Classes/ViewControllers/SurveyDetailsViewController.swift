@@ -119,6 +119,14 @@ class SurveyDetailsViewController: RootViewController {
             CollabrateDB.sharedInstance().updateSurvey(self.surveySelected?.surveyID, withStatus: "Pending", withDownloadStatus: 99)
         }
     }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
 
     
     // MARK: - Navigation
