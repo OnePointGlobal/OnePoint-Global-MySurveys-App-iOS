@@ -163,6 +163,7 @@
 - (void) setstatus:(InterviewStatus) status;
 - (void)terminate:(NSNumber *)signal_ :(BOOL)writeData :(TerminateStatusEnm)status;
 - (void)initialize__WithId:(id)json;
+- (void)complete;
 - (void)suspend;
 - (void)log:(NSString *)message withId:(id)level;
 - (void)snapForward;
