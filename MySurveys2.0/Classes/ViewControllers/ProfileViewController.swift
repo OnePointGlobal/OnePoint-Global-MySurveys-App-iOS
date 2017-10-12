@@ -9,6 +9,7 @@
 import UIKit
 
 
+
 class ProfileViewController: RootViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CountryChangedDelegate {
    // MARK: - IBOutlets for view
     @IBOutlet weak var imageView: UIImageView?
@@ -527,17 +528,18 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let photoURL          = NSURL(fileURLWithPath: documentDirectory)
         let localPath         = photoURL.appendingPathComponent("profileimage")
-        let data              = UIImageJPEGRepresentation(image, 0.9)
-
-        do {
-            try data?.write(to: localPath!, options: Data.WritingOptions.atomic)
-        }
-        catch {
-            // Catch exception here and act accordingly
-        }
-        if !((localPath?.absoluteString.isEmpty)!) {
-            self.activityIndicator?.startAnimating()
-            self.uploadProfileImage(path: (localPath?.absoluteString)!)
+        if let compressedImage: UIImage = image.compressTo(2) {
+            let data              = UIImageJPEGRepresentation(compressedImage, 1.0)
+            do {
+                try data?.write(to: localPath!, options: Data.WritingOptions.atomic)
+            }
+            catch {
+                // Catch exception here and act accordingly
+            }
+            if !((localPath?.absoluteString.isEmpty)!) {
+                self.activityIndicator?.startAnimating()
+                self.uploadProfileImage(path: (localPath?.absoluteString)!)
+            }
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -623,7 +625,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
         else {
             if self.isEditable! {                            // calls when internet turned off during saving
-
                 self.isEditable = false
                 self.tabBarController?.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Edit", comment: "")
                 self.tableview?.allowsSelection = false

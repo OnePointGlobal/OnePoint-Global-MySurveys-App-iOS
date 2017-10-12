@@ -151,26 +151,29 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        if AppTheme.getLoginBGImagePath().isEmpty {
-            imgLoginBG?.alpha = 0.5
-        }
-
-        coordinator.animate(alongsideTransition: nil, completion: { _ in
-            self.setThemeElements()
-            self.imgLoginBG?.alpha = 1.0
-            let bounds = UIScreen.main.bounds
-            let width = bounds.size.width
-            if self.constarintForgotPassowrdTrailingSpace != nil { // temp fix
-                if width == OPGConstants.device.iPadLandscapeWidth || width == OPGConstants.device.iPadRetinaLandscapeWidth {
-                    // iPad landscape
-                    self.constarintForgotPassowrdTrailingSpace.constant = 250
-                }
-                else {
-                    // iPad portrait
-                    self.constarintForgotPassowrdTrailingSpace.constant = 120
-                }
+        if  UIDevice.current.userInterfaceIdiom == .pad {
+            if AppTheme.getLoginBGImagePath().isEmpty {
+                imgLoginBG?.alpha = 0.5
             }
-        })
+            
+            coordinator.animate(alongsideTransition: nil, completion: { _ in
+                self.setThemeElements()
+                self.imgLoginBG?.alpha = 1.0
+                let bounds = UIScreen.main.bounds
+                let width = bounds.size.width
+                if self.constarintForgotPassowrdTrailingSpace != nil { // temp fix
+                    if width == OPGConstants.device.iPadLandscapeWidth || width == OPGConstants.device.iPadRetinaLandscapeWidth {
+                        // iPad landscape
+                        self.constarintForgotPassowrdTrailingSpace.constant = 250
+                    }
+                    else {
+                        // iPad portrait
+                        self.constarintForgotPassowrdTrailingSpace.constant = 120
+                    }
+                }
+            })
+        }
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {

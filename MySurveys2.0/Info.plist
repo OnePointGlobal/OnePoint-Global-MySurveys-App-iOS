@@ -89,6 +89,8 @@
 	<string>Microphone Access Alert</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Photo Library Access Alert</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Photo Library Access Alert</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

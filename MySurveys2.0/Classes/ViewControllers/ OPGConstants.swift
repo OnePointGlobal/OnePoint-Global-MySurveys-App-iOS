@@ -12,7 +12,7 @@ class OPGConstants {
 
     struct sdk {
     // SDK Constants define here.
-    static let AppVersion = "App_Version"
+     static let AppVersion = "App_Version"
     static let Username = "SDK_Username"
     static let SharedKey = "SDK_Key"
 
@@ -38,6 +38,6 @@ class OPGConstants {
     static let iPhone6And7Height: CGFloat = 667
     static let iPhone6PlusAnd7PlusHeight: CGFloat = 736
     static let iPhoneXHeight: CGFloat = 812
-
+    
    }
 }
