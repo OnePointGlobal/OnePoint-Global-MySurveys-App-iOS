@@ -2,7 +2,7 @@
 //  NSString+NSData.m
 //  OnePoint.NetworkHelpers
 //
-//  Created by ThamaraiD on 10/04/14.
+//  Created by Chinthan on 10/04/14.
 //  Copyright (c) 2014 Onepoint Global. All rights reserved.
 //
 

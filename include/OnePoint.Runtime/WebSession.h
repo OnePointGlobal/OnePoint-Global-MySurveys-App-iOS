@@ -22,7 +22,6 @@
 #import "IProperties.h"
 #import "InterviewInfo.h"
 #import "DataEncryption.h"
-//#import <OnePoint.POM/PanellistProfile.h>
 @class Properties;
 @interface WebSession : NSObject {
  @public
@@ -33,7 +32,6 @@
     NSString *project;
     NSString *platform;
     NSNumber *surveyid;
-    //PanellistProfile *__profile;
     //Byte *scriptFile;
     
 }

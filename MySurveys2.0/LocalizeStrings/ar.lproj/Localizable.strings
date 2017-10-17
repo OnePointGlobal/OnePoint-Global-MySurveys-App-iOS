@@ -3,7 +3,11 @@
   MySurveys2.0
 
   Created by Chinthan on 21/10/16.
+<<<<<<< HEAD
   Copyright © 2016 Chinthan. All rights reserved.
+=======
+  Copyright © 2016 OnePoint Global. All rights reserved.
+>>>>>>> testing
 */
 
 "AboutUs" = "من نحن";

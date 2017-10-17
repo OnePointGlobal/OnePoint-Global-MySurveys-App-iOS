@@ -3,12 +3,16 @@
 //  MySurveys2.0
 //
 //  Created by Chinthan on 20/06/16.
-//  Copyright © 2016 Chinthan. All rights reserved.
+//  Copyright © 2016 OnePoint Global. All rights reserved.
 //
 
 import UIKit
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> testing
 class ProfileViewController: RootViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CountryChangedDelegate {
    // MARK: - IBOutlets for view
     @IBOutlet weak var imageView: UIImageView?
@@ -159,7 +163,11 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     }
 
     // MARK: - Keyboard Notification selector methods
+<<<<<<< HEAD
     func keyboardWillShow(notification: NSNotification) {
+=======
+    @objc func keyboardWillShow(notification: NSNotification) {
+>>>>>>> testing
         // only for iPad
         let bounds = UIScreen.main.bounds
         let width = bounds.size.width
@@ -174,7 +182,11 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
     }
 
+<<<<<<< HEAD
     func keyboardWillHide(notification: NSNotification) {
+=======
+    @objc func keyboardWillHide(notification: NSNotification) {
+>>>>>>> testing
 
         // only for iPad
         let bounds = UIScreen.main.bounds
@@ -527,6 +539,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let photoURL          = NSURL(fileURLWithPath: documentDirectory)
         let localPath         = photoURL.appendingPathComponent("profileimage")
+<<<<<<< HEAD
         let data              = UIImageJPEGRepresentation(image, 0.9)
 
         do {
@@ -538,6 +551,20 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         if !((localPath?.absoluteString.isEmpty)!) {
             self.activityIndicator?.startAnimating()
             self.uploadProfileImage(path: (localPath?.absoluteString)!)
+=======
+        if let compressedImage: UIImage = image.compressTo(2) {
+            let data              = UIImageJPEGRepresentation(compressedImage, 1.0)
+            do {
+                try data?.write(to: localPath!, options: Data.WritingOptions.atomic)
+            }
+            catch {
+                // Catch exception here and act accordingly
+            }
+            if !((localPath?.absoluteString.isEmpty)!) {
+                self.activityIndicator?.startAnimating()
+                self.uploadProfileImage(path: (localPath?.absoluteString)!)
+            }
+>>>>>>> testing
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -582,7 +609,11 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         return false
     }
 
+<<<<<<< HEAD
     func showAlert(sender: UIButton!) {
+=======
+    @objc func showAlert(sender: UIButton!) {
+>>>>>>> testing
         let uploadPending = self.isUploadResultPending()
         if uploadPending {
             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Please upload offline survey results before logout.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
@@ -602,7 +633,11 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
     }
     
+<<<<<<< HEAD
     func editProfile() {
+=======
+    @objc func editProfile() {
+>>>>>>> testing
         if super.isOnline() {
             if self.isEditable! {
                 self.isEditable = false
@@ -623,7 +658,10 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
         else {
             if self.isEditable! {                            // calls when internet turned off during saving
+<<<<<<< HEAD
 
+=======
+>>>>>>> testing
                 self.isEditable = false
                 self.tabBarController?.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Edit", comment: "")
                 self.tableview?.allowsSelection = false

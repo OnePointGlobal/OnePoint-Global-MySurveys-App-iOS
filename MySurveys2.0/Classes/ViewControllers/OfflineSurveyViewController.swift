@@ -2,8 +2,8 @@
 //  OfflineSurveyViewController.swift
 //  MySurveys2.0
 //
-//  Created by ThamaraiD on 07/11/16.
-//  Copyright © 2016 Chinthan. All rights reserved.
+//  Created by Chinthan on 07/11/16.
+//  Copyright © 2016 OnePoint Global. All rights reserved.
 //
 
 import Foundation
@@ -143,7 +143,11 @@ class OfflineSurveyViewController: RootViewController {
         return timeStamp
     }
 
+<<<<<<< HEAD
     func updateProgressBar(_ notification: NSNotification) {
+=======
+    @objc func updateProgressBar(_ notification: NSNotification) {
+>>>>>>> testing
         guard let userInfo = notification.userInfo,
             let percentage  = userInfo["percentage"] as? Float,
             let _ = userInfo["numberOfFilesPending"] as? Int else {
@@ -196,6 +200,14 @@ class OfflineSurveyViewController: RootViewController {
         else {
             super.showNoInternetConnectionAlert()
         }
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return true
     }
     
     // MARK: - Navigation

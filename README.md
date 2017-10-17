@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Welcome to the OnePoint Global MySurveys App for iOS
 A Mobile application for collecting feedback
 
@@ -12,3 +13,7 @@ add your own features or integrate it with your own systems.
 # OnePoint-Global-Mobile-App-SDK-iOS
 
 >>>>>>> development
+=======
+# OnePoint-Global-Mobile-App-SDK-iOS
+
+>>>>>>> testing

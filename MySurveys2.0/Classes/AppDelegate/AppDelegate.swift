@@ -3,7 +3,7 @@
 //  MySurveys2.0
 //
 //  Created by Chinthan on 08/06/16.
-//  Copyright © 2016 Chinthan. All rights reserved.
+//  Copyright © 2016 OnePoint Global. All rights reserved.
 //
 
 import UIKit
@@ -56,7 +56,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             UNUserNotificationCenter.current().delegate = self
             UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert], completionHandler: {( granted, error) in
             if granted {
+<<<<<<< HEAD
                 UIApplication.shared.registerForRemoteNotifications()
+=======
+                 DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+>>>>>>> testing
             }
             else {
                 // Do stuff if unsuccessful...

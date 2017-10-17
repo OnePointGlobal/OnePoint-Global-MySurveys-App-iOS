@@ -3,7 +3,7 @@
 //  MySurveys2.0
 //
 //  Created by Chinthan on 16/08/16.
-//  Copyright © 2016 Chinthan. All rights reserved.
+//  Copyright © 2016 OnePoint Global. All rights reserved.
 //
 
 import UIKit
@@ -119,6 +119,17 @@ class SurveyDetailsViewController: RootViewController {
             CollabrateDB.sharedInstance().updateSurvey(self.surveySelected?.surveyID, withStatus: "Pending", withDownloadStatus: 99)
         }
     }
+<<<<<<< HEAD
+=======
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
+>>>>>>> testing
 
     
     // MARK: - Navigation
