@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
+	<string>2.0.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -56,7 +56,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>2</string>
 	<key>FacebookAppID</key>
 	<string>241219919681635</string>
 	<key>FacebookDisplayName</key>
@@ -79,17 +79,17 @@
 	<string>Bluetooth Access Alert</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Camera Access Alert</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>${EXECUTABLE_NAME} would like to use your current location even in background.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>${EXECUTABLE_NAME} would like to use your current location even in background.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>${EXECUTABLE_NAME} would like to use your current location when in use.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>${EXECUTABLE_NAME} would like to use your current location even in background.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone Access Alert</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Photo Library Access Alert</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Photo Library Access Alert</string>
+	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Photo Library Access Alert</string>
 	<key>UIBackgroundModes</key>
 	<array>
