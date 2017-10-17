@@ -22,7 +22,6 @@
 - (id)init;
 - (long)getRandomSeed;
 - (void)setRandomSeedWithLong:(long)value;
-+(NSString *) language:(NSString *) lang;
 - (Variant *)abs:(id)value;
 - (NSNumber *)ascw:(id)value;
 -(NSNumber *) answercount:(id)answer;

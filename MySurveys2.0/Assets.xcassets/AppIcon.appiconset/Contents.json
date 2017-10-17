@@ -101,15 +101,6 @@
       "idiom" : "ipad",
       "filename" : "Icon-76@2x-2.png",
       "scale" : "2x"
-<<<<<<< HEAD
-=======
-    },
-    {
-      "size" : "1024x1024",
-      "idiom" : "ios-marketing",
-      "filename" : "1024.png",
-      "scale" : "1x"
->>>>>>> testing
     }
   ],
   "info" : {

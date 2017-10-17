@@ -71,9 +71,6 @@
     NSString *_user10;
 
 }
-
-@property(nonatomic,assign)BOOL _isdebug;
-
 - (id)init;
 - (id)initWithNSString:(NSString *)browser
 withIProperties:(id<IProperties>)browserCapabilities
@@ -115,8 +112,8 @@ withIProperties:(id<IProperties>)browserCapabilities
 - (void)setInterviewMode:(char)value;
 - (BOOL)getIsAutoAnswer;
 - (void)setIsAutoAnswer:(BOOL)value;
-- (BOOL)getisdebug;
-- (void)setisdebug:(BOOL)value;
+- (BOOL)getIsDebug;
+- (void)setIsDebug:(BOOL)value;
 - (BOOL)getIsRestart;
 - (void)setIsRestart:(BOOL)value;
 - (BOOL)getIsReview;

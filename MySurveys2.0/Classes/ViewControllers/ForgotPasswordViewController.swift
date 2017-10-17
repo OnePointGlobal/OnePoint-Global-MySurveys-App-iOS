@@ -3,7 +3,7 @@
 //  MySurveys2.0
 //
 //  Created by Chinthan on 09/12/16.
-//  Copyright © 2016 OnePoint Global. All rights reserved.
+//  Copyright © 2016 Chinthan. All rights reserved.
 //
 
 import UIKit
@@ -33,11 +33,7 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
         self.lblForgotYourPassword?.text = NSLocalizedString("Forgot your password?", comment: "")
         self.txtEmailID?.delegate = self
         self.txtEmailID?.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("E-mail Id", comment: "email"),
-<<<<<<< HEAD
                                                                      attributes: [NSForegroundColorAttributeName: UIColor(red: 178/255.0, green: 176/255.0, blue: 178/255.0, alpha: 1.0)])
-=======
-                                                                     attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 178/255.0, green: 176/255.0, blue: 178/255.0, alpha: 1.0)])
->>>>>>> testing
         self.btnSubmit?.setTitleColor(self.bgColor, for: .normal)
         self.btnSubmit?.layer.borderColor = self.bgColor?.cgColor
         if UIDevice.current.userInterfaceIdiom == .phone {
@@ -113,11 +109,7 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
                                 super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("E-mail Id does not exist", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                             }
                             else if forgotPassword.httpStatusCode.intValue == 406 {
-<<<<<<< HEAD
                                 super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Please enter your e-mail ID", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
-=======
-                                super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Please enter a valid e-mail ID.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
->>>>>>> testing
                             }
                             else if forgotPassword.httpStatusCode.intValue == 404 {
                                 super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("E-mail Id not found.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))

@@ -2,8 +2,8 @@
 //  SettingsViewController.swift
 //  MySurveys2.0
 //
-//  Created by Chinthan on 24/10/16.
-//  Copyright © 2016 OnePoint Global. All rights reserved.
+//  Created by ThamaraiD on 24/10/16.
+//  Copyright © 2016 Chinthan. All rights reserved.
 //
 
 import Foundation
@@ -35,16 +35,9 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
         //self.settingsTableView.layoutMargins = UIEdgeInsets.zero
         //self.settingsTableView.separatorInset = UIEdgeInsets.zero
         self.settingsTableView.tableFooterView = UIView()
-<<<<<<< HEAD
         self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 2.0.0 "
         geoFence?.initialiseGeofencing()            // Ask for location permission
         
-=======
-        self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 2.0.2 "
-        geoFence?.initialiseGeofencing()            // Ask for location permission
-       
-
->>>>>>> testing
         
     }
 
@@ -134,14 +127,7 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
     }
 
      // MARK: - Geofencing Operations
-<<<<<<< HEAD
     func switchEvents(sender: AnyObject) {
-=======
-    @objc func switchEvents(sender: AnyObject) {
-        let locationManager = CLLocationManager()
-        locationManager.requestAlwaysAuthorization()
-        
->>>>>>> testing
         let switchControl = sender as! UISwitch
         if switchControl.isOn {
             print("GeoFencing started")

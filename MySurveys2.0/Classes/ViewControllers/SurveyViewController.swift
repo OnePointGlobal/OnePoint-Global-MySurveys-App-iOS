@@ -3,7 +3,7 @@
 //  MySurveys2.0
 //
 //  Created by Chinthan on 20/06/16.
-//  Copyright © 2016 OnePoint Global. All rights reserved.
+//  Copyright © 2016 Chinthan. All rights reserved.
 //
 class SurveyViewController: OPGViewController, OPGSurveyDelegate {
     @IBOutlet weak var spinner: UIActivityIndicatorView!

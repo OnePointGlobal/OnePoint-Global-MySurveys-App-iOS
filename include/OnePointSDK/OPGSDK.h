@@ -386,11 +386,11 @@ self.surveyList = [sdk getCountries:&error];
  @param  panelistId Panelist ID
  @param  error An NSError object encapsulates information about an error condition in an extendable, object-oriented manner..
  @code
- OPGUploadResult *result = [sdk uploadResults:@"SURVEY_ID" panelistId:@"PANELIST_ID" error:&error];
+ OPGUploadResult *result = [sdk uploadResults:@"SURVEY_ID" panelistId:@"PANELIST_ID" error:&error]; 
  @endcode
  @return OPGUploadResult.
  */
--(OPGUploadResult *)uploadResults:(NSString *)surveyId
+-(OPGUploadResult *)uploadResults:(NSString *)surveyReference
                        panelistId:(NSString *)panelistId
                             error:(NSError **)error;
 
@@ -408,7 +408,7 @@ self.surveyList = [sdk getCountries:&error];
  @endcode
  @return OPGUploadResult.
  */
--(OPGUploadResult *)uploadOfflineResultFile:(NSString *)surveyId
+-(OPGUploadResult *)uploadOfflineResultFile:(NSString *)surveyReference
                                  panelistId:(NSString *)panelistId
                                    fileName:(NSString *)fileName
                                    filePath:(NSString *)filePath

@@ -17,13 +17,11 @@
 - (NSString *)getBrowser;
 - (id<IProperties>)getBrowserCapabilities;
 - (NSString *)getDataEntryMode;
-- (void)setDataEntryMode:(NSString *)value;
 - (NSDate *)getElaspedTime;
 - (NSString *)getInterviewerID;
 - (InterviewModes)getInterviewMode;
-- (void)setInterviewMode:(char)value;
 - (BOOL)getIsAutoAnswer;
-- (BOOL)getisdebug;
+- (BOOL)getIsDebug;
 - (BOOL)getIsRestart;
 - (BOOL)getIsReview;
 - (NSString *)getLastAsked;

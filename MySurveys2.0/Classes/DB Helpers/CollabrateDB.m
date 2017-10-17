@@ -2,7 +2,7 @@
 //  CollabrateDB.m
 //  DemoSurveys_API
 //
-//  Created by Chinthan on 14/10/16.
+//  Created by ThamaraiD on 14/10/16.
 //  Copyright © 2016 OnePointGlobal. All rights reserved.
 //
 

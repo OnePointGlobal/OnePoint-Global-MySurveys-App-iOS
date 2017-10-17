@@ -3,7 +3,7 @@
 //  MySurveys2.0
 //
 //  Created by Chinthan on 08/06/16.
-//  Copyright © 2016 OnePoint Global. All rights reserved.
+//  Copyright © 2016 Chinthan. All rights reserved.
 //
 
 import UIKit
@@ -107,15 +107,9 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         self.txtUsername?.inputAccessoryView = self.hideKeyboard()
         self.txtPassword?.inputAccessoryView = self.hideKeyboard()
         self.txtUsername?.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Username/EmailID", comment: "Username/EmailID"),
-<<<<<<< HEAD
                                                                      attributes: [NSForegroundColorAttributeName: UIColor.white])
         self.txtPassword?.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Password", comment: "Password"),
                                                                      attributes: [NSForegroundColorAttributeName: UIColor.white])
-=======
-                                                                     attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
-        self.txtPassword?.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("Password", comment: "Password"),
-                                                                     attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
->>>>>>> testing
         self.btnLogin?.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
         self.btnLogin?.layer.borderColor = UIColor.white.cgColor
         self.btnLogin?.layer.borderWidth = 1.0
@@ -157,7 +151,6 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-<<<<<<< HEAD
         if AppTheme.getLoginBGImagePath().isEmpty {
             imgLoginBG?.alpha = 0.5
         }
@@ -192,57 +185,15 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         }
     }
 
-=======
-        if  UIDevice.current.userInterfaceIdiom == .pad {
-            if AppTheme.getLoginBGImagePath().isEmpty {
-                imgLoginBG?.alpha = 0.5
-            }
-            
-            coordinator.animate(alongsideTransition: nil, completion: { _ in
-                self.setThemeElements()
-                self.imgLoginBG?.alpha = 1.0
-                let bounds = UIScreen.main.bounds
-                let width = bounds.size.width
-                if self.constarintForgotPassowrdTrailingSpace != nil { // temp fix
-                    if width == OPGConstants.device.iPadLandscapeWidth || width == OPGConstants.device.iPadRetinaLandscapeWidth {
-                        // iPad landscape
-                        self.constarintForgotPassowrdTrailingSpace.constant = 250
-                    }
-                    else {
-                        // iPad portrait
-                        self.constarintForgotPassowrdTrailingSpace.constant = 120
-                    }
-                }
-            })
-        }
-        
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        // iOS - CONSTARINTS CANNOT BE UPDATED FROM VIEWDIDLOAD()
-        if  UIDevice.current.userInterfaceIdiom == .pad {
-            let bounds = UIScreen.main.bounds
-            let width = bounds.size.width
-            if width == OPGConstants.device.iPadLandscapeWidth || width == OPGConstants.device.iPadRetinaLandscapeWidth {
-                // iPad landscape
-                self.constarintForgotPassowrdTrailingSpace.constant = 250
-            }
-        }
-    }
-
->>>>>>> testing
     // MARK: - Generic Private methods
     func authenticate() {
         self.startActivityIndicator()    // start indicator when "Go" is pressed on keyboard
         self.setLoginControls(isInteractionEnabled: false)
-        let userNameText = self.txtUsername?.text
-        let passwordtext = self.txtPassword?.text
-        
         DispatchQueue.global(qos: .default).async {
             let sdk = OPGSDK()
             var authenticate: OPGAuthenticate
             do {
-                authenticate = try sdk.authenticate(userNameText, password: passwordtext) as OPGAuthenticate
+                authenticate = try sdk.authenticate(self.txtUsername?.text, password: self.txtPassword?.text) as OPGAuthenticate
                 DispatchQueue.main.async {
                     self.stopActivityIndicator()
                     self.setLoginControls(isInteractionEnabled: true)
@@ -428,7 +379,6 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             switch height {
             case OPGConstants.device.iPhone4Height:
                 imgLoginBG?.image = UIImage(named: "LoginBg@2x.png")
-<<<<<<< HEAD
                 break
             case OPGConstants.device.iPhone5Height:
                 imgLoginBG?.image = UIImage(named: "LoginBg-568h@2x.png")
@@ -453,35 +403,6 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                 imgLoginBG?.image = UIImage(named: "LoginBg_iPad_Landscape.png")
                 break
             default:
-=======
-                break
-            case OPGConstants.device.iPhone5Height:
-                imgLoginBG?.image = UIImage(named: "LoginBg-568h@2x.png")
-                break
-            case OPGConstants.device.iPhone6And7Height:
-                imgLoginBG?.image = UIImage(named: "LoginBg-667h@2x.png")
-                break
-            case OPGConstants.device.iPhone6PlusAnd7PlusHeight:
-                imgLoginBG?.image = UIImage(named: "LoginBg-736@3x.png")
-                break
-            case OPGConstants.device.iPhoneXHeight:
-                imgLoginBG?.image = UIImage(named: "LoginBgX.png")
-                break
-            default:
-                imgLoginBG?.image = UIImage(named: "LoginBg.png")
-                break
-            }
-        }
-        else if UIDevice.current.userInterfaceIdiom == .pad {
-            switch height {
-            case OPGConstants.device.iPadPortraitHeight:
-                imgLoginBG?.image = UIImage(named: "LoginBg_iPad_Portrait.png")
-                break
-            case OPGConstants.device.iPadLandscapeHeight:
-                imgLoginBG?.image = UIImage(named: "LoginBg_iPad_Landscape.png")
-                break
-            default:
->>>>>>> testing
                 imgLoginBG?.image = UIImage(named: "LoginBg-736@3x.png")
                 break
             }
@@ -506,11 +427,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         return toolbarDone
     }
 
-<<<<<<< HEAD
     func dismissKeyBoard() {
-=======
-    @objc func dismissKeyBoard() {
->>>>>>> testing
         self.txtUsername?.resignFirstResponder()
         self.txtPassword?.resignFirstResponder()
     }
@@ -642,17 +559,10 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                                     // server always return http 500 for bad token and expired token
                                 else if authObj.httpStatusCode.intValue == 500 {
                                     super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Internal Server Error", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
-<<<<<<< HEAD
                                 }
                                 else {
                                     super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                                 }
-=======
-                                }
-                                else {
-                                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
-                                }
->>>>>>> testing
                                 GIDSignIn.sharedInstance().signOut()                    // Sign Out when the authentication fails
                             }
                     }

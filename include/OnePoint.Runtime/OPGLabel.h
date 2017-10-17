@@ -18,16 +18,15 @@
 
 
 @interface OPGLabel:NSObject <ILabel> {
-    NSMutableDictionary *_labeltexts;
-    NSString *_labelkey;
-    id<ILabelInserts> _inserts;
-    NSString *_name;
-    id<IStyle> _style;
+  NSString *_labeltext;
+  id<ILabelInserts> _inserts;
+  NSString *_name;
+  id<IStyle> _style;
     id _defaultproperty;
     id _owner;
     Interview *_interview;
-    id<IQuestion>  _question;
-    id<IQuestions>  _questions;
+     id<IQuestion>  _question;
+     id<IQuestions>  _questions;
 }
 
 @property(nonatomic,retain)id _defaultproperty;
@@ -39,8 +38,7 @@
 - (id)initWithNSString:(NSString *)text withIStyle:(id<IStyle>)style;
 - (id)initWithInterview:(Interview *)ainterview withName:(NSString *)aname
            withNSString:(NSString *)atext;
-- (id)initWithInterview:(Interview *)ainterview withIQuestion:(id<IQuestion> )aquestion withNSDictionary:(NSMutableDictionary *)adict;
-- (id)initWithInterview:(Interview *)ainterview withIQuestion:(id<IQuestion> )aquestion withJson:(id)ajson withNSString:(NSString *)atext;
+
 - (id)initWithInterview:(Interview *)ainterview withName:(NSString *)aname
            withNSString:(NSString *)atext withIStyle:(id<IStyle>)astyle;
 - (id)initWithInterview:(Interview *)ainterview

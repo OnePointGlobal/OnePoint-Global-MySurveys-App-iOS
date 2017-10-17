@@ -3,7 +3,7 @@
 //  MySurveys2.0Tests
 //
 //  Created by Chinthan on 08/06/16.
-//  Copyright © 2016 OnePoint Global. All rights reserved.
+//  Copyright © 2016 Chinthan. All rights reserved.
 //
 
 import XCTest

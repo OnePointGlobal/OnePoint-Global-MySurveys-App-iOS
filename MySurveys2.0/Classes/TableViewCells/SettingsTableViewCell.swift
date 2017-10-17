@@ -2,8 +2,8 @@
 //  SettingsTableViewCell.swift
 //  MySurveys2.0
 //
-//  Created by Chinthan on 24/10/16.
-//  Copyright © 2016 OnePoint Global. All rights reserved.
+//  Created by ThamaraiD on 24/10/16.
+//  Copyright © 2016 Chinthan. All rights reserved.
 //
 
 import Foundation
