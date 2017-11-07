@@ -120,9 +120,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         self.btnForgotPassword?.setTitle(NSLocalizedString("Forgot Password?", comment: ""), for: UIControlState.normal)
         // Configure GGLContext and set delegate
         GIDSignIn.sharedInstance().uiDelegate=self  // Google SignIn UI Delegate
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        GIDSignIn.sharedInstance().clientID = "698735233704-dk4nnf5k4r5r6ji8rcctbi5s5r2ici1m.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
     }
 

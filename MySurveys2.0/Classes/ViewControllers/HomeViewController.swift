@@ -217,7 +217,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
 
         coordinator.animate(alongsideTransition: nil, completion: { _ in
             if ((isOperating == 1 || isOperating == 3) && (self.bannerTitle != nil)) {
-                self.showBanner(progressTitle: self.bannerTitle as! String)
+                self.showBanner(progressTitle: self.bannerTitle! as String)
             }
             let geoFenceValue: String? = UserDefaults.standard.value(forKey: "isGeoFenced") as? String
             if UIDevice.current.userInterfaceIdiom == .pad {
@@ -436,7 +436,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 if super.isOnline() {
                     let surveyList: Array<OPGSurvey> = try sdk.getUserSurveyList() as! Array
                     if surveyList.count > 0 {
-                        for (index,element) in surveyList.enumerated() {
+                        for (_,element) in surveyList.enumerated() {
                             //print("getSurveys\(index)")
                             isOfflineDownloaded.append(0)
                             CollabrateDB.sharedInstance().saveSurveys(element, with: true)
@@ -711,26 +711,26 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     if panellistPanels?.isSuccess == 1 {
                         if ((panellistPanels?.surveyPanelArray.count)! > 0) || (panellistPanels?.surveyPanelArray != nil) {
                             let surveyPanelArray: Array<OPGSurveyPanel> = panellistPanels?.surveyPanelArray as! Array
-                            for (index,element) in surveyPanelArray.enumerated() {
+                            for (_,element) in surveyPanelArray.enumerated() {
                                 CollabrateDB.sharedInstance().saveSurveyPanels(element)
                             }
                         }
                         if ((panellistPanels?.panelPanelistArray.count)! > 0) || (panellistPanels?.surveyPanelArray != nil) {
                             let panelPanellistArray: Array<OPGPanelPanellist> = panellistPanels?.panelPanelistArray as! Array
-                            for (index, element) in panelPanellistArray.enumerated() {
+                            for (_, element) in panelPanellistArray.enumerated() {
                                 UserDefaults.standard.set(element.panellistID.stringValue, forKey: "PanelListID")
                                 CollabrateDB.sharedInstance().save(element)
                             }
                         }
                         if (panellistPanels?.themesArray != nil) {
                             let themeArray: Array<OPGTheme> = panellistPanels?.themesArray as! Array
-                            for (index,element) in themeArray.enumerated() {
+                            for (_,element) in themeArray.enumerated() {
                                 CollabrateDB.sharedInstance().saveThemes(element)
                             }
                         }
                         if ((panellistPanels?.panelsArray.count)! > 0 || (panellistPanels?.panelsArray != nil)) {
                             let panelsArray: Array<OPGPanel> = panellistPanels?.panelsArray as! Array
-                            for (index, element) in panelsArray.enumerated() {
+                            for (_, element) in panelsArray.enumerated() {
                                 CollabrateDB.sharedInstance().savePanels(element)
                             }
                         }
@@ -798,7 +798,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         let survey:OPGSurvey? = self.surveyList[index] as? OPGSurvey
                         survey?.surveyDescription = "Downloading..."
                         survey?.isOfflineDownloaded = 1
-                        self.surveyList[index] = survey // reassign to array instead of dB call
+                        self.surveyList[index] = survey as Any // reassign to array instead of dB call
 
                         if survey?.isGeoFencing != 1 {
                             let indexForSurvey = self.findIndexOfSurey(survey!)
@@ -818,7 +818,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
 
                                     if error != nil {
                                         let isOperating: Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
-                                        print("Error in download operations \(error?.localizedDescription)")
+                                        print("Error in download operations \(String(describing: error?.localizedDescription))")
                                         dispatchQueue.async(flags: .barrier) {
                                             CollabrateDB.sharedInstance().updateSurvey(survey?.surveyID, withStatus: "Download", withDownloadStatus: 0)
                                         }
@@ -839,7 +839,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                                 if (currentSurvey?.surveyName == survey?.surveyName){
                                                     currentSurvey?.surveyDescription = NSLocalizedString("Download", comment: "")
                                                     currentSurvey?.isOfflineDownloaded = 0
-                                                    self?.surveyList[index] = currentSurvey
+                                                    self?.surveyList[index] = currentSurvey as Any
                                                     if survey?.isGeoFencing != 1 {
                                                         let indexForSurvey = self?.findIndexOfSurey(survey!)
 
@@ -863,7 +863,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                                             }
                                                         }
                                                     } else {
-                                                        print("Download failed for a geofencing survey \(survey?.surveyName)")
+                                                        print("Download failed for a geofencing survey \(String(describing: survey?.surveyName))")
                                                     }
                                                 }
                                             }
@@ -885,7 +885,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                                 CollabrateDB.sharedInstance().updateSurvey(survey?.surveyID, withStatus: "New", withDownloadStatus: 2)
                                             }
                                            // remove survey id from the list after download is complete
-                                            let surveyID: NSNumber = (survey as! OPGSurvey).surveyID
+                                            let surveyID: NSNumber = (survey! as OPGSurvey).surveyID
                                             if (self?.arrayOfDownloadingScripts.contains(Int(surveyID)))! {
                                                 let index: Int = (self?.arrayOfDownloadingScripts.index(of: surveyID as! Int))!
                                                 self?.arrayOfDownloadingScripts.remove(at: index)
@@ -901,7 +901,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                                     if progress == 1.0{
                                                         currentSurvey?.surveyDescription = NSLocalizedString("New", comment: "")
                                                         currentSurvey?.isOfflineDownloaded = 2
-                                                        self?.surveyList[index] = currentSurvey
+                                                        self?.surveyList[index] = currentSurvey as Any
                                                     }
                                                     if survey?.isGeoFencing != 1 {
                                                         let indexForSurvey = self?.findIndexOfSurey(survey!)
@@ -949,7 +949,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     
     func rightBarButtonItemSetUp() {
         let refreshButtonItem = UIBarButtonItem()
-        var refreshButton = UIButton()
+        let refreshButton = UIButton()
         refreshButton.setImage(UIImage(named: "refresh.png"), for: .normal)
         refreshButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         refreshButton.addTarget(self, action: #selector(refreshButtonAction), for: .touchUpInside)
@@ -986,7 +986,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     func getGeofencedSurveys() {
         let locationManager = CLLocationManager()
         self.myLocation = locationManager.location?.coordinate
-        print("My Location: \(self.myLocation)")
+        print("My Location: \(String(describing: self.myLocation))")
         if self.myLocation != nil {
             var arrayLocations: NSArray = []
             dispatchQueue.async(flags: .barrier) {
@@ -1087,7 +1087,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     }
 
     func startSpinning(){
-        let transform1 = CGAffineTransform(rotationAngle: CGFloat(-M_PI ))
+        let transform1 = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        options: [.repeat,.curveLinear],
@@ -1095,9 +1095,11 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         
                         self.tabBarController?.navigationItem.rightBarButtonItem?.customView!.transform = transform1
                         self.tabBarController?.navigationItem.rightBarButtonItem?.customView?.isUserInteractionEnabled = false
-                        self.view.layoutIfNeeded()
+                        
         },
-                       completion: nil
+                       completion: { finished in
+                        self.view.layoutIfNeeded()
+        }
         )
         
     }
