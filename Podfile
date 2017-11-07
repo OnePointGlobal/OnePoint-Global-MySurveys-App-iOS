@@ -9,7 +9,8 @@ target 'MySurveys2.0' do
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 pod 'Shimmer'
-pod 'Google/SignIn'
+pod 'GoogleSignIn'
+pod 'OPGFeedbackSDK'
 end
 
 target 'MySurveys2.0Tests' do

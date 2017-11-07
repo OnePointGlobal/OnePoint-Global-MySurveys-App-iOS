@@ -1,0 +1,1 @@
+../../../OPGFeedbackSDK/include/OPGSDK/OPGExif.h

@@ -1,0 +1,1 @@
+../../../OPGFeedbackSDK/include/OPGSDK/zxing-all-in-one.h

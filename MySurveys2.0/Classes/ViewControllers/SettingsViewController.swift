@@ -32,14 +32,10 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         settingItems += [NSLocalizedString("Change Panel", comment: ""), NSLocalizedString("Geo location", comment: ""), NSLocalizedString("Change Password", comment: ""), NSLocalizedString("Privacy", comment: ""), NSLocalizedString("Terms & Conditions", comment: ""), NSLocalizedString("AboutUs", comment: "")]
-        //self.settingsTableView.layoutMargins = UIEdgeInsets.zero
-        //self.settingsTableView.separatorInset = UIEdgeInsets.zero
-        self.settingsTableView.tableFooterView = UIView()
-        self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 2.0.2 "
-        geoFence?.initialiseGeofencing()            // Ask for location permission
-       
 
-        
+        self.settingsTableView.tableFooterView = UIView()
+        self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 2.0.3 "
+        geoFence?.initialiseGeofencing()            // Ask for location permission
     }
 
     override func viewWillAppear(_ animated: Bool) {
