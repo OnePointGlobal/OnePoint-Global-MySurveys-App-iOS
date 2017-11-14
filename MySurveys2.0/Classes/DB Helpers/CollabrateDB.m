@@ -48,9 +48,7 @@
         survey.IsDeleted=[NSNumber numberWithInt:0];
         if (([surveyFromList.startDate isEqualToString:@""]) || (surveyFromList.startDate == nil)) {
             NSString *dateString =  @"2100-10-07 02:02:00";
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-            survey.CreatedDate = [dateFormatter dateFromString:dateString];
+            survey.CreatedDate = [NSString stringToDate:dateString];
         } else {
             survey.CreatedDate = [NSString stringToDate:surveyFromList.startDate];                //saving startDate to DB instead of createdDate
         }
@@ -60,9 +58,7 @@
         survey.Occurences=[NSNumber numberWithInt:0];
         if (([surveyFromList.endDate isEqualToString:@""]) || (surveyFromList.endDate == nil)) {
             NSString *dateString =  @"2100-10-10 02:02:00";
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-            survey.DeadLine = [dateFormatter dateFromString:dateString];
+            survey.DeadLine = [NSString stringToDate:dateString];
         } else {
             survey.DeadLine= [NSString stringToDate:surveyFromList.endDate];                    //saving endDate to DB instead of deadline
         }

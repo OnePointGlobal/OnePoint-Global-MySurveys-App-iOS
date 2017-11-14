@@ -99,7 +99,7 @@ class OfflineSurveyViewController: RootViewController {
         lblSurveyStatus?.text = NSLocalizedString((surveySelected?.surveyDescription)!, comment: "")
         let startDateString = self.formatDate(dateString: (self.surveySelected?.startDate)!)
         let endDateString = self.formatDate(dateString: (self.surveySelected?.endDate)!)
-        if (startDateString == "6 Oct 2100") || (endDateString == "9 Oct 2100") {         // Default date value in case of Null or empty
+        if (startDateString == "7 Oct 2100") || (endDateString == "9 Oct 2100") {         // Default date value in case of Null or empty
             lblSurveyDate?.text = NSLocalizedString("Unscheduled", comment: "")
         }
         else {
@@ -126,17 +126,18 @@ class OfflineSurveyViewController: RootViewController {
                         self.surveyCounter = count
                         self.lblCounter?.text = self.surveyCounter?.stringValue               // set counter
                         if (self.surveyCounter?.intValue)! > 0 {
-                           // CollabrateDB.sharedInstance().updateSurvey(self.surveySelected?.surveyID, withStatus: "Upload Results")  thamarai dB
                             CollabrateDB.sharedInstance().updateSurvey(self.surveySelected?.surveyID, withStatus: "Upload Results", withDownloadStatus: 99)
                         }
                 }
         }
     }
 
-    func formatDate(dateString : String) -> String {
+    func formatDate(dateString: String) -> String {
         // create dateFormatter with UTC time format
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US")
         let date = dateFormatter.date(from: dateString)                   // create   date from string
         dateFormatter.dateFormat = "d MMM yyyy"
         let timeStamp = dateFormatter.string(from: date!)

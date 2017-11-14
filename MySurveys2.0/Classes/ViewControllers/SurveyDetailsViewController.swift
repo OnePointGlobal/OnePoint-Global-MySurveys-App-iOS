@@ -65,7 +65,7 @@ class SurveyDetailsViewController: RootViewController {
         let startDateString = self.formatDate(dateString: (self.surveySelected?.startDate)!)
         let endDateString = self.formatDate(dateString: (self.surveySelected?.endDate)!)
         
-        if (startDateString == "6 Oct 2100") || (endDateString == "9 Oct 2100") {
+        if (startDateString == "7 Oct 2100") || (endDateString == "9 Oct 2100") {
             lblSurveyDate?.text = NSLocalizedString("Unscheduled", comment: "")                 //temporary for unscheduled surveys
         }
         else {
@@ -97,17 +97,14 @@ class SurveyDetailsViewController: RootViewController {
             }
             setUpViews()
         }
-
-      /**  if surveyID != nil {     thamarai changes
-            self.surveySelected = CollabrateDB.sharedInstance().getSurvey(surveyID)
-            setUpViews()
-        } */
     }
 
     func formatDate(dateString: String) -> String {
         // create dateFormatter with UTC time format
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US") 
         let date = dateFormatter.date(from: dateString)                   // create   date from string
         dateFormatter.dateFormat = "d MMM yyyy"
         let timeStamp = dateFormatter.string(from: date!)
