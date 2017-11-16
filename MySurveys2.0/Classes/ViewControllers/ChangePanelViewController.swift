@@ -180,8 +180,8 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
                 print(error.localizedDescription)
             }
         }
-        // save image with panel name
-        if let data = UIImageJPEGRepresentation(image, 0.8) {
+        // save image with panel name, JPEG representation doesn't support transparent images
+        if let data = UIImagePNGRepresentation(image) {
             let desPath = NSURL(fileURLWithPath: destinationFolderPath.appending("/\(fileName).png"))
             do {
                 try data.write(to: desPath as URL, options: .atomic)
