@@ -23,9 +23,9 @@
 #import "OPGGeoFence.h"
 #import "OPGGeofenceSurvey.h"
 
-#import "FBShimmering.h"
-#import "FBShimmeringLayer.h"
-#import "FBShimmeringView.h"
+//#import "FBShimmering.h"
+//#import "FBShimmeringLayer.h"
+//#import "FBShimmeringView.h"
 #import "CollabrateDB.h"
 #import "NSString+NSDate.h"
 

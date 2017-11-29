@@ -1,1 +1,1 @@
-../../../OPGFeedbackSDK/include/OPGSDK/UIImage+CropScaleOrientation.h
+../../../OPGFeedbackSDK/include/OPGSDK/Other Supporting Files/UIImage+CropScaleOrientation.h

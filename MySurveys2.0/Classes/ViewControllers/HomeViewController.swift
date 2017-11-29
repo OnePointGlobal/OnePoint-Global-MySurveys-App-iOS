@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import UserNotifications
 import CoreLocation
+import Shimmer
 
 
 let dispatchQueue = DispatchQueue(label: "com.dispatchQueue.barrier")

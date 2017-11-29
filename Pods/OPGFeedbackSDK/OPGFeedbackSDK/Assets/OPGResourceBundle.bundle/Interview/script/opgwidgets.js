@@ -135,6 +135,113 @@
             e.alertOpg(n,"My Surveys")
         }
     });
+ e.widget("opg.signature", {
+          initSelector: "input[data-role=signature]",
+          width: "100%",
+          height: window.innerHeight / 3,
+          _create: function() {
+          
+                  this.fileURI = null;
+          
+                  if(this.element[0].value != ""){
+                      var img = e('<img/>').attr({'src':'OPG_Surveys_Media/'+this.element[0].value,'alt':'uploaded image'});
+                      e('<div class=customuploadedSignature></div>').html(img).appendTo(r);
+                  }
+          
+                  var t = document.createElement("div");
+                  var n = e(t);
+                  t.className = "signaturecontainer";
+                   
+                  this.changer = e("<input>", {
+                                   value: "Draw Signature",
+                                   type: "button",
+                                   "data-inline": "true"
+                                   }).addClass("signature").appendTo(n).button().buttonMarkup({
+                                                                                                inline: true
+                                                                                                });
+          
+                  this.positionElm = e("<div>").css("padding", "0").appendTo(n);
+                  this.mapHolder = e("<div id='signature'></div>").css({
+                                                                         height: this.height,
+                                                                         width: this.width
+                                                                         }).appendTo(n).hide();
+                  this.uploadBtn = e("<input>", {
+                                     value: "Upload",
+                                     type: "button"
+                                     }).appendTo(n).button();
+          
+                  var r = this.element.parent(".ui-input-text");
+                  if (r) r.before(n).hide();
+                  else this.element.before(n).hide();
+                  this._on(this.changer, {
+                           click: "_signatureCall"
+                           });
+          
+                  this._on(this.uploadBtn, {
+                           click: "_uploadImage"
+                           });
+          
+                  var co_ords = this.element[0].value.split(",");
+                  var thisElem  = this;
+                  if(this.element[0].value){
+                   $("#signature").show();
+                  }
+          },
+          _signatureCall: function() {
+                              var t = this;
+                              t.uploadBtn.val("Upload").button("refresh");
+                              try {
+                                      cordova.exec(function(e) {
+                                                   var n = jQuery.parseJSON(e);
+                                                   t._writeImage(true, n)
+                                           }, function(e) {
+                                                   t._writeImage(false, e)
+                                           }, "SignaturePlugin", "callsignature", [])
+                              } catch (n) {
+                                    e.proxy(this._writeImage(false, n), this)
+                              }
+          },
+          _writeImage: function(t, n) {
+              if (!t) {
+                  // e.alertOpg("Get picture failed because: " + n);
+              }
+              else if (t) {
+                  this.fileURI = n.path
+              }
+          },
+          _uploadImage: function(t, n) {
+                              if (!this.fileURI) {
+                                  e.alertOpg("No signature selected","My Surveys");
+                                  return
+                              }
+                              var r = this;
+                              this.uploadBtn.val("Uploading").button("refresh");
+                              try {
+                                      var i = {
+                                          mediaPath: this.fileURI,
+                                          comments: "Uploading"
+                                      };
+                                      cordovaFunction.uploadImage(i, function(e) {
+                                          if (!e.Percent) {
+                                          r.uploadBtn.val("Uploaded").button("refresh");
+                                          var fileUrl = 'OPG_Surveys_Media/'+e.MediaID;
+                                          r.element.attr("value", e.MediaID);
+                                          if($(".customuploadedSignature").find("img").length != 0){
+                                          $("img").attr('src',fileUrl);
+                                          }else{
+                                          var img = $('<img/>').attr({'src':fileUrl,'alt':'uploaded Signature'});
+                                          $('<div class=customuploadedSignature></div>').html(img).appendTo($(".signaturecontainer"));
+                                          }
+                                          
+                                          }
+                                      }, function(t) {
+                                      });
+                              } catch (s) {
+                                 r.uploadBtn.val("Upload").button("refresh");
+                                 e.alertOpg("Signature upload failed : " + s,"My Surveys")
+                              }
+          }
+     });
     e.widget("opg.barcode", {
         initSelector: "input[data-role=barcode]",
         _create: function() {
@@ -958,14 +1065,6 @@
                 }, "ImagePreviewPlugin", "showImageFromPath", [t])
             } catch (n) {
                // console.log("error in preview image " + n)
-            }
-        },
-        _writeImage: function(t, n) {
-             if (!t) {
-               // e.alertOpg("Get picture failed because: " + n);
-             }
-            else if (t) {
-                this.fileURI = n.path
             }
         },
         _uploadImage: function(t, n) {

@@ -1,1 +1,1 @@
-../../../OPGFeedbackSDK/include/OPGSDK/OPGScreenOrientationDelegate.h
+../../../OPGFeedbackSDK/include/OPGSDK/Other Supporting Files/OPGScreenOrientationDelegate.h

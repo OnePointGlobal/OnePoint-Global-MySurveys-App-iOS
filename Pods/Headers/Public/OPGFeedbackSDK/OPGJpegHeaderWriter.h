@@ -1,1 +1,1 @@
-../../../OPGFeedbackSDK/include/OPGSDK/OPGJpegHeaderWriter.h
+../../../OPGFeedbackSDK/include/OPGSDK/Other Supporting Files/OPGJpegHeaderWriter.h

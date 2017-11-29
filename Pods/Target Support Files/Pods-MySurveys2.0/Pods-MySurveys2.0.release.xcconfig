@@ -1,9 +1,10 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/GoogleSignIn/Frameworks"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/GTMOAuth2" "$PODS_CONFIGURATION_BUILD_DIR/GTMSessionFetcher" "$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac" "$PODS_CONFIGURATION_BUILD_DIR/Shimmer" "${PODS_ROOT}/GoogleSignIn/Frameworks"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) GTM_OAUTH2_USE_FRAMEWORK_IMPORTS=1
-HEADER_SEARCH_PATHS = /usr/include/libxml2 $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/GTMOAuth2" "${PODS_ROOT}/Headers/Public/GTMSessionFetcher" "${PODS_ROOT}/Headers/Public/GoogleSignIn" "${PODS_ROOT}/Headers/Public/GoogleToolboxForMac" "${PODS_ROOT}/Headers/Public/OPGFeedbackSDK" "${PODS_ROOT}/Headers/Public/Shimmer"
-LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/GTMOAuth2" "$PODS_CONFIGURATION_BUILD_DIR/GTMSessionFetcher" "$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac" "$PODS_CONFIGURATION_BUILD_DIR/Shimmer" "${PODS_ROOT}/OPGFeedbackSDK/lib"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/GTMOAuth2" -isystem "${PODS_ROOT}/Headers/Public/GTMSessionFetcher" -isystem "${PODS_ROOT}/Headers/Public/GoogleSignIn" -isystem "${PODS_ROOT}/Headers/Public/GoogleToolboxForMac" -isystem "${PODS_ROOT}/Headers/Public/OPGFeedbackSDK" -isystem "${PODS_ROOT}/Headers/Public/Shimmer"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"GTMOAuth2" -l"GTMSessionFetcher" -l"GoogleToolboxForMac" -l"OnePoint.Runtime" -l"OnePointSDK" -l"Shimmer" -l"c++" -l"iconv" -l"xml2" -l"z" -framework "CoreText" -framework "GoogleSignIn" -framework "SafariServices" -framework "Security" -framework "SystemConfiguration"
+HEADER_SEARCH_PATHS = /usr/include/libxml2 $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/GoogleSignIn" "${PODS_ROOT}/Headers/Public/OPGFeedbackSDK"
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/OPGFeedbackSDK/lib"
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/GTMOAuth2/GTMOAuth2.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/GTMSessionFetcher/GTMSessionFetcher.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Shimmer/Shimmer.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/GoogleSignIn" -isystem "${PODS_ROOT}/Headers/Public/OPGFeedbackSDK"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"OnePoint.Runtime" -l"OnePointSDK" -l"c++" -l"iconv" -l"xml2" -l"z" -framework "CoreText" -framework "GTMOAuth2" -framework "GTMSessionFetcher" -framework "GoogleSignIn" -framework "GoogleToolboxForMac" -framework "SafariServices" -framework "Security" -framework "Shimmer"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.

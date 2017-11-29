@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySurveys2.0/Classes/ViewControllers/HomeViewController.swift"
-            timestampString = "528716816.340383"
+            timestampString = "533044751.253219"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1898"
-            endingLineNumber = "1898"
-            landmarkName = "mapView(_:annotationView:calloutAccessoryControlTapped:)"
-            landmarkType = "7">
+            startingLineNumber = "1899"
+            endingLineNumber = "1899"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySurveys2.0/Classes/ViewControllers/HomeViewController.swift"
-            timestampString = "528716816.412843"
+            timestampString = "533044751.2544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1858"
-            endingLineNumber = "1858"
-            landmarkName = "mapView(_:rendererForOverlay:)"
-            landmarkType = "7">
+            startingLineNumber = "1859"
+            endingLineNumber = "1859"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,13 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySurveys2.0/Classes/ViewControllers/HomeViewController.swift"
-            timestampString = "528716816.414004"
+            timestampString = "533044751.255038"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1570"
-            endingLineNumber = "1570"
-            landmarkName = "didEnterSurveyRegion(_:)"
-            landmarkType = "7">
+            startingLineNumber = "1571"
+            endingLineNumber = "1571"
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -122,13 +122,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySurveys2.0/Classes/ViewControllers/HomeViewController.swift"
-            timestampString = "528716816.415052"
+            timestampString = "533044751.25566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1639"
-            endingLineNumber = "1639"
-            landmarkName = "didExitSurveyRegion(_:)"
-            landmarkType = "7">
+            startingLineNumber = "1640"
+            endingLineNumber = "1640"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -138,12 +138,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySurveys2.0/Classes/ViewControllers/HomeViewController.swift"
-            timestampString = "528716816.415988"
+            timestampString = "533044751.256283"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1908"
-            endingLineNumber = "1908"
-            landmarkName = "mapView(_:annotationView:calloutAccessoryControlTapped:)"
+            startingLineNumber = "1909"
+            endingLineNumber = "1909"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySurveys2.0/Classes/ViewControllers/LoginViewController.swift"
+            timestampString = "533036180.672509"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "authenticate()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySurveys2.0/Classes/ViewControllers/LoginViewController.swift"
+            timestampString = "533036180.672577"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
+            landmarkName = "authenticate()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySurveys2.0/Classes/ViewControllers/LoginViewController.swift"
+            timestampString = "533036203.679689"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "authenticate()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySurveys2.0/Classes/CustomClass/SignaturePlugin.m"
+            timestampString = "533113015.662864"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "-callsignature:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

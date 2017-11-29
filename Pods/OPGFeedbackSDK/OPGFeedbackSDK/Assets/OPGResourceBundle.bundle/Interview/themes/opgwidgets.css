@@ -289,3 +289,23 @@ audio{
     margin:10px auto;
     display:table-cell;
 }
+/*  Css for signature question*/
+.signaturecontainer{
+    text-align:center;
+}
+.signaturecontainer div.ui-btn{
+    width:50%;
+    margin:15px auto;
+}
+.signaturecontainer input.ui-btn{
+    width:100%;
+}
+.signaturecontainer .customuploadedSignature{
+    border: 1px solid #8a8a8a;
+    overflow: hidden;
+    margin-top: 20px;
+    display: inline-block;
+}
+.signaturecontainer .customuploadedSignature img{
+    width:100%;
+}
