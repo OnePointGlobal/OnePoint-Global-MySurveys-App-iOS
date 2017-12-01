@@ -485,6 +485,17 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             let sdk = OPGSDK()
             do {
                 self.profileImgMediaID = try sdk.uploadMediaFile(path) as String?                // Upload the new profile pic
+                DispatchQueue.main.async {
+                    if self.profileImgMediaID != nil {
+                        self.deleteImgFromDocsDirectory()                   // delete image after upload which was written into documents directory from albums
+                        print(self.profileImgMediaID!)
+                        self.downloadProfileImage(mediaId: self.profileImgMediaID!, didChangeProfilePic: true)
+                    }
+                    else {
+                        self.activityIndicator?.stopAnimating()
+                        super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                    }
+                }
             }
             catch let err as NSError {
                 DispatchQueue.main.async {
@@ -493,24 +504,14 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                     super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                 }
             }
-            DispatchQueue.main.async {
-                if self.profileImgMediaID != nil {
-                    self.deleteImgFromDocsDirectory()                   // delete image after upload which was written into documents directory from albums
-                    print(self.profileImgMediaID!)
-                    self.downloadProfileImage(mediaId: self.profileImgMediaID!, didChangeProfilePic: true)
-                }
-                else {
-                    self.activityIndicator?.stopAnimating()
-                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
-                }
-            }
+
         }
     }
 
     func deleteImgFromDocsDirectory() {
         let fileManager = FileManager.default
         let documentsPath: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let filepath = documentsPath.appending("/profileimage")
+        let filepath = documentsPath.appending("/profileimage.jpg")
         if fileManager.fileExists(atPath: filepath) {
             do {
                 try fileManager.removeItem(atPath: filepath)
@@ -527,11 +528,13 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         let image: UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let photoURL          = NSURL(fileURLWithPath: documentDirectory)
-        let localPath         = photoURL.appendingPathComponent("profileimage")
-        if let compressedImage: UIImage = image.compressTo(2) {
-            let data              = UIImageJPEGRepresentation(compressedImage, 1.0)
+        let localPath         = photoURL.appendingPathComponent("profileimage.jpg")
+        let data              = UIImageJPEGRepresentation(image,1.0)
+        let img              = UIImage(data: data!)
+
+        if let compressedData: Data = img?.compressTo(1) {
             do {
-                try data?.write(to: localPath!, options: Data.WritingOptions.atomic)
+                try compressedData.write(to: localPath!, options: Data.WritingOptions.atomic)
             }
             catch {
                 // Catch exception here and act accordingly

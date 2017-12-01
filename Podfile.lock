@@ -24,17 +24,8 @@ PODS:
 
 DEPENDENCIES:
   - GoogleSignIn
-  - OPGFeedbackSDK (from `https://github.com/OnePointGlobal/OPGFeedbackSDK.git`)
+  - OPGFeedbackSDK
   - Shimmer
-
-EXTERNAL SOURCES:
-  OPGFeedbackSDK:
-    :git: https://github.com/OnePointGlobal/OPGFeedbackSDK.git
-
-CHECKOUT OPTIONS:
-  OPGFeedbackSDK:
-    :commit: 713e4b79e5245dcd3f9aeb92e289acba79936bcf
-    :git: https://github.com/OnePointGlobal/OPGFeedbackSDK.git
 
 SPEC CHECKSUMS:
   GoogleSignIn: 3fdaa34a2ba04dbd7a25d7db39aecb0da98d5bdc
@@ -44,6 +35,6 @@ SPEC CHECKSUMS:
   OPGFeedbackSDK: ff7c46f74333968889ec9f4ee57b6f0736307ba7
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
 
-PODFILE CHECKSUM: c1da6ce30ac33325b1e7120a150a3e5e2d6894ab
+PODFILE CHECKSUM: c42926e4224d339c90f06f588ac76871808d81fd
 
 COCOAPODS: 1.3.1

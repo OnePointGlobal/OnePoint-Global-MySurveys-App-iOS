@@ -20,7 +20,7 @@ extension UIImage{
         return image
     }
     
-    func compressTo(_ expectedSizeInMb:Int) -> UIImage? {
+    func compressTo(_ expectedSizeInMb:Int) -> Data? {
         let sizeInBytes = expectedSizeInMb * 1024 * 1024
         var needCompress: Bool = true
         var imgData: Data?
@@ -37,7 +37,7 @@ extension UIImage{
         }
         if let data = imgData {
             if (data.count < sizeInBytes) {
-                return UIImage(data: data)
+                return data
             }
         }
         return nil

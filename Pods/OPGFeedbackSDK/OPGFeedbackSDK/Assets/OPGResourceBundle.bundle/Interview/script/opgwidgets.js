@@ -944,163 +944,171 @@
             }
         }
     }),
-    e.widget("opg.Picture", {
-        initSelector: "input[data-role=Picture]",
-        _create: function() {
-            this.fileURI = null;
-            var t = this.element.attr("control-attr").split(";");
-            this.controls = {
-                capture: t.indexOf("AccessNew") == -1 ? false : true,
-                gallery: t.indexOf("AccessGallery") == -1 ? false : true,
-                preview: t.indexOf("AllowPlayback") == -1 ? false : true,
-                upload: t.indexOf("AllowUpload") == -1 ? false : true
-            };
-            var n = document.createElement("div");
-			n.className = "imagecontainer";
-            var r = e(n);
-            var i = e('<div class="ui-block-a">');
-            var s = e('<div class="ui-block-b">');
-            if (this.controls.capture) var o = e("<input>", {
-                value: "Camera",
-                type: "button",
-                "data-mini": "true"
-            });
-            if (this.controls.gallery) this.galleryBtn = e("<input>", {
-                value: "Gallery",
-                type: "button",
-                "data-mini": "true"
-            });
-            if (this.controls.capture && this.controls.gallery) {
-                o.appendTo(i).button();
-                this.galleryBtn.appendTo(s).button();
-                var u = e("<div />").addClass("ui-grid-a").append(i).append(s)
-            } else if (this.controls.capture) {
-                o.appendTo(r).button()
-            } else if (this.controls.gallery) {
-                this.galleryBtn.appendTo(r).button()
-            }
-            r.append(u);
-            if (this.controls.preview) var a = e("<input>", {
-                value: "Preview Image",
-                type: "button"
-            }).appendTo(r).button();
-            if (this.controls.upload) this.uploadBtn = e("<input>", {
-                value: "Upload Image",
-                type: "button"
-            }).appendTo(r).button();
-            var f = this.element.parent(".ui-input-text");
-            if (f) f.before(r).hide();
-            else this.element.before(r).hide();
-            this._on(o, {
-                click: "_captureImage"
-            });
-            this._on(a, {
-                click: "_previewImage"
-            });
-            this._on(this.galleryBtn, {
-                click: "_galleryImage"
-            });
-            this._on(this.uploadBtn, {
-                click: "_uploadImage"
-            });
-			if(this.element[0].value != ""){
-				var img = e('<img/>').attr({'src':'OPG_Surveys_Media/'+this.element[0].value,'alt':'uploaded image'});
-				e('<div class=customuploadedImage></div>').html(img).appendTo(r);
-			}
-        },
-        _refresh: function() {
-            this._create()
-        },
-        _destroy: function() {
-            this.domHandle.remove()
-        },
-        _captureImage: function() {
-            var t = this;
-            try {
-                cordova.exec(function(e) {
-                    var n = jQuery.parseJSON(e);
-                    t._writeImage(true, n)
-                }, function(e) {
-                    t._writeImage(false, e)
-                }, "MediaPickerAndPreviewPlugin", "pickImageFromCamera", [])
-            } catch (n) {
-                e.proxy(this._writeImage(false, n), this)
-            }
-        },
-        _galleryImage: function() {
-            var t = this;
-            var n = e(this.galleryBtn).offset();
-            var r = n.top - e(window).scrollTop();
-            var i = n.left - e(window).scrollLeft();
-            var s = {
-                left: i,
-                top: r
-            };
-            try {
-                cordova.exec(function(e) {
-                    
-                    var n = jQuery.parseJSON(e);
-                    t._writeImage(true, n)
-                }, function(e) {
-                    t._writeImage(false, e)
-                }, "MediaPickerAndPreviewPlugin", "pickImageFromGallery", [s])
-            } catch (o) {
-                e.proxy(this._writeImage(false, o), this)
-            }
-        },
-        _previewImage: function() {
-            if (!this.fileURI) {
-                e.alertOpg("No Image selected","My Surveys");
-                return
-            }
-            var t = {
-                path: this.fileURI
-            };
-            //console.log("path: " + JSON.stringify(t));
-            try {
-                cordova.exec(function(e) {
-                    
-                }, function(e) {
-                    
-                }, "ImagePreviewPlugin", "showImageFromPath", [t])
-            } catch (n) {
-               // console.log("error in preview image " + n)
-            }
-        },
-        _uploadImage: function(t, n) {
-            if (!this.fileURI) {
-                e.alertOpg("No Image selected","My Surveys");
-                return
-            }
-            var r = this;
-            this.uploadBtn.val("Uploading").button("refresh");
-            try {
-                var i = {
-                    mediaPath: this.fileURI,
-                    comments: "Uploading Image"
-                };
-                //console.log(JSON.stringify(i));
-                cordovaFunction.uploadImage(i, function(e) {
-                    if (!e.Percent) {
-                        r.uploadBtn.val("Uploaded").button("refresh");
-						var fileUrl = 'OPG_Surveys_Media/'+e.MediaID;
-                        r.element.attr("value", e.MediaID);
-						if($(".customuploadedImage").find("img").length != 0){
-							$("img").attr('src',fileUrl);				
-						}else{
-							var img = $('<img/>').attr({'src':fileUrl,'alt':'uploaded image'});
-						$('<div class=customuploadedImage></div>').html(img).appendTo($(".imagecontainer"));
-						}
-							
-                    }
-                }, function(t) {
-                                            });
-            } catch (s) {
-                r.uploadBtn.val("Upload").button("refresh");
-                e.alertOpg("Image upload failed : " + s,"My Surveys")
-            }
-        }
-    });
+ e.widget("opg.Picture", {
+          initSelector: "input[data-role=Picture]",
+          _create: function() {
+          this.fileURI = null;
+          var t = this.element.attr("control-attr").split(";");
+          this.controls = {
+          capture: t.indexOf("AccessNew") == -1 ? false : true,
+          gallery: t.indexOf("AccessGallery") == -1 ? false : true,
+          preview: t.indexOf("AllowPlayback") == -1 ? false : true,
+          upload: t.indexOf("AllowUpload") == -1 ? false : true
+          };
+          var n = document.createElement("div");
+          n.className = "imagecontainer";
+          var r = e(n);
+          var i = e('<div class="ui-block-a">');
+          var s = e('<div class="ui-block-b">');
+          if (this.controls.capture) var o = e("<input>", {
+                                               value: "Camera",
+                                               type: "button",
+                                               "data-mini": "true"
+                                               });
+          if (this.controls.gallery) this.galleryBtn = e("<input>", {
+                                                         value: "Gallery",
+                                                         type: "button",
+                                                         "data-mini": "true"
+                                                         });
+          if (this.controls.capture && this.controls.gallery) {
+          o.appendTo(i).button();
+          this.galleryBtn.appendTo(s).button();
+          var u = e("<div />").addClass("ui-grid-a").append(i).append(s)
+          } else if (this.controls.capture) {
+          o.appendTo(r).button()
+          } else if (this.controls.gallery) {
+          this.galleryBtn.appendTo(r).button()
+          }
+          r.append(u);
+          if (this.controls.preview) var a = e("<input>", {
+                                               value: "Preview Image",
+                                               type: "button"
+                                               }).appendTo(r).button();
+          if (this.controls.upload) this.uploadBtn = e("<input>", {
+                                                       value: "Upload Image",
+                                                       type: "button"
+                                                       }).appendTo(r).button();
+          var f = this.element.parent(".ui-input-text");
+          if (f) f.before(r).hide();
+          else this.element.before(r).hide();
+          this._on(o, {
+                   click: "_captureImage"
+                   });
+          this._on(a, {
+                   click: "_previewImage"
+                   });
+          this._on(this.galleryBtn, {
+                   click: "_galleryImage"
+                   });
+          this._on(this.uploadBtn, {
+                   click: "_uploadImage"
+                   });
+          if(this.element[0].value != ""){
+          var img = e('<img/>').attr({'src':'OPG_Surveys_Media/'+this.element[0].value,'alt':'uploaded image'});
+          e('<div class=customuploadedImage></div>').html(img).appendTo(r);
+          }
+          },
+          _refresh: function() {
+          this._create()
+          },
+          _destroy: function() {
+          this.domHandle.remove()
+          },
+          _captureImage: function() {
+          var t = this;
+          try {
+          cordova.exec(function(e) {
+                       var n = jQuery.parseJSON(e);
+                       t._writeImage(true, n)
+                       }, function(e) {
+                       t._writeImage(false, e)
+                       }, "MediaPickerAndPreviewPlugin", "pickImageFromCamera", [])
+          } catch (n) {
+          e.proxy(this._writeImage(false, n), this)
+          }
+          },
+          _galleryImage: function() {
+          var t = this;
+          var n = e(this.galleryBtn).offset();
+          var r = n.top - e(window).scrollTop();
+          var i = n.left - e(window).scrollLeft();
+          var s = {
+          left: i,
+          top: r
+          };
+          try {
+          cordova.exec(function(e) {
+                       
+                       var n = jQuery.parseJSON(e);
+                       t._writeImage(true, n)
+                       }, function(e) {
+                       t._writeImage(false, e)
+                       }, "MediaPickerAndPreviewPlugin", "pickImageFromGallery", [s])
+          } catch (o) {
+          e.proxy(this._writeImage(false, o), this)
+          }
+          },
+          _previewImage: function() {
+          if (!this.fileURI) {
+          e.alertOpg("No Image selected","My Surveys");
+          return
+          }
+          var t = {
+          path: this.fileURI
+          };
+          //console.log("path: " + JSON.stringify(t));
+          try {
+          cordova.exec(function(e) {
+                       
+                       }, function(e) {
+                       
+                       }, "ImagePreviewPlugin", "showImageFromPath", [t])
+          } catch (n) {
+          // console.log("error in preview image " + n)
+          }
+          },
+          _writeImage: function(t, n) {
+          if (!t) {
+          // e.alertOpg("Get picture failed because: " + n);
+          }
+          else if (t) {
+          this.fileURI = n.path
+          }
+          },
+          _uploadImage: function(t, n) {
+          if (!this.fileURI) {
+          e.alertOpg("No Image selected","My Surveys");
+          return
+          }
+          var r = this;
+          this.uploadBtn.val("Uploading").button("refresh");
+          try {
+          var i = {
+          mediaPath: this.fileURI,
+          comments: "Uploading Image"
+          };
+          //console.log(JSON.stringify(i));
+          cordovaFunction.uploadImage(i, function(e) {
+                                      if (!e.Percent) {
+                                      r.uploadBtn.val("Uploaded").button("refresh");
+                                      var fileUrl = 'OPG_Surveys_Media/'+e.MediaID;
+                                      r.element.attr("value", e.MediaID);
+                                      if($(".customuploadedImage").find("img").length != 0){
+                                      $("img").attr('src',fileUrl);
+                                      }else{
+                                      var img = $('<img/>').attr({'src':fileUrl,'alt':'uploaded image'});
+                                      $('<div class=customuploadedImage></div>').html(img).appendTo($(".imagecontainer"));
+                                      }
+                                      
+                                      }
+                                      }, function(t) {
+                                      });
+          } catch (s) {
+          r.uploadBtn.val("Upload").button("refresh");
+          e.alertOpg("Image upload failed : " + s,"My Surveys")
+          }
+          }
+          });
     e.widget("opg.Audio", {
         initSelector: "input[data-role=Audio]",
         file: null,
