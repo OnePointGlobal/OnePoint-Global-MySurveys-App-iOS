@@ -56,7 +56,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>FacebookAppID</key>
 	<string>1830580473618949</string>
 	<key>FacebookDisplayName</key>
@@ -80,11 +80,11 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Camera Access Alert</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>${EXECUTABLE_NAME} would like to use your current location even in background.</string>
+	<string>My Surveys would like to access your location to trigger location based surveys.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>${EXECUTABLE_NAME} would like to use your current location even in background.</string>
+	<string>My Surveys would like to access your location to trigger location based surveys.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>${EXECUTABLE_NAME} would like to use your current location when in use.</string>
+	<string>My Surveys would like to access your location to trigger location based surveys.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone Access Alert</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
