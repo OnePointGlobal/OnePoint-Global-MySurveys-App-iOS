@@ -18,7 +18,7 @@ extension UIColor {
 
     class func appTextColor() -> UIColor {
         let defaults = UserDefaults.standard
-        let color = defaults.integer(forKey: "Color")
+        _ = defaults.integer(forKey: "Color")
         let bgColor = defaults.textColorForKey("textColor")!
         return bgColor
     }

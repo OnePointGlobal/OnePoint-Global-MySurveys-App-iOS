@@ -33,6 +33,7 @@
         survey.SurveyID = surveyFromList.surveyID;
         survey.UserID = [NSNumber numberWithInt:07];
         survey.Name = [surveyFromList.surveyName stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+        survey.surveyReference = [surveyFromList.surveyReference stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
         survey.Description = [surveyFromList.surveyReference stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
         survey.IsOffline=[NSNumber numberWithInteger:[surveyFromList.isOffline integerValue]];
         survey.IsGeofencing = [NSNumber numberWithInteger:[surveyFromList.isGeoFencing integerValue]];
@@ -83,7 +84,7 @@
                         OPGSurvey *opgsurvey = [OPGSurvey new];
                         opgsurvey.surveyName = survey.Name;
                         opgsurvey.surveyDescription = survey.Status;        // Problem in search tags in PROM class. Check later
-                        opgsurvey.surveyReference = survey.Description;
+                        opgsurvey.surveyReference = survey.surveyReference;
                         opgsurvey.lastUpdatedDate = [NSString stringFromDate:survey.LastUpdatedDate];
                         opgsurvey.createdDate = [NSString stringFromDate:survey.CreatedDate];
                         opgsurvey.startDate = [NSString stringFromDate:survey.CreatedDate];
@@ -113,7 +114,7 @@
         OPGSurvey *opgsurvey = [OPGSurvey new];
         opgsurvey.surveyName = survey.Name;
         opgsurvey.surveyDescription = survey.Status;
-        opgsurvey.surveyReference = survey.Description;
+        opgsurvey.surveyReference = survey.surveyReference;
         opgsurvey.lastUpdatedDate = [NSString stringFromDate:survey.LastUpdatedDate];
         opgsurvey.createdDate = [NSString stringFromDate:survey.CreatedDate];
         opgsurvey.startDate = [NSString stringFromDate:survey.CreatedDate];
@@ -534,7 +535,6 @@
     AppNotificationFactory* lAppNotificationFactory = [AppNotificationFactory new];
     NSArray* lArrNotifications = (NSArray*)[lAppNotificationFactory FindAllObjects];
     NSMutableArray* arrNotifications = [NSMutableArray new];
-    NSError *error = nil;
     
     for (AppNotification* lAppNotification in lArrNotifications) {
         NSMutableDictionary* lDictNotifications = [NSMutableDictionary new];
@@ -581,6 +581,9 @@
         survey.Range = geoFencedSurveys.range;
         survey.IsEntered = [NSNumber numberWithInt:[geoFencedSurveys.isDeleted intValue]];
         survey.Distance = geoFencedSurveys.distance;
+        survey.isEnter = [NSNumber numberWithInt:[geoFencedSurveys.isEnter intValue]];
+        survey.isExit = [NSNumber numberWithInt:[geoFencedSurveys.isExit intValue]];
+        survey.geofenceTimeInterval = [NSNumber numberWithInt:[geoFencedSurveys.timeInterval intValue]];
         [surveyFactory Save:survey];
     }
 }
@@ -608,7 +611,9 @@
                 opgsurvey.distance = survey.Distance;
                 opgsurvey.createdDate = @"New";//[NSString stringFromDate:survey.CreatedDate];
                 opgsurvey.lastUpdatedDate = [NSString stringFromDate:survey.LastUpdatedDate];
-
+                opgsurvey.isEnter = survey.isEnter;
+                opgsurvey.isExit = survey.isExit;
+                opgsurvey.timeInterval = survey.geofenceTimeInterval;
                 [mArray addObject:opgsurvey];
             }
         }
@@ -634,6 +639,9 @@
         opgsurvey.distance = survey.Distance;
         opgsurvey.createdDate = [NSString stringFromDate:survey.CreatedDate];
         opgsurvey.lastUpdatedDate = [NSString stringFromDate:survey.LastUpdatedDate];
+        opgsurvey.isEnter = survey.isEnter;
+        opgsurvey.isExit = survey.isExit;
+        opgsurvey.timeInterval = survey.geofenceTimeInterval;
         return opgsurvey;
     }
 }

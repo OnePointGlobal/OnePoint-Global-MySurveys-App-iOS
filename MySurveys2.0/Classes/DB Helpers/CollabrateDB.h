@@ -59,8 +59,6 @@
 
 -(NSArray*)getAllSurveys:(NSString*)panelID;
 
--(NSArray*)getAllSurveys;
-
 -(OPGSurvey*)getSurvey:(NSNumber*)surveyID;
 
 -(void)saveThemes:(OPGTheme*)themes;

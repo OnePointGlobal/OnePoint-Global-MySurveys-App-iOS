@@ -15,8 +15,8 @@
 
 
 
-#import "IScriptData.h";
-#import "ScriptFactory.h";
+#import "IScriptData.h"
+#import "ScriptFactory.h"
 
 //package OnePoint.PROM.Model 
     
@@ -34,6 +34,8 @@
 @private NSString *Name;
         
 @private NSString *Description;
+
+@private NSString *surveyReference;
         
 @private NSString *Status;
         
@@ -85,6 +87,8 @@
 
 	
 	@property(readwrite,strong) NSString *Description;
+
+	@property(nonatomic,strong) NSString *surveyReference;
 
 	
 	@property(readwrite,strong) NSString *Status;

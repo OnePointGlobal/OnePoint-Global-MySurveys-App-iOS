@@ -149,11 +149,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
     // openUrl method for iOS 8
-    func application(application: UIApplication,
-                     openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    func application(_ application: UIApplication,
+                     open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if #available(iOS 9.0, *) {
-            var options: [String: AnyObject] = [UIApplicationOpenURLOptionsKey.sourceApplication.rawValue: sourceApplication as AnyObject,
-                                                UIApplicationOpenURLOptionsKey.annotation.rawValue: annotation!]
+            var _: [String: AnyObject] = [UIApplicationOpenURLOptionsKey.sourceApplication.rawValue: sourceApplication as AnyObject,
+                                          UIApplicationOpenURLOptionsKey.annotation.rawValue: annotation as AnyObject]
     }
        let googleDidHandle = GIDSignIn.sharedInstance().handle(url as URL!,
                                                     sourceApplication: sourceApplication,

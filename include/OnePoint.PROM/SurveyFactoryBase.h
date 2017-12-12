@@ -33,6 +33,7 @@
 +(NSString*)  FIELD_NAME_USERID;
 +(NSString*)  FIELD_NAME_NAME;
 +(NSString*)  FIELD_NAME_DESCRIPTION;
++(NSString*)  FIELD_NAME_SURVEYREFERENCE;
 +(NSString*)  FIELD_NAME_STATUS;
 +(NSString*)  FIELD_NAME_TYPE;
 +(NSString*)  FIELD_NAME_MEDIAID;
@@ -51,6 +52,7 @@
 +(NSString*) PARAMETER_NAME_USERID;
 +(NSString*) PARAMETER_NAME_NAME;
 +(NSString*) PARAMETER_NAME_DESCRIPTION;
++(NSString*) PARAMETER_NAME_SURVEYREFERENCE;
 +(NSString*) PARAMETER_NAME_STATUS;
 +(NSString*) PARAMETER_NAME_TYPE;
 +(NSString*) PARAMETER_NAME_MEDIAID;
@@ -79,7 +81,9 @@
 
 -(void) AddNameParameter:(DataHandler *) dataHandler valName:(NSString *) valName;	
 
--(void) AddDescriptionParameter:(DataHandler *) dataHandler valDescription:(NSString *) valDescription;	
+-(void) AddDescriptionParameter:(DataHandler *) dataHandler valDescription:(NSString *) valDescription;
+
+-(void) AddsurveyReferenceParameter:(DataHandler *) dataHandler valsurveyReference:(NSString *) valsurveyReference;
 
 -(void) AddStatusParameter:(DataHandler *) dataHandler valStatus:(NSString *) valStatus;	
 
@@ -118,7 +122,8 @@
 -(id<ISurveyData>) FindByIsGeofencing:(NSNumber *) fieldValue;
 -(id<ISurveyData>) FindByUserID:(NSNumber *) fieldValue;
 -(id<ISurveyData>) FindByName:(NSString *) fieldValue; 
--(id<ISurveyData>) FindByDescription:(NSString *) fieldValue; 
+-(id<ISurveyData>) FindByDescription:(NSString *) fieldValue;
+-(id<ISurveyData>) FindBysurveyReference:(NSString *) fieldValue; 
 -(id<ISurveyData>) FindByStatus:(NSString *) fieldValue; 
 -(id<ISurveyData>) FindByType:(NSNumber *) fieldValue;
 -(id<ISurveyData>) FindByMediaID:(NSNumber *) fieldValue;

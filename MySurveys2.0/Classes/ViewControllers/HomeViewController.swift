@@ -1304,7 +1304,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         if (self.geofencedArrays.count > 0) && (self.surveyGeoAvailable.count > 0) {
             for sur in self.geofencedArrays {
                 if (sur as! OPGGeofenceSurvey).address == address && (sur as! OPGGeofenceSurvey).surveyReference == surveyReference{                                          // compare address u got from annotataion with the list u got from dB
-                    return sur as! OPGGeofenceSurvey
+                    return sur as? OPGGeofenceSurvey
                 }
             }
         }
@@ -1562,25 +1562,51 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
     }
 
-     /*
-     MARK: - Geofence Survey Delegate Methods
-     
-     Geofence Survey Delegate Methods Enter region Exit survey region
-     */
+    // MARK: - Geofence Survey Delegate Methods
 
     func didEnterSurveyRegion(_ regionEntered: OPGGeofenceSurvey!) {
-    print("didEnterSurveyRegion called")
+        print("didEnterSurveyRegion called")
+        let message = NSLocalizedString("Welcome to", comment: "") + " \(regionEntered.address!)! " + NSLocalizedString("You have a survey available at this location", comment: "")
+        if regionEntered.isEnter.intValue == 1 {
+            // enable if TT, TF for Entry, Exit
+            self.enableGeoSurvey(regionEntered, alertMessage: message)
+        }
+        else {
+            // Do nothing as all surveys are disabled by default
+        }
+
+    }
+
+    func didExitSurveyRegion(_ regionExited: OPGGeofenceSurvey) {
+        print("region exited is \(regionExited.address) \(regionExited.surveyName)")
+        if regionExited.isEnter.intValue == 1 && regionExited.isExit.intValue == 1 {
+            // do nothing as the survey would be already enabled during entry for TT
+            return
+        }
+        let message = "Thank You for visiting" + " \(regionExited.address!)! " + NSLocalizedString("You have a survey available at this location", comment: "")
+        if regionExited.isExit.intValue == 1 {
+            // exit event is true, so enable survey if TT, FT for Entry, Exit
+            self.enableGeoSurvey(regionExited, alertMessage: message)
+        }
+        else {
+            self.disableGeoSurvey(regionExited)
+        }
+    }
+
+    func enableGeoSurvey(_ regionEntered: OPGGeofenceSurvey!, alertMessage: String) {
+        //Enable and throw notification
+        let appState = UIApplication.shared.applicationState
         dispatchQueue.async(flags: .barrier) {
             if (regionEntered != nil) {
                 CollabrateDB.sharedInstance().updateGeoFenceSurvey(regionEntered.addressID, withSurveyReference: regionEntered.surveyReference, withStatus: 2)   //2 = entered
                 self.runThroughAddresses(address: regionEntered.address, surveyReference: regionEntered.surveyReference, isEntered: true)
                 self.runThroughSurveyName(surveyName: regionEntered.surveyName, isEntered: true)
-                let appState = UIApplication.shared.applicationState
+
                 let dict: [String:Any] = ["LastUpdated": "2017-01-03T12:35:06",
                                                "Type": 0,
                                                "AppNotificationID": 1,
                                                "title": regionEntered.surveyName,
-                                               "body": NSLocalizedString("Welcome to", comment: "") + " \(regionEntered.address!)! " + NSLocalizedString("You have a survey available at this location", comment: ""),
+                                               "body": alertMessage,
                                                "IsRead": "0"]
 
                 if appState == UIApplicationState.active {
@@ -1589,13 +1615,13 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         CollabrateDB.sharedInstance().saveLocalNotifications(dict)
                     }
                 }
-                else{
+                else {
                     if #available(iOS 10.0, *) {
                         let content = UNMutableNotificationContent()
                         let application = UIApplication.shared
 
                         content.title = NSLocalizedString("MySurveys", comment: "")
-                        content.body = NSLocalizedString("Welcome to", comment: "") + " \(regionEntered.address!)! " + NSLocalizedString("You have a survey available at this location", comment: "")
+                        content.body = alertMessage
                         content.userInfo = dict
                         content.badge = NSNumber(value:application.applicationIconBadgeNumber+1)
                         let trigger = UNTimeIntervalNotificationTrigger(
@@ -1622,7 +1648,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                         } else {
                             // Fallback on earlier versions
                         }
-                        notification.alertBody = NSLocalizedString("Welcome to", comment: "") + " \(regionEntered.address!)! \(NSLocalizedString("You have a survey available at this location", comment: ""))"
+                        notification.alertBody = alertMessage
                         notification.fireDate = NSDate(timeIntervalSinceNow:0.3) as Date
                         UIApplication.shared.cancelAllLocalNotifications()
                         UIApplication.shared.scheduledLocalNotifications = [notification]
@@ -1638,14 +1664,13 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
     }
 
-    func didExitSurveyRegion(_ regionExited: OPGGeofenceSurvey) {
-        print("region exited is \(regionExited.address) \(regionExited.surveyName)")
+    func disableGeoSurvey(_ regionExited: OPGGeofenceSurvey) {
         dispatchQueue.async(flags: .barrier) {
             CollabrateDB.sharedInstance().updateGeoFenceSurvey(regionExited.addressID, withSurveyReference: regionExited.surveyReference, withStatus: 1)   //2 = entered
             self.runThroughAddresses(address: regionExited.address, surveyReference: regionExited.surveyReference, isEntered: false)
             self.runThroughSurveyName(surveyName: regionExited.surveyName, isEntered: false)
             DispatchQueue.main.async {
-                self.tableViewGeoFenced?.reloadData()               //disnable surveys with gray color
+                self.tableViewGeoFenced?.reloadData()               //disable surveys with gray color
             }
         }
     }
@@ -1938,7 +1963,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         
         let timingFunctions = NSMutableArray(capacity: bounceAnimation.values!.count)
         
-        for i in 0 ..< bounceAnimation.values!.count {
+        for _ in 0 ..< bounceAnimation.values!.count {
             timingFunctions.add(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
         }
         bounceAnimation.timingFunctions = timingFunctions as NSArray as? [CAMediaTimingFunction]

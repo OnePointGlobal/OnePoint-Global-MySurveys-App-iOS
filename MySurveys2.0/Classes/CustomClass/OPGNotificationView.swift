@@ -53,7 +53,7 @@ class OPGNotificationView: UIView {
     }
 
     func applyDynamics() {
-        let boundaryYAxis: CGFloat = showNotificationUnderNavigationBar == true ? 1 : 1
+        let _: CGFloat = showNotificationUnderNavigationBar == true ? 1 : 1
         animator = UIDynamicAnimator(referenceView: referenceView!)
         gravity = UIGravityBehavior(items: [self])
         collision = UICollisionBehavior(items: [self])

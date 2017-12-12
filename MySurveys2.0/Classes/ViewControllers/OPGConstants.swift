@@ -16,7 +16,7 @@ class OPGConstants {
     static let Username = "SDK_Username"
     static let SharedKey = "SDK_Key"
 
-    static let DatabaseVersion: Int32 = 2
+    static let DatabaseVersion: Int32 = 3
    }
 
   struct device {

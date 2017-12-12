@@ -42,6 +42,9 @@
 +(NSString*)  FIELD_NAME_RANGE;
 +(NSString*)  FIELD_NAME_DISTANCE;
 +(NSString*)  FIELD_NAME_ISENTERED;
++(NSString*)  FIELD_NAME_ISENTER;
++(NSString*)  FIELD_NAME_ISEXIT;
++(NSString*)  FIELD_NAME_GEOFENCETIMEINTERVAL;
 +(NSString*) PARAMETER_NAME_GEOFENCEID;
 +(NSString*) PARAMETER_NAME_SURVEYNAME;
 +(NSString*) PARAMETER_NAME_SURVEYID;
@@ -56,6 +59,9 @@
 +(NSString*) PARAMETER_NAME_RANGE;
 +(NSString*) PARAMETER_NAME_DISTANCE;
 +(NSString*) PARAMETER_NAME_ISENTERED;
++(NSString*) PARAMETER_NAME_ISENTER;
++(NSString*) PARAMETER_NAME_ISEXIT;
++(NSString*) PARAMETER_NAME_GEOFENCETIMEINTERVAL;
 
 /// <summary>
 /// The Microsoft SQL statement to join one table to another and perform it.
@@ -91,6 +97,12 @@
 
 -(void) AddIsEnteredParameter:(DataHandler *) dataHandler valIsEntered:(NSNumber*) valIsEntered;
 
+-(void) AddisEnterParameter:(DataHandler *) dataHandler valisEnter:(NSNumber *) valisEnter;
+
+-(void) AddisExitParameter:(DataHandler *) dataHandler valisExit:(NSNumber *) valisExit;
+
+-(void) AddgeofenceTimeIntervalParameter:(DataHandler *) dataHandler valgeofenceTimeInterval:(NSNumber *) valgeofenceTimeInterval;
+
 -(BOOL) ProcessPkStatement :(NSNumber *) keyGeofenceID   query:(NSString *) query;
 //-(BOOL) ProcessPkStatement:(NSNumber *) keyGeofenceID query:(NSString *) query;
 
@@ -109,7 +121,10 @@
 -(id<IGeofenceSurveyData>) FindByLastUpdatedDate:(NSDate *) fieldValue;  
 -(id<IGeofenceSurveyData>) FindByRange:(NSNumber *) fieldValue;
 -(id<IGeofenceSurveyData>) FindByDistance:(NSNumber *) fieldValue;
--(id<IGeofenceSurveyData>) FindByIsEntered:(NSNumber *) fieldValue;   
+-(id<IGeofenceSurveyData>) FindByIsEntered:(NSNumber *) fieldValue;
+-(id<IGeofenceSurveyData>) FindByisEnter:(NSString *) fieldValue;
+-(id<IGeofenceSurveyData>) FindByisExit:(NSString *) fieldValue;
+-(id<IGeofenceSurveyData>) FindBygeofenceTimeInterval:(NSNumber *) fieldValue;
 -(void) AppendSqlParameters:(DataHandler *) dataHandler dataObject:(DataObject *)dataObject mode:(DataMode *) mode;      
 -(id<IGeofenceSurveyData>) FindObject :(NSNumber *) keyGeofenceID ;
         

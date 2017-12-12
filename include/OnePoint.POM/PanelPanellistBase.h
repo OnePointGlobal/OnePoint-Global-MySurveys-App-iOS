@@ -15,10 +15,10 @@
 
 
 
-#import "IPanelData.h";
-#import "PanelFactory.h";
-#import "IPanellistProfileData.h";
-#import "PanellistProfileFactory.h";
+#import "IPanelData.h"
+#import "PanelFactory.h"
+#import "IPanellistProfileData.h"
+#import "PanellistProfileFactory.h"
 
 //package OnePoint.POM.Model 
     

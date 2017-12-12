@@ -111,7 +111,7 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
             if !(FileManager.default.fileExists(atPath: logoImagePath)) {
                 // call API n get the image
                 if let url = logoUrl {
-                    let urlRequest = NSURLRequest(url: NSURL(string: url) as! URL)
+                    let urlRequest = NSURLRequest(url: NSURL(string: url)! as URL)
                     let task = URLSession.shared.dataTask(with: urlRequest as URLRequest, completionHandler: { data, response, error -> Void in
                         if error == nil {
                             let image = UIImage(data: data!)
@@ -142,7 +142,7 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
             if !(FileManager.default.fileExists(atPath: bgImagePath)) {
                 // call API n get the image
                 if let mediaurl = mediaUrl {
-                    let urlRequest = NSURLRequest(url: NSURL(string: mediaurl) as! URL)
+                    let urlRequest = NSURLRequest(url: NSURL(string: mediaurl)! as URL)
                     let task = URLSession.shared.dataTask(with: urlRequest as URLRequest, completionHandler: { data, response, error -> Void in
                         if error == nil {
                             let image = UIImage(data: data!)

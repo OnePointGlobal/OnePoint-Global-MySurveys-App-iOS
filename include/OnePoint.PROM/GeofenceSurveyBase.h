@@ -50,6 +50,12 @@
 @private NSNumber *Distance;
         
 @private NSNumber *IsEntered;
+
+@private NSNumber *isEnter;
+
+@private NSNumber *isExit;
+
+@private NSNumber *geofenceTimeInterval;
         
 }
 
@@ -96,6 +102,15 @@
 
 	
 	@property(readwrite,strong) NSNumber *IsEntered;
+	
+
+    @property(nonatomic,retain) NSNumber *isEnter;
+
+
+    @property(nonatomic,retain) NSNumber *isExit;
+
+
+    @property(nonatomic,retain) NSNumber *geofenceTimeInterval;
 
 	@end
          

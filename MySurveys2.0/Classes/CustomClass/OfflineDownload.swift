@@ -11,7 +11,7 @@ import Foundation
 
 class OfflineDownload: NSObject, URLSessionDelegate, URLSessionDataDelegate {
     typealias CompletionBlock = (Double?, OPGSurvey?, NSError?) -> Void
-    var completion: CompletionBlock = { result, survey, error in print(error) }
+    var completion: CompletionBlock = { result, survey, error in print(error as Any) }
     var surveyObj: OPGSurvey?
     let sdk = OPGSDK()
     var downloadTask: URLSessionDataTask?
@@ -76,7 +76,7 @@ class OfflineDownload: NSObject, URLSessionDelegate, URLSessionDataDelegate {
             do {
                 if NSString(data: buffer as Data, encoding: String.Encoding.utf8.rawValue) != nil {
                     let json = try JSONSerialization.jsonObject(with: buffer as Data, options: .mutableContainers) as! [AnyHashable: Any]
-                    let result: OPGScript = try script.parseAndDownloadScript(json, for: self.surveyObj)
+                    let _: OPGScript = try script.parseAndDownloadScript(json, for: self.surveyObj)
 //                    if result.isSuccess == 1 {
 //                        print(result)
 //                    }

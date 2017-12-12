@@ -38,7 +38,7 @@ class TakeSurveyNotificationViewController: RootViewController, UITextViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TakeNotificationSurvey" {
             // Get Survey view
-            let viewController: SurveyViewController = segue.destination as! SurveyViewController
+            let _: SurveyViewController = segue.destination as! SurveyViewController
             // viewController.surveyReference=self.surveyReference as String
             // viewController.surveyReference="SDKDemo"
         }

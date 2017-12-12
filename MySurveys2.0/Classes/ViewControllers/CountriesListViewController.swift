@@ -118,8 +118,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
     func getFilteredArray(startChar: String) -> [String] {
         var sectionArray: [String] = []
         for name in self.arrayOfCountryNames {
-            let subStrIndex: String.Index = name.index(name.startIndex, offsetBy: 1)
-            let letterString = name.substring(to: subStrIndex)
+            let letterString = name.prefix(1)
             if letterString == startChar {
                 sectionArray.append(name)
             }

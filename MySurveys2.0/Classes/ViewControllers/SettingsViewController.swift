@@ -34,7 +34,7 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
         settingItems += [NSLocalizedString("Change Panel", comment: ""), NSLocalizedString("Geo location", comment: ""), NSLocalizedString("Change Password", comment: ""), NSLocalizedString("Privacy", comment: ""), NSLocalizedString("Terms & Conditions", comment: ""), NSLocalizedString("AboutUs", comment: "")]
 
         self.settingsTableView.tableFooterView = UIView()
-        self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 2.0.3 "
+        self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 2.0.4 "
         geoFence?.initialiseGeofencing()            // Ask for location permission
     }
 

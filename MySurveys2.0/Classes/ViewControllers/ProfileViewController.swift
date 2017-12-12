@@ -261,10 +261,10 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             self.tableview?.reloadData()
         }
         else {
+            self.panelist?.firstName = nameCell.txtValue.text!
             DispatchQueue.global(qos: .default).async {
                     let sdk = OPGSDK()
                     do {
-                        self.panelist?.firstName = nameCell.txtValue.text!
                         try sdk.update(self.panelist)                               // update profile to server
                         DispatchQueue.main.async {
                                 self.getPanellistProfileFromServer()                // get profile from server and update DB
@@ -524,7 +524,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
 
     // MARK: - Image Picker Delegates
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        _ = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let image: UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let photoURL          = NSURL(fileURLWithPath: documentDirectory)
