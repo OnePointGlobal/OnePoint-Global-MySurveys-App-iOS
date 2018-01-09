@@ -180,7 +180,7 @@
 		1A2699CD62DD4D94AEFA1C680503782B /* inftrees.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = inftrees.h; path = include/OnePoint.Runtime/inftrees.h; sourceTree = "<group>"; };
 		1A8F162E94E4AEEA9EA637CCFF9F7390 /* IResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IResponse.h; path = include/OnePoint.Runtime/IResponse.h; sourceTree = "<group>"; };
 		1B001920EDC28FF37E647122C246CA38 /* NullMethod.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NullMethod.h; path = include/OnePoint.Runtime/NullMethod.h; sourceTree = "<group>"; };
-		1B07EC17ECD7077D839D5A05A2B104EA /* GTMOAuth2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GTMOAuth2.modulemap; sourceTree = "<group>"; };
+		1B07EC17ECD7077D839D5A05A2B104EA /* GTMOAuth2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GTMOAuth2.modulemap; sourceTree = "<group>"; };
 		1B75C252BCCBF0402290187B075DA7C9 /* OPGSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGSDK.h; path = include/OPGSDK/OPGSDK.h; sourceTree = "<group>"; };
 		1BC12FA594132FCDBEC15A01CD84CB97 /* Networker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Networker.h; path = include/OnePoint.Runtime/Networker.h; sourceTree = "<group>"; };
 		1C0C2C1900E9719B4ECC2B422DE3D499 /* Pods-MySurveys2.0UITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MySurveys2.0UITests-frameworks.sh"; sourceTree = "<group>"; };
@@ -246,9 +246,9 @@
 		3414CF46D8D5C228D0749BFA5433D8D9 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3432190F199B52DC5CC9D9D773720957 /* OPGCamera.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGCamera.h; path = "include/OPGSDK/Other Supporting Files/OPGCamera.h"; sourceTree = "<group>"; };
 		34A47EA5628CF886DE574A1B217064AB /* Descriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Descriptor.h; path = include/OnePoint.Runtime/Descriptor.h; sourceTree = "<group>"; };
-		358E8AF8121F90CE375C9DD960A5A53B /* Pods-MySurveys2.0UITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MySurveys2.0UITests.modulemap"; sourceTree = "<group>"; };
+		358E8AF8121F90CE375C9DD960A5A53B /* Pods-MySurveys2.0UITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MySurveys2.0UITests.modulemap"; sourceTree = "<group>"; };
 		35A286DC7B3B7C62846D04E147A76141 /* IStandardTexts.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IStandardTexts.h; path = include/OnePoint.Runtime/IStandardTexts.h; sourceTree = "<group>"; };
-		364DA5FAAE502AB17D8554948C10FD95 /* Pods-MySurveys2.0Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MySurveys2.0Tests.modulemap"; sourceTree = "<group>"; };
+		364DA5FAAE502AB17D8554948C10FD95 /* Pods-MySurveys2.0Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MySurveys2.0Tests.modulemap"; sourceTree = "<group>"; };
 		367014FA73F885C13332E2264301F4F1 /* OPGAssetLibraryFilesystem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGAssetLibraryFilesystem.h; path = "include/OPGSDK/Other Supporting Files/OPGAssetLibraryFilesystem.h"; sourceTree = "<group>"; };
 		36C7CDAB62D3A05F4E96912091C7ACBF /* FBShimmeringLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBShimmeringLayer.m; path = FBShimmering/FBShimmeringLayer.m; sourceTree = "<group>"; };
 		386FC2EDD08524DB4FBAD6CF088CE728 /* Bootstrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Bootstrapper.h; path = include/OnePoint.Runtime/Bootstrapper.h; sourceTree = "<group>"; };
@@ -367,7 +367,7 @@
 		6E0A3F108C97BC991ECD6FF31D7EB72B /* OPGLabel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGLabel.h; path = include/OnePoint.Runtime/OPGLabel.h; sourceTree = "<group>"; };
 		6E1B4F9551CE282AF7141CEC87437D20 /* extra.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = extra.h; path = include/OnePoint.Runtime/extra.h; sourceTree = "<group>"; };
 		6E518258150F4D8833178F36444A3227 /* GTMSessionFetcher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GTMSessionFetcher-prefix.pch"; sourceTree = "<group>"; };
-		6E81B81C070BA4575641EA063B54CC3A /* Shimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E81B81C070BA4575641EA063B54CC3A /* Shimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Shimmer.framework; path = Shimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F9F53CABF84D78A3278E8947EE909E7 /* RoutingItemsFlags.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RoutingItemsFlags.h; path = include/OnePoint.Runtime/RoutingItemsFlags.h; sourceTree = "<group>"; };
 		6F9FAE2E7E4B33513C7CBA662F3542C3 /* AskTypeConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AskTypeConstants.h; path = include/OnePoint.Runtime/AskTypeConstants.h; sourceTree = "<group>"; };
 		6FACCE0DB07736289DADD843B332A6D7 /* VarUseConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VarUseConst.h; path = include/OnePoint.Runtime/VarUseConst.h; sourceTree = "<group>"; };
@@ -381,11 +381,11 @@
 		719E7ABF9B49F78DF18AF956A16B839F /* CategoryRecord.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CategoryRecord.h; path = include/OnePoint.Runtime/CategoryRecord.h; sourceTree = "<group>"; };
 		725B5899F260E0A196D1BBF4E59B83DA /* AccessFlags.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AccessFlags.h; path = include/OnePoint.Runtime/AccessFlags.h; sourceTree = "<group>"; };
 		7280E3BD631C34B4ED0E01DEF2647BBE /* Token.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Token.h; path = include/OnePoint.Runtime/Token.h; sourceTree = "<group>"; };
-		7296EB3F0CDF9D4E2AA1EFD277E43102 /* Pods_MySurveys2_0Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveys2_0Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7296EB3F0CDF9D4E2AA1EFD277E43102 /* Pods_MySurveys2_0Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MySurveys2_0Tests.framework; path = "Pods-MySurveys2.0Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72F333A6D283871D972505E2ADDBA00F /* ConstantPoolRecord.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ConstantPoolRecord.h; path = include/OnePoint.Runtime/ConstantPoolRecord.h; sourceTree = "<group>"; };
 		733DC0A94A35C1C41A332A652A17FCF5 /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
 		73AB3715A9E2870999C6D3DB3E2808DF /* NSString+HTML.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+HTML.h"; path = "include/OnePoint.Runtime/NSString+HTML.h"; sourceTree = "<group>"; };
-		73C235008C533C4BB06E153B627F705F /* Pods_MySurveys2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveys2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73C235008C533C4BB06E153B627F705F /* Pods_MySurveys2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MySurveys2_0.framework; path = "Pods-MySurveys2.0.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73D994571466B8FAC46BDAAA5F58A8F1 /* OPGUserAgentUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGUserAgentUtil.h; path = "include/OPGSDK/Other Supporting Files/OPGUserAgentUtil.h"; sourceTree = "<group>"; };
 		73DCCD70264F9B4EB98A42B467B7D6B3 /* Stack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Stack.h; path = include/OnePoint.Runtime/Stack.h; sourceTree = "<group>"; };
 		7424D7EC9B5DCE66F0A1AE725B4F246C /* HtmlInput.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HtmlInput.h; path = include/OnePoint.Runtime/HtmlInput.h; sourceTree = "<group>"; };
@@ -394,7 +394,7 @@
 		74D44FAECAB0A635EF9A3D35E1E5222F /* OpVariant.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OpVariant.h; path = include/OnePoint.Runtime/OpVariant.h; sourceTree = "<group>"; };
 		7557E7133A8FE19AB77227DDFB692E4C /* Main.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Main.h; path = include/OnePoint.Runtime/Main.h; sourceTree = "<group>"; };
 		76693928988E6E64B7B62EC58F5A2F1D /* IInterview.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IInterview.h; path = include/OnePoint.Runtime/IInterview.h; sourceTree = "<group>"; };
-		769F28FB65D72C65B0C1173790D722DC /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		769F28FB65D72C65B0C1173790D722DC /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77680A1A9B541A0FAD42099FA27C4F6A /* Pods-MySurveys2.0-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MySurveys2.0-dummy.m"; sourceTree = "<group>"; };
 		77C0C5C902CC3F094EAD44C85196224F /* XmlInterControlStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XmlInterControlStyle.h; path = include/OnePoint.Runtime/XmlInterControlStyle.h; sourceTree = "<group>"; };
 		78282EE75915B4A5AA0C3C70726B1C51 /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 		7DA78C53096560CB9658C8213A5ADA61 /* ISavePoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISavePoint.h; path = include/OnePoint.Runtime/ISavePoint.h; sourceTree = "<group>"; };
 		7DDB9BB0BD983AA0D0629A35A6DE0B10 /* crc32.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crc32.h; path = include/OnePoint.Runtime/crc32.h; sourceTree = "<group>"; };
 		7EC68497C9BC7F58D14530A79898B8CE /* Shimmer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Shimmer-prefix.pch"; sourceTree = "<group>"; };
-		7EC746E1647F15A70EB504748A927DDA /* Pods_MySurveys2_0UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveys2_0UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EC746E1647F15A70EB504748A927DDA /* Pods_MySurveys2_0UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MySurveys2_0UITests.framework; path = "Pods-MySurveys2.0UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EDB218AC15AAA2DC51CF227582AE6C6 /* SavePoints.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SavePoints.h; path = include/OnePoint.Runtime/SavePoints.h; sourceTree = "<group>"; };
 		7F18359786A00D3BF5A813DBDA509FF2 /* config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = config.h; path = include/OnePoint.Runtime/config.h; sourceTree = "<group>"; };
 		7F2D38A386B6469FE90DC84DA434CF05 /* OPGConfigParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGConfigParser.h; path = "include/OPGSDK/Other Supporting Files/OPGConfigParser.h"; sourceTree = "<group>"; };
@@ -436,7 +436,7 @@
 		85EB2FBC51C0F6C2DB52D27F46A24655 /* IMediaStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IMediaStyle.h; path = include/OnePoint.Runtime/IMediaStyle.h; sourceTree = "<group>"; };
 		862CDFD9124C5380181555C2F114B830 /* IRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IRequest.h; path = include/OnePoint.Runtime/IRequest.h; sourceTree = "<group>"; };
 		86532C772E5022CEBE2B9718A2C5E0FF /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
-		867C2BA399C5898F278FD3B87E924435 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		867C2BA399C5898F278FD3B87E924435 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GTMSessionFetcher.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E671923FC2F592AAAEB2FA81346DC3 /* InterviewInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = InterviewInfo.h; path = include/OnePoint.Runtime/InterviewInfo.h; sourceTree = "<group>"; };
 		881AD22272EFCC6724D55FB6D6057930 /* functions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = functions.h; path = include/OnePoint.Runtime/functions.h; sourceTree = "<group>"; };
 		8848C919EB7AA26D717F979EB1A474E3 /* ElementTypeConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ElementTypeConstants.h; path = include/OnePoint.Runtime/ElementTypeConstants.h; sourceTree = "<group>"; };
@@ -464,7 +464,7 @@
 		93234FD556AB3091D31CA86677B58031 /* QuestionEnumerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuestionEnumerator.h; path = include/OnePoint.Runtime/QuestionEnumerator.h; sourceTree = "<group>"; };
 		934F284031DCD85E2DB565F8E9EEDD8D /* IScriptReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IScriptReader.h; path = include/OnePoint.Runtime/IScriptReader.h; sourceTree = "<group>"; };
 		938DB7DEB33489D6BE99264FAB0EC96D /* OPGJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGJSON.h; path = "include/OPGSDK/Other Supporting Files/OPGJSON.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93E84D0D1AE4A162FB4B5F69BF500B03 /* PKMultipartInputStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PKMultipartInputStream.h; path = "include/OPGSDK/Other Supporting Files/PKMultipartInputStream.h"; sourceTree = "<group>"; };
 		9440D60AD7368A85B01BE130DF5E4C6B /* OPGSBJsonBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGSBJsonBase.h; path = "include/OPGSDK/Other Supporting Files/OPGSBJsonBase.h"; sourceTree = "<group>"; };
 		94F9274C1DC6A91811733FC0AC6A6333 /* Reflector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Reflector.h; path = include/OnePoint.Runtime/Reflector.h; sourceTree = "<group>"; };
@@ -480,7 +480,7 @@
 		99C6DDD36D481F2ABA8D776FB0A19140 /* Pods-MySurveys2.0-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MySurveys2.0-resources.sh"; sourceTree = "<group>"; };
 		9A129CFF1B0ADAC4DD99E40D5378812F /* IRanges.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IRanges.h; path = include/OnePoint.Runtime/IRanges.h; sourceTree = "<group>"; };
 		9A7099D783BFC6E92C0E78BAA08E45E9 /* Pods-MySurveys2.0Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MySurveys2.0Tests-resources.sh"; sourceTree = "<group>"; };
-		9A84FB8F8434DECC341472A073E66DBD /* OPGFeedbackSDK.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OPGFeedbackSDK.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A84FB8F8434DECC341472A073E66DBD /* OPGFeedbackSDK.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = OPGFeedbackSDK.bundle; path = OPGFeedbackSDK.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC22BF42FFE64359BF356CA68F33730 /* GTMSessionUploadFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionUploadFetcher.m; path = Source/GTMSessionUploadFetcher.m; sourceTree = "<group>"; };
 		9AC6AFFCA461AB63BB3B38E228A7F0F9 /* OPGPanelPanellist.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGPanelPanellist.h; path = include/OPGSDK/OPGPanelPanellist.h; sourceTree = "<group>"; };
 		9BB4EE9EB819249DAB7DA960B4A9B597 /* GTMGatherInputStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMGatherInputStream.m; path = Source/GTMGatherInputStream.m; sourceTree = "<group>"; };
@@ -536,7 +536,7 @@
 		ADBFFF86413406C4EB0124E241C1C6BA /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = Source/Touch/GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
 		ADF2F1EF01C2691A04C41EE1579AB22D /* CategoryTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CategoryTypes.h; path = include/OnePoint.Runtime/CategoryTypes.h; sourceTree = "<group>"; };
 		AE0F6F02D7D05E78CE56CDFF12215CF6 /* CollectionObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CollectionObject.h; path = include/OnePoint.Runtime/CollectionObject.h; sourceTree = "<group>"; };
-		AE7272B2AF59AD2A02F433C87CD9BAD3 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
+		AE7272B2AF59AD2A02F433C87CD9BAD3 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
 		AE80926B3FAEF082E73FA2FCDB954805 /* AstBinaryExpression.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AstBinaryExpression.h; path = include/OnePoint.Runtime/AstBinaryExpression.h; sourceTree = "<group>"; };
 		AFA333BBBBD291CEE2D16B73FE13FAC9 /* GTMSessionFetcherService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMSessionFetcherService.m; path = Source/GTMSessionFetcherService.m; sourceTree = "<group>"; };
 		B022C812541E0D8EC51ED702935977EF /* NavButtonType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NavButtonType.h; path = include/OnePoint.Runtime/NavButtonType.h; sourceTree = "<group>"; };
@@ -553,7 +553,7 @@
 		B5BE2877CD7203C0FCB2F1FFD590E898 /* Container.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Container.h; path = include/OnePoint.Runtime/Container.h; sourceTree = "<group>"; };
 		B5D58780EDC9FABC653DD3E6B205A64E /* IStyles.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IStyles.h; path = include/OnePoint.Runtime/IStyles.h; sourceTree = "<group>"; };
 		B5F9ECCE1490C676665040AF1DECB86B /* OPGSurveyPanel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGSurveyPanel.h; path = include/OPGSDK/OPGSurveyPanel.h; sourceTree = "<group>"; };
-		B60ABD2DB27F948B13F8E0E7EB51B170 /* Shimmer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Shimmer.modulemap; sourceTree = "<group>"; };
+		B60ABD2DB27F948B13F8E0E7EB51B170 /* Shimmer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Shimmer.modulemap; sourceTree = "<group>"; };
 		B6BC9B789848205BB848B0B3D3770B4B /* XmlCategory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XmlCategory.h; path = include/OnePoint.Runtime/XmlCategory.h; sourceTree = "<group>"; };
 		B6D7B7A3730F32D253C2B2690819BAE6 /* TemplateTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TemplateTypes.h; path = include/OnePoint.Runtime/TemplateTypes.h; sourceTree = "<group>"; };
 		B83A942ECC380754042738AEF9DF81AE /* OPGTimer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGTimer.h; path = "include/OPGSDK/Other Supporting Files/OPGTimer.h"; sourceTree = "<group>"; };
@@ -600,7 +600,7 @@
 		CD087BEE527010F19F5D9176F61964B3 /* Orientations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Orientations.h; path = include/OnePoint.Runtime/Orientations.h; sourceTree = "<group>"; };
 		CD5115CC44E5E600BE4C1E7CB6CB0ABF /* OPGNetworkRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGNetworkRequest.h; path = "include/OPGSDK/Other Supporting Files/OPGNetworkRequest.h"; sourceTree = "<group>"; };
 		CE40AF6E5833E5382AC813AE00CE9A24 /* OPGConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGConstants.h; path = "include/OPGSDK/Other Supporting Files/OPGConstants.h"; sourceTree = "<group>"; };
-		CE41603842289B21763E75B78C2E0A71 /* GTMSessionFetcher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GTMSessionFetcher.modulemap; sourceTree = "<group>"; };
+		CE41603842289B21763E75B78C2E0A71 /* GTMSessionFetcher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GTMSessionFetcher.modulemap; sourceTree = "<group>"; };
 		CEED8E09DC1694FC32D6E43E6A731832 /* Property.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Property.h; path = include/OnePoint.Runtime/Property.h; sourceTree = "<group>"; };
 		CF15C5D04694DBED87665294548B1E74 /* OPGPluginResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGPluginResult.h; path = "include/OPGSDK/Other Supporting Files/OPGPluginResult.h"; sourceTree = "<group>"; };
 		CFEA07581536C712C20379C0A9462E21 /* OPGAvailabilityDeprecated.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGAvailabilityDeprecated.h; path = "include/OPGSDK/Other Supporting Files/OPGAvailabilityDeprecated.h"; sourceTree = "<group>"; };
@@ -676,7 +676,7 @@
 		EB0936FE0E891AC2ED19BCE7A9FA1CC4 /* GTMGatherInputStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMGatherInputStream.h; path = Source/GTMGatherInputStream.h; sourceTree = "<group>"; };
 		EB92C047E5940195EF5201E028CD5A66 /* XmlPage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = XmlPage.h; path = include/OnePoint.Runtime/XmlPage.h; sourceTree = "<group>"; };
 		EB96D5B1427186C504E5ECC173C13045 /* Dim.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Dim.h; path = include/OnePoint.Runtime/Dim.h; sourceTree = "<group>"; };
-		EBDA35BF0A0D2CACDCAE9F10469536D2 /* GTMOAuth2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMOAuth2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBDA35BF0A0D2CACDCAE9F10469536D2 /* GTMOAuth2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GTMOAuth2.framework; path = GTMOAuth2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC2700525339944D1D4B9FCA2C02F8C4 /* ConstantField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ConstantField.h; path = include/OnePoint.Runtime/ConstantField.h; sourceTree = "<group>"; };
 		EC81521DB034FCC629D3A0FE7081B0FE /* attributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = attributes.h; path = include/OnePoint.Runtime/attributes.h; sourceTree = "<group>"; };
 		ECA71E65DE07AC464E91990DF94CAC33 /* Cache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Cache.h; path = include/OnePoint.Runtime/Cache.h; sourceTree = "<group>"; };
@@ -685,7 +685,7 @@
 		EDD05C555DC15820E52A99053396447B /* GTMReadMonitorInputStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMReadMonitorInputStream.h; path = Source/GTMReadMonitorInputStream.h; sourceTree = "<group>"; };
 		EDF6DBF9C488531FD928E080C43A6D37 /* Pods-MySurveys2.0Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MySurveys2.0Tests-dummy.m"; sourceTree = "<group>"; };
 		EE1243453367C6C54AA830FB877F1DA4 /* NSString+OPGAESCrypt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+OPGAESCrypt.h"; path = "include/OPGSDK/Other Supporting Files/NSString+OPGAESCrypt.h"; sourceTree = "<group>"; };
-		EE5CA436FCF9E45C3CE67B96C6CF3D4B /* Pods-MySurveys2.0.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MySurveys2.0.modulemap"; sourceTree = "<group>"; };
+		EE5CA436FCF9E45C3CE67B96C6CF3D4B /* Pods-MySurveys2.0.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MySurveys2.0.modulemap"; sourceTree = "<group>"; };
 		EE6F4CB5A44DA5D6E92974653228E3B7 /* OPGDownloadMedia.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGDownloadMedia.h; path = include/OPGSDK/OPGDownloadMedia.h; sourceTree = "<group>"; };
 		EF741C151FEF5DF498E39CBF125F4E3F /* ExceptionsAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ExceptionsAttribute.h; path = include/OnePoint.Runtime/ExceptionsAttribute.h; sourceTree = "<group>"; };
 		EFF83BD3BD135D70DF35405BA56902E8 /* PlayerScript.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PlayerScript.h; path = include/OnePoint.Runtime/PlayerScript.h; sourceTree = "<group>"; };
@@ -866,6 +866,7 @@
 				EDAA1F0361DCA881DCB0B8E32976ACAE /* FBShimmeringView.m */,
 				1038A0E9BDC58DEFB9945F5119D10034 /* Support Files */,
 			);
+			name = Shimmer;
 			path = Shimmer;
 			sourceTree = "<group>";
 		};
@@ -1445,6 +1446,7 @@
 				06878F1AB8CE2D92919065B0EF0A84A3 /* Resources */,
 				3919611F7D63360490E1E847FC7EC209 /* Support Files */,
 			);
+			name = OPGFeedbackSDK;
 			path = OPGFeedbackSDK;
 			sourceTree = "<group>";
 		};
@@ -1506,6 +1508,7 @@
 				CE2CB2767F171F1BBFA8D04520996B29 /* Resources */,
 				46AD647BA6FE780D2EC15F9E8ADA57BF /* Support Files */,
 			);
+			name = GTMOAuth2;
 			path = GTMOAuth2;
 			sourceTree = "<group>";
 		};
@@ -1524,6 +1527,7 @@
 				EF819BFEF78EB4A9C907682E9B475035 /* Frameworks */,
 				E7246E54565CD35AF318A96044453DAC /* Resources */,
 			);
+			name = GoogleSignIn;
 			path = GoogleSignIn;
 			sourceTree = "<group>";
 		};
@@ -1568,6 +1572,7 @@
 				056E75F7A7DD5C94505870147EE22959 /* Full */,
 				9746D7D3B625CCF6A3FAEB9EA5CAB888 /* Support Files */,
 			);
+			name = GTMSessionFetcher;
 			path = GTMSessionFetcher;
 			sourceTree = "<group>";
 		};
@@ -1598,6 +1603,7 @@
 				4E0D5FFC32027F20CFE2429FBDC0A888 /* NSString+URLArguments */,
 				5BD33E02E33A3674660AC8A309E59138 /* Support Files */,
 			);
+			name = GoogleToolboxForMac;
 			path = GoogleToolboxForMac;
 			sourceTree = "<group>";
 		};
@@ -1885,7 +1891,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2166,9 +2172,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2176,21 +2180,15 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",
@@ -2361,9 +2359,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2371,20 +2367,14 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
@@ -2515,7 +2505,6 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/OPGFeedbackSDK/ResourceBundle-OPGFeedbackSDK-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "${PRODUCT_BUNDLE_IDENTIFIER}";
 				PRODUCT_NAME = OPGFeedbackSDK;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2602,7 +2591,6 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/OPGFeedbackSDK/ResourceBundle-OPGFeedbackSDK-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "${PRODUCT_BUNDLE_IDENTIFIER}";
 				PRODUCT_NAME = OPGFeedbackSDK;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

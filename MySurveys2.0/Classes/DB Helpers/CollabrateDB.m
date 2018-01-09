@@ -8,7 +8,6 @@
 
 #import "CollabrateDB.h"
 
-
 @implementation CollabrateDB
 
 +(CollabrateDB*)sharedInstance
@@ -18,7 +17,7 @@
     dispatch_once(&onceToken, ^{
         sharedInstance = [[CollabrateDB alloc] init];
         // Do any other initialisation stuff here
-        [OPGDB initializeWithDBVersion: 2];
+        [OPGDB initializeWithDBVersion: 3];
         
     });
     return sharedInstance;

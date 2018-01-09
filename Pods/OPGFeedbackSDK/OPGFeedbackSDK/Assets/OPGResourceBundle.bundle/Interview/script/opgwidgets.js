@@ -254,7 +254,7 @@
             }).appendTo(n).button().buttonMarkup({
                 inline: true
             });
-            this.barcodeElm = e("<div>").css("padding", "10px 0").appendTo(n);
+            this.barcodeElm = e("<div>").css({'padding': '10px 0','word-wrap' : 'break-word'}).appendTo(n);
             var r = this.element.parent(".ui-input-text");
             if (r) r.before(n).hide();
             else this.element.before(n).hide();

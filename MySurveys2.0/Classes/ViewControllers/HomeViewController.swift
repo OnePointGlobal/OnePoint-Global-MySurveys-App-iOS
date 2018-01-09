@@ -379,7 +379,9 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         if self.surveyFilteredList.count > 0 {
             self.lblNoSurveys?.isHidden = true
         } else {
-            self.lblNoSurveys?.isHidden = false
+            if self.segmentedControl.selectedSegmentIndex == 0 {
+                self.lblNoSurveys?.isHidden = false
+            }
             self.lblNoSurveys?.text = NSLocalizedString("No surveys available for the selected panel.", comment: "")
         }
     }
@@ -603,7 +605,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     self.tableView?.isUserInteractionEnabled = true     //Enable table after refresh/shimmer
                     self.tableView?.layoutIfNeeded()
                     self.tableView!.reloadData()
-                    self.tableViewGeoFenced?.reloadData()
+                    if self.segmentedControl.selectedSegmentIndex == 1 {
+                        // If in geo home screen, update geofencedarray list and show default geo table after refresh.
+                        self.geoFencedTableViewSetUp()
+                    }
                     self.setUpSegmentedController()
                     self.setTableViewContentOffset()
                     self.checkforAvailableSurveys()
@@ -1809,6 +1814,14 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                     dummyArray.append(geofencedArrays[i])                       //filter to avoid mduplication
                     surveyNames.append(name)
                 }
+                else {
+                    // if multiple addresses for same survey, then take the one which is entered
+                    if (geofencedArrays[i] as? OPGGeofenceSurvey)?.isDeleted == 2 {
+                        let index: Int = self.getIndex(addressID: ((geofencedArrays[i] as? OPGGeofenceSurvey)?.addressID)!, array: dummyArray)
+                        dummyArray.remove(at: index)        // remove and update a new survey location which is entered
+                        dummyArray.append(geofencedArrays[i])
+                    }
+                }
             }
         }
         self.geoFencedArrayFiltered = dummyArray.filter { dummy in
@@ -1817,6 +1830,16 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             }
         }
         self.tableViewGeoFenced?.reloadData()
+    }
+
+    func getIndex(addressID: NSNumber, array: Array<Any>) -> Int {
+        for i in 0 ..< array.count {
+            let addID = (array[i] as? OPGGeofenceSurvey)?.addressID
+            if addID == addressID {
+                return i
+            }
+        }
+        return 0
     }
 
     func showGeoFencePopUp(_ message: String) {
