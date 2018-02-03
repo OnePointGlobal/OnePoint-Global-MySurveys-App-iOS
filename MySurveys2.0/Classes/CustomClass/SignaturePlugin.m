@@ -21,10 +21,6 @@
     }
 }
     
-    
-    
-    
-    
 -(void)processRequest {
     dispatch_async(dispatch_get_main_queue(), ^{
         // If a popover is already open, close it; we only want one at a time.

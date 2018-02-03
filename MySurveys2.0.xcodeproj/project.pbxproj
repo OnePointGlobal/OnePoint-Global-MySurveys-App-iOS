@@ -23,6 +23,8 @@
 		134C44EC1FC6B107002D8AE9 /* icon_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 134C44E31FC6B100002D8AE9 /* icon_cancel@3x.png */; };
 		134C44ED1FC6B107002D8AE9 /* icon_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 134C44E41FC6B102002D8AE9 /* icon_refresh.png */; };
 		134C44EE1FC6B107002D8AE9 /* icon_save.png in Resources */ = {isa = PBXBuildFile; fileRef = 134C44E51FC6B105002D8AE9 /* icon_save.png */; };
+		135011FA201EFAAC0043EE6F /* CurrenyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135011F7201EFAAB0043EE6F /* CurrenyViewController.swift */; };
+		135011FB201EFAAC0043EE6F /* CurrencyPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 135011F9201EFAAC0043EE6F /* CurrencyPlugin.m */; };
 		135B71041DB9FC6A00F48E94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 135B71081DB9FC6A00F48E94 /* Localizable.strings */; };
 		135B71051DB9FC6A00F48E94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 135B71081DB9FC6A00F48E94 /* Localizable.strings */; };
 		135B71061DB9FC6A00F48E94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 135B71081DB9FC6A00F48E94 /* Localizable.strings */; };
@@ -317,6 +319,9 @@
 		134C44E31FC6B100002D8AE9 /* icon_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_cancel@3x.png"; path = "icons/icon_cancel@3x.png"; sourceTree = "<group>"; };
 		134C44E41FC6B102002D8AE9 /* icon_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_refresh.png; path = icons/icon_refresh.png; sourceTree = "<group>"; };
 		134C44E51FC6B105002D8AE9 /* icon_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_save.png; path = icons/icon_save.png; sourceTree = "<group>"; };
+		135011F7201EFAAB0043EE6F /* CurrenyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrenyViewController.swift; sourceTree = "<group>"; };
+		135011F8201EFAAB0043EE6F /* CurrencyPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyPlugin.h; sourceTree = "<group>"; };
+		135011F9201EFAAC0043EE6F /* CurrencyPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyPlugin.m; sourceTree = "<group>"; };
 		135B71071DB9FC6A00F48E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		13608E571DFE7ECC00F7DF05 /* profile_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile_bg.png; path = icons/profile_bg.png; sourceTree = "<group>"; };
 		136163061D1D611A005C41D0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -685,6 +690,9 @@
 				13CB42221FC5A46500876DC2 /* SignaturePlugin.m */,
 				13CB42211FC5A46500876DC2 /* SignatureView.h */,
 				13CB421F1FC5A46400876DC2 /* SignatureView.m */,
+				135011F8201EFAAB0043EE6F /* CurrencyPlugin.h */,
+				135011F9201EFAAC0043EE6F /* CurrencyPlugin.m */,
+				135011F7201EFAAB0043EE6F /* CurrenyViewController.swift */,
 				137B87521E0D2D7F0023C818 /* OfflineDownload.swift */,
 				13F447291E28B90000B24B8E /* UploadSurvey.swift */,
 				137B87531E0D2D7F0023C818 /* OPGNotificationView.swift */,
@@ -1501,11 +1509,13 @@
 				78E2252D1DC3638400880AE0 /* (null) in Sources */,
 				94CD761A1DB4A63B00C6F958 /* AboutUsViewController.swift in Sources */,
 				78EAFEC51DD302CC002158A1 /* NotificationTableViewCell.swift in Sources */,
+				135011FB201EFAAC0043EE6F /* CurrencyPlugin.m in Sources */,
 				78C7540D1DC367E800832AD0 /* ProfileLogoutTableViewCell.swift in Sources */,
 				78E9F4CB1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */,
 				946474AA1DBE522A00016F2C /* ChangePanelViewController.swift in Sources */,
 				94CD76001DB4A58A00C6F958 /* OPGMapView.swift in Sources */,
 				946474AC1DBE524000016F2C /* ChangePasswordViewController.swift in Sources */,
+				135011FA201EFAAC0043EE6F /* CurrenyViewController.swift in Sources */,
 				787D6B751EE676E10055C69E /* OPGConstants.swift in Sources */,
 				94CD76301DB4A63B00C6F958 /* TabBarViewController.swift in Sources */,
 				94D620CC1DC321B500629E52 /* ChangePanelTableViewCell.swift in Sources */,
@@ -1767,7 +1777,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
+				PROVISIONING_PROFILE = "2e5d65f0-b080-4fb1-ae52-6ad6cc754798";
 				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;

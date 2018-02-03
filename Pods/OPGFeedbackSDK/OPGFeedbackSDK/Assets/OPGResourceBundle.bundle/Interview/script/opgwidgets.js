@@ -242,6 +242,34 @@
                               }
           }
      });
+ e.widget("opg.currencyinput", {
+          initSelector: "input[type='currencyinput']",
+          _create: function() {
+          this._on(this.element, {
+                   click: "_getCurrency"
+                   });
+          },
+          _getCurrency: function() {
+          var t = this;
+          var tValue = this.element.val();
+          var currentRef = this.element;
+          try {
+          cordova.exec(function(n) {
+                       console.log(n);
+                       var jsonObj = jQuery.parseJSON(n);
+                       currentRef.val(jsonObj.value);
+                       //this.element.attr("value", jsonObj.path);
+                       }, function(n) {
+                       console.log(tValue);
+                       }, "CurrencyPlugin", "callcurrency",[tValue]);
+          } catch (n) {
+          console.log(n);
+          }
+          },
+          _destroy: function() {
+          domHandle.remove()
+          }
+          });
     e.widget("opg.barcode", {
         initSelector: "input[data-role=barcode]",
         _create: function() {
@@ -254,7 +282,7 @@
             }).appendTo(n).button().buttonMarkup({
                 inline: true
             });
-            this.barcodeElm = e("<div>").css({'padding': '10px 0','word-wrap' : 'break-word'}).appendTo(n);
+            this.barcodeElm = e("<div>").css("padding", "10px 0").appendTo(n);
             var r = this.element.parent(".ui-input-text");
             if (r) r.before(n).hide();
             else this.element.before(n).hide();
