@@ -250,6 +250,7 @@
                    });
           },
           _getCurrency: function() {
+          this.element.blur();
           var t = this;
           var tValue = this.element.val();
           var currentRef = this.element;

@@ -68,7 +68,6 @@ class OPGNotificationView: UIView {
 
     func setup() {
         let screenBounds = UIScreen.main.bounds
-        
         if UIDevice().userInterfaceIdiom == .phone {
             switch UIScreen.main.nativeBounds.height {
             case 2436:
@@ -77,7 +76,9 @@ class OPGNotificationView: UIView {
                 self.frame = CGRect(x: -2, y: showNotificationUnderNavigationBar == true ? 62 : -1 * notificationViewHeight, width: screenBounds.size.width+4, height: notificationViewHeight)
             }
         }
-        
+        else {
+            self.frame = CGRect(x: -2, y: showNotificationUnderNavigationBar == true ? 62 : -1 * notificationViewHeight, width: screenBounds.size.width+4, height: notificationViewHeight)
+        }
         setupNotificationType()
         let labelRect = CGRect(x: 5, y: 5, width: screenBounds.size.width-10, height: notificationViewHeight - 10)
         titleLabel.frame = labelRect
