@@ -10,7 +10,7 @@ platform :ios, '8.0'
 pod 'GoogleSignIn'
 pod 'OPGFeedbackSDK' , :git => 'https://github.com/OnePointGlobal/OPGFeedbackSDK.git'
 pod 'Shimmer'
-
+pod 'TesseractOCRiOS', '4.0.0'
 end
 
 target 'MySurveys2.0Tests' do

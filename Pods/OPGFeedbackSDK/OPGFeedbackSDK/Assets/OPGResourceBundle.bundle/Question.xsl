@@ -1066,6 +1066,9 @@
       <xsl:when test="@Type = 'signature'">
         <xsl:call-template name="SignatureControl"/>
       </xsl:when>
+      <xsl:when test="@Type = 'ocr'">
+        <xsl:call-template name="OCRControl"/>
+      </xsl:when>
       <xsl:when test="@Type = 'numbermasking'">
         <xsl:call-template name="NumberMaskedControl"/>
       </xsl:when>
@@ -1236,6 +1239,78 @@
           </xsl:attribute>
       </xsl:element>
   </xsl:template>
+
+
+    <xsl:template name="OCRControl">
+    <!--- Control Label -->
+    <xsl:if test="Category[1]/Label">
+      <xsl:choose>
+        <xsl:when test="$bIncludeElementIds">
+          <xsl:element name="label">
+            <xsl:attribute name="for">
+              <xsl:value-of select="@ElementID"/>
+              <xsl:if test="Category[1]/@CategoryID">
+                <xsl:value-of select="Category[1]/@CategoryID"/>
+              </xsl:if>
+            </xsl:attribute>
+            <xsl:apply-templates select="Category[1]/Label">
+              <xsl:with-param name="sLabelClass" select="'mrSingleText'"/>
+            </xsl:apply-templates>
+          </xsl:element>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="Category[1]/Label">
+            <xsl:with-param name="sLabelClass" select="'mrSingleText'"/>
+          </xsl:apply-templates>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+    <!--- Edit box -->
+    <xsl:element name="input">
+      <!--- Set Control Type -->
+      <xsl:attribute name="data-role">ocr</xsl:attribute>
+      <!--- Input name -->
+      <xsl:attribute name="name">
+        <xsl:value-of select="@QuestionName"/>
+        <xsl:if test="Category[1]/@Name">
+          <xsl:value-of select="Category[1]/@Name"/>
+        </xsl:if>
+      </xsl:attribute>
+      <!--- ID -->
+      <xsl:if test="$bIncludeElementIds">
+        <xsl:attribute name="id">
+          <xsl:value-of select="@ElementID"/>
+          <xsl:if test="Category[1]/@CategoryID">
+            <xsl:value-of select="Category[1]/@CategoryID"/>
+          </xsl:if>
+        </xsl:attribute>
+      </xsl:if>
+      <!--- Alt -->
+      <xsl:if test="@Alt != ''">
+        <xsl:attribute name="Alt">
+          <xsl:value-of select="@Alt"/>
+        </xsl:attribute>
+      </xsl:if>
+      <!--- CSS Class -->
+      <xsl:if test="$bIncludeCSSStyles">
+        <xsl:attribute name="class">mrEdit</xsl:attribute>
+      </xsl:if>
+      <!--- Show Only -->
+      <xsl:if test="$bShowOnly != false()">
+        <xsl:attribute name="disabled"/>
+      </xsl:if>
+      <!--- Read Only -->
+      <xsl:if test="Style/Control/@ReadOnly = 'true'">
+        <xsl:attribute name="readonly"/>
+      </xsl:if>
+      <!--- Default text -->
+      <xsl:attribute name="value">
+        <xsl:value-of select="@Value"/>
+      </xsl:attribute>
+    </xsl:element>
+  </xsl:template>
+
+
 
   <xsl:template name="BarCodeControl">
     <!--- Control Label -->

@@ -641,7 +641,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
 
     // MARK: - Custom Delegate Method
     func userDidChangeCountry(newCountry: OPGCountry) {
-         if newCountry.name.characters.count > 0 {
+         if newCountry.name.count > 0 {
             self.panelist?.countryName = newCountry.name
             self.panelist?.std = newCountry.std
             let nameCell = self.tableview?.cellForRow(at: IndexPath(row: 0, section: 0)) as! ProfileTableViewCell

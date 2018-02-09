@@ -242,6 +242,73 @@
                               }
           }
      });
+
+
+     e.widget("opg.ocr", {
+        initSelector: "input[data-role=ocr]",
+        _create: function() {
+            var t = document.createElement("div");
+            var n = e(t);
+            this.changer = e("<input>", {
+                value: "Click to Scan Text",
+                type: "button",
+                "data-inline": "true"
+            }).appendTo(n).button().buttonMarkup({
+                inline: true
+            });
+            this.ocrElm = e("<div>").css({'padding': '10px 0','word-wrap' : 'break-word','white-space' : 'pre-line'}).appendTo(n);
+            var r = this.element.parent(".ui-input-text");
+            if (r) r.before(n).hide();
+            else this.element.before(n).hide();
+            if(this.element[0].value != ""){
+                var n = (this.element[0].value)? + this.element[0].value:"No text is scanned";
+                this.ocrElm.html(n);
+            }
+            this._on(this.changer, {
+                click: "_getText"
+            });
+        },
+        _refresh: function() {
+            this.changer.click();
+        },
+        _destroy: function() {
+            this.changer.remove();
+        },
+        _getText: function() {
+            var t = this;
+            try {
+                cordova.exec(function(n) {
+                    var nObj = jQuery.parseJSON(n);
+                    e.proxy(t._writeText(nObj.text), this);
+                }, function(n) {
+                  e.proxy(t._writeText(), this);
+                }, "OCRPlugin", "scanText", []);
+             } catch (n) {
+                  e.proxy(t._writeText(), this);
+                  console.log("Exception : "+ n)
+            }
+        },
+        _writeText: function(txt) {
+        try{
+             var n = "";
+             var e = txt;
+                n = e ? "Scanned text is : " +"\n  "+ e : "No text is scanned";
+                this.ocrElm.text(n);
+                var val = e?e:"";
+                this.element.attr("value", val);
+             }
+        catch(n)
+        {
+            console.log("Exception in _OCR : ")
+        }
+
+        }
+    });
+
+
+
+
+
  e.widget("opg.currencyinput", {
           initSelector: "input[type='currencyinput']",
           _create: function() {
