@@ -27,12 +27,8 @@
     self.textView.textColor = [UIColor lightGrayColor];
     self.textView.layer.borderWidth = 1.0f;
     self.textView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-
+    [self openCamera];
     self.spinner.color = [UIColor orangeColor];
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
-    imagePickerController.delegate = self;
-    imagePickerController.sourceType =  UIImagePickerControllerSourceTypeCamera;
-    [self presentViewController:imagePickerController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +42,13 @@
         [self readImage:image];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void) openCamera {
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc]init];
+    imagePickerController.delegate = self;
+    imagePickerController.sourceType =  UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:imagePickerController animated:YES completion:nil];
 }
 
 -(void) readImage: (UIImage*) image {
@@ -85,6 +88,7 @@
 - (IBAction)refreshBtnPressed:(id)sender {
     self.textView.text = PLACEHOLDER_TEXT;
     self.textView.textColor = [UIColor lightGrayColor];
+    [self openCamera];
 }
 
 - (IBAction)cancelBtnPressed:(id)sender {

@@ -358,7 +358,9 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             else {
                 // set logo text
                 self.lblLogoText?.adjustsFontSizeToFitWidth = true
-                self.lblLogoText?.text = logoText
+                if logoText.caseInsensitiveCompare("undefined") != ComparisonResult.orderedSame {
+                    self.lblLogoText?.text = logoText
+                }
                 self.imgLogo?.isHidden = true
                 self.lblLogoText?.isHidden = false
             }

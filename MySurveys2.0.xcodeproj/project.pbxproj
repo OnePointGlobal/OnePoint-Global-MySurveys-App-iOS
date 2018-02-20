@@ -162,6 +162,9 @@
 		78EAFEC91DD32E56002158A1 /* ShowNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EAFEC71DD32E56002158A1 /* ShowNotificationViewController.swift */; };
 		78EAFECB1DD32E9E002158A1 /* TakeSurveyNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EAFECA1DD32E9E002158A1 /* TakeSurveyNotificationViewController.swift */; };
 		78EAFECC1DD32E9E002158A1 /* TakeSurveyNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EAFECA1DD32E9E002158A1 /* TakeSurveyNotificationViewController.swift */; };
+		78EBE47120340AF5008C8573 /* icon_camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBE46E20340AF5008C8573 /* icon_camera@3x.png */; };
+		78EBE47220340AF5008C8573 /* icon_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBE46F20340AF5008C8573 /* icon_camera.png */; };
+		78EBE47320340AF5008C8573 /* icon_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78EBE47020340AF5008C8573 /* icon_camera@2x.png */; };
 		78F230A71E445B00001E24EC /* default_panel_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F230A11E445B00001E24EC /* default_panel_bg.png */; };
 		78F230A81E445B00001E24EC /* default_panel_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F230A21E445B00001E24EC /* default_panel_bg@2x.png */; };
 		78F230A91E445B00001E24EC /* default_panel_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F230A31E445B00001E24EC /* default_panel_bg@3x.png */; };
@@ -454,6 +457,9 @@
 		78EAFEC41DD302CC002158A1 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationTableViewCell.swift; path = Classes/TableViewCells/NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		78EAFEC71DD32E56002158A1 /* ShowNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowNotificationViewController.swift; path = Classes/ViewControllers/ShowNotificationViewController.swift; sourceTree = "<group>"; };
 		78EAFECA1DD32E9E002158A1 /* TakeSurveyNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TakeSurveyNotificationViewController.swift; path = Classes/ViewControllers/TakeSurveyNotificationViewController.swift; sourceTree = "<group>"; };
+		78EBE46E20340AF5008C8573 /* icon_camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_camera@3x.png"; path = "icons/icon_camera@3x.png"; sourceTree = "<group>"; };
+		78EBE46F20340AF5008C8573 /* icon_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_camera.png; path = icons/icon_camera.png; sourceTree = "<group>"; };
+		78EBE47020340AF5008C8573 /* icon_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_camera@2x.png"; path = "icons/icon_camera@2x.png"; sourceTree = "<group>"; };
 		78F230A11E445B00001E24EC /* default_panel_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = default_panel_bg.png; path = icons/default_panel_bg.png; sourceTree = "<group>"; };
 		78F230A21E445B00001E24EC /* default_panel_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "default_panel_bg@2x.png"; path = "icons/default_panel_bg@2x.png"; sourceTree = "<group>"; };
 		78F230A31E445B00001E24EC /* default_panel_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "default_panel_bg@3x.png"; path = "icons/default_panel_bg@3x.png"; sourceTree = "<group>"; };
@@ -846,6 +852,9 @@
 		94CD76601DB4AB9F00C6F958 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				78EBE46F20340AF5008C8573 /* icon_camera.png */,
+				78EBE47020340AF5008C8573 /* icon_camera@2x.png */,
+				78EBE46E20340AF5008C8573 /* icon_camera@3x.png */,
 				134C44E21FC6B0FD002D8AE9 /* icon_cancel.png */,
 				134C44DE1FC6B0EE002D8AE9 /* icon_cancel@2x.png */,
 				134C44E31FC6B100002D8AE9 /* icon_cancel@3x.png */,
@@ -1183,6 +1192,7 @@
 				782511FA202C1E4C00654236 /* tessdata in Resources */,
 				94CB0D6B1DCB1B84007AF73F /* logout@2x.png in Resources */,
 				94CB0D571DCB1389007AF73F /* survey_nav.png in Resources */,
+				78EBE47120340AF5008C8573 /* icon_camera@3x.png in Resources */,
 				13F9A4751DF95C640017C42C /* notif_reminder@3x.png in Resources */,
 				94CB0D6F1DCB1B84007AF73F /* notif_select@2x.png in Resources */,
 				13F9A4711DF95AA10017C42C /* notif_deselect@3x.png in Resources */,
@@ -1196,6 +1206,7 @@
 				78CB25931EA5EE460002EC6D /* notif_select_iPad.png in Resources */,
 				13F9A4831DF961300017C42C /* survey_time@3x.png in Resources */,
 				13F9A4691DF9442A0017C42C /* profile@3x.png in Resources */,
+				78EBE47320340AF5008C8573 /* icon_camera@2x.png in Resources */,
 				78822D1E1EAA0ED500E84831 /* forgotpwd_key_iPad.png in Resources */,
 				94CB0D701DCB1B84007AF73F /* notification@2x.png in Resources */,
 				78CB25971EA5EE460002EC6D /* survey_calendar_iPad.png in Resources */,
@@ -1291,6 +1302,7 @@
 				139621221E1520450065EC5E /* applogo@3x.png in Resources */,
 				948102ED1E435B5F00605F18 /* icon-40@3x.png in Resources */,
 				94CB0D771DCB1B84007AF73F /* survey_calender@2x.png in Resources */,
+				78EBE47220340AF5008C8573 /* icon_camera.png in Resources */,
 				94CB0D4B1DCB1389007AF73F /* notif_select.png in Resources */,
 				94CB0D581DCB1389007AF73F /* survey_time.png in Resources */,
 				13F9A4891DF962A10017C42C /* surveydetail_nav.png in Resources */,
@@ -1782,8 +1794,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = SplashImage;
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
@@ -1799,7 +1811,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = MySurveys2.0/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1810,8 +1822,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
+				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -1827,8 +1839,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = SplashImage;
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
@@ -1844,7 +1856,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = MySurveys2.0/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1855,8 +1867,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
+				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
