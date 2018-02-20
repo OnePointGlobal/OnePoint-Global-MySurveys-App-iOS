@@ -56,7 +56,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>FacebookAppID</key>
 	<string>1830580473618949</string>
 	<key>FacebookDisplayName</key>
@@ -76,9 +76,9 @@
 		<true/>
 	</dict>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Bluetooth Access Alert</string>
+	<string>My Surveys would like to access your Bluetooth to enable you to provide media responses. </string>
 	<key>NSCameraUsageDescription</key>
-	<string>Camera Access Alert</string>
+	<string>My Surveys would like to access your camera to enable you to provide media responses. </string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>My Surveys would like to access your location to trigger location based surveys.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -86,11 +86,11 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>My Surveys would like to access your location to trigger location based surveys.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Microphone Access Alert</string>
+	<string>My Surveys would like to access your microphone to enable you to provide media responses. </string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Photo Library Access Alert</string>
+	<string>My Surveys would like to access your photo library to enable you to provide media responses. </string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Photo Library Access Alert</string>
+	<string>My Surveys would like to access your photo library to enable you to provide media responses. </string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
