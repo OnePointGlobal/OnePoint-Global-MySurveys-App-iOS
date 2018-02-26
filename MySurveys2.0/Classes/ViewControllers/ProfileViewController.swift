@@ -314,6 +314,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         let panelName: String? = UserDefaults.standard.value(forKey: selectedPanelName) as? String
         let bgImagePath: String? = AppTheme.getLoginBGImagePath()
         let logoImgPath: String? = AppTheme.getHeaderLogoImagePath()
+        let appBGColor: UIColor = AppTheme.appBackgroundColor()
         let logoText: String? = AppTheme.getLogoText()
         self.unRegisterForAPNS(deviceToken)
         let appDomain = Bundle.main.bundleIdentifier
@@ -344,6 +345,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         AppTheme.setLoginBtnTextColor(color: AppTheme.appBackgroundColor())
         AppTheme.setHeaderLogoImagePath(path: logoImgPath!)
         AppTheme.setLogoText(text: logoText!)
+        UserDefaults.standard.setColor(appBGColor,forKey: "appBgColor")             // reassign app background color after logout
         UserDefaults.standard.synchronize()
         _ = self.navigationController?.popViewController(animated: true)
     }
