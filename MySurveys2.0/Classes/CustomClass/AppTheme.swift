@@ -141,6 +141,7 @@ class AppTheme: NSObject {
         self.setLoginBGImagePath(path: EMPTY_STRING)                // defaultBG image
         self.setHeaderLogoImagePath(path: EMPTY_STRING)        // default header logo image
         self.setLogoText(text: EMPTY_STRING)
+        UserDefaults.standard.setColor(UIColor.orange, forKey: "appBgColor")
         self.theme = nil                                        // no theme
     }
 
@@ -153,6 +154,11 @@ class AppTheme: NSObject {
             return self.colorWithHexString(hex: (self.theme?.actionBtn)!)
         }
     }
+
+    static func setAppBackgroundColor(color: UIColor) {
+        UserDefaults.standard.setColor(color,forKey: "appBgColor")
+    }
+
 
     static func getLoginBGImagePath() -> String {
         let bgImagePath: String? = UserDefaults.standard.value(forKey: "LoginBGImagePath") as? String

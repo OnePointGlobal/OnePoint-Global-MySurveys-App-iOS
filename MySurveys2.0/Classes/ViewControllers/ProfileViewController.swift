@@ -345,7 +345,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         AppTheme.setLoginBtnTextColor(color: AppTheme.appBackgroundColor())
         AppTheme.setHeaderLogoImagePath(path: logoImgPath!)
         AppTheme.setLogoText(text: logoText!)
-        UserDefaults.standard.setColor(appBGColor,forKey: "appBgColor")             // reassign app background color after logout
+        AppTheme.setAppBackgroundColor(color: appBGColor)               // reset appBG color after cleaning defaults
         UserDefaults.standard.synchronize()
         _ = self.navigationController?.popViewController(animated: true)
     }
