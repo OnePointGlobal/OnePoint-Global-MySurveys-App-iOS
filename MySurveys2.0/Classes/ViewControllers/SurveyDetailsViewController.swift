@@ -131,6 +131,13 @@ class SurveyDetailsViewController: RootViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
         if(segue.identifier == "embedTakeSurvey") {
+            URLCache.shared.removeAllCachedResponses()
+            if let cookies = HTTPCookieStorage.shared.cookies {
+                for cookie in cookies {
+                    HTTPCookieStorage.shared.deleteCookie(cookie)
+                }
+            }
+            
             let viewController : SurveyViewController = segue.destination as! SurveyViewController
             viewController.surveyReference = surveySelected?.surveyReference
             viewController.surveySelected = self.surveySelected
