@@ -17,13 +17,13 @@ My Surveys App offers far more than a standard feedback mechanism, download it n
 
 
 <p align="center">
-  <img src="https://www.onepointglobal.com/Images/OPG_Github_LoginPage.jpg"/>
+  <img src="https://www.onepointglobal.com/Images/Github/OPG_Github_LoginPage.jpg"/>
 </p>
 
 <p align="center">
-  <img src="https://www.onepointglobal.com/Images/OPG_Github_SurveyByLoc.jpg"/>
+  <img src="https://www.onepointglobal.com/Images/Github/OPG_Github_SurveyByLoc.jpg"/>
 </p>
 
 <p align="center">
-  <img src="https://www.onepointglobal.com/Images/OPG_Github_SurveysPage.jpg"/>
+  <img src="https://www.onepointglobal.com/Images/Github/OPG_Github_SurveysPage.jpg"/>
 </p>
