@@ -50,3 +50,11 @@ All the geofence surveys assigned to panellist are listed here. Once you enter t
 <p align="center">
   <img src="https://www.onepointglobal.com/Images/Github/OPG_Github_SurveysPage.jpg"/>
 </p>
+
+## Author
+
+manjunath.ramesh@onepointglobal.com, chinthan.m@onepointglobal.com 
+
+## License
+
+OPGFeedbackSDK is available under the MIT license. See the LICENSE file for more info.
