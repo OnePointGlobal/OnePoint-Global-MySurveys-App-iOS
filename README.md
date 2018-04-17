@@ -29,7 +29,7 @@ This procedure assumes you have already created a repository on GitHub, or have 
 
 6) Type git clone, and then paste the URL you copied in Step 2.
 
-  git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+    git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 
 7) Press Enter. Your local clone will be created.
 
