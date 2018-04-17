@@ -57,4 +57,4 @@ manjunath.ramesh@onepointglobal.com, chinthan.m@onepointglobal.com
 
 ## License
 
-OPGFeedbackSDK is available under the MIT license. See the LICENSE file for more info.
+OnePoint-Global-MySurveys-App-iOS is available under the MIT license. See the LICENSE file for more info.
