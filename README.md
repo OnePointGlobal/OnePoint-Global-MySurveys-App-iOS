@@ -42,13 +42,13 @@ This is the login screen of MySurveys app. Once you got the username and passwor
 
 
 All the surveys assigned to panellist are listed here. You can take the survey by clicking the survey.
-<p align="center">
+<p align="left">
   <img src="https://www.onepointglobal.com/Images/Github/OPG_Github_SurveyByLoc.jpg"/>
 </p>
 
 
 All the geofence surveys assigned to panellist are listed here. Once you enter the geofence region, the survey which is assigned for that location will get enable after that you can take that survey.
-<p align="center">
+<p align="left">
   <img src="https://www.onepointglobal.com/Images/Github/OPG_Github_SurveysPage.jpg"/>
 </p>
 
