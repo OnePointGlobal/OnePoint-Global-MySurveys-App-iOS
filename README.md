@@ -15,7 +15,7 @@ Accessible from both iOS and Android app stores, the My Surveys App from OnePoin
 My Surveys App offers far more than a standard feedback mechanism, download it now to start sharing your feedback.
 
 
-
+This is the login screen of MySurveys app. Once you got the username and password ,you can login to app and can take the surveys assigned to you.
 <p align="center">
   <img src="https://www.onepointglobal.com/Images/Github/OPG_Github_LoginPage.jpg"/>
 </p>
