@@ -14,6 +14,23 @@ Accessible from both iOS and Android app stores, the My Surveys App from OnePoin
 
 My Surveys App offers far more than a standard feedback mechanism, download it now to start sharing your feedback.
 
+## Installation
+This procedure assumes you have already created a repository on GitHub, or have an existing repository owned by someone else you'd like to contribute to.
+
+On GitHub, navigate to the main page of the repository.
+
+Clone or download buttonUnder the repository name, click Clone or download.
+
+Clone URL buttonIn the Clone with HTTPs section, click  to copy the clone URL for the repository.
+
+Open Terminal.
+
+Change the current working directory to the location where you want the cloned directory to be made.
+
+Type git clone, and then paste the URL you copied in Step 2.
+
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+Press Enter. Your local clone will be created.
 
 This is the login screen of MySurveys app. Once you got the username and password ,you can login to app and can take the surveys assigned to you.
 <p align="center">
