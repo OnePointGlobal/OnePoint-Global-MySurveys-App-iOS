@@ -36,7 +36,7 @@ This procedure assumes you have already created a repository on GitHub, or have 
 
 ## User Interfaces
 This is the login screen of MySurveys app. Once you got the username and password ,you can login to app and can take the surveys assigned to you.
-<p align="center">
+<p align="left">
   <img src="https://www.onepointglobal.com/Images/Github/OPG_Github_LoginPage.jpg"/>
 </p>
 
