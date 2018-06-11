@@ -51,6 +51,10 @@ All the geofence surveys assigned to panellist are listed here. Once you enter t
   <img src="https://www.onepointglobal.com/Images/Github/OPG_Github_SurveysPage.jpg"/>
 </p>
 
+## Data Protection	
+MySurveys app takes complete care of security and privacy of data. Personal data provided by people remains protected with OnePoint Global. For more, read this article 
+
+
 ## Author
 
 manjunath.ramesh@onepointglobal.com, chinthan.m@onepointglobal.com 
