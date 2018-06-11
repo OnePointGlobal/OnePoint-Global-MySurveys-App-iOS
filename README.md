@@ -52,7 +52,7 @@ All the geofence surveys assigned to panellist are listed here. Once you enter t
 </p>
 
 ## Data Protection	
-MySurveys app takes complete care of security and privacy of data. Personal data provided by people remains protected with OnePoint Global. For more, read this article 
+MySurveys app takes complete care of security and privacy of data. Personal data provided by people remains protected with OnePoint Global. For more, read this [article ](https://github.com/OnePointGlobal/OnePoint-Global-MySurveys-App-iOS/wiki/01.-Data-Protection) 
 
 
 ## Author
