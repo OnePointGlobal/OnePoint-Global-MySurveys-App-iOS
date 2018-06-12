@@ -7,6 +7,9 @@
 //
 
 #import "CollabrateDB.h"
+#import "NSString+OPGAESCrypt.h"
+
+#define AES_KEY @""
 
 @implementation CollabrateDB
 
@@ -305,27 +308,27 @@
         PanellistProfile *profile =[[PanellistProfile alloc]init];
 
         profile.PanellistID = [NSNumber numberWithInt:32];
-        profile.Title = profileDetails.title;
+        profile.Title = [profileDetails.title AES256EncryptWithKey:AES_KEY];
         profile.Website = @"www";
         if (![profileDetails.firstName isKindOfClass:[NSNull class]]&& profileDetails.firstName !=nil) {
-            profile.FirstName=[profileDetails.firstName stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+            profile.FirstName=[[profileDetails.firstName stringByReplacingOccurrencesOfString:@"'" withString:@"''"] AES256EncryptWithKey:AES_KEY];
         }
         if (![profileDetails.lastName isKindOfClass:[NSNull class]] && profileDetails.lastName !=nil) {
-            profile.LastName=[profileDetails.lastName stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+            profile.LastName=[[profileDetails.lastName stringByReplacingOccurrencesOfString:@"'" withString:@"''"] AES256EncryptWithKey:AES_KEY];
         }
-        profile.UserName = [NSString stringWithFormat:@"%@ %@",profileDetails.firstName,profileDetails.lastName];
-        profile.Email = profileDetails.email;
-        profile.MobileNumber = profileDetails.mobileNumber;
-        profile.Password = @"1234";
+        profile.UserName = [[NSString stringWithFormat:@"%@ %@",profileDetails.firstName,profileDetails.lastName] AES256EncryptWithKey:AES_KEY];
+        profile.Email = [profileDetails.email AES256EncryptWithKey:AES_KEY];
+        profile.MobileNumber = [profileDetails.mobileNumber AES256EncryptWithKey:AES_KEY];
+        profile.Password = [@"1234" AES256EncryptWithKey:AES_KEY];
         profile.PasswordLastUpdated=[NSString stringToDate:@"12-12-2012"];
         profile.DOB=[NSString stringToDate:profileDetails.DOB];
         if (![profileDetails.address1 isKindOfClass:[NSNull class]] && profileDetails.address1 !=nil) {
-            profile.Address1=[profileDetails.address1 stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+            profile.Address1=[[profileDetails.address1 stringByReplacingOccurrencesOfString:@"'" withString:@"''"] AES256EncryptWithKey:AES_KEY];
         }
         if (![profileDetails.address2 isKindOfClass:[NSNull class]] && profileDetails.address2 !=nil) {
-            profile.Address2=[profileDetails.address2 stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+            profile.Address2=[[profileDetails.address2 stringByReplacingOccurrencesOfString:@"'" withString:@"''"] AES256EncryptWithKey:AES_KEY];
         }
-        profile.PostalCode = profileDetails.postalCode;
+        profile.PostalCode = [profileDetails.postalCode AES256EncryptWithKey:AES_KEY];
         profile.GeoLocation = @"Bangalore";
         profile.MediaID = profileDetails.mediaID;
         profile.CountryCode = [NSNumber numberWithInt:23];
@@ -334,7 +337,7 @@
         profile.IsDeleted = [NSNumber numberWithInt:1];
         profile.CreatedDate = [NSString stringToDate:@"12-12-2012"];
         profile.LastUpdatedDate = [NSString stringToDate:@"12-12-2012"];
-        profile.SearchTag = @"SearchTag";
+        profile.SearchTag = [@"SearchTag" AES256EncryptWithKey:AES_KEY];
         profile.Remark = @"Remark";
         profile.Gender = profileDetails.gender;
         profile.MaritalStatus = [NSNumber numberWithInt:1] ;
@@ -356,16 +359,16 @@
 
         for (PanellistProfile *ppanellist in panellistProfileArray)
         {
-            panllistProfile.firstName = ppanellist.FirstName;
-            panllistProfile.lastName = ppanellist.LastName;
-            panllistProfile.email = ppanellist.Email;
+            panllistProfile.firstName = [ppanellist.FirstName AES256DecryptWithKey:AES_KEY];
+            panllistProfile.lastName = [ppanellist.LastName AES256DecryptWithKey:AES_KEY];
+            panllistProfile.email = [ppanellist.Email AES256DecryptWithKey:AES_KEY];
             panllistProfile.postalCode = ppanellist.PostalCode;
             panllistProfile.mediaID = ppanellist.MediaID.description;
             panllistProfile.gender = ppanellist.Gender;
-            panllistProfile.address1 = ppanellist.Address1;
+            panllistProfile.address1 = ppanellist.Address1;     //Int from the DB
             panllistProfile.address2 = ppanellist.Address2;
             panllistProfile.mobileNumber = ppanellist.MobileNumber;
-            panllistProfile.title = ppanellist.Title;
+            panllistProfile.title = ppanellist.Title;       //NSNumber from the database so can't decrypt
             panllistProfile.DOB = [NSString stringFromDate:ppanellist.DOB];
         }
         return panllistProfile;

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RNCryptor
 
 
 class ProfileViewController: RootViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CountryChangedDelegate {
@@ -29,6 +29,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     var profileImgMediaID: String?
     var isEditable: Bool?
     var profileImgPath: String?
+    let aes_key = ""
 
     // MARK: - Getter Setter Methods
     func setProfileImagePath(path: String) {
@@ -54,7 +55,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         let utcTimeZone = NSTimeZone(abbreviation: "UTC")
         dateFormatter.timeZone = utcTimeZone! as TimeZone
         dateFormatter.dateFormat = "HH_mm_ss"
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US") as Locale!
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US") as Locale?
         return dateFormatter.string(from: date as Date)
     }
 
@@ -123,7 +124,8 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             let imgPath = self.getProfileImagePath()
             let fileExists = FileManager().fileExists(atPath: (imgPath))
             if fileExists {
-                self.imageView?.image = UIImage(contentsOfFile: (imgPath))
+                //self.imageView?.image = UIImage(contentsOfFile: (imgPath))
+                self.imageView?.image = self.decryptProfileImg(imgPath: imgPath)
             }
         }
     }
@@ -421,6 +423,35 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
     }
 
+    func encryptProfileImg(imgPath: String) {
+        // Gets the profile image downloaded by SDK, converts to Data, deletes it and encryptes the Data and write to a file
+        let image = UIImage(contentsOfFile: imgPath)
+        let data:Data = UIImagePNGRepresentation(image!)!
+        self.deleteImgFromPath(path: imgPath)
+        let encryptedData: Data = RNCryptor.encrypt(data: data, withPassword: "ABCD")
+         do {
+            try encryptedData.write(to: URL(fileURLWithPath: imgPath), options: Data.WritingOptions.atomic)
+        }
+        catch {
+                // Catch exception here and act accordingly
+                print("Writing Encrypted Profile Image Data Failed")
+        }
+    }
+
+    func decryptProfileImg(imgPath: String) -> UIImage {
+        //Gets the encrypted image Data, decrypts it and returns a UIImage out of it.
+        let imgData  = NSData(contentsOfFile: imgPath)
+        var decryptedData:Data?
+        do {
+            decryptedData = try RNCryptor.decrypt(data: imgData! as Data, withPassword: "ABCD")
+        }
+        catch {
+                // Catch exception here and act accordingly
+                print("Decrypting Profile Image Data Failed")
+        }
+        //let cryptor: RNCryptor
+        return UIImage(data: decryptedData!)!
+    }
 
     // This method downloads the profile picture of the panellist
     func downloadProfileImage(mediaId: String, didChangeProfilePic: Bool) {
@@ -449,10 +480,15 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                             if mediaObj?.isSuccess == 1 {
                                 self.activityIndicator?.stopAnimating()
                                 self.profileImgPath = mediaObj!.mediaFilePath
+                                self.encryptProfileImg(imgPath: self.profileImgPath!)
                                 if mediaObj!.mediaFilePath != nil {
                                     self.setProfileImagePath(path: mediaObj!.mediaFilePath)
                                 }
-                                self.imageView?.image = UIImage(contentsOfFile: self.getProfileImagePath())           // Update profile image view
+
+                                //decrypt the profile image
+                               // let decryptData:NSData = self.decryptProfileImg(imgPath: self.profileImgPath!)
+                                self.imageView?.image = self.decryptProfileImg(imgPath: self.profileImgPath!)
+                                //self.imageView?.image = UIImage(contentsOfFile: self.getProfileImagePath())           // Update profile image view
                                 if didChangeProfilePic {
                                     let fileExists = FileManager().fileExists(atPath: previousProfileImgPath!)
                                     if fileExists {
@@ -520,6 +556,18 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             }
             catch let error as NSError {
                 print("Ooops! Something went wrong in deleting Image from Documents directory: \(error)")
+            }
+        }
+    }
+
+    func deleteImgFromPath(path:String) {
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: path) {
+            do {
+                try fileManager.removeItem(atPath: path)
+            }
+            catch let error as NSError {
+                print("Ooops! Something went wrong in deleting Image from path specified: \(error)")
             }
         }
     }

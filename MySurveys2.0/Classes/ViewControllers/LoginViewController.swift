@@ -210,8 +210,8 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                         UserDefaults.standard.set(1, forKey: "isOperating")
                         UserDefaults.standard.set(uploadArray, forKey: "uploadSurveysArray")
                         UserDefaults.standard.set(downloadArray, forKey: "downloadSurveysArray")
-                        UserDefaults.standard.set(self.txtUsername?.text, forKey: "Username")
-                        UserDefaults.standard.set(self.txtPassword?.text, forKey: "Password")
+                        //UserDefaults.standard.set(self.txtUsername?.text, forKey: "Username")
+                        //UserDefaults.standard.set(self.txtPassword?.text, forKey: "Password")
                         UserDefaults.standard.synchronize()
                         self.performSegue(withIdentifier: "SurveyHome", sender: self)
                     }
@@ -444,7 +444,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
     // MARK: - TextField Delegate Methods
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
-        let nextResponder = textField.superview?.viewWithTag(nextTag) as UIResponder!
+        let nextResponder = textField.superview?.viewWithTag(nextTag) as UIResponder?
 
         if nextResponder != nil {
             nextResponder?.becomeFirstResponder()

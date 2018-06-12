@@ -28,7 +28,7 @@
 //#import "FBShimmeringView.h"
 #import "CollabrateDB.h"
 #import "NSString+NSDate.h"
-
+#import "NSString+OPGAESCrypt.h"
 
 //#import <Google/SignIn.h>
 #import <GoogleSignIn/GoogleSignIn.h>
@@ -36,9 +36,6 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-
-#import "NSString+NSDate.h"
-
 
 #import <OnePoint.POM/PanelPanellistFactory.h>
 #import <OnePoint.POM/ThemeFactory.h>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000E3F1CFABCBBDB26637FFB /* Pods_MySurveys2_0Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE13FBDA741DA96E48A9E79 /* Pods_MySurveys2_0Tests.framework */; };
 		1337DB2B1D07F4140075B356 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1337DB291D07F4140075B356 /* Main.storyboard */; };
 		1337DB2E1D07F4140075B356 /* MySurveys2_0.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1337DB2C1D07F4140075B356 /* MySurveys2_0.xcdatamodeld */; };
 		1337DB301D07F4140075B356 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1337DB2F1D07F4140075B356 /* Assets.xcassets */; };
@@ -84,7 +85,6 @@
 		13F9A48A1DF962A10017C42C /* surveydetail_nav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4871DF962A10017C42C /* surveydetail_nav@2x.png */; };
 		13F9A48B1DF962A10017C42C /* surveydetail_nav@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9A4881DF962A10017C42C /* surveydetail_nav@3x.png */; };
 		41F865C8D1E68663A3B18804 /* Pods_MySurveys2_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 723EE931262C8993D768B5EC /* Pods_MySurveys2_0.framework */; };
-		5EE01F96EAF6BA7DBF08DECF /* Pods_MySurveys2_0Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61F8C1298965C694178E2456 /* Pods_MySurveys2_0Tests.framework */; };
 		7801C24E1ED6E47E009FEC59 /* surveydetail_nav_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7801C24C1ED6E47E009FEC59 /* surveydetail_nav_iPad.png */; };
 		7801C24F1ED6E47E009FEC59 /* surveydetail_nav_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7801C24D1ED6E47E009FEC59 /* surveydetail_nav_iPad@2x.png */; };
 		7803418F1EA62AF200F3CCE1 /* libOnePoint.PROM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB071DBF7F7E0066A049 /* libOnePoint.PROM.a */; };
@@ -105,6 +105,9 @@
 		782511FC202C1E4C00654236 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 782511F9202C1E4C00654236 /* tessdata */; };
 		7853A2761DB899B8005EC4D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7853A2751DB899B8005EC4D1 /* GoogleService-Info.plist */; };
 		785B8B141E1E254800F09F20 /* libOnePointFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB081DBF7F7E0066A049 /* libOnePointFramework.a */; };
+		7878854320BBD20300BFEB67 /* NSString+OPGAESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7878854220BBD20300BFEB67 /* NSString+OPGAESCrypt.m */; };
+		7878854420BBD20300BFEB67 /* NSString+OPGAESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7878854220BBD20300BFEB67 /* NSString+OPGAESCrypt.m */; };
+		7878854520BBD20300BFEB67 /* NSString+OPGAESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7878854220BBD20300BFEB67 /* NSString+OPGAESCrypt.m */; };
 		787D6B751EE676E10055C69E /* OPGConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6B741EE676E10055C69E /* OPGConstants.swift */; };
 		787D6B761EE676E10055C69E /* OPGConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6B741EE676E10055C69E /* OPGConstants.swift */; };
 		787D6B771EE676E10055C69E /* OPGConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D6B741EE676E10055C69E /* OPGConstants.swift */; };
@@ -177,7 +180,6 @@
 		78F549091DF8128B00E4EB35 /* google@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F549031DF8128B00E4EB35 /* google@1x.png */; };
 		78F5490A1DF8128B00E4EB35 /* google@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F549041DF8128B00E4EB35 /* google@2x.png */; };
 		78F5490B1DF8128B00E4EB35 /* google@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78F549051DF8128B00E4EB35 /* google@3x.png */; };
-		7C0204B32987EB22349E1648 /* Pods_MySurveys2_0UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C529F234C3941B45147E46 /* Pods_MySurveys2_0UITests.framework */; };
 		9408BAF71DBF7E9A0066A049 /* CollabrateDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408BAF61DBF7E9A0066A049 /* CollabrateDB.m */; };
 		9408BAF81DBF7E9A0066A049 /* CollabrateDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408BAF61DBF7E9A0066A049 /* CollabrateDB.m */; };
 		9408BAF91DBF7E9A0066A049 /* CollabrateDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 9408BAF61DBF7E9A0066A049 /* CollabrateDB.m */; };
@@ -290,6 +292,7 @@
 		94F07BE61DBDE3CB00EEE189 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F07BDC1DBDE3CB00EEE189 /* FBSDKShareKit.framework */; };
 		94F07BE71DBDE3CB00EEE189 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F07BDC1DBDE3CB00EEE189 /* FBSDKShareKit.framework */; };
 		94F07BE81DBDE3CB00EEE189 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F07BDC1DBDE3CB00EEE189 /* FBSDKShareKit.framework */; };
+		A2CD8DC2CA68315250446876 /* Pods_MySurveys2_0UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 922ACEFFF431DCA7518796C2 /* Pods_MySurveys2_0UITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -388,8 +391,8 @@
 		13F9A4871DF962A10017C42C /* surveydetail_nav@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "surveydetail_nav@2x.png"; path = "icons/surveydetail_nav@2x.png"; sourceTree = "<group>"; };
 		13F9A4881DF962A10017C42C /* surveydetail_nav@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "surveydetail_nav@3x.png"; path = "icons/surveydetail_nav@3x.png"; sourceTree = "<group>"; };
 		3B8517C75D5C341107BACB3F /* Pods-MySurveys2.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurveys2.0.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0.release.xcconfig"; sourceTree = "<group>"; };
-		61F8C1298965C694178E2456 /* Pods_MySurveys2_0Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveys2_0Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		638B1F2BB0BBF3C008A42B25 /* Pods-MySurveys2.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurveys2.0.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0.debug.xcconfig"; sourceTree = "<group>"; };
+		6AE13FBDA741DA96E48A9E79 /* Pods_MySurveys2_0Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveys2_0Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		723EE931262C8993D768B5EC /* Pods_MySurveys2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveys2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7801C24C1ED6E47E009FEC59 /* surveydetail_nav_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = surveydetail_nav_iPad.png; path = icons/surveydetail_nav_iPad.png; sourceTree = "<group>"; };
 		7801C24D1ED6E47E009FEC59 /* surveydetail_nav_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "surveydetail_nav_iPad@2x.png"; path = "icons/surveydetail_nav_iPad@2x.png"; sourceTree = "<group>"; };
@@ -405,6 +408,8 @@
 		782511F5202C1DD400654236 /* OCRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCRViewController.m; sourceTree = "<group>"; };
 		782511F9202C1E4C00654236 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
 		7853A2751DB899B8005EC4D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7878854120BBD20300BFEB67 /* NSString+OPGAESCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+OPGAESCrypt.h"; path = "Classes/DB Helpers/NSString+OPGAESCrypt.h"; sourceTree = "<group>"; };
+		7878854220BBD20300BFEB67 /* NSString+OPGAESCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+OPGAESCrypt.m"; path = "Classes/DB Helpers/NSString+OPGAESCrypt.m"; sourceTree = "<group>"; };
 		787D1E581E1E22120095DFFA /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		787D6B741EE676E10055C69E /* OPGConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OPGConstants.swift; path = Classes/ViewControllers/OPGConstants.swift; sourceTree = "<group>"; };
 		787D88DF1E09337800E15D22 /* number_of_times.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = number_of_times.png; path = icons/number_of_times.png; sourceTree = "<group>"; };
@@ -473,6 +478,7 @@
 		78F549041DF8128B00E4EB35 /* google@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "google@2x.png"; path = "icons/google@2x.png"; sourceTree = "<group>"; };
 		78F549051DF8128B00E4EB35 /* google@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "google@3x.png"; path = "icons/google@3x.png"; sourceTree = "<group>"; };
 		7CBA0B9BFD402AA6D35D207C /* Pods-MySurveys2.0Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurveys2.0Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySurveys2.0Tests/Pods-MySurveys2.0Tests.release.xcconfig"; sourceTree = "<group>"; };
+		922ACEFFF431DCA7518796C2 /* Pods_MySurveys2_0UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveys2_0UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9408BAF51DBF7E9A0066A049 /* CollabrateDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollabrateDB.h; path = "Classes/DB Helpers/CollabrateDB.h"; sourceTree = "<group>"; };
 		9408BAF61DBF7E9A0066A049 /* CollabrateDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollabrateDB.m; path = "Classes/DB Helpers/CollabrateDB.m"; sourceTree = "<group>"; };
 		9408BB001DBF7EFE0066A049 /* NSString+NSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+NSDate.h"; path = "Classes/DB Helpers/NSString+NSDate.h"; sourceTree = "<group>"; };
@@ -562,7 +568,6 @@
 		94F07BDB1DBDE3CB00EEE189 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = MySurveys2.0/Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		94F07BDC1DBDE3CB00EEE189 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = MySurveys2.0/Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		9D4FF392968BCD2DF3E68861 /* Pods-MySurveys2.0Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurveys2.0Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySurveys2.0Tests/Pods-MySurveys2.0Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C4C529F234C3941B45147E46 /* Pods_MySurveys2_0UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveys2_0UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FCE576E30948CCD47027A6 /* Pods-MySurveys2.0UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurveys2.0UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySurveys2.0UITests/Pods-MySurveys2.0UITests.release.xcconfig"; sourceTree = "<group>"; };
 		F580D3796F98B5CDC4980CDC /* Pods-MySurveys2.0UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurveys2.0UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySurveys2.0UITests/Pods-MySurveys2.0UITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -597,7 +602,7 @@
 				94F07BE71DBDE3CB00EEE189 /* FBSDKShareKit.framework in Frameworks */,
 				94F07BE41DBDE3CB00EEE189 /* FBSDKLoginKit.framework in Frameworks */,
 				94F07BDE1DBDE3CB00EEE189 /* Bolts.framework in Frameworks */,
-				5EE01F96EAF6BA7DBF08DECF /* Pods_MySurveys2_0Tests.framework in Frameworks */,
+				000E3F1CFABCBBDB26637FFB /* Pods_MySurveys2_0Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,7 +614,7 @@
 				94F07BE81DBDE3CB00EEE189 /* FBSDKShareKit.framework in Frameworks */,
 				94F07BE51DBDE3CB00EEE189 /* FBSDKLoginKit.framework in Frameworks */,
 				94F07BDF1DBDE3CB00EEE189 /* Bolts.framework in Frameworks */,
-				7C0204B32987EB22349E1648 /* Pods_MySurveys2_0UITests.framework in Frameworks */,
+				A2CD8DC2CA68315250446876 /* Pods_MySurveys2_0UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,8 +786,8 @@
 				136163061D1D611A005C41D0 /* CoreLocation.framework */,
 				138D33401D5B2CFF0094F439 /* libiconv.tbd */,
 				723EE931262C8993D768B5EC /* Pods_MySurveys2_0.framework */,
-				C4C529F234C3941B45147E46 /* Pods_MySurveys2_0UITests.framework */,
-				61F8C1298965C694178E2456 /* Pods_MySurveys2_0Tests.framework */,
+				6AE13FBDA741DA96E48A9E79 /* Pods_MySurveys2_0Tests.framework */,
+				922ACEFFF431DCA7518796C2 /* Pods_MySurveys2_0UITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -790,6 +795,8 @@
 		9408BAFA1DBF7E9F0066A049 /* DB Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7878854120BBD20300BFEB67 /* NSString+OPGAESCrypt.h */,
+				7878854220BBD20300BFEB67 /* NSString+OPGAESCrypt.m */,
 				9408BAF51DBF7E9A0066A049 /* CollabrateDB.h */,
 				9408BAF61DBF7E9A0066A049 /* CollabrateDB.m */,
 				9408BB001DBF7EFE0066A049 /* NSString+NSDate.h */,
@@ -1049,8 +1056,6 @@
 				1337DB351D07F4140075B356 /* Sources */,
 				1337DB361D07F4140075B356 /* Frameworks */,
 				1337DB371D07F4140075B356 /* Resources */,
-				0C67912901C7C55B6EFF89A3 /* [CP] Embed Pods Frameworks */,
-				14745B8BCD6400862D81D5A2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1070,8 +1075,6 @@
 				1337DB401D07F4140075B356 /* Sources */,
 				1337DB411D07F4140075B356 /* Frameworks */,
 				1337DB421D07F4140075B356 /* Resources */,
-				E72B831CBA1C921D20A675C1 /* [CP] Copy Pods Resources */,
-				9198D319751C11C1C7FF0360 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1336,36 +1339,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0C67912901C7C55B6EFF89A3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySurveys2.0Tests/Pods-MySurveys2.0Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		14745B8BCD6400862D81D5A2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySurveys2.0Tests/Pods-MySurveys2.0Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1568608111712FFE26DB5391 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1376,6 +1349,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/RNCryptor/RNCryptor.framework",
 				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
 				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
 			);
@@ -1384,6 +1358,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNCryptor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
 			);
@@ -1446,21 +1421,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9198D319751C11C1C7FF0360 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySurveys2.0UITests/Pods-MySurveys2.0UITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A5A3A8880276F34A0BD56B6F /* Tailor */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
@@ -1484,30 +1444,17 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/OPGFeedbackSDK/OPGFeedbackSDK/Assets/OPGResourceBundle.bundle",
-				$PODS_CONFIGURATION_BUILD_DIR/OPGFeedbackSDK/OPGFeedbackSDK.bundle,
+				"${PODS_CONFIGURATION_BUILD_DIR}/OPGFeedbackSDK/OPGFeedbackSDK.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/OPGResourceBundle.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/OPGFeedbackSDK.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E72B831CBA1C921D20A675C1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySurveys2.0UITests/Pods-MySurveys2.0UITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1522,6 +1469,7 @@
 				13CB42241FC5A46500876DC2 /* SignatureView.m in Sources */,
 				94C216E51DDF19DD004C1131 /* RootViewController.swift in Sources */,
 				94CD762E1DB4A63B00C6F958 /* SurveyViewController.swift in Sources */,
+				7878854320BBD20300BFEB67 /* NSString+OPGAESCrypt.m in Sources */,
 				78D5EA161DC36091009125A7 /* (null) in Sources */,
 				789CCFEA1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */,
 				9408BB021DBF7EFE0066A049 /* NSString+NSDate.m in Sources */,
@@ -1576,6 +1524,7 @@
 				94CD76231DB4A63B00C6F958 /* LoginViewController.swift in Sources */,
 				78E9F4CC1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */,
 				78EAFEC91DD32E56002158A1 /* ShowNotificationViewController.swift in Sources */,
+				7878854420BBD20300BFEB67 /* NSString+OPGAESCrypt.m in Sources */,
 				94CD762F1DB4A63B00C6F958 /* SurveyViewController.swift in Sources */,
 				94CD760B1DB4A5E200C6F958 /* AppDelegate.swift in Sources */,
 				94C216E61DDF19DD004C1131 /* RootViewController.swift in Sources */,
@@ -1610,6 +1559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				787D6B771EE676E10055C69E /* OPGConstants.swift in Sources */,
+				7878854520BBD20300BFEB67 /* NSString+OPGAESCrypt.m in Sources */,
 				944B88081DD04DA900960EBD /* OfflineSurveyViewController.swift in Sources */,
 				9408BAF91DBF7E9A0066A049 /* CollabrateDB.m in Sources */,
 				13CB422C1FC5A68500876DC2 /* SignatureView.m in Sources */,
@@ -1793,9 +1743,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = SplashImage;
 				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
@@ -1809,6 +1760,7 @@
 					"$(inherited)",
 					Support,
 					/usr/include/libxml2,
+					"$(SRCROOT)/Pods/**",
 				);
 				INFOPLIST_FILE = MySurveys2.0/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1822,10 +1774,10 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
+				PROVISIONING_PROFILE = "1d3d3904-fb9e-4b29-9140-bf47cc5c2d64";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1838,9 +1790,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = SplashImage;
 				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
@@ -1854,6 +1807,7 @@
 					"$(inherited)",
 					Support,
 					/usr/include/libxml2,
+					"$(SRCROOT)/Pods/**",
 				);
 				INFOPLIST_FILE = MySurveys2.0/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1867,10 +1821,10 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
+				PROVISIONING_PROFILE = "1d3d3904-fb9e-4b29-9140-bf47cc5c2d64";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
