@@ -1,0 +1,123 @@
+/* 
+  Localizable.strings
+  MySurveys2.0
+
+  Created by Chinthan on 21/10/16.
+  Copyright © 2016 OnePoint Global. All rights reserved.
+*/
+
+"AboutUs" = "Về chúng tôi";
+"Approximately" = "Xấp xỉ";
+"Are you sure you want to logout?" = "Bạn có chắc rằng bạn muốn thoát khỏi ứng dụng ?";
+"Authentication Failed" = "Xảy ra lỗi định danh";
+"Back" = "Trở về";
+"By List" = "Theo danh sách";
+"By Location" = "Theo địa điểm";
+"Cancel" = "Hủy";
+"Can't sign in. Try again." = "Không thể đăng nhập. Thử lại.";
+"Change Panel" = "Thay đổi Panel";
+"Change Password" = "Thay đổi mật khẩu";
+"Check your credentials!" = "Kiểm tra lại danh tính của bạn !";
+"Choose From Gallery" = "Lựa chọn từ Thư viện";
+"Completed" = "Đã hoàn thành";
+"Confirm Password" = "Xác nhận mật khẩu";
+"Country" = "Quốc gia";
+"Current Panel" = "Panel hiện tại";
+"Current Password does not exist" = "Mật khẩu hiện tại không tồn tại";
+"Delete" = "Xóa";
+"Done" = "Hoàn tất";
+"Download" = "Tải";
+"Downloading..." = "Đang tải ….";
+"Downloading. Please wait!" = "Đang tải. Vui lòng chờ !";
+"Downloading surveys. Please wait!" = "Đang tải khảo sát. Vui lòng chờ !";
+"E-mail Id" = "Địa chỉ email.";
+"E-mail Id does not exist" = "Địa chỉ email không tồn tại";
+"E-mail Id not found." = "Địa chỉ email không tìm thấy";
+"Edit" = "Chỉnh sửa";
+"Enter Scanned Text" = "Nhập dòng chữ đã được scan";
+"Error while uploading. Please Refresh again!" = "Xảy ra lỗi khi cập nhật. Vui lòng thử Làm mới trang lại !";
+"Forgot Password" = "Quên mật khẩu";
+"Forgot Password?" = "Quên mật khẩu?";
+"Forgot your password?" = "Quên mật khẩu của bạn?";
+"Geo location" = "Mã vị trí";
+"Got it!" = "Đã nhận được";
+"Invalid Credentials" = "Mật khẩu không hợp lệ";
+"Internal Server Error" = "Lỗi đường truyền nội bộ";
+"Location Services not enabled!" = "Chức năng tìm vị trí chưa được";
+"Login" = "Đăng nhập";
+"Login with Facebook" = "Đăng nhập với Facebook";
+"Log out" = "Đăng xuất";
+"min" = "Phút";
+"MySurveys"= "My Surveys";
+"Name" = "Tên";
+"Name is empty" = "Tên trống";
+"New" = "Mới";
+"New and Confirm passwords should be same" = "Mới và xác nhận mật khẩu phải trùng nhau";
+"New Password" = "Mật khẩu mới";
+"No items selected." = "Không có mục nào được chọn";
+"No internet connection. Please try again!" = "Không có kết nối internet. Vui lòng thử lại!";
+"No surveys available for the selected panel." = "Không có khảo sát nào có sẵn cho panel được chọn";
+"No notifications so far." = "Hiện tại chưa có thông báo nào";
+"Notifications" = "Thông báo";
+"Number of times taken" = "Số lượng lần thực hiện";
+"OK" = "OK";
+"Old Password" = "Mật khẩu cũ";
+"Old Password cannot be empty." = "Mật khẩu cũ không thể trống";
+"Old and new passwords cannot be same" = "Mật khẩu cũ và mới không thể giống nhau";
+"Oops! Unknown error. Please try again." = "Oops ! Không nhận diện được lỗi. Vui lòng thử lại.";
+"Password" = "Mật khẩu";
+"Password Change Failed" = "Thay đổi mật khẩu thất bại";
+"Password changed successfully!" = "Mật khẩu được thay đổi thành công!";
+"Password cannot be empty" = "Mật khẩu không thể trống!";
+"Pending" = "Đang trì hoãn";
+"Please confirm your new password." = "Vui lòng xác nhận mật khẩu mới.";
+"Please enable location services from device Settings to take the survey." = "Vui lòng bật dịch vụ nhận diện vị trí ở phần cài đặt thiết bị để làm khảo sát";
+"Please enter a valid e-mail ID." = "Vui lòng nhập địa chỉ email hợp lệ";
+"Please enter your e-mail ID" = "Vui lòng nhập địa chỉ email của bạn";
+"Please enter your new password." = "Vui lòng nhập mật khẩu mới";
+"Please take the survey before uploading results." = "Vui lòng làm khảo sát trước khi cập nhật kết quả";
+"Please upload offline survey results before logout." = "Vui lòng cập nhật kết quả khảo sát trước khi đăng xuất";
+"Privacy" = "Sự riêng tư";
+"Profile" = "Hồ sơ";
+"Profile image" = "Hình hồ sơ";
+"Save" = "Lưu";
+"Selected survey is not under current Panel. Please change the panel to take survey!" = "Khảo sát được chọn không nằm trong Panel hiện tại. Vui lòng thay đổi Panel để thực hiện khảo sát !";
+"Send" = "Gửi";
+"Settings" = "Cài đặt";
+"Sign in with Google" = "Đăng nhập với Google   ";
+"Sorry! You are not in survey location. So, you can not take the survey." = "Xin lỗi! Bạn không ở khu vực có khảo sát. Vì vậy bạn không thể thực hiện khảo sát ";
+"Survey" = "Khảo sát";
+"Survey not available to take" = "Khảo sát không có sẵn";
+"Success! Please check your e-mail for new password!" = "Thành công ! Vui lòng kiểm tra email của bạn để thấy mật khẩu mới !";
+"Sync in progress. Please wait!" = "Đồng bộ hóa đang diễn ra. Vui lòng chờ !";
+"Take Photo" = "Chụp hình";
+"Take Survey" = "Làm khảo sát";
+"Terms & Conditions" = "Điều khoản & điều kiện";
+"To take your location based surveys turn on ‘Geolocation’ from the App Settings" = "Để thực hiện những khảo sát liên quan đến vị trí, vui lòng bật « Định vị » trong phần Cài đặt App";
+"T&C" = "T&C";
+"Unauthorised login" = "Quyền đăng nhập không hợp lệ";
+"Unable to upload results. Please try again!" = "Không thể cập nhật kết quả. Vui lòng thử lại !";
+"Unscheduled" = "Chưa săp lịch";
+"Upload" = "Cập nhật";
+"Upload Results" = "Cập nhật kết quả";
+"Uploading" = "Đang cập nhật";
+"Uploading Offline Survey results" = "Cập nhật kết quả khảo sát Offline";
+"Username/password cannot be empty." = "Tên đăng nhập/ mật khẩu không được để trống";
+"Username/EmailID" = "Tên đăng nhập/ Địa chỉ email";
+"Version" = "Phiên bản";
+"Welcome to" = "Chào mừng bạn đã để với";
+"Welcome! You have a survey here!" = "Chào mừng ! Bạn có 1 khảo sát ở đây !";
+"We will email you a link to reset your Password" = "Chúng tôi sẽ gửi cho bạn 1 email để cài đặt lại Mật khẩu qua email";
+"You are not in this location to take the survey!" = "Bạn không ở trong vị trí này để thực hiện khảo sát !";
+"You have a survey available at this location" = "Bạn đang có sẵn 1 khảo ở khu vực này";
+
+
+
+
+
+
+
+
+
+
+

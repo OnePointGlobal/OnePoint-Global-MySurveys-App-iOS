@@ -9,8 +9,6 @@
 #import "OCRViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define PLACEHOLDER_TEXT @"Enter Scanned Text"
-
 @interface OCRViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
@@ -23,7 +21,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.textView.delegate = self;
     self.textView.editable = YES;
-    self.textView.text = PLACEHOLDER_TEXT;
+    self.textView.text = NSLocalizedString(@"Enter Scanned Text", comment: "");
     self.textView.textColor = [UIColor lightGrayColor];
     self.textView.layer.borderWidth = 1.0f;
     self.textView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
@@ -76,7 +74,7 @@
 }
 
 - (IBAction)okBtnPressed:(id)sender {
-    if ([self.textView.text isEqualToString:PLACEHOLDER_TEXT]) {
+    if ([self.textView.text isEqualToString:NSLocalizedString(@"Enter Scanned Text", comment: "")]) {
         [self.delegate processCompleted:@""];
     }
     else {
@@ -86,7 +84,7 @@
 }
 
 - (IBAction)refreshBtnPressed:(id)sender {
-    self.textView.text = PLACEHOLDER_TEXT;
+    self.textView.text = NSLocalizedString(@"Enter Scanned Text", comment: "");
     self.textView.textColor = [UIColor lightGrayColor];
     [self openCamera];
 }
@@ -107,7 +105,7 @@
 }
 
 -(void)textViewDidBeginEditing:(UITextView *)textView{
-    if([textView.text isEqualToString:PLACEHOLDER_TEXT]) {
+    if([textView.text isEqualToString:NSLocalizedString(@"Enter Scanned Text", comment: "")]) {
         self.textView.text = @"";
         self.textView.textColor = [UIColor blackColor];
     }

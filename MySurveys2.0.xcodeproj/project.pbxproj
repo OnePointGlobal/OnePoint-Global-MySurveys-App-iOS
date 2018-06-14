@@ -115,6 +115,7 @@
 		787D88E31E09337800E15D22 /* number_of_times@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787D88E01E09337800E15D22 /* number_of_times@2x.png */; };
 		787D88E41E09337800E15D22 /* number_of_times@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 787D88E11E09337800E15D22 /* number_of_times@3x.png */; };
 		78822D1E1EAA0ED500E84831 /* forgotpwd_key_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78822D1D1EAA0ED500E84831 /* forgotpwd_key_iPad.png */; };
+		7885CA3620D13138003E8E0C /* Localizable.strings in CopyFiles */ = {isa = PBXBuildFile; fileRef = 135B71081DB9FC6A00F48E94 /* Localizable.strings */; };
 		789CCFEA1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */; };
 		789CCFEB1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */; };
 		789CCFEC1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789CCFE61DC3664E00D79FA1 /* ProfileTableViewCell.swift */; };
@@ -312,6 +313,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7885CA3520D13106003E8E0C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				7885CA3620D13138003E8E0C /* Localizable.strings in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1337DB221D07F4130075B356 /* MySurveys2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySurveys2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1337DB2A1D07F4140075B356 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -396,6 +410,9 @@
 		723EE931262C8993D768B5EC /* Pods_MySurveys2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveys2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7801C24C1ED6E47E009FEC59 /* surveydetail_nav_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = surveydetail_nav_iPad.png; path = icons/surveydetail_nav_iPad.png; sourceTree = "<group>"; };
 		7801C24D1ED6E47E009FEC59 /* surveydetail_nav_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "surveydetail_nav_iPad@2x.png"; path = "icons/surveydetail_nav_iPad@2x.png"; sourceTree = "<group>"; };
+		7808187320CFA57E00C01CDC /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
+		7808187420CFA57F00C01CDC /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		7808187520CFA57F00C01CDC /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7814010E1EADDD2D00799399 /* survey_nav_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = survey_nav_iPad.png; path = icons/survey_nav_iPad.png; sourceTree = "<group>"; };
 		7814010F1EADDD2D00799399 /* survey_nav_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "survey_nav_iPad@2x.png"; path = "icons/survey_nav_iPad@2x.png"; sourceTree = "<group>"; };
 		781401121EAE02A000799399 /* profile_bg_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile_bg_iPad.png; path = icons/profile_bg_iPad.png; sourceTree = "<group>"; };
@@ -1038,6 +1055,7 @@
 				1568608111712FFE26DB5391 /* [CP] Embed Pods Frameworks */,
 				D1301DE60E8965C1FD943128 /* [CP] Copy Pods Resources */,
 				A5A3A8880276F34A0BD56B6F /* Tailor */,
+				7885CA3520D13106003E8E0C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1133,6 +1151,7 @@
 				Base,
 				ar,
 				fr,
+				vi,
 			);
 			mainGroup = 1337DB191D07F4130075B356;
 			productRefGroup = 1337DB231D07F4130075B356 /* Products */;
@@ -1597,6 +1616,7 @@
 				1337DB2A1D07F4140075B356 /* Base */,
 				78CDF6E21EC5BBC900B8C8BC /* ar */,
 				78A054E51ECC565900D81C2F /* fr */,
+				7808187320CFA57E00C01CDC /* vi */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1607,6 +1627,7 @@
 				1337DB321D07F4140075B356 /* Base */,
 				78CDF6E31EC5BBCA00B8C8BC /* ar */,
 				78A054E61ECC565A00D81C2F /* fr */,
+				7808187420CFA57F00C01CDC /* vi */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1617,6 +1638,7 @@
 				135B71071DB9FC6A00F48E94 /* Base */,
 				78CDF6E11EC5BBC900B8C8BC /* ar */,
 				78A054E71ECC565B00D81C2F /* fr */,
+				7808187520CFA57F00C01CDC /* vi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1673,7 +1695,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
@@ -1726,7 +1748,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
 				SDKROOT = iphoneos;
@@ -1745,8 +1767,8 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
@@ -1774,8 +1796,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1d3d3904-fb9e-4b29-9140-bf47cc5c2d64";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
+				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -1792,8 +1814,8 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
@@ -1821,8 +1843,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1d3d3904-fb9e-4b29-9140-bf47cc5c2d64";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
+				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
