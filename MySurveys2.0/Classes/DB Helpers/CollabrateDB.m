@@ -9,7 +9,7 @@
 #import "CollabrateDB.h"
 #import "NSString+OPGAESCrypt.h"
 
-#define AES_KEY @""
+#define AES_KEY @"65v9AhwaG7WCZC6rVV4kpfux6flQtq2hRBJu2Y5qWNw="
 
 @implementation CollabrateDB
 
