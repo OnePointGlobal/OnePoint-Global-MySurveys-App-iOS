@@ -822,6 +822,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                             dispatchQueue.async(flags: .barrier) {
                                 dataObject.downloadOfflineSurvey(self.surveyList[index] as! OPGSurvey) { [weak self] progress, survey, error in
 
+                                    // self becomes nil when logged out during script download, so DB update crashes.
+                                    if self != nil {
                                     if error != nil {
                                         let isOperating: Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
                                         print("Error in download operations \(String(describing: error?.localizedDescription))")
@@ -942,6 +944,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                                     }
                                     self?.OfflineDownloadList.append(dataObject)
                                 }
+                            }
                             }
                         }
                     }
