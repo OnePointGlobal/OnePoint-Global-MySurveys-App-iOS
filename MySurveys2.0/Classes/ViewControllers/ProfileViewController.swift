@@ -124,8 +124,8 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             let imgPath = self.getProfileImagePath()
             let fileExists = FileManager().fileExists(atPath: (imgPath))
             if fileExists {
-                //self.imageView?.image = UIImage(contentsOfFile: (imgPath))
-                self.imageView?.image = self.decryptProfileImg(imgPath: imgPath)
+                let imageToDisplay = self.decryptProfileImg(imgPath: imgPath)
+                self.imageView?.image = imageToDisplay.fixOrientation()
             }
         }
     }
@@ -486,9 +486,9 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                                 }
 
                                 //decrypt the profile image
-                               // let decryptData:NSData = self.decryptProfileImg(imgPath: self.profileImgPath!)
-                                self.imageView?.image = self.decryptProfileImg(imgPath: self.profileImgPath!)
-                                //self.imageView?.image = UIImage(contentsOfFile: self.getProfileImagePath())           // Update profile image view
+                               let imageToDisplay = self.decryptProfileImg(imgPath: self.profileImgPath!)
+                                self.imageView?.image = imageToDisplay.fixOrientation()
+
                                 if didChangeProfilePic {
                                     let fileExists = FileManager().fileExists(atPath: previousProfileImgPath!)
                                     if fileExists {

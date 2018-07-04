@@ -103,6 +103,7 @@
 		782511FA202C1E4C00654236 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 782511F9202C1E4C00654236 /* tessdata */; };
 		782511FB202C1E4C00654236 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 782511F9202C1E4C00654236 /* tessdata */; };
 		782511FC202C1E4C00654236 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 782511F9202C1E4C00654236 /* tessdata */; };
+		7843628A20E0FA7300FC735D /* TakeTrialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7843628920E0FA7300FC735D /* TakeTrialViewController.swift */; };
 		7853A2761DB899B8005EC4D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7853A2751DB899B8005EC4D1 /* GoogleService-Info.plist */; };
 		785B8B141E1E254800F09F20 /* libOnePointFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9408BB081DBF7F7E0066A049 /* libOnePointFramework.a */; };
 		7878854320BBD20300BFEB67 /* NSString+OPGAESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7878854220BBD20300BFEB67 /* NSString+OPGAESCrypt.m */; };
@@ -424,6 +425,7 @@
 		782511F4202C1DD400654236 /* OCRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCRViewController.h; sourceTree = "<group>"; };
 		782511F5202C1DD400654236 /* OCRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCRViewController.m; sourceTree = "<group>"; };
 		782511F9202C1E4C00654236 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
+		7843628920E0FA7300FC735D /* TakeTrialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TakeTrialViewController.swift; path = Classes/ViewControllers/TakeTrialViewController.swift; sourceTree = "<group>"; };
 		7853A2751DB899B8005EC4D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7878854120BBD20300BFEB67 /* NSString+OPGAESCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+OPGAESCrypt.h"; path = "Classes/DB Helpers/NSString+OPGAESCrypt.h"; sourceTree = "<group>"; };
 		7878854220BBD20300BFEB67 /* NSString+OPGAESCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+OPGAESCrypt.m"; path = "Classes/DB Helpers/NSString+OPGAESCrypt.m"; sourceTree = "<group>"; };
@@ -779,6 +781,7 @@
 				78EAFEC71DD32E56002158A1 /* ShowNotificationViewController.swift */,
 				78EAFECA1DD32E9E002158A1 /* TakeSurveyNotificationViewController.swift */,
 				78E9F4D21DDC70240004FC73 /* CountriesListViewController.swift */,
+				7843628920E0FA7300FC735D /* TakeTrialViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1486,6 +1489,7 @@
 				944B88061DD04DA900960EBD /* OfflineSurveyViewController.swift in Sources */,
 				94CD76221DB4A63B00C6F958 /* LoginViewController.swift in Sources */,
 				13CB42241FC5A46500876DC2 /* SignatureView.m in Sources */,
+				7843628A20E0FA7300FC735D /* TakeTrialViewController.swift in Sources */,
 				94C216E51DDF19DD004C1131 /* RootViewController.swift in Sources */,
 				94CD762E1DB4A63B00C6F958 /* SurveyViewController.swift in Sources */,
 				7878854320BBD20300BFEB67 /* NSString+OPGAESCrypt.m in Sources */,
@@ -1767,8 +1771,8 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
@@ -1796,8 +1800,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
+				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -1814,8 +1818,8 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
@@ -1843,8 +1847,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
+				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;

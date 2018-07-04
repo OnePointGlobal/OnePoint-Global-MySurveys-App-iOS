@@ -42,4 +42,13 @@ extension UIImage{
         }
         return nil
     }
+
+    func fixOrientation() -> UIImage {
+        if self.size.width > self.size.height {
+           return UIImage.init(cgImage: self.cgImage!, scale: self.scale, orientation: UIImageOrientation.right)
+        }
+        else {
+            return self
+        }
+    }
 }

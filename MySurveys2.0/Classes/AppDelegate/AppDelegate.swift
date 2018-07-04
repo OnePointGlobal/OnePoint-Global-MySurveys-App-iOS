@@ -16,6 +16,8 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     var window: UIWindow?
     internal var shouldRotate = false
+    let aes_key = "HiYNZFOI1S1biFnoiFFWZcPwWBnhxqhkQ1Ipyh2yG7U="
+    var surveyRef: NSString?
 
     func setAppViews() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -37,6 +39,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         let navigationController = self.window?.rootViewController as! UINavigationController
         navigationController.viewControllers = controllers as! [UIViewController]
+    }
+
+    func resetLoginRootView() {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let navController = storyBoard.instantiateViewController(withIdentifier: "NavigationController")
+        self.window?.rootViewController = navController
+        self.setAppViews()
+        self.surveyRef = nil
+        self.window?.makeKeyAndVisible()
+    }
+
+    func getSurveyRefFromEncryptedDataString(surveyRefCipherText: String) -> String{
+        var surveyRef: NSString = ""
+        let jsonString = (surveyRefCipherText.aes256Decrypt(withKey:aes_key)! as NSString)
+        let data = jsonString.data(using: String.Encoding.utf8.rawValue)
+
+        do {
+            let dict = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any]
+            print(dict as Any)
+            if (dict?.keys.contains("SurveyRef"))! {
+                surveyRef = (dict?["SurveyRef"] as? NSString)!
+            }
+            else if (dict?.keys.contains("surveyReference"))! {
+                surveyRef = (dict?["surveyReference"] as? NSString)!
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        return surveyRef as String
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -133,6 +164,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
         var googleDidHandle: Bool = false
         var facebookDidHandle: Bool = false
+
+        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        let items = (urlComponents?.queryItems)! as [NSURLQueryItem] // {name = backgroundcolor, value = red}
+
+        if surveyRef == nil {
+            // first time surveyRef is nil and it becomes nil again after completing survey
+            if (url.scheme == "mysurveys" && !(items.isEmpty)) {
+                for queryItem in items {
+                    print("Item name is \(queryItem.name)")
+                    print("Item value is \(String(describing: queryItem.value))")
+                    if queryItem.name == "SurveyRef" {
+                        surveyRef = (queryItem.value! as NSString)
+                    }
+                    else if queryItem.name == "data" {
+                        let encryptedSurveyRef: NSString = queryItem.value! as NSString
+                        surveyRef = self.getSurveyRefFromEncryptedDataString(surveyRefCipherText: encryptedSurveyRef as String) as NSString
+                    }
+                }
+
+                if surveyRef != nil {
+                    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                    let navController = storyBoard.instantiateViewController(withIdentifier: "Take_Trial")
+                    navController.modalTransitionStyle = .flipHorizontal
+                    let vc: TakeTrialViewController = navController.childViewControllers.first as! TakeTrialViewController
+                    vc.surveyReference = surveyRef
+                    self.window?.rootViewController = vc
+                    self.window?.makeKeyAndVisible()
+                }
+            }
+        }
+
         if #available(iOS 9.0, *) {
             googleDidHandle = GIDSignIn.sharedInstance().handle(url,
                                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String,
