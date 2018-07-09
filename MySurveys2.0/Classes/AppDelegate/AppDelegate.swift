@@ -186,10 +186,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 if surveyRef != nil {
                     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                     let navController = storyBoard.instantiateViewController(withIdentifier: "Take_Trial")
-                    navController.modalTransitionStyle = .flipHorizontal
-                    let vc: TakeTrialViewController = navController.childViewControllers.first as! TakeTrialViewController
+                    let vc: IntermediateTrialSurveyViewController = navController.childViewControllers.first as! IntermediateTrialSurveyViewController
                     vc.surveyReference = surveyRef
-                    self.window?.rootViewController = vc
+                    self.window?.rootViewController = navController
                     self.window?.makeKeyAndVisible()
                 }
             }
@@ -202,8 +201,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         if #available(iOS 9.0, *) {
-            facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL!,
-                                                                                          sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String!,
+            facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL?,
+                                                                                      sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String?,
                                                                                           annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         }
         return googleDidHandle || facebookDidHandle

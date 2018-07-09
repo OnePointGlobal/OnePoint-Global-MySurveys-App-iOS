@@ -11,31 +11,31 @@ import UIKit
 class TakeTrialViewController: OPGViewController, OPGSurveyDelegate {
 
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    var didSurveyComplete: Bool = false
+
     var surveyReference: NSString?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.title = NSLocalizedString("Survey", comment: "Survey")
+        let navBar = self.navigationController?.navigationBar
+        navBar?.barStyle = UIBarStyle.black
+        navBar?.tintColor = UIColor.white
+        navBar?.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.view.backgroundColor = AppTheme.appBackgroundColor()
         self.spinner.color = AppTheme.appBackgroundColor()
         self.spinner.startAnimating()
         self.surveyDelegate = self
-        self.navigationController?.navigationBar.isHidden = false
-        let backButton: UIBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
-        self.navigationItem.leftBarButtonItem = backButton
         if surveyReference != nil {
             self.loadSurvey(self.surveyReference! as String)
         }
     }
 
-
-
-    @objc func back() {
-    self.dismiss(animated: true, completion: nil) }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
 
     // MARK: - WebView methods
     func didSurveyStartLoad() {
