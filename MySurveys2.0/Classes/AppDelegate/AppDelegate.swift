@@ -166,30 +166,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         var facebookDidHandle: Bool = false
 
         let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        let items = (urlComponents?.queryItems)! as [NSURLQueryItem] // {name = backgroundcolor, value = red}
+        if urlComponents?.queryItems != nil {
+            let items = (urlComponents?.queryItems)! as [NSURLQueryItem] 
 
-        if surveyRef == nil {
-            // first time surveyRef is nil and it becomes nil again after completing survey
-            if (url.scheme == "mysurveys" && !(items.isEmpty)) {
-                for queryItem in items {
-                    print("Item name is \(queryItem.name)")
-                    print("Item value is \(String(describing: queryItem.value))")
-                    if queryItem.name == "SurveyRef" {
-                        surveyRef = (queryItem.value! as NSString)
+            if surveyRef == nil {
+                // first time surveyRef is nil and it becomes nil again after completing survey
+                if (url.scheme == "mysurveys" && !(items.isEmpty)) {
+                    for queryItem in items {
+                        print("Item name is \(queryItem.name)")
+                        print("Item value is \(String(describing: queryItem.value))")
+                        if queryItem.name == "SurveyRef" {
+                            surveyRef = (queryItem.value! as NSString)
+                        }
+                        else if queryItem.name == "data" {
+                            let encryptedSurveyRef: NSString = queryItem.value! as NSString
+                            surveyRef = self.getSurveyRefFromEncryptedDataString(surveyRefCipherText: encryptedSurveyRef as String) as NSString
+                        }
                     }
-                    else if queryItem.name == "data" {
-                        let encryptedSurveyRef: NSString = queryItem.value! as NSString
-                        surveyRef = self.getSurveyRefFromEncryptedDataString(surveyRefCipherText: encryptedSurveyRef as String) as NSString
-                    }
-                }
 
-                if surveyRef != nil {
-                    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                    let navController = storyBoard.instantiateViewController(withIdentifier: "Take_Trial")
-                    let vc: IntermediateTrialSurveyViewController = navController.childViewControllers.first as! IntermediateTrialSurveyViewController
-                    vc.surveyReference = surveyRef
-                    self.window?.rootViewController = navController
-                    self.window?.makeKeyAndVisible()
+                    if surveyRef != nil {
+                        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                        let navController = storyBoard.instantiateViewController(withIdentifier: "Take_Trial")
+                        let vc: IntermediateTrialSurveyViewController = navController.childViewControllers.first as! IntermediateTrialSurveyViewController
+                        vc.surveyReference = surveyRef
+                        self.window?.rootViewController = navController
+                        self.window?.makeKeyAndVisible()
+                    }
                 }
             }
         }
@@ -216,11 +218,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             var _: [String: AnyObject] = [UIApplicationOpenURLOptionsKey.sourceApplication.rawValue: sourceApplication as AnyObject,
                                           UIApplicationOpenURLOptionsKey.annotation.rawValue: annotation as AnyObject]
     }
-       let googleDidHandle = GIDSignIn.sharedInstance().handle(url as URL!,
+        let googleDidHandle = GIDSignIn.sharedInstance().handle(url as URL?,
                                                     sourceApplication: sourceApplication,
                                                     annotation: annotation)
 
-        let facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL!,
+        let facebookDidHandle = FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL?,
                                                     sourceApplication: sourceApplication,
                                                     annotation: annotation)
         return googleDidHandle || facebookDidHandle
