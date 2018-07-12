@@ -42,6 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func resetLoginRootView() {
+        if UIScreen.main.bounds.size.height == OPGConstants.device.iPhoneXHeight {
+            UserDefaults.standard.removeObject(forKey: "iPhoneXAdjusted")
+        }
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let navController = storyBoard.instantiateViewController(withIdentifier: "NavigationController")
         self.window?.rootViewController = navController
