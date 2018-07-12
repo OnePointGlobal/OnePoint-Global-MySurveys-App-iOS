@@ -310,6 +310,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     // Logout method clears User Defaults, unregisters for App Notifications, stops geofencing, deletes temp folder contents.
     // You will no longer be able to access any of the api via SDK after you logout.
     func logout() {
+        let isiPhoneXAdjusted: String? = UserDefaults.standard.value(forKey: "iPhoneXAdjusted") as? String
         let isSocialLogin = UserDefaults.standard.value(forKey: "isSocialLogin") as? Int
         let deviceToken: String? = UserDefaults.standard.value(forKey: "DeviceTokenID") as? String
         let panelID: String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String              //fetch the updated panelID again
@@ -340,6 +341,9 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
         if panelID != nil {
             UserDefaults.standard.set(panelID, forKey: selectedPanelID)
+        }
+        if isiPhoneXAdjusted != nil {
+            UserDefaults.standard.set(isiPhoneXAdjusted, forKey: "iPhoneXAdjusted")
         }
         UserDefaults.standard.set("0", forKey: "isUserLoggedIN")                    // 0 indicates not logged in or logout
         UserDefaults.standard.set(deviceToken, forKey: "DeviceTokenID")             // Before Logout, Re-assign DeviceTokenID as we get that only for one time

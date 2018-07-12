@@ -30,6 +30,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
     @IBOutlet weak var constarintForgotPassowrdTrailingSpace: NSLayoutConstraint!
     @IBOutlet weak var constraintLogoText: NSLayoutConstraint!
     @IBOutlet weak var constraintLogoImage: NSLayoutConstraint!
+    @IBOutlet weak var googleButtonAspectRatioConstraint: NSLayoutConstraint!
     // MARK: - Properties for viewcontroller
     var loginManager: FBSDKLoginManager?
     var bgColor: UIColor?
@@ -176,13 +177,23 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
 
     override func viewDidAppear(_ animated: Bool) {
         // iOS - CONSTARINTS CANNOT BE UPDATED FROM VIEWDIDLOAD()
-        if  UIDevice.current.userInterfaceIdiom == .pad {
-            let bounds = UIScreen.main.bounds
+        let bounds = UIScreen.main.bounds
             let width = bounds.size.width
+            let height = bounds.size.height
+        if  UIDevice.current.userInterfaceIdiom == .pad {
             if width == OPGConstants.device.iPadLandscapeWidth || width == OPGConstants.device.iPadRetinaLandscapeWidth {
                 // iPad landscape
                 self.constarintForgotPassowrdTrailingSpace.constant = 250
             }
+        }
+        else {
+            if height == OPGConstants.device.iPhoneXHeight {
+                let isiPhoneXAdjusted: String? = UserDefaults.standard.value(forKey: "iPhoneXAdjusted") as? String
+                if isiPhoneXAdjusted == nil {
+                    self.adjustiPhoneXGoogleButton()
+                }
+            }
+
         }
     }
 
@@ -416,6 +427,15 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                 break
             }
         }
+    }
+
+    func adjustiPhoneXGoogleButton() {
+        print("iPhone X Constarint Updated Succesfuly")
+        self.view.removeConstraint(self.googleButtonAspectRatioConstraint)
+        self.googleButtonAspectRatioConstraint = NSLayoutConstraint.init(item: self.googleButtonAspectRatioConstraint.firstItem as Any, attribute: self.googleButtonAspectRatioConstraint.firstAttribute, relatedBy: self.googleButtonAspectRatioConstraint.relation, toItem: self.googleButtonAspectRatioConstraint.secondItem, attribute: self.googleButtonAspectRatioConstraint.secondAttribute, multiplier: 1.1/15.0, constant: 0)
+        self.view.addConstraint(self.googleButtonAspectRatioConstraint)
+        UserDefaults.standard.set("1", forKey: "iPhoneXAdjusted")
+        self.view.layoutIfNeeded()
     }
 
     // MARK: - Navigation
