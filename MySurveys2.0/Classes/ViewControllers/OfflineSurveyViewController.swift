@@ -159,6 +159,7 @@ class OfflineSurveyViewController: RootViewController {
                     // change survey status in the present screen
                     self.lblSurveyStatus?.text = NSLocalizedString("Completed", comment: "")
                     self.setOfflineCounter()
+                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Results are Uploaded", comment: ""), alertAction: NSLocalizedString("OK", comment: ""))
                     self.btnUploadResults.isUserInteractionEnabled = true
                 }
         }

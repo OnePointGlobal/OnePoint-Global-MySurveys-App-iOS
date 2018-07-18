@@ -1,0 +1,124 @@
+/* 
+  Localizable.strings
+  MySurveys2.0
+
+  Created by Chinthan on 21/10/16.
+  Copyright © 2016 OnePoint Global. All rights reserved.
+*/
+
+"AboutUs" = "Acerca de nosotros";
+"Approximately" = "Aproximadamente";
+"Are you sure you want to logout?" = "¿Estás seguro de que querer cerrar sesión?";
+"Authentication Failed" = "Autenticación fallida";
+"Back" = "Atrás";
+"By List" = "Por lista";
+"By Location" = "Por localización";
+"Cancel" = "Cancelar";
+"Can't sign in. Try again." = "No se puede iniciar sesión. Inténtalo de nuevo.";
+"Change Panel" = "Cambiar Panel";
+"Change Password" = "Cambiar contraseña";
+"Check your credentials!" = "Verifica tus credenciales!";
+"Choose From Gallery" = "Elegir de la galería";
+"Completed" = "Completado";
+"Confirm Password" = "Confirme contraseña";
+"Country" = "País";
+"Current Panel" = "Panel actual";
+"Current Password does not exist" = "La contraseña actual no existe";
+"Delete" = "Borrar";
+"Done" = "Terminado";
+"Download" = "Descargar";
+"Downloading..." = "Descargando…";
+"Downloading. Please wait!" = "Descargando. Por favor espere !";
+"Downloading surveys. Please wait!" = "Descargando encuestas. Por favor espere !";
+"E-mail Id" = "Identificación de correo";
+"E-mail Id does not exist" = "Identificación de correo no existe";
+"E-mail Id not found." = "Identificación de correo no encontrada";
+"Edit" = "Editar";
+"Enter Scanned Text" = "Ingrese texto escaneado";
+"Error while uploading. Please Refresh again!" = "¡Error al cargar Por favor, vuelva a actualizar!";
+"Forgot Password" = "Se te olvidó la contraseña";
+"Forgot Password?" = "Se te olvidó tu contraseña ?";
+"Forgot your password?" = "¿Olvidaste tu contraseña?";
+"Geo location" = "Ubicación geográfica";
+"Got it!" = "Lo tengo !";
+"Invalid Credentials" = "Credenciales inválidas";
+"Internal Server Error" = "Error de servidor interno";
+"Location Services not enabled!" = "Servicios de ubicación no habilitados";
+"Login" = "Iniciar Sesión";
+"Login with Facebook" = "Iniciar Sesión con Facebook";
+"Log out" = "Cerrar Sesión";
+"min" = "min";
+"MySurveys"= "My Surveys";
+"Name" = "Nombre";
+"Name is empty" = "El nombre está vacío";
+"New" = "Nuevo";
+"New and Confirm passwords should be same" = "Las contraseñas nuevas y confirmadas deben ser las mismas";
+"New Password" = "Nueva contraseña";
+"No items selected." = "No hay elementos seleccionados";
+"No internet connection. Please try again!" = "Sin conexión a Internet. ¡Inténtalo de nuevo!";
+"No surveys available for the selected panel." = "No hay encuestas disponibles para el panel seleccionado.";
+"No notifications so far." = "Sin notificaciones hasta el momento.";
+"Notifications" = "Notificaciones";
+"Number of times taken" = "Número de intentos necesarios";
+"OK" = "De acuerdo";
+"Old Password" = "Contraseña anterior";
+"Old Password cannot be empty." = "La contraseña anterior no puede estar vacía.";
+"Old and new passwords cannot be same" = "Las contraseñas antiguas y nuevas no pueden ser iguales";
+"Oops! Unknown error. Please try again." = "Oops! Error desconocido. Inténtalo de nuevo.";
+"Password" = "Contraseña";
+"Password Change Failed" = "Cambio de contraseña falló";
+"Password changed successfully!" = "¡Contraseña cambiada con éxito!";
+"Password cannot be empty" = "¡La contraseña no puede estar vacía!";
+"Pending" = "Pendiente";
+"Please confirm your new password." = "Por favor confirma tu nueva contraseña";
+"Please enable location services from device Settings to take the survey." = "Habilite los servicios de ubicación desde la Configuración del dispositivo para realizar la encuesta.";
+"Please enter a valid e-mail ID." = "Por favor ingrese una identificación válida de correo electrónico.";
+"Please enter your e-mail ID" = "Por favor ingrese su ID de correo electrónico";
+"Please enter your new password." = "Por favor ingrese su nueva contraseña.";
+"Please take the survey before uploading results." = "Por favor, tome la encuesta antes de cargar los resultados.";
+"Please upload offline survey results before logout." = "Por favor, cargue los resultados de encuestas fuera de línea antes de cerrar la sesión.";
+"Privacy" = "Privacidad";
+"Profile" = "Perfil";
+"Profile image" = "Perfil de Imagen";
+"Results are Uploaded" = "Los resultados están cargados";
+"Save" = "Guardado";
+"Selected survey is not under current Panel. Please change the panel to take survey!" = "La encuesta seleccionada no está bajo el Panel actual. ¡Por favor, cambie el panel para tomar la encuesta!";
+"Send" = "Enviado";
+"Settings" = "Ajustes";
+"Sign in with Google" = "Inicia sesión con Google      ";
+"Sorry! You are not in survey location. So, you can not take the survey." = "¡Lo sentimos! No estás en la ubicación de la encuesta. Entonces, no puedes tomar la encuesta.";
+"Survey" = "Encuesta";
+"Survey not available to take" = "Encuesta no disponible";
+"Success! Please check your e-mail for new password!" = "¡Por favor revisa tu correo electrónico para obtener una nueva contraseña!";
+"Sync in progress. Please wait!" = "Sincronización en progreso. ¡Por favor espera!";
+"Take Photo" = "Tomar foto";
+"Take Survey" = "Tome la encuesta";
+"Terms & Conditions" = "Términos y condiciones";
+"To take your location based surveys turn on ‘Geolocation’ from the App Settings" = "Para acceder a las encuestas basadas en ubicación, active la opción de ¨Geolocalización¨ en la aplicación de ajustes";
+"T&C" = "T&C";
+"Unauthorised login" = "Inicio de sesión no autorizado";
+"Unable to upload results. Please try again!" = "No se pueden cargar resultados. ¡Inténtalo de nuevo!";
+"Unscheduled" = "No programado";
+"Upload" = "Cargar";
+"Upload Results" = "Cargar resultados";
+"Uploading" = "Cargando";
+"Uploading Offline Survey results" = "Cargando resultados fuera de línea ";
+"Username/password cannot be empty." = "El nombre de usuario / contraseña no puede estar vacío.";
+"Username/EmailID" = "Nombre de usuario / ID de correo electrónico";
+"Version" = "Versión";
+"Welcome to" = "Bienvenido a";
+"Welcome! You have a survey here!" = "¡Bienvenido! ¡Tienes una encuesta aquí!";
+"We will email you a link to reset your Password" = "Le enviaremos un correo electrónico con un enlace para restablecer su contraseña";
+"You are not in this location to take the survey!" = "¡No está en esta ubicación para realizar la encuesta!";
+"You have a survey available at this location" = "Usted tiene una encuesta disponible en esta ubicación";
+
+
+
+
+
+
+
+
+
+
+

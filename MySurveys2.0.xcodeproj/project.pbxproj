@@ -477,6 +477,9 @@
 		78D4C0BF1F179558002E6AF4 /* LoginBg_iPad_Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoginBg_iPad_Portrait.png; path = icons/LoginBg_iPad_Portrait.png; sourceTree = "<group>"; };
 		78D4C0C01F179558002E6AF4 /* LoginPageLogo_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoginPageLogo_iPad.png; path = icons/LoginPageLogo_iPad.png; sourceTree = "<group>"; };
 		78D4C0C11F179558002E6AF4 /* LoginPageLogo_iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LoginPageLogo_iPad@2x.png"; path = "icons/LoginPageLogo_iPad@2x.png"; sourceTree = "<group>"; };
+		78E1B9A220FC6B99007C180B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		78E1B9A320FC6BA3007C180B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		78E1B9A420FC6BB1007C180B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		78E368451DF6DF4900D14F07 /* profile_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile_default.png; path = icons/profile_default.png; sourceTree = "<group>"; };
 		78E4F2711E127099001678FB /* MySurveys2.0.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MySurveys2.0.entitlements; sourceTree = "<group>"; };
 		78E4F2721E1271FF001678FB /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -1160,6 +1163,7 @@
 				ar,
 				fr,
 				vi,
+				es,
 			);
 			mainGroup = 1337DB191D07F4130075B356;
 			productRefGroup = 1337DB231D07F4130075B356 /* Products */;
@@ -1629,6 +1633,7 @@
 				78CDF6E21EC5BBC900B8C8BC /* ar */,
 				78A054E51ECC565900D81C2F /* fr */,
 				7808187320CFA57E00C01CDC /* vi */,
+				78E1B9A220FC6B99007C180B /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1640,6 +1645,7 @@
 				78CDF6E31EC5BBCA00B8C8BC /* ar */,
 				78A054E61ECC565A00D81C2F /* fr */,
 				7808187420CFA57F00C01CDC /* vi */,
+				78E1B9A320FC6BA3007C180B /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1651,6 +1657,7 @@
 				78CDF6E11EC5BBC900B8C8BC /* ar */,
 				78A054E71ECC565B00D81C2F /* fr */,
 				7808187520CFA57F00C01CDC /* vi */,
+				78E1B9A420FC6BB1007C180B /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1779,8 +1786,8 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
@@ -1808,8 +1815,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
+				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -1826,8 +1833,8 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
@@ -1855,8 +1862,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
+				PROVISIONING_PROFILE = "504e1dd4-ba9a-47d9-97a9-6f88e297b715";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
