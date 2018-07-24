@@ -621,29 +621,32 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
 
     // This method checks if there is any offline survey results not uploaded yet.
     // It is called during the logout operation
-    func isUploadResultPending() -> Bool {
-        var surveyList: Array<Any> = []
-        let panelID: String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String
-        if panelID != nil {
-            dispatchQueue.async(flags: .barrier) {
-                surveyList = CollabrateDB.sharedInstance().getAllSurveys(panelID)
+    func allowLogout() -> Bool {
+        var contents: Array<Any>?
+        let panellistID: String = UserDefaults.standard.value(forKey: "PanelListID") as! String
+        let filemanager = FileManager.default
+        let documentsPath: String? = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
+        var offlineResultsPath = documentsPath?.appending("/Caches/OPG_SurveyCache_Completed/")
+        offlineResultsPath?.append(panellistID)
+        if filemanager.fileExists(atPath: offlineResultsPath!) {
+            do {
+            contents = try filemanager.contentsOfDirectory(atPath: offlineResultsPath!)
+            }
+            catch let error as NSError {
+                // Directory not exist, no permission, etc.
+                print(error.localizedDescription)
+                return false
             }
         }
-        if surveyList.count > 0 {
-            for survey in surveyList {
-                let surveyObj = survey as! OPGSurvey
-                if surveyObj.isOffline == 1 && surveyObj.surveyDescription == "Upload Results" {
-                    return true
-                }
-            }
+        if (contents?.count)! > 0 {
+            // Don't allow logout when offline result files still exist
             return false
         }
-        return false
+        return true
     }
 
     @objc func showAlert(sender: UIButton!) {
-        let uploadPending = self.isUploadResultPending()
-        if uploadPending {
+        if !self.allowLogout() {
             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Please upload offline survey results before logout.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
         }
         else {
