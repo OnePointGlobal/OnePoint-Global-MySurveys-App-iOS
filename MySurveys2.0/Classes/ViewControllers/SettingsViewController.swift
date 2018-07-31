@@ -78,11 +78,16 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
             tableViewCell.fillCell(items: settingItems[indexPath.row], isGeoFencing: false)
         }
         tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
-
         return tableViewCell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        var langStr = Locale.current.languageCode
+        // es code is not working with the web, temp fix for now. Refer bug #63
+        if langStr == "es" {
+            langStr = "es-es"
+        }
 
         switch indexPath.row {
         case 0:
@@ -91,19 +96,16 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
             self.performSegue(withIdentifier: "changePassword", sender: self)
 
         case 3:
-            let langStr = Locale.current.languageCode
             self.urlString = self.privacyUrl.appending(langStr!)                                           // set url to load in the next screen
             self.pageTitle = NSLocalizedString("Privacy", comment: "")
             self.performSegue(withIdentifier: "commonWebView", sender: self)
 
         case 4:
-            let langStr = Locale.current.languageCode
             self.urlString = self.tcUrl.appending(langStr!)
             self.pageTitle = NSLocalizedString("T&C", comment: "")
             self.performSegue(withIdentifier: "commonWebView", sender: self)
 
         case 5:
-            let langStr = Locale.current.languageCode
             self.urlString = self.aboutUsUrl.appending(langStr!)
             self.pageTitle = NSLocalizedString("AboutUs", comment: "")
             self.performSegue(withIdentifier: "commonWebView", sender: self)

@@ -47,7 +47,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   OPGFeedbackSDK:
-    :commit: 1423ab01fb246f24b96d0e038e56283966682e07
+    :commit: ef84bbdd1932e93cd77894d67459cd33f2f0cc48
     :git: https://github.com/OnePointGlobal/OPGFeedbackSDK.git
 
 SPEC CHECKSUMS:

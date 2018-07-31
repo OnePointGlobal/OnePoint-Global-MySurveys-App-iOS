@@ -313,7 +313,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         let isiPhoneXAdjusted: String? = UserDefaults.standard.value(forKey: "iPhoneXAdjusted") as? String
         let isSocialLogin = UserDefaults.standard.value(forKey: "isSocialLogin") as? Int
         let deviceToken: String? = UserDefaults.standard.value(forKey: "DeviceTokenID") as? String
-        let panelID: String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String              //fetch the updated panelID again
+        let panelID: String? = UserDefaults.standard.value(forKey: selectedPanelID) as? String              // fetch the updated panelID again
         let panelName: String? = UserDefaults.standard.value(forKey: selectedPanelName) as? String
         let bgImagePath: String? = AppTheme.getLoginBGImagePath()
         let logoImgPath: String? = AppTheme.getHeaderLogoImagePath()
@@ -430,7 +430,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     func encryptProfileImg(imgPath: String) {
         // Gets the profile image downloaded by SDK, converts to Data, deletes it and encryptes the Data and write to a file
         let image = UIImage(contentsOfFile: imgPath)
-        let data:Data = UIImagePNGRepresentation(image!)!
+        let data: Data = UIImagePNGRepresentation(image!)!
         self.deleteImgFromPath(path: imgPath)
         let encryptedData: Data = RNCryptor.encrypt(data: data, withPassword: "ABCD")
          do {
@@ -443,9 +443,9 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     }
 
     func decryptProfileImg(imgPath: String) -> UIImage {
-        //Gets the encrypted image Data, decrypts it and returns a UIImage out of it.
+        // Gets the encrypted image Data, decrypts it and returns a UIImage out of it.
         let imgData  = NSData(contentsOfFile: imgPath)
-        var decryptedData:Data?
+        var decryptedData: Data?
         do {
             decryptedData = try RNCryptor.decrypt(data: imgData! as Data, withPassword: "ABCD")
         }
@@ -453,7 +453,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 // Catch exception here and act accordingly
                 print("Decrypting Profile Image Data Failed")
         }
-        //let cryptor: RNCryptor
+        // let cryptor: RNCryptor
         return UIImage(data: decryptedData!)!
     }
 
@@ -489,7 +489,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                                     self.setProfileImagePath(path: mediaObj!.mediaFilePath)
                                 }
 
-                                //decrypt the profile image
+                                // decrypt the profile image
                                let imageToDisplay = self.decryptProfileImg(imgPath: self.profileImgPath!)
                                 self.imageView?.image = imageToDisplay.fixOrientation()
 
@@ -564,7 +564,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
     }
 
-    func deleteImgFromPath(path:String) {
+    func deleteImgFromPath(path: String) {
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath: path) {
             do {
@@ -583,7 +583,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let photoURL          = NSURL(fileURLWithPath: documentDirectory)
         let localPath         = photoURL.appendingPathComponent("profileimage.jpg")
-        let data              = UIImageJPEGRepresentation(image,1.0)
+        let data              = UIImageJPEGRepresentation(image, 1.0)
         let img              = UIImage(data: data!)
 
         if let compressedData: Data = img?.compressTo(1) {
@@ -619,34 +619,10 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
     }
 
-    // This method checks if there is any offline survey results not uploaded yet.
-    // It is called during the logout operation
-    func allowLogout() -> Bool {
-        var contents: Array<Any>?
-        let panellistID: String = UserDefaults.standard.value(forKey: "PanelListID") as! String
-        let filemanager = FileManager.default
-        let documentsPath: String? = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0]
-        var offlineResultsPath = documentsPath?.appending("/Caches/OPG_SurveyCache_Completed/")
-        offlineResultsPath?.append(panellistID)
-        if filemanager.fileExists(atPath: offlineResultsPath!) {
-            do {
-            contents = try filemanager.contentsOfDirectory(atPath: offlineResultsPath!)
-            }
-            catch let error as NSError {
-                // Directory not exist, no permission, etc.
-                print(error.localizedDescription)
-                return false
-            }
-        }
-        if (contents?.count)! > 0 {
-            // Don't allow logout when offline result files still exist
-            return false
-        }
-        return true
-    }
 
     @objc func showAlert(sender: UIButton!) {
-        if !self.allowLogout() {
+        let sdk = OPGSDK()
+        if sdk.isSurveyResultsPresent() {
             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Please upload offline survey results before logout.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
         }
         else {
@@ -663,7 +639,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             }
         }
     }
-    
+
     @objc func editProfile() {
         if super.isOnline() {
             if self.isEditable! {
@@ -754,8 +730,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             }
             else {
                 tableViewCell.txtValue.isEnabled=false
-                // tableViewCell.txtValue.resignFirstResponder()
-                // self.view.endEditing(true)
             }
             tableViewCell.selectionStyle = UITableViewCellSelectionStyle.none
             return tableViewCell
@@ -813,5 +787,4 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             viewController.delegate=self
         }
     }
-    
 }
