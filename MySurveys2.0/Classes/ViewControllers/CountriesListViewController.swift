@@ -135,7 +135,7 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
     @objc func cancelBtnClicked(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     func getCountryByName(name: String) -> OPGCountry {
         let opgCountry: OPGCountry = OPGCountry()
         if self.countryArray.count > 0 {
@@ -147,7 +147,6 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
         }
         return opgCountry
     }
-    
 
     // MARK: - Table view data source
      func numberOfSections(in tableView: UITableView) -> Int {

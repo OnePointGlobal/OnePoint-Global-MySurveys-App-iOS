@@ -64,9 +64,8 @@ class SurveyDetailsViewController: RootViewController {
 
         let startDateString = self.formatDate(dateString: (self.surveySelected?.startDate)!)
         let endDateString = self.formatDate(dateString: (self.surveySelected?.endDate)!)
-        
         if (startDateString == "7 Oct 2100") || (endDateString == "9 Oct 2100") {
-            lblSurveyDate?.text = NSLocalizedString("Unscheduled", comment: "")                 //temporary for unscheduled surveys
+            lblSurveyDate?.text = NSLocalizedString("Unscheduled", comment: "")                 // temporary for unscheduled surveys
         }
         else {
             let dateRange = startDateString + " - " + endDateString
@@ -76,12 +75,12 @@ class SurveyDetailsViewController: RootViewController {
         self.setBorder(view: self.approxTimeView!)
         self.view.layoutIfNeeded()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = NSLocalizedString("Back", comment: "Back")
@@ -104,45 +103,41 @@ class SurveyDetailsViewController: RootViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.locale = Locale(identifier: "en_US") 
+        dateFormatter.locale = Locale(identifier: "en_US")
         let date = dateFormatter.date(from: dateString)                   // create   date from string
         dateFormatter.dateFormat = "d MMM yyyy"
         let timeStamp = dateFormatter.string(from: date!)
         return timeStamp
     }
-    
+
     func updateSurveyPendingInDB() {
         dispatchQueue.async(flags: .barrier) {
             CollabrateDB.sharedInstance().updateSurvey(self.surveySelected?.surveyID, withStatus: "Pending", withDownloadStatus: 99)
         }
     }
-    
+
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
     }
-    
+
     override var shouldAutorotate: Bool {
         return true
     }
 
-    
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
-        if(segue.identifier == "embedTakeSurvey") {
+        if segue.identifier == "embedTakeSurvey" {
             URLCache.shared.removeAllCachedResponses()
             if let cookies = HTTPCookieStorage.shared.cookies {
                 for cookie in cookies {
                     HTTPCookieStorage.shared.deleteCookie(cookie)
                 }
             }
-            
-            let viewController : SurveyViewController = segue.destination as! SurveyViewController
+
+            let viewController: SurveyViewController = segue.destination as! SurveyViewController
             viewController.surveyReference = surveySelected?.surveyReference
             viewController.surveySelected = self.surveySelected
         }
     }
- 
-
 }

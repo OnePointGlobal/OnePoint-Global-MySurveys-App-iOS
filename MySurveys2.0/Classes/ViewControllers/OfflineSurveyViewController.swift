@@ -45,8 +45,7 @@ class OfflineSurveyViewController: RootViewController {
             self.btnTakeSurvey.setImage(UIImage(named: "surveydetail_nav.png"), for: .normal)
         }
     }
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,13 +66,7 @@ class OfflineSurveyViewController: RootViewController {
             // take from dB
             self.surveySelected = CollabrateDB.sharedInstance().getSurvey(surveyID)
             setUpViews()
-            
         }
-
-    /**    if surveyID != nil {                     thamarai changes
-            self.surveySelected = CollabrateDB.sharedInstance().getSurvey(surveyID)
-            setUpViews()
-        }  **/
         self.setOfflineCounter()
     }
 
@@ -88,7 +81,7 @@ class OfflineSurveyViewController: RootViewController {
         let borderColor = UIColor(red: 215/255.0, green: 216/255.0, blue: 217/255.0, alpha: 1.0)
         view.layer.borderColor = borderColor.cgColor
     }
-    
+
     func setUpViews() {
         btnUploadResults.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
         btnTakeTrail.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
@@ -199,17 +192,16 @@ class OfflineSurveyViewController: RootViewController {
             super.showNoInternetConnectionAlert()
         }
     }
-    
+
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
     }
-    
+
     override var shouldAutorotate: Bool {
         return true
     }
-    
+
     // MARK: - Navigation
-    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "takeOfflineSurvey" {
@@ -219,11 +211,9 @@ class OfflineSurveyViewController: RootViewController {
                     HTTPCookieStorage.shared.deleteCookie(cookie)
                 }
             }
-            
             let viewController: SurveyViewController = segue.destination as! SurveyViewController
             viewController.surveyReference = surveySelected?.surveyReference
             viewController.surveySelected = self.surveySelected
-            // viewController.delegate=self
         }
     }
 }

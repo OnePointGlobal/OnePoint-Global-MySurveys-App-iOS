@@ -16,7 +16,7 @@ class AboutUsViewController: RootViewController, UIWebViewDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var urlString: String?
     var pageTitle: String?
-    
+
     // MARK: - View Delegate Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,14 +42,11 @@ class AboutUsViewController: RootViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
     // MARK: - Webview Delegates
     func webViewDidStartLoad(_ webView: UIWebView) {
-        
     }
-    
+
     func webViewDidFinishLoad(_ webView: UIWebView) {
         self.activityIndicator.stopAnimating()
     }
-    
 }

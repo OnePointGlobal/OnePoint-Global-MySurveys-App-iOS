@@ -129,7 +129,6 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
     @objc func switchEvents(sender: AnyObject) {
         let locationManager = CLLocationManager()
         locationManager.requestAlwaysAuthorization()
-        
         let switchControl = sender as! UISwitch
         if switchControl.isOn {
             print("GeoFencing started")
@@ -162,7 +161,7 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
         let locationManager = CLLocationManager()
         self.myLocation = locationManager.location?.coordinate
         if self.myLocation != nil {
-            var arrayLocations : NSArray = []
+            var arrayLocations: NSArray = []
             dispatchQueue.async(flags: .barrier) {
                 let sdk = OPGSDK()
                 do {
@@ -172,7 +171,7 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
                             self.saveGeofenceSurveysToDB(arrayLocations as! [OPGGeofenceSurvey])
                         }
                         else {
-                            //Do nothing if there are no geo surveys for this panellist
+                            // Do nothing if there are no geo surveys for this panellist
                             print("No geofenced survey locations to monitor")
                         }
                     }
@@ -186,20 +185,19 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
                 }
             }
         }
-        
     }
 
     func saveGeofenceSurveysToDB(_ locations: [OPGGeofenceSurvey]!) {
-        let array : Array<OPGGeofenceSurvey> = (locations)!
+        let array: Array<OPGGeofenceSurvey> = (locations)!
         if (array.count) > 0 {
             dispatchQueue.async(flags: .barrier) {
                 let concurrentQueue = DispatchQueue(label: "saveGeoFenceSurveys")
                 for survey in array {
-                    concurrentQueue.sync() {
+                    concurrentQueue.sync {
                         CollabrateDB.sharedInstance().saveGeoFenceSurveys(survey)
                     }
                 }
-                concurrentQueue.sync() {
+                concurrentQueue.sync {
                     self.geofencedArrays = CollabrateDB.sharedInstance().getAllGeoFenceSurveys()
                 }
                 DispatchQueue.main.async {

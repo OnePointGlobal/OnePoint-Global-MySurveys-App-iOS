@@ -32,7 +32,7 @@ class SurveyViewController: OPGViewController, OPGSurveyDelegate {
             self.loadSurvey(self.surveyReference, panelID: panelNumber, panellistID: panellistNumber)
         }
         else {
-            self.loadOfflineSurvey(self.getScriptPath(), surveyName: self.surveySelected!.surveyName, surveyID: self.surveySelected!.surveyID , panelID: panelNumber, panellistID: panellistNumber)
+            self.loadOfflineSurvey(self.getScriptPath(), surveyName: self.surveySelected!.surveyName, surveyID: self.surveySelected!.surveyID, panelID: panelNumber, panellistID: panellistNumber)
         }
     }
 
@@ -58,11 +58,11 @@ class SurveyViewController: OPGViewController, OPGSurveyDelegate {
         return numberValue
     }
 
-    func getScriptPath() ->String {
+    func getScriptPath() -> String {
         let surveyID: NSNumber = self.surveySelected!.surveyID
         let surveyIDString = surveyID.stringValue
         let destPath: String = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0] as String
-        let scriptPath: String = (destPath.appending("/\(surveyIDString).opgs"))
+        let scriptPath: String = destPath.appending("/\(surveyIDString).opgs")
         return scriptPath
     }
 

@@ -337,7 +337,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             survey.estimatedTime = 0
             survey.deadline = ""
             survey.surveyDescription = "xyz"
-            survey.surveyID = i as NSNumber!
+            survey.surveyID = i as NSNumber?
             self.surveyFilteredList.append(survey)
         }
     }

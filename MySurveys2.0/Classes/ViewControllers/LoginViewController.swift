@@ -154,7 +154,6 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             if AppTheme.getLoginBGImagePath().isEmpty {
                 imgLoginBG?.alpha = 0.5
             }
-            
             coordinator.animate(alongsideTransition: nil, completion: { _ in
                 self.setThemeElements()
                 self.imgLoginBG?.alpha = 1.0
@@ -172,7 +171,6 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                 }
             })
         }
-        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -203,7 +201,6 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         self.setLoginControls(isInteractionEnabled: false)
         let userNameText = self.txtUsername?.text
         let passwordtext = self.txtPassword?.text
-        
         DispatchQueue.global(qos: .default).async {
             let sdk = OPGSDK()
             var authenticate: OPGAuthenticate
@@ -221,8 +218,6 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                         UserDefaults.standard.set(1, forKey: "isOperating")
                         UserDefaults.standard.set(uploadArray, forKey: "uploadSurveysArray")
                         UserDefaults.standard.set(downloadArray, forKey: "downloadSurveysArray")
-                        //UserDefaults.standard.set(self.txtUsername?.text, forKey: "Username")
-                        //UserDefaults.standard.set(self.txtPassword?.text, forKey: "Password")
                         UserDefaults.standard.synchronize()
                         self.performSegue(withIdentifier: "SurveyHome", sender: self)
                     }
@@ -350,7 +345,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
 
     func checkForLogoImgAndText() {
         let headerLogoBGImagePath: String = AppTheme.getHeaderLogoImagePath()
-        if (headerLogoBGImagePath.isEmpty) {
+        if headerLogoBGImagePath.isEmpty {
             let logoText: String = AppTheme.getLogoText()
             if logoText.isEmpty {
                 // set default logo Image
@@ -381,7 +376,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             if fileExists {
                 // set logo Image
                 self.imgLogo?.contentMode = .scaleAspectFit
-                self.imgLogo?.image = UIImage(contentsOfFile:headerLogoBGImagePath)           //set theme logo  image
+                self.imgLogo?.image = UIImage(contentsOfFile:headerLogoBGImagePath)           // set theme logo  image
                 self.imgLogo?.backgroundColor = UIColor.clear
                 self.imgLogo?.isHidden = false
                 self.lblLogoText?.isHidden = true
@@ -547,7 +542,6 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Can't sign in. Try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
             return
         }
-        
         if user.authentication.idToken.isEmpty {
             self.stopActivityIndicator()
             if super.isOnline()==false {

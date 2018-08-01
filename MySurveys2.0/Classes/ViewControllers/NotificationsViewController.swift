@@ -36,7 +36,7 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
     override func viewWillAppear(_ animated: Bool) {
         // thamarai changes
         self.notifTableView?.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-        self.notifTableView?.contentInset = UIEdgeInsetsMake(0,0,0,0);
+        self.notifTableView?.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
 
         let isOperating: Int? = UserDefaults.standard.value(forKey: "isOperating") as? Int
         let array: Array<Any>? = UserDefaults.standard.value(forKey: "downloadSurveysArray") as? Array<Any>
@@ -92,8 +92,6 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             return
         }
         for selectedItem in self.selectedIndexArray {
-//            let notifDict: NSDictionary = self.notificationArray[selectedIndex]
-//            let notifID: NSNumber = notifDict["AppNotificationID"] as! NSNumber
             DispatchQueue.global(qos: .default).sync {
                 CollabrateDB.sharedInstance().deleteNotifications(selectedItem as NSNumber)
             }

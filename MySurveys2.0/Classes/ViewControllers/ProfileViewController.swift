@@ -29,7 +29,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     var profileImgMediaID: String?
     var isEditable: Bool?
     var profileImgPath: String?
-    let aes_key = ""
 
     // MARK: - Getter Setter Methods
     func setProfileImagePath(path: String) {

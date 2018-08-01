@@ -14,7 +14,7 @@ class IntermediateTrialSurveyViewController: RootViewController, UINavigationCon
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.navigationController != nil{
+        if self.navigationController != nil {
             self.navigationController?.delegate = self 
         }
         else {

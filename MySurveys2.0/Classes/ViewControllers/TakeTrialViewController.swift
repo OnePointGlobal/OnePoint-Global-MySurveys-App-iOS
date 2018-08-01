@@ -16,7 +16,7 @@ class TakeTrialViewController: OPGViewController, OPGSurveyDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
-        //self.navigationController?.navigationBar.tintColor = UIColor.white
+        // self.navigationController?.navigationBar.tintColor = UIColor.white
         self.title = NSLocalizedString("Survey", comment: "Survey")
         let navBar = self.navigationController?.navigationBar
         navBar?.barStyle = UIBarStyle.black
