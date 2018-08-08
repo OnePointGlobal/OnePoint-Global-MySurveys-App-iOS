@@ -7,9 +7,15 @@
 */
 
 "AboutUs" = "من نحن";
+"An error occurred while changing the password." = "An error occurred while changing the password.";
+"An error occurred while downloading profile image." = "An error occurred while downloading profile image.";
+"An error occurred while trying to fetch the geofenced surveys." = "An error occurred while trying to fetch the geofenced surveys.";
+"An error occurred while trying to send an email to reset the password." = "An error occurred while trying to send an email to reset the password.";
+"An error occurred while updating the profile picture." = "An error occurred while updating the profile picture.";
 "Approximately" = "تقريبا";
 "Are you sure you want to logout?" = "هل أنت متأكد أنك تريد المغادرة؟";
 "Authentication Failed" = "فشل تسجيل الدخول";
+"Authentication Failed. Please try again" = "Authentication Failed. Please try again";
 "Back" = "رجوع";
 "By List" = "حسب القائمة";
 "By Location" = "حسب الموقع";
@@ -36,10 +42,12 @@
 "Edit" = "تغيير";
 "Enter Scanned Text" = "Enter Scanned Text";
 "Error while uploading. Please Refresh again!" = "حدث خطأ أثناء التحميل. الرجاء التحديث مرة أخرى!";
+"Facebook login failed. Please try again." = "Facebook login failed. Please try again.";
 "Forgot Password" = "نسيت كلمة السر";
 "Forgot Password?" = "هل نسيت كلمة السر؟";
 "Forgot your password?" = "هل نسيت كلمة السر الخاصة بك؟";
 "Geo location" = "الموقع الجغرافي";
+"Google Sign in failed. Please try again" = "Google Sign in failed. Please try again";
 "Got it!" = "فهمت!";
 "Invalid Credentials" = "البيانات الخاصة خاطئة";
 "Internal Server Error" = "خطأ داخلي";
@@ -88,6 +96,7 @@
 "Sign in with Google" = "تسجيل الدخول عبر جوجل   ";
 "Sorry! You are not in survey location. So, you can not take the survey." = "معذرة! أنت لست في موقع الإستطلاع. لذا، لا يمكنك إجراء الإستطلاع.";
 "Survey" = "الإستطلاع";
+"Surveys to upload" = "Surveys to upload";
 "Survey not available to take" = "الإستطلاع غير متوفر للمشاركة به";
 "Success! Please check your e-mail for new password!" = "نجاح! يرجى التحقق من بريدك الإلكتروني للحصول على كلمة مرور جديدة!";
 "Sync in progress. Please wait!" = "التحديث قيد التقدم. يرجى الانتظار!";

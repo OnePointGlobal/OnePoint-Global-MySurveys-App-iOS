@@ -7,9 +7,15 @@
 */
 
 "AboutUs" = "About Us";
+"An error occurred while changing the password." = "An error occurred while changing the password.";
+"An error occurred while downloading profile image." = "An error occurred while downloading profile image.";
+"An error occurred while trying to fetch the geofenced surveys." = "An error occurred while trying to fetch the geofenced surveys.";
+"An error occurred while trying to send an email to reset the password." = "An error occurred while trying to send an email to reset the password.";
+"An error occurred while updating the profile picture." = "An error occurred while updating the profile picture.";
 "Approximately" = "Approximately";
 "Are you sure you want to logout?" = "Are you sure you want to logout?";
 "Authentication Failed" = "Authentication Failed";
+"Authentication Failed. Please try again" = "Authentication Failed. Please try again";
 "Back" = "Back";
 "By List" = "By List";
 "By Location" = "By Location";
@@ -36,10 +42,12 @@
 "Edit" = "Edit";
 "Enter Scanned Text" = "Enter Scanned Text";
 "Error while uploading. Please Refresh again!" = "Error while uploading. Please Refresh again!";
+"Facebook login failed. Please try again." = "Facebook login failed. Please try again.";
 "Forgot Password" = "Forgot Password";
 "Forgot Password?" = "Forgot Password?";
 "Forgot your password?" = "Forgot your password?";
 "Geo location" = "Geo location";
+"Google Sign in failed. Please try again" = "Google Sign in failed. Please try again";
 "Got it!" = "Got it!";
 "Invalid Credentials" = "Invalid Credentials";
 "Internal Server Error" = "Internal Server Error";
@@ -88,6 +96,7 @@
 "Sign in with Google" = "Sign in with Google   ";
 "Sorry! You are not in survey location. So, you can not take the survey." = "Sorry! You are not in survey location. So, you can not take the survey.";
 "Survey" = "Survey";
+"Surveys to upload" = "Surveys to upload";
 "Survey not available to take" = "Survey not available to take";
 "Success! Please check your e-mail for new password!" = "Success! Please check your e-mail for new password!";
 "Sync in progress. Please wait!" = "Sync in progress. Please wait!";

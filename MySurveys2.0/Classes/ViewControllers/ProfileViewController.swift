@@ -502,14 +502,14 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                             }
                             else {
                                 self.activityIndicator?.stopAnimating()
-                                super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                                super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("An error occurred while downloading profile image.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                             }
                     }
                 }
                 catch let err as NSError {
                     print("Error: \(err)")
                     DispatchQueue.main.async {
-                            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("An error occurred while downloading profile image.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                             self.activityIndicator?.stopAnimating()
                     }
                 }
@@ -534,7 +534,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                     }
                     else {
                         self.activityIndicator?.stopAnimating()
-                        super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                        super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("An error occurred while updating the profile picture.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                     }
                 }
             }
@@ -542,7 +542,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 DispatchQueue.main.async {
                     print("Error: \(err)")
                     self.activityIndicator?.stopAnimating()
-                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: "App Name"), alertMessage: NSLocalizedString("An error occurred while updating the profile picture.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                 }
             }
 

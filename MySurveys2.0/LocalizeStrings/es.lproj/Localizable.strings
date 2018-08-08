@@ -7,9 +7,15 @@
 */
 
 "AboutUs" = "Acerca de nosotros";
+"An error occurred while changing the password." = "An error occurred while changing the password.";
+"An error occurred while downloading profile image." = "An error occurred while downloading profile image.";
+"An error occurred while trying to fetch the geofenced surveys." = "An error occurred while trying to fetch the geofenced surveys.";
+"An error occurred while trying to send an email to reset the password." = "An error occurred while trying to send an email to reset the password.";
+"An error occurred while updating the profile picture." = "An error occurred while updating the profile picture.";
 "Approximately" = "Aproximadamente";
 "Are you sure you want to logout?" = "¿Estás seguro de que querer cerrar sesión?";
 "Authentication Failed" = "Autenticación fallida";
+"Authentication Failed. Please try again" = "Authentication Failed. Please try again";
 "Back" = "Atrás";
 "By List" = "Por lista";
 "By Location" = "Por localización";
@@ -36,10 +42,12 @@
 "Edit" = "Editar";
 "Enter Scanned Text" = "Ingrese texto escaneado";
 "Error while uploading. Please Refresh again!" = "¡Error al cargar Por favor, vuelva a actualizar!";
+"Facebook login failed. Please try again." = "Facebook login failed. Please try again.";
 "Forgot Password" = "Se te olvidó la contraseña";
 "Forgot Password?" = "Se te olvidó tu contraseña?";
 "Forgot your password?" = "¿Olvidaste tu contraseña?";
 "Geo location" = "Ubicación geográfica";
+"Google Sign in failed. Please try again" = "Google Sign in failed. Please try again";
 "Got it!" = "Lo tengo !";
 "Invalid Credentials" = "Credenciales inválidas";
 "Internal Server Error" = "Error de servidor interno";
@@ -88,6 +96,7 @@
 "Sign in with Google" = "Inicia sesión con Google      ";
 "Sorry! You are not in survey location. So, you can not take the survey." = "¡Lo sentimos! No estás en la ubicación de la encuesta. Entonces, no puedes tomar la encuesta.";
 "Survey" = "Encuesta";
+"Surveys to upload" = "Surveys to upload";
 "Survey not available to take" = "Encuesta no disponible";
 "Success! Please check your e-mail for new password!" = "¡Por favor revisa tu correo electrónico para obtener una nueva contraseña!";
 "Sync in progress. Please wait!" = "Sincronización en progreso. ¡Por favor espera!";

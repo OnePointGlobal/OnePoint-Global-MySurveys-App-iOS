@@ -14,12 +14,12 @@ PODS:
   - "GoogleToolboxForMac/NSString+URLArguments (2.1.4)"
   - GTMOAuth2 (1.1.6):
     - GTMSessionFetcher (~> 1.1)
-  - GTMSessionFetcher (1.1.15):
-    - GTMSessionFetcher/Full (= 1.1.15)
-  - GTMSessionFetcher/Core (1.1.15)
-  - GTMSessionFetcher/Full (1.1.15):
-    - GTMSessionFetcher/Core (= 1.1.15)
-  - OPGFeedbackSDK (0.1.4)
+  - GTMSessionFetcher (1.2.0):
+    - GTMSessionFetcher/Full (= 1.2.0)
+  - GTMSessionFetcher/Core (1.2.0)
+  - GTMSessionFetcher/Full (1.2.0):
+    - GTMSessionFetcher/Core (= 1.2.0)
+  - OPGFeedbackSDK (0.1.5)
   - RNCryptor (5.0.3)
   - Shimmer (1.0.2)
   - TesseractOCRiOS (4.0.0)
@@ -47,15 +47,15 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   OPGFeedbackSDK:
-    :commit: ef84bbdd1932e93cd77894d67459cd33f2f0cc48
+    :commit: e18e20845a234431bdf06c1a8ede714ef5299bb9
     :git: https://github.com/OnePointGlobal/OPGFeedbackSDK.git
 
 SPEC CHECKSUMS:
   GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
-  GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
-  OPGFeedbackSDK: 553ebcc878613339b7624c223e0307dcd82284a7
+  GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
+  OPGFeedbackSDK: 5b54bfac3050563c29ca2320ad9ba61e5a9bfd92
   RNCryptor: c93d19029dcf7ff160aca0f24d6c9e7b0d82f664
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   TesseractOCRiOS: 90638afbe43d082433f2e76b384c7901d23956df

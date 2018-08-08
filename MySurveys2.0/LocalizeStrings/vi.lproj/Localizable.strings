@@ -7,9 +7,15 @@
 */
 
 "AboutUs" = "Về chúng tôi";
+"An error occurred while changing the password." = "An error occurred while changing the password.";
+"An error occurred while downloading profile image." = "An error occurred while downloading profile image.";
+"An error occurred while trying to fetch the geofenced surveys." = "An error occurred while trying to fetch the geofenced surveys.";
+"An error occurred while trying to send an email to reset the password." = "An error occurred while trying to send an email to reset the password.";
+"An error occurred while updating the profile picture." = "An error occurred while updating the profile picture.";
 "Approximately" = "Xấp xỉ";
 "Are you sure you want to logout?" = "Bạn có chắc rằng bạn muốn thoát khỏi ứng dụng ?";
 "Authentication Failed" = "Xảy ra lỗi định danh";
+"Authentication Failed. Please try again" = "Authentication Failed. Please try again";
 "Back" = "Trở về";
 "By List" = "Theo danh sách";
 "By Location" = "Theo địa điểm";
@@ -36,10 +42,12 @@
 "Edit" = "Chỉnh sửa";
 "Enter Scanned Text" = "Nhập dòng chữ đã được scan";
 "Error while uploading. Please Refresh again!" = "Xảy ra lỗi khi cập nhật. Vui lòng thử Làm mới trang lại !";
+"Facebook login failed. Please try again." = "Facebook login failed. Please try again.";
 "Forgot Password" = "Quên mật khẩu";
 "Forgot Password?" = "Quên mật khẩu?";
 "Forgot your password?" = "Quên mật khẩu của bạn?";
 "Geo location" = "Mã vị trí";
+"Google Sign in failed. Please try again" = "Google Sign in failed. Please try again";
 "Got it!" = "Đã nhận được";
 "Invalid Credentials" = "Mật khẩu không hợp lệ";
 "Internal Server Error" = "Lỗi đường truyền nội bộ";
@@ -88,6 +96,7 @@
 "Sign in with Google" = "Đăng nhập với Google   ";
 "Sorry! You are not in survey location. So, you can not take the survey." = "Xin lỗi! Bạn không ở khu vực có khảo sát. Vì vậy bạn không thể thực hiện khảo sát ";
 "Survey" = "Khảo sát";
+"Surveys to upload" = "Surveys to upload";
 "Survey not available to take" = "Khảo sát không có sẵn";
 "Success! Please check your e-mail for new password!" = "Thành công ! Vui lòng kiểm tra email của bạn để thấy mật khẩu mới !";
 "Sync in progress. Please wait!" = "Đồng bộ hóa đang diễn ra. Vui lòng chờ !";

@@ -102,7 +102,7 @@ class OfflineSurveyViewController: RootViewController {
 
         let approxString = NSLocalizedString("Approximately", comment: "") + " " + (self.surveySelected?.estimatedTime.stringValue)! + " " +  NSLocalizedString("min", comment: "")
         lblSurveyETA?.text = approxString
-        lblNumberOfTimes?.text = NSLocalizedString("Number of times taken", comment: "")
+        lblNumberOfTimes?.text = NSLocalizedString("Surveys to upload", comment: "")
         self.setBorder(view: self.dateView!)
         self.setBorder(view: self.approxTimeView!)
         self.setBorder(view: self.numberOfTimesView!)

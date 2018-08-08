@@ -232,7 +232,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                             super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Internal Server Error", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                         }
                         else {
-                            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                            super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Authentication Failed. Please try again", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                         }
                     }
                 }
@@ -241,7 +241,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                 DispatchQueue.main.async {
                     self.stopActivityIndicator()
                     self.setLoginControls(isInteractionEnabled: true)
-                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Authentication Failed. Please try again", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                 }
             }
         }
@@ -293,7 +293,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                                 super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Internal Server Error", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                             }
                             else {
-                                super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                                super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Facebook login failed. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                             }
                         }
                     }
@@ -584,7 +584,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                                     super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Internal Server Error", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                                 }
                                 else {
-                                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Google Sign in failed. Please try again", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                                 }
                                 GIDSignIn.sharedInstance().signOut()                    // Sign Out when the authentication fails
                             }

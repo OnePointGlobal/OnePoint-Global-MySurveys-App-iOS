@@ -34,7 +34,7 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
         settingItems += [NSLocalizedString("Change Panel", comment: ""), NSLocalizedString("Geo location", comment: ""), NSLocalizedString("Change Password", comment: ""), NSLocalizedString("Privacy", comment: ""), NSLocalizedString("Terms & Conditions", comment: ""), NSLocalizedString("AboutUs", comment: "")]
 
         self.settingsTableView.tableFooterView = UIView()
-        self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 2.0.9 "
+        self.lblVersion.text = NSLocalizedString("Version", comment: "") + " 2.1.0 "
         geoFence?.initialiseGeofencing()            // Ask for location permission
     }
 
@@ -179,7 +179,7 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
                 catch let err as NSError {
                     DispatchQueue.main.async {
                         print("Error: \(err)")
-                        super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                        super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("An error occurred while trying to fetch the geofenced surveys.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                         self.resetUISwitch(toStatus: false)
                     }
                 }

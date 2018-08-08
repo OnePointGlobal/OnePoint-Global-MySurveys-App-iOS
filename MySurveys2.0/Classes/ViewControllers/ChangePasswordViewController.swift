@@ -115,7 +115,7 @@ class ChangePasswordViewController: RootViewController, UITextFieldDelegate {
                                     super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Internal Server Error", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                                 }
                                 else {
-                                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: ""))
+                                    super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("An error occurred while changing the password.", comment: ""), alertAction: NSLocalizedString("OK", comment: ""))
                                 }
                             }
                     }

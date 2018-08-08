@@ -1014,7 +1014,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 catch let err as NSError {
                     DispatchQueue.main.async {
                         print("Error: \(err)")
-                        super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("Oops! Unknown error. Please try again.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
+                        super.showAlert(alertTitle: NSLocalizedString("MySurveys", comment: ""), alertMessage: NSLocalizedString("An error occurred while trying to fetch the geofenced surveys.", comment: ""), alertAction: NSLocalizedString("OK", comment: "OK"))
                     }
                 }
             }
