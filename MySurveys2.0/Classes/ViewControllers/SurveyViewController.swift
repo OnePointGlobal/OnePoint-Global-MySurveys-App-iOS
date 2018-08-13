@@ -38,7 +38,6 @@ class SurveyViewController: OPGViewController, OPGSurveyDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -68,10 +67,8 @@ class SurveyViewController: OPGViewController, OPGSurveyDelegate {
 
     func updateSurveyInDB() {
         if surveySelected?.isOffline == 0 {
-          //  CollabrateDB.sharedInstance().updateSurvey(surveySelected?.surveyID, withStatus: "Completed")                 thamarai dB
             CollabrateDB.sharedInstance().updateSurvey(surveySelected?.surveyID, withStatus: "Completed", withDownloadStatus: 2)
         } else {
-          //  CollabrateDB.sharedInstance().updateSurvey(surveySelected?.surveyID, withStatus: "Upload Results")            thamarai dB
             CollabrateDB.sharedInstance().updateSurvey(surveySelected?.surveyID, withStatus: "Upload Results", withDownloadStatus: 99)
         }
     }
@@ -92,6 +89,4 @@ class SurveyViewController: OPGViewController, OPGSurveyDelegate {
         updateSurveyInDB()
         _ = self.navigationController?.popViewController(animated: true)
     }
-
-
 }

@@ -33,7 +33,6 @@ class SurveyDetailsViewController: RootViewController {
         }
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -134,7 +133,6 @@ class SurveyDetailsViewController: RootViewController {
                     HTTPCookieStorage.shared.deleteCookie(cookie)
                 }
             }
-
             let viewController: SurveyViewController = segue.destination as! SurveyViewController
             viewController.surveyReference = surveySelected?.surveyReference
             viewController.surveySelected = self.surveySelected

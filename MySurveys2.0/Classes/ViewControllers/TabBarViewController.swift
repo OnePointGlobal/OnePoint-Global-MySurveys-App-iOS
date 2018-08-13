@@ -9,11 +9,9 @@
 import UIKit
 
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.hidesBarsOnSwipe = false
@@ -25,22 +23,17 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.items?[1].title = NSLocalizedString("Notifications", comment: "")
         self.tabBar.items?[2].title = NSLocalizedString("Settings", comment: "")
         self.tabBar.items?[3].title = NSLocalizedString("Profile", comment: "")
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-
         // self.selectedIndex = 1
         UITabBar.appearance().tintColor = AppTheme.appBackgroundColor()
         self.tabBar.tintColor = AppTheme.appBackgroundColor()
-        
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -64,7 +57,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
             self.navigationItem.title = NSLocalizedString("Notifications", comment: "")
             self.navigationItem.hidesBackButton = true
             self.navigationItem.rightBarButtonItem = nil
-
         }
         else if item == ((self.tabBar.items?[2])! as UITabBarItem) {
             // Do something if index is 1
@@ -113,5 +105,4 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
             }
         }
     }
-
 }

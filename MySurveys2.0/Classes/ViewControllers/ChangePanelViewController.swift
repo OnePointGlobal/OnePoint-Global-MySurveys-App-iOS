@@ -15,8 +15,6 @@ let tableViewCell = "panelTableViewCell"
 let selectedTheme = "SelectedTheme"
 let selectedThemeTemplateID = "selectedThemeTemplateID"
 
-
-
 class ChangePanelViewController: RootViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var panelTableView: UITableView?
     @IBOutlet weak var lblPanelname: UILabel?
@@ -62,7 +60,6 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
         } else {
             return 182.0
         }
-
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -152,7 +149,6 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
                                     }
                                 }
                             }
-
                         }
                     })
                     task.resume()
@@ -211,5 +207,4 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
 }

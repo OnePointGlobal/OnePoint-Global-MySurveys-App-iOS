@@ -9,8 +9,6 @@
 import Foundation
 import CoreLocation
 
-
-
 class SettingsViewController: RootViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     // MARK: - IBOutlets for View
     @IBOutlet weak var settingsTableView: UITableView!
@@ -41,12 +39,10 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.hidesBarsOnSwipe = false
-
         // set theme color for the switch ON tint color
         let indexPath = IndexPath(item: 1, section: 0)
         let tableViewCell: SettingsTableViewCell? = self.settingsTableView?.cellForRow(at: indexPath) as? SettingsTableViewCell
         tableViewCell?.switchControl.onTintColor = AppTheme.appBackgroundColor()
-
     }
 
     // MARK: - Table View Delegate Methods
@@ -82,13 +78,11 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         var langStr = Locale.current.languageCode
         // es code is not working with the web, temp fix for now. Refer bug #63
         if langStr == "es" {
             langStr = "es-es"
         }
-
         switch indexPath.row {
         case 0:
             self.performSegue(withIdentifier: "changePanel", sender: self)
@@ -222,6 +216,4 @@ class SettingsViewController: RootViewController, UITableViewDelegate, UITableVi
         let tableViewCell: SettingsTableViewCell? = self.settingsTableView?.cellForRow(at: indexPath) as? SettingsTableViewCell
         tableViewCell?.switchControl.setOn(toStatus, animated: true)
     }
-
-    
 }

@@ -11,7 +11,6 @@ import UIKit
 class IntermediateTrialSurveyViewController: RootViewController, UINavigationControllerDelegate {
     var surveyReference: NSString?
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.navigationController != nil {
@@ -46,9 +45,7 @@ class IntermediateTrialSurveyViewController: RootViewController, UINavigationCon
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
 
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if viewController.isEqual(self) {
@@ -61,7 +58,6 @@ class IntermediateTrialSurveyViewController: RootViewController, UINavigationCon
             self.viewWillAppear(animated)
         }
     }
-
 
     func gotoLoginPage() {
         let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate

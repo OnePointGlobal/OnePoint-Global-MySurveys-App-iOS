@@ -13,7 +13,6 @@ class SettingsTableViewCell : UITableViewCell {
     @IBOutlet weak var lblSettingsItems: UILabel!
     @IBOutlet weak var switchControl: UISwitch!
     
-    
     func fillCell(items: String, isGeoFencing: Bool)
     {
         if isGeoFencing == true {
@@ -24,7 +23,6 @@ class SettingsTableViewCell : UITableViewCell {
             } else {
                 switchControl.setOn(false, animated: true)
             }
-            
         }
         lblSettingsItems.text = items
     }

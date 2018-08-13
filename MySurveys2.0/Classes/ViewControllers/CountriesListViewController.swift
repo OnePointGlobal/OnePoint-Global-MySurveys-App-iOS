@@ -8,13 +8,11 @@
 
 import UIKit
 
-
 // protocol used for sending data back
 protocol CountryChangedDelegate: class {
     func userDidChangeCountry(newCountry: OPGCountry)
     func restoreEditMode()
 }
-
 
 class CountriesListViewController: RootViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
 
@@ -185,8 +183,8 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sectionTitle = self.indexCharacters[indexPath.section]
-            let sectionCountries = self.indexCountryDict[sectionTitle]
-            let countryName: String = sectionCountries?[indexPath.row] as! String
+        let sectionCountries = self.indexCountryDict[sectionTitle]
+        let countryName: String = sectionCountries?[indexPath.row] as! String
 
         // call this method on whichever class implements our delegate protocol
         delegate?.userDidChangeCountry(newCountry: self.getCountryByName(name: countryName))
@@ -204,5 +202,4 @@ class CountriesListViewController: RootViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
        return self.indexCharacters.index(of: title)!
     }
-
 }

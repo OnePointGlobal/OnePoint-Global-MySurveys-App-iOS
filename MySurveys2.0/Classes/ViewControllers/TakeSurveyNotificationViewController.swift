@@ -12,8 +12,6 @@ class TakeSurveyNotificationViewController: RootViewController, UITextViewDelega
 
     @IBOutlet weak var txtNotificationDesc: UITextView!
     @IBOutlet weak var btnTakeSurvey: UIButton!
-
-
     var surveyReference: NSString!
     var notificationDescription: String?
 
@@ -27,7 +25,6 @@ class TakeSurveyNotificationViewController: RootViewController, UITextViewDelega
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func takeSurveyAction(_ sender: Any) {

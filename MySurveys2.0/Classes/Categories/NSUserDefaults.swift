@@ -42,7 +42,6 @@ extension UserDefaults {
     func imageForKey(_ key: String) -> UIImage? {
         var image: UIImage?
         if let imageData = data(forKey: key) {
-            // let imData:NSData = (NSKeyedUnarchiver.unarchiveObjectWithData(imageData) as? NSData)!
             image = UIImage(data: imageData)
         }
         return image

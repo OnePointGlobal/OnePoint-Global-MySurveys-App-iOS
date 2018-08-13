@@ -28,6 +28,4 @@ class NotificationTableViewCell: UITableViewCell {
     @IBAction func selectNotification(_ sender: Any) {
         
     }
-
-
 }

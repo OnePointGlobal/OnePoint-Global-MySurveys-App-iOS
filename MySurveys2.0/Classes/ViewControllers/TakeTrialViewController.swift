@@ -33,9 +33,7 @@ class TakeTrialViewController: OPGViewController, OPGSurveyDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
 
     // MARK: - WebView methods
     func didSurveyStartLoad() {
@@ -57,6 +55,5 @@ class TakeTrialViewController: OPGViewController, OPGSurveyDelegate {
         // get a reference to the app delegate
         let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.resetLoginRootView()
-
     }
 }

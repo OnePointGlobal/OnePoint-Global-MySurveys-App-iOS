@@ -312,6 +312,4 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
             viewController.notificationDescription = self.notificationDescription
         }
     }
-
-
 }

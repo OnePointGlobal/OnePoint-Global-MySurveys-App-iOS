@@ -20,7 +20,6 @@ class SurveyTableViewCell: UITableViewCell {
     var index: IndexPath?
     var isDownloadStarted: Bool = false
 
-
     // MARK: - Localization Strings
     let download = NSLocalizedString("Downloading...", comment: "Downloading...")
     let new = NSLocalizedString("New", comment: "New")
@@ -49,7 +48,6 @@ class SurveyTableViewCell: UITableViewCell {
                     if (survey.surveyDescription == "Upload Results") || (survey.surveyDescription == "Uploading") {
                         self.btnSurveyDesc.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)
                     }
-                    
                 }
                 else if survey.isOfflineDownloaded == 1 {
                     self.btnSurveyDesc.setTitleColor(AppTheme.appBackgroundColor(), for: .normal)

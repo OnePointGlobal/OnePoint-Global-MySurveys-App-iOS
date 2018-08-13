@@ -191,7 +191,6 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
                     self.adjustiPhoneXGoogleButton()
                 }
             }
-
         }
     }
 
@@ -601,6 +600,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
     }
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        print("Google disconnected")
         // Signin
     }
 

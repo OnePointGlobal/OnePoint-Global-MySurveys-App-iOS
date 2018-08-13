@@ -233,7 +233,6 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
                         self.emailToLabelTopSpace.constant = 80.0
                         self.view.layoutIfNeeded()
                     }
-
                 }
                 else {
                     // iPhone
@@ -243,5 +242,4 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
                 }
         })
     }
-
 }

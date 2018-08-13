@@ -9,7 +9,6 @@
 import UIKit
 import RNCryptor
 
-
 class ProfileViewController: RootViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CountryChangedDelegate {
    // MARK: - IBOutlets for view
     @IBOutlet weak var imageView: UIImageView?
@@ -177,7 +176,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-
         // only for iPad
         let bounds = UIScreen.main.bounds
         let width = bounds.size.width
@@ -295,7 +293,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                                     CollabrateDB.sharedInstance().updateCountry(self.panelist?.countryName, withStd: self.panelist?.std)
                                 }
                             }
-
                         }
                     }
                 }
