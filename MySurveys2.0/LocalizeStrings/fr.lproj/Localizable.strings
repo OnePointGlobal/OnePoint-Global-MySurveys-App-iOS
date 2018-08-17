@@ -95,10 +95,10 @@
 "Settings" = "Paramètres";
 "Sign in with Google" = "Se connecter avec Google  ";
 "Sorry! You are not in survey location. So, you can not take the survey." = "Désolé ! Votre localisation ne vous permet pas de participer à ce sondage.";
+"Success! Please check your e-mail for new password!" = "Succès! Un e-mail vous a été envoyé avec un nouveau mot de passe.";
 "Survey" = "Sondage";
-"Surveys to upload" = "Surveys to upload";
+"Surveys to upload" = "Nombre de participations au sondage";
 "Survey not available to take" = "Sondage non disponible";
-"Success! Please check your e-mail for new password!" = "Succès ! Un e-mail vous a été envoyé avec un nouveau mot de passe.";
 "Sync in progress. Please wait!" = "Synchronisation en cours. Veuillez patienter!";
 "Take Photo" = "Prendre une photo";
 "Take Survey" = "Participer à un sondage";

@@ -95,10 +95,10 @@
 "Settings" = "الإعدادات";
 "Sign in with Google" = "تسجيل الدخول عبر جوجل   ";
 "Sorry! You are not in survey location. So, you can not take the survey." = "معذرة! أنت لست في موقع الإستطلاع. لذا، لا يمكنك إجراء الإستطلاع.";
-"Survey" = "الإستطلاع";
-"Surveys to upload" = "Surveys to upload";
-"Survey not available to take" = "الإستطلاع غير متوفر للمشاركة به";
 "Success! Please check your e-mail for new password!" = "نجاح! يرجى التحقق من بريدك الإلكتروني للحصول على كلمة مرور جديدة!";
+"Survey" = "الإستطلاع";
+"Surveys to upload" = "عدد العناصر التي تم أخدها";
+"Survey not available to take" = "الإستطلاع غير متوفر للمشاركة به";
 "Sync in progress. Please wait!" = "التحديث قيد التقدم. يرجى الانتظار!";
 "Take Photo" = "التقط صورة";
 "Take Survey" = "المشاركة في استطلاع الرأي";

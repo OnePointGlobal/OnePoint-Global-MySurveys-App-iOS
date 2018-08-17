@@ -15,7 +15,6 @@ extension UIImage{
         var image: UIImage?
         if bgImage != nil {
             image = UIImage(data: bgImage as! Data)!
-
         }        
         return image
     }

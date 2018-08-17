@@ -95,10 +95,10 @@
 "Settings" = "Ajustes";
 "Sign in with Google" = "Inicia sesión con Google      ";
 "Sorry! You are not in survey location. So, you can not take the survey." = "¡Lo sentimos! No estás en la ubicación de la encuesta. Entonces, no puedes tomar la encuesta.";
-"Survey" = "Encuesta";
-"Surveys to upload" = "Surveys to upload";
-"Survey not available to take" = "Encuesta no disponible";
 "Success! Please check your e-mail for new password!" = "¡Por favor revisa tu correo electrónico para obtener una nueva contraseña!";
+"Survey" = "Encuesta";
+"Surveys to upload" = "Número de intentos necesarios";
+"Survey not available to take" = "Encuesta no disponible";
 "Sync in progress. Please wait!" = "Sincronización en progreso. ¡Por favor espera!";
 "Take Photo" = "Tomar foto";
 "Take Survey" = "Tome la encuesta";

@@ -154,8 +154,8 @@
 		78D4C0C31F179559002E6AF4 /* LoginBg_iPad_Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0BF1F179558002E6AF4 /* LoginBg_iPad_Portrait.png */; };
 		78D4C0C41F179559002E6AF4 /* LoginPageLogo_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0C01F179558002E6AF4 /* LoginPageLogo_iPad.png */; };
 		78D4C0C51F179559002E6AF4 /* LoginPageLogo_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0C11F179558002E6AF4 /* LoginPageLogo_iPad@2x.png */; };
-		78D5EA161DC36091009125A7 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		78E2252D1DC3638400880AE0 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		78D5EA161DC36091009125A7 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		78E2252D1DC3638400880AE0 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		78E368461DF6DF4900D14F07 /* profile_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78E368451DF6DF4900D14F07 /* profile_default.png */; };
 		78E4F2731E1271FF001678FB /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E4F2721E1271FF001678FB /* UserNotifications.framework */; };
 		78E9F4CB1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F4CA1DDC61500004FC73 /* ProfileTableViewCountryCell.swift */; };
@@ -1122,7 +1122,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Chinthan;
 				TargetAttributes = {
 					1337DB211D07F4130075B356 = {
@@ -1376,7 +1376,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -1395,7 +1395,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		464384A78D5647FD53EA3EC5 /* [CP] Check Pods Manifest.lock */ = {
@@ -1472,7 +1472,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/OPGFeedbackSDK/OPGFeedbackSDK/Assets/OPGResourceBundle.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/OPGFeedbackSDK/OPGFeedbackSDK.bundle",
@@ -1485,7 +1485,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MySurveys2.0/Pods-MySurveys2.0-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1502,7 +1502,7 @@
 				94C216E51DDF19DD004C1131 /* RootViewController.swift in Sources */,
 				94CD762E1DB4A63B00C6F958 /* SurveyViewController.swift in Sources */,
 				7878854320BBD20300BFEB67 /* NSString+OPGAESCrypt.m in Sources */,
-				78D5EA161DC36091009125A7 /* (null) in Sources */,
+				78D5EA161DC36091009125A7 /* BuildFile in Sources */,
 				789CCFEA1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */,
 				9408BB021DBF7EFE0066A049 /* NSString+NSDate.m in Sources */,
 				94CD75FD1DB4A51E00C6F958 /* UIImage.swift in Sources */,
@@ -1524,7 +1524,7 @@
 				782511F6202C1DD400654236 /* OCRViewController.m in Sources */,
 				94CD75FB1DB4A51E00C6F958 /* UIColor.swift in Sources */,
 				946474A61DBE497A00016F2C /* SettingsViewController.swift in Sources */,
-				78E2252D1DC3638400880AE0 /* (null) in Sources */,
+				78E2252D1DC3638400880AE0 /* BuildFile in Sources */,
 				94CD761A1DB4A63B00C6F958 /* AboutUsViewController.swift in Sources */,
 				78EAFEC51DD302CC002158A1 /* NotificationTableViewCell.swift in Sources */,
 				135011FB201EFAAC0043EE6F /* CurrencyPlugin.m in Sources */,
@@ -1679,12 +1679,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1738,12 +1740,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1783,11 +1787,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = SplashImage;
-				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
@@ -1815,8 +1819,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0cd3b85d-09ba-4cbf-b2d8-ece63dd31df8";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
+				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -1830,11 +1834,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = SplashImage;
-				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OnePoint Surveys Ltd (7FK8U2PHL6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
@@ -1862,8 +1866,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0cd3b85d-09ba-4cbf-b2d8-ece63dd31df8";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys2017;
+				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
+				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;

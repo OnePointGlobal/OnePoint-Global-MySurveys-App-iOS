@@ -26,7 +26,7 @@ PODS:
 
 DEPENDENCIES:
   - GoogleSignIn
-  - OPGFeedbackSDK (from `https://github.com/OnePointGlobal/OPGFeedbackSDK.git`)
+  - OPGFeedbackSDK
   - RNCryptor (~> 5.0)
   - Shimmer
   - TesseractOCRiOS (= 4.0.0)
@@ -37,18 +37,10 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GTMOAuth2
     - GTMSessionFetcher
+    - OPGFeedbackSDK
     - RNCryptor
     - Shimmer
     - TesseractOCRiOS
-
-EXTERNAL SOURCES:
-  OPGFeedbackSDK:
-    :git: https://github.com/OnePointGlobal/OPGFeedbackSDK.git
-
-CHECKOUT OPTIONS:
-  OPGFeedbackSDK:
-    :commit: e18e20845a234431bdf06c1a8ede714ef5299bb9
-    :git: https://github.com/OnePointGlobal/OPGFeedbackSDK.git
 
 SPEC CHECKSUMS:
   GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
@@ -60,6 +52,6 @@ SPEC CHECKSUMS:
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   TesseractOCRiOS: 90638afbe43d082433f2e76b384c7901d23956df
 
-PODFILE CHECKSUM: 8b466fc3d30338ba2280bfe26f6e767fa4a7cd7b
+PODFILE CHECKSUM: 769e440eaccc896a51f173867cdd6ec45b79c07b
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.1

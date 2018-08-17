@@ -8,7 +8,7 @@ target 'MySurveys2.0' do
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 pod 'GoogleSignIn'
-pod 'OPGFeedbackSDK', :git => 'https://github.com/OnePointGlobal/OPGFeedbackSDK.git'
+pod 'OPGFeedbackSDK'
 pod 'Shimmer'
 pod 'TesseractOCRiOS', '4.0.0'
 pod 'RNCryptor', '~> 5.0'
