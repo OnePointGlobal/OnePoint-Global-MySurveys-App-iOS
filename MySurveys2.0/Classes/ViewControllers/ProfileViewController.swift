@@ -191,7 +191,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
     }
 
 
-    // MARK: - Generic Private methods
+    // MARK: - UI methods
     func configureUI() {
         let bounds = UIScreen.main.bounds
         let height = bounds.size.height
@@ -211,31 +211,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
     }
 
-    func hideKeyboard() {
-        let indexPath = IndexPath(item: 0, section: 0)
-            let tableViewCell: ProfileTableViewCell? = self.tableview?.cellForRow(at: indexPath) as? ProfileTableViewCell
-            if tableViewCell != nil {
-                tableViewCell?.txtValue.resignFirstResponder()
-            }
-    }
-
-
-    func openGallery() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = false
-        imagePicker.delegate=self
-        imagePicker.sourceType =  .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
-    }
-
-    func openCamera() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = false
-        imagePicker.delegate=self
-        imagePicker.sourceType =  .camera
-        present(imagePicker, animated: true, completion: nil)
-    }
-
     func circularImage(_ photoImageView: UIImageView?) {
         // photoImageView!.layer.frame = photoImageView!.layer.frame.insetBy(dx: 0, dy: 0)
         photoImageView!.layer.borderColor = UIColor.gray.cgColor
@@ -245,6 +220,18 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         photoImageView!.layer.borderWidth = 0.5
         photoImageView!.contentMode = UIViewContentMode.scaleAspectFill
     }
+
+
+    // MARK: - Generic Private methods
+    func hideKeyboard() {
+        let indexPath = IndexPath(item: 0, section: 0)
+            let tableViewCell: ProfileTableViewCell? = self.tableview?.cellForRow(at: indexPath) as? ProfileTableViewCell
+            if tableViewCell != nil {
+                tableViewCell?.txtValue.resignFirstResponder()
+            }
+    }
+
+
 
     // This method updates the panellist profile after editing
     func updateProfile() {
@@ -423,34 +410,17 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         }
     }
 
-    func encryptProfileImg(imgPath: String) {
-        // Gets the profile image downloaded by SDK, converts to Data, deletes it and encryptes the Data and write to a file
-        let image = UIImage(contentsOfFile: imgPath)
-        let data: Data = UIImagePNGRepresentation(image!)!
-        self.deleteImgFromPath(path: imgPath)
-        let encryptedData: Data = RNCryptor.encrypt(data: data, withPassword: "ABCD")
-         do {
-            try encryptedData.write(to: URL(fileURLWithPath: imgPath), options: Data.WritingOptions.atomic)
+    func removeProfilePic() {
+        print("Profile Picture Removed")
+        // Set default image
+        DispatchQueue.main.async {
+            self.imageView?.image = UIImage(named: "profile_default.png")
+            self.imageView?.setNeedsDisplay()
         }
-        catch {
-                // Catch exception here and act accordingly
-                print("Writing Encrypted Profile Image Data Failed")
-        }
-    }
-
-    func decryptProfileImg(imgPath: String) -> UIImage {
-        // Gets the encrypted image Data, decrypts it and returns a UIImage out of it.
-        let imgData  = NSData(contentsOfFile: imgPath)
-        var decryptedData: Data?
-        do {
-            decryptedData = try RNCryptor.decrypt(data: imgData! as Data, withPassword: "ABCD")
-        }
-        catch {
-                // Catch exception here and act accordingly
-                print("Decrypting Profile Image Data Failed")
-        }
-        // let cryptor: RNCryptor
-        return UIImage(data: decryptedData!)!
+        self.updatePanellistProfileWithMedia(mediaID: "0")
+        let profileImgPath = self.getProfileImagePath()
+        self.deleteImgFromPath(path: profileImgPath)
+        UserDefaults.standard.removeObject(forKey: "profileImagePath")
     }
 
     // This method downloads the profile picture of the panellist
@@ -565,11 +535,41 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
         if fileManager.fileExists(atPath: path) {
             do {
                 try fileManager.removeItem(atPath: path)
+                print("Profile Image Deleted")
             }
             catch let error as NSError {
                 print("Ooops! Something went wrong in deleting Image from path specified: \(error)")
             }
         }
+    }
+
+    // MARK: - Encryption/ Decyption Methods
+    func encryptProfileImg(imgPath: String) {
+        // Gets the profile image downloaded by SDK, converts to Data, deletes it and encryptes the Data and write to a file
+        let image = UIImage(contentsOfFile: imgPath)
+        let data: Data = UIImagePNGRepresentation(image!)!
+        self.deleteImgFromPath(path: imgPath)
+        let encryptedData: Data = RNCryptor.encrypt(data: data, withPassword: "ABCD")
+         do {
+            try encryptedData.write(to: URL(fileURLWithPath: imgPath), options: Data.WritingOptions.atomic)
+        }
+        catch {
+                print("Writing Encrypted Profile Image Data Failed")
+        }
+    }
+
+    func decryptProfileImg(imgPath: String) -> UIImage {
+        // Gets the encrypted image Data, decrypts it and returns a UIImage out of it.
+        let imgData  = NSData(contentsOfFile: imgPath)
+        var decryptedData: Data?
+        do {
+            decryptedData = try RNCryptor.decrypt(data: imgData! as Data, withPassword: "ABCD")
+        }
+        catch {
+                print("Decrypting Profile Image Data Failed")
+        }
+        // let cryptor: RNCryptor
+        return UIImage(data: decryptedData!)!
     }
 
     // MARK: - Image Picker Delegates
@@ -587,7 +587,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 try compressedData.write(to: localPath!, options: Data.WritingOptions.atomic)
             }
             catch {
-                // Catch exception here and act accordingly
+                // Catch exception here
             }
             if !((localPath?.absoluteString.isEmpty)!) {
                 self.activityIndicator?.startAnimating()
@@ -595,6 +595,22 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             }
         }
         self.dismiss(animated: true, completion: nil)
+    }
+
+        func openGallery() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = false
+        imagePicker.delegate=self
+        imagePicker.sourceType =  .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+
+    func openCamera() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = false
+        imagePicker.delegate=self
+        imagePicker.sourceType =  .camera
+        present(imagePicker, animated: true, completion: nil)
     }
 
     // MARK: - IBOutlet Action methods
@@ -606,6 +622,9 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             }))
             alert.addAction(UIAlertAction(title: NSLocalizedString("Choose From Gallery", comment: "gallery"), style: UIAlertActionStyle.default, handler: {
                 action in self.openGallery()
+            }))
+            alert.addAction(UIAlertAction(title: "Remove Photo", style: UIAlertActionStyle.default, handler: {
+                action in self.removeProfilePic()
             }))
             alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.destructive, handler: nil))
             self.present(alert, animated: true, completion: nil)

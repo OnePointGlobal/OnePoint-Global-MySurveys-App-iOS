@@ -308,27 +308,30 @@
         PanellistProfile *profile =[[PanellistProfile alloc]init];
 
         profile.PanellistID = [NSNumber numberWithInt:32];
-        profile.Title = [profileDetails.title AES256EncryptWithKey:AES_KEY];
+        profile.Title = profileDetails.title;
         profile.Website = @"www";
         if (![profileDetails.firstName isKindOfClass:[NSNull class]]&& profileDetails.firstName !=nil) {
-            profile.FirstName=[[profileDetails.firstName stringByReplacingOccurrencesOfString:@"'" withString:@"''"] AES256EncryptWithKey:AES_KEY];
+            //profile.FirstName=[[profileDetails.firstName stringByReplacingOccurrencesOfString:@"'" withString:@"''"] AES256EncryptWithKey:AES_KEY];
+            profile.FirstName=[profileDetails.firstName stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
         }
         if (![profileDetails.lastName isKindOfClass:[NSNull class]] && profileDetails.lastName !=nil) {
-            profile.LastName=[[profileDetails.lastName stringByReplacingOccurrencesOfString:@"'" withString:@"''"] AES256EncryptWithKey:AES_KEY];
+            //profile.LastName=[[profileDetails.lastName stringByReplacingOccurrencesOfString:@"'" withString:@"''"] AES256EncryptWithKey:AES_KEY];
+            profile.LastName=[profileDetails.lastName stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
         }
-        profile.UserName = [[NSString stringWithFormat:@"%@ %@",profileDetails.firstName,profileDetails.lastName] AES256EncryptWithKey:AES_KEY];
-        profile.Email = [profileDetails.email AES256EncryptWithKey:AES_KEY];
-        profile.MobileNumber = [profileDetails.mobileNumber AES256EncryptWithKey:AES_KEY];
-        profile.Password = [@"1234" AES256EncryptWithKey:AES_KEY];
+        profile.Email = profileDetails.email;
+        //profile.Email = [profileDetails.email AES256EncryptWithKey:AES_KEY];
+        profile.UserName = [NSString stringWithFormat:@"%@ %@",profileDetails.firstName,profileDetails.lastName];
+        profile.MobileNumber = profileDetails.mobileNumber;
+        profile.Password = @"1234";
         profile.PasswordLastUpdated=[NSString stringToDate:@"12-12-2012"];
         profile.DOB=[NSString stringToDate:profileDetails.DOB];
-        if (![profileDetails.address1 isKindOfClass:[NSNull class]] && profileDetails.address1 !=nil) {
-            profile.Address1=[[profileDetails.address1 stringByReplacingOccurrencesOfString:@"'" withString:@"''"] AES256EncryptWithKey:AES_KEY];
+       if (![profileDetails.address1 isKindOfClass:[NSNull class]] && profileDetails.address1 !=nil) {
+            profile.Address1=[profileDetails.address1 stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
         }
         if (![profileDetails.address2 isKindOfClass:[NSNull class]] && profileDetails.address2 !=nil) {
-            profile.Address2=[[profileDetails.address2 stringByReplacingOccurrencesOfString:@"'" withString:@"''"] AES256EncryptWithKey:AES_KEY];
+            profile.Address2=[profileDetails.address2 stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
         }
-        profile.PostalCode = [profileDetails.postalCode AES256EncryptWithKey:AES_KEY];
+        profile.PostalCode = profileDetails.postalCode;
         profile.GeoLocation = @"Bangalore";
         profile.MediaID = profileDetails.mediaID;
         profile.CountryCode = [NSNumber numberWithInt:23];
@@ -337,13 +340,12 @@
         profile.IsDeleted = [NSNumber numberWithInt:1];
         profile.CreatedDate = [NSString stringToDate:@"12-12-2012"];
         profile.LastUpdatedDate = [NSString stringToDate:@"12-12-2012"];
-        profile.SearchTag = [@"SearchTag" AES256EncryptWithKey:AES_KEY];
+        profile.SearchTag = @"SearchTag";
         profile.Remark = @"Remark";
         profile.Gender = profileDetails.gender;
         profile.MaritalStatus = [NSNumber numberWithInt:1] ;
         profile.isGenderSpecified = [[NSNumber numberWithInt:1] boolValue];
         profile.isMaritalStatusSpecified = [[NSNumber numberWithInt:1] boolValue];
-        
         profile.IsNew = [[NSNumber numberWithInt:1] boolValue];
         [panelPanellistFactory Save:profile];
     }
@@ -359,9 +361,12 @@
 
         for (PanellistProfile *ppanellist in panellistProfileArray)
         {
-            panllistProfile.firstName = [ppanellist.FirstName AES256DecryptWithKey:AES_KEY];
-            panllistProfile.lastName = [ppanellist.LastName AES256DecryptWithKey:AES_KEY];
-            panllistProfile.email = [ppanellist.Email AES256DecryptWithKey:AES_KEY];
+//            panllistProfile.firstName = [ppanellist.FirstName AES256DecryptWithKey:AES_KEY];
+//            panllistProfile.lastName = [ppanellist.LastName AES256DecryptWithKey:AES_KEY];
+//            panllistProfile.email = [ppanellist.Email AES256DecryptWithKey:AES_KEY];
+            panllistProfile.firstName = ppanellist.FirstName;
+            panllistProfile.lastName = ppanellist.LastName;
+            panllistProfile.email = ppanellist.Email;
             panllistProfile.postalCode = ppanellist.PostalCode;
             panllistProfile.mediaID = ppanellist.MediaID.description;
             panllistProfile.gender = ppanellist.Gender;
