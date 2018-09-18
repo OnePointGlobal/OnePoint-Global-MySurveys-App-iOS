@@ -21,7 +21,7 @@ class SurveyViewController: OPGViewController, OPGSurveyDelegate {
         self.spinner.color = AppTheme.appBackgroundColor()
         self.spinner.startAnimating()
         self.surveyDelegate = self
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem?.title = NSLocalizedString("Back", comment: "Back")
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem?.title = NSLocalizedString("Back", comment: "")
 
         self.panelIdStr = UserDefaults.standard.value(forKey: "SelectedPanelID") as? String
         self.panellistIdStr  = UserDefaults.standard.value(forKey: "PanelListID") as? String

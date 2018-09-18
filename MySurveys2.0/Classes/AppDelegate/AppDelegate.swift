@@ -53,9 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window?.makeKeyAndVisible()
     }
 
-    func getSurveyRefFromEncryptedDataString(surveyRefCipherText: String) -> String{
+    func getSurveyRefFromEncryptedDataString(surveyRefCipherText: String) -> String {
         var surveyRef: NSString = ""
-        let jsonString = (surveyRefCipherText.aes256Decrypt(withKey:aes_key)! as NSString)
+        let jsonString = (surveyRefCipherText.aes256Decrypt(withKey: aes_key)! as NSString)
         let data = jsonString.data(using: String.Encoding.utf8.rawValue)
 
         do {
@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UIApplication.shared.applicationIconBadgeNumber = 0
         self.setAppViews()
         OPGSDK.setAppVersion(OPGConstants.sdk.AppVersion)
-        OPGSDK.initialize(withUserName: OPGConstants.sdk.Username, withSDKKey:OPGConstants.sdk.SharedKey)
+        OPGSDK.initialize(withUserName: OPGConstants.sdk.Username, withSDKKey: OPGConstants.sdk.SharedKey)
         self.registerForPushNotifications(application: application)
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
@@ -188,6 +188,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     }
 
                     if surveyRef != nil {
+                        OPGSDK.initialize(withUserName: "mobile.devtest", withSDKKey: "45c542c6-7130-4a98-b7c4-46fb5f9ef54f")
+
                         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                         let navController = storyBoard.instantiateViewController(withIdentifier: "Take_Trial")
                         let vc: IntermediateTrialSurveyViewController = navController.childViewControllers.first as! IntermediateTrialSurveyViewController

@@ -12,9 +12,7 @@ import UserNotifications
 import CoreLocation
 import Shimmer
 
-
 let dispatchQueue = DispatchQueue(label: "com.dispatchQueue.barrier")
-
 let geoFence = OPGGeoFence.sharedInstance()
 
 class MyPointAnnotation : MKPointAnnotation {
@@ -33,7 +31,6 @@ extension UIImage{
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image!
-        
     }
 }
 
@@ -69,12 +66,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     var surveyGeoAvailable: Array<Any> = []
     var surveyListGeoArray: Array<Any> = []
     var arrayOfDownloadingScripts: Array<Int> = []
-
     var surveyReference: NSString?
     var surveyStatus: NSString?
     var surveySelected: OPGSurvey?
     var isOfflineDownloaded: [Int] = []
-    
     var bannerView: OPGNotificationView?
     var noGeoFenceView: UIView?
     var isAppKilled: Bool = false
@@ -85,10 +80,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
     var bannerTitle: NSString?             //class var to show during orientation transition
     var previousPresnetedCell:Int = 0
 
+
     // MARK: - ViewController LifeCycle Methods
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         geoFence?.fencingDelegate = self
@@ -143,7 +136,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 self.setThemeForViews()
             }
         }
-        
         self.setNavigationBarTheme()
         
         // monitor geofencing again after app kill and reopen
@@ -157,12 +149,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 }
             }
         }
-//        self.locationManager.delegate = self
-//        self.locationManager.startMonitoringSignificantLocationChanges()
-//        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        self.locationManager.distanceFilter = 100
-
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -262,8 +248,10 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         self.setThemeBGImage()
     }
 
-
-    //This method uploads the offline survey results and shows the progress of upload.
+    /**
+    This method uploads the offline survey results and shows the progress of upload.
+    - parameter notification: Notification containing the upload progress in percentage, survey reference and number of file uploads pending.
+    */
     @objc func uploadSurveyResults(_ notification: NSNotification) {
         guard let userInfo = notification.userInfo,
             let percentage  = userInfo["percentage"] as? Float,
@@ -282,7 +270,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
                 }
                 else {
                     tableViewCell = self.tableViewGeoFenced?.cellForRow(at: indexPath) as? SurveyTableViewCell
-
                 }
                 if (tableViewCell != nil) {
                     tableViewCell?.progressBar?.progress = percentage
@@ -324,7 +311,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         self.segmentedControl.subviews[1].tintColor = AppTheme.appBackgroundColor()
 
     }
-    
+
+    /// This is to show empty labels for a survey when the app is fetching data from server after login/ refresh
     func createDummySurveyList() {
         self.surveyFilteredList.removeAll()
         let survey = OPGSurvey()
@@ -341,7 +329,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             self.surveyFilteredList.append(survey)
         }
     }
-    
+
+    /// This is called after Login/ Refresh to call the server and get data
     func performAPIOperations() {
         let blockOperationPanles = BlockOperation {
             self.getPanellistPanels()
@@ -640,18 +629,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
             }
         }
     }
-    
-//    func checkForGeoFencing() {
-//        for i in 0 ..< surveyList.count {
-//            let survey: OPGSurvey = surveyList[i] as! OPGSurvey
-//            if survey.isGeoFencing == 1 {
-//                UserDefaults.standard.set(true, forKey: "isGeoFencingAvailable")
-//                return
-//            }
-//        }
-//        UserDefaults.standard.set(false, forKey: "isGeoFencingAvailable")
-//        
-//    }
 
     func checkIfPanelExists(panelsArray: Array<OPGPanel>, panelID: String?) -> OPGPanel? {
         if panelID != nil {
@@ -991,7 +968,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
     }
 
-    // Called only during refresh action
+    /// Called only during refresh action
     func getGeofencedSurveys() {
         let locationManager = CLLocationManager()
         self.myLocation = locationManager.location?.coordinate
@@ -1078,7 +1055,13 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
         return surveysToUpload
     }
-    
+
+    /**
+    Method to upload offline survey results.
+    - parameter surveyID: Survey ID of the survey to be uploaded
+    - parameter panellistID: Panellist ID of the respondent
+    - returns: A boolean value indicating the status of result upload.
+    */
     func uploadOfflineSurveys(surveyID: NSNumber, panellistID:String?) -> Bool {
         let sdk = OPGSDK()
         let panellistID: String? = UserDefaults.standard.value(forKey: "PanelListID") as? String
@@ -1112,7 +1095,8 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         )
         
     }
-    
+
+    /// Displays a banner during Refresh/ Login about the survey download progress
     func showBanner(progressTitle: String) {
         self.bannerTitle = progressTitle as NSString?
         self.bannerView = OPGNotificationView()
@@ -1182,7 +1166,7 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         
     }
 
-
+    /// Uploads any offline survey if not uploaded, deletes Db and fetches the latest data from server.
     @objc func refreshButtonAction() {
         let array: Array<Any>? = UserDefaults.standard.value(forKey: "downloadSurveysArray") as? Array<Any>
         if (array?.count)! > 0 {
@@ -1319,24 +1303,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         return nil
     }
 
-//    func runThroughAddressAnnontationGeoFenceSurvey(_ address: String) -> OPGGeofenceSurvey {
-//        let surv = OPGGeofenceSurvey()
-//        if (self.geofencedArrays.count > 0) && (self.surveyGeoAvailable.count > 0) {
-//            for sur in self.geofencedArrays {
-//                if (sur as! OPGGeofenceSurvey).address == address {                                          // compare address u got from annotataion with the list u got from dB
-//                    for geoAvailable in self.surveyGeoAvailable {
-//                        if (geoAvailable as! OPGSurvey).surveyID == (sur as! OPGGeofenceSurvey).surveyID {     // compare and get the surveyID for the particular address entered
-//                            return sur as! OPGGeofenceSurvey
-//                        } else {
-//                            //return sur as! OPGGeofenceSurvey
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        return surv
-//    }
-
     func runThroAddressForAnnotationSelection(_ surveyReference:String) -> OPGSurvey{
         let surv = OPGSurvey()
         if self.surveyGeoAvailable.count > 0 {
@@ -1348,8 +1314,13 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         }
         return surv
     }
-    
-    
+
+    /**
+    Method to update the offline survey counter indicating the number of survey responses to be uploaded.
+    - parameter survey: Survey to be uploaded
+    - parameter indexPath: indexPath of the cell to be updated
+    - parameter tableview: TableView in which a cell is to be updated with counter
+    */
     func updateOfflineCounter(survey:OPGSurvey, indexPath: IndexPath, tableview: UITableView ) {
         dispatchQueue.async(flags: .barrier) {
             let sdk = OPGSDK()
@@ -1996,17 +1967,6 @@ class HomeViewController: RootViewController, CLLocationManagerDelegate,UITableV
         bounceAnimation.isRemovedOnCompletion = false
         view.layer.add(bounceAnimation, forKey: "bounce")
     }
-    
-    
-//    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        print("locations \(locations)")
-//        let locValue:CLLocationCoordinate2D = (manager.location?.coordinate)!
-//        print("locValue \(locValue)")
-//
-//
-//        
-//    }
-
 
     deinit {
         NotificationCenter.default.removeObserver(self, name: Notification.Name(rawValue: "NotificationIdentifier"), object: nil);

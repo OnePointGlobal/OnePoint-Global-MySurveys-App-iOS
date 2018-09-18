@@ -31,6 +31,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
     @IBOutlet weak var constraintLogoText: NSLayoutConstraint!
     @IBOutlet weak var constraintLogoImage: NSLayoutConstraint!
     @IBOutlet weak var googleButtonAspectRatioConstraint: NSLayoutConstraint!
+
     // MARK: - Properties for viewcontroller
     var loginManager: FBSDKLoginManager?
     var bgColor: UIColor?
@@ -44,6 +45,8 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         } else {
             if super.isOnline() {
                 self.startActivityIndicator()
+                // Initialize again with OnePoint Developers in case Deep Link has initialised SDK with test credentials.
+                OPGSDK.initialize(withUserName: OPGConstants.sdk.Username, withSDKKey: OPGConstants.sdk.SharedKey)
                 self.authenticate()
             } else {
                 super.showNoInternetConnectionAlert()
@@ -57,6 +60,8 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
 
     @IBAction func googleSignInAction(_ sender: AnyObject) {
         if super.isOnline() {
+            // Initialize again with OnePoint Developers in case Deep Link has initialised SDK with test credentials.
+            OPGSDK.initialize(withUserName: OPGConstants.sdk.Username, withSDKKey: OPGConstants.sdk.SharedKey)
             GIDSignIn.sharedInstance().signIn()
         }
         else {
@@ -70,7 +75,8 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
             return
         }
         self.startActivityIndicator()
-
+        // Initialize again with OnePoint Developers in case Deep Link has initialised SDK with test credentials.
+        OPGSDK.initialize(withUserName: OPGConstants.sdk.Username, withSDKKey: OPGConstants.sdk.SharedKey)
         self.loginManager?.logIn(withReadPermissions: ["public_profile", "email", "user_friends"], from: self) { (result: FBSDKLoginManagerLoginResult?, error: Error?) in
             if error != nil {
                 print("Custom facebook login failed ", error!)
@@ -195,6 +201,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
     }
 
     // MARK: - Generic Private methods
+    /// Authnticates the user with panel username and panel password.
     func authenticate() {
         self.startActivityIndicator()    // start indicator when "Go" is pressed on keyboard
         self.setLoginControls(isInteractionEnabled: false)
@@ -246,6 +253,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         }
     }
 
+    /// Registers for push notifications calling the SDK method.
     func registerForAPNS() {
         let sdk = OPGSDK()
         let deviceToken: String? = UserDefaults.standard.value(forKey: "DeviceTokenID") as? String
@@ -259,6 +267,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         }
     }
 
+    /// Authenticates the user with Facebook credentials.
     func authenticateWithFacebook(result: FBSDKLoginManagerLoginResult) {
         if result.token != nil {
             print("the token received is \(result.token.tokenString)")
@@ -327,6 +336,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         self.activityIndicatorView?.stopAnimating()
     }
 
+    /// Sets theme to the app in the Login page.
     func setThemeElements() {
         let bgImagePath: String! = AppTheme.getLoginBGImagePath()
         if  bgImagePath.isEmpty {
@@ -342,6 +352,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         self.bgColor = AppTheme.getLoginBtnTextColor()
     }
 
+    /// This method checks for Header Logo image or Logo text and sets it in the Home View Controller.
     func checkForLogoImgAndText() {
         let headerLogoBGImagePath: String = AppTheme.getHeaderLogoImagePath()
         if headerLogoBGImagePath.isEmpty {
@@ -383,6 +394,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         }
     }
 
+    /// Sets Login screen background image.
     func setBackgroundImageforView() {
         let bounds = UIScreen.main.bounds
         let height = bounds.size.height
@@ -423,6 +435,7 @@ class LoginViewController: RootViewController, UITextFieldDelegate, GIDSignInUID
         }
     }
 
+    /// Adjusts aspect ratio for Goggle/Facebook Sign in button height for iPhone X where it looks strectched vertically
     func adjustiPhoneXGoogleButton() {
         print("iPhone X Constarint Updated Succesfuly")
         self.view.removeConstraint(self.googleButtonAspectRatioConstraint)

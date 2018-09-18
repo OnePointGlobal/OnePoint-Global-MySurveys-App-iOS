@@ -87,6 +87,10 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
 
 
     // MARK: - Private methods
+    /**
+    This method sends an email containing a link to reset the password.
+    - parameter mail: E-mail ID of the respondent
+    */
     func sendForgotPassword(mail: String) {
         if isValidEmail(mailID: mail) {
             self.activityIndicator.startAnimating()
@@ -136,6 +140,11 @@ class ForgotPasswordViewController: RootViewController, UITextFieldDelegate {
         }
     }
 
+    /**
+    Validates the e-mail.
+    - parameter mailID: E-mail to be validated
+    - returns: A boolean value indicating the status of e-mail validation.
+    */
     func isValidEmail(mailID: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)

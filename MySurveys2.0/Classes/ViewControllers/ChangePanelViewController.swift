@@ -53,7 +53,6 @@ class ChangePanelViewController: RootViewController, UITableViewDelegate, UITabl
     }
 
     // MARK: - UITableView Delegates
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if UIDevice.current.userInterfaceIdiom == .pad {
             return 260.0

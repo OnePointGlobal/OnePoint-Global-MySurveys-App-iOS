@@ -96,7 +96,7 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
             if self.panelist?.firstName == nil || self.panelist?.countryName == nil {
                 self.getPanellistProfileFromDB()                        // get from DB again if profile was not loaded due to internet disconnetivity.
             }
-        }  // thamarai changes
+        }
         if isEditable! {
             let btnEdit =  UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(editProfile))
             self.tabBarController?.navigationItem.rightBarButtonItem = btnEdit
@@ -126,10 +126,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 self.imageView?.image = imageToDisplay.fixOrientation()
             }
         }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        // self.isEditable = false
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -230,8 +226,6 @@ class ProfileViewController: RootViewController, UITableViewDelegate, UITableVie
                 tableViewCell?.txtValue.resignFirstResponder()
             }
     }
-
-
 
     // This method updates the panellist profile after editing
     func updateProfile() {

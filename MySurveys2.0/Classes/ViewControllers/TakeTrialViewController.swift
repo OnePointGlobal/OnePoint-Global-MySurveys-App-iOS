@@ -53,6 +53,7 @@ class TakeTrialViewController: OPGViewController, OPGSurveyDelegate {
         self.spinner.stopAnimating()
         self.spinner.isHidden = true
         // get a reference to the app delegate
+        //OPGSDK.initialize(withUserName: OPGConstants.sdk.Username, withSDKKey:OPGConstants.sdk.SharedKey)
         let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.resetLoginRootView()
     }

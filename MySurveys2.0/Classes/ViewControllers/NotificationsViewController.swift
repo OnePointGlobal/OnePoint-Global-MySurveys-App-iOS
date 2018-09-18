@@ -14,12 +14,14 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
     // MARK: - IBOutlets for View
     @IBOutlet weak var notifTableView: UITableView!
     @IBOutlet weak var lblNoNewNotifications: UILabel!
+
     // MARK: - Properties for viewcontroller
     var notificationArray: [NSDictionary] = []
     var selectedIndexArray: [Int] = []
     var isEditable: Bool = false
     var notificationDescription: String?
 
+    // MARK: - Viewcontroller Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.notifTableView.separatorInset = UIEdgeInsets.zero
@@ -34,7 +36,6 @@ class NotificationsViewController: RootViewController, UITableViewDelegate, UITa
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        // thamarai changes
         self.notifTableView?.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         self.notifTableView?.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
 
