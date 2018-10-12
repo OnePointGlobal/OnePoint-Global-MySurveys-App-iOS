@@ -1,5 +1,5 @@
 PODS:
-  - GoogleSignIn (4.2.0):
+  - GoogleSignIn (4.3.0):
     - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
     - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
     - GTMOAuth2 (~> 1.0)
@@ -47,11 +47,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   OPGFeedbackSDK:
-    :commit: b743f2297fdd85c099c5baeff0cbc8845bb6153c
+    :commit: 8e3a4dfa783d49e7a695c5b7321bfa91fe714330
     :git: https://github.com/OnePointGlobal/OPGFeedbackSDK.git
 
 SPEC CHECKSUMS:
-  GoogleSignIn: 591e46382014e591269f862ba6e7bc0fbd793532
+  GoogleSignIn: 11183592dc63e105475c7305a325045ff95e02b7
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e

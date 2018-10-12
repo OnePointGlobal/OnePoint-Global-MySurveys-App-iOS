@@ -6,7 +6,6 @@
 //
 
 
-
 typedef enum {
   IteratorTypeConstants___dummyEnum__0 = 0,
   IteratorTypeConstants_itNumber = 1,

@@ -32,7 +32,16 @@ class SurveyViewController: OPGViewController, OPGSurveyDelegate {
             self.loadSurvey(self.surveyReference, panelID: panelNumber, panellistID: panellistNumber)
         }
         else {
-            self.loadOfflineSurvey(self.getScriptPath(), surveyName: self.surveySelected!.surveyName, surveyID: self.surveySelected!.surveyID, panelID: panelNumber, panellistID: panellistNumber)
+            let panellistProfile: OPGPanellistProfile? = CollabrateDB.sharedInstance().getPanellistProfile()
+            print(panellistProfile as Any)
+            if panellistProfile?.additionalParams.isEmpty == true {
+                // Normal Offline Survey
+                self.loadOfflineSurvey(self.getScriptPath(), surveyName: self.surveySelected!.surveyName, surveyID: self.surveySelected!.surveyID, panelID: panelNumber, panellistID: panellistNumber)
+            }
+            else {
+                // Offline SUrvey with additional params in Sample Record
+                self.loadOfflineSurvey(self.getScriptPath(), surveyName: self.surveySelected!.surveyName, surveyID: self.surveySelected!.surveyID, panelID: panelNumber, panellistID: panellistNumber, panellistProfile: panellistProfile )
+            }
         }
     }
 

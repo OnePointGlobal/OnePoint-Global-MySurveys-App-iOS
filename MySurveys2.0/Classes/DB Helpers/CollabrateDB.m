@@ -9,7 +9,7 @@
 #import "CollabrateDB.h"
 #import "NSString+OPGAESCrypt.h"
 
-#define AES_KEY @""
+#define AES_KEY @"65v9AhwaG7WCZC6rVV4kpfux6flQtq2hRBJu2Y5qWNw="
 
 @implementation CollabrateDB
 
@@ -341,7 +341,7 @@
         profile.CreatedDate = [NSString stringToDate:@"12-12-2012"];
         profile.LastUpdatedDate = [NSString stringToDate:@"12-12-2012"];
         profile.SearchTag = @"SearchTag";
-        profile.Remark = @"Remark";
+        profile.Remark = profileDetails.additionalParams;
         profile.Gender = profileDetails.gender;
         profile.MaritalStatus = [NSNumber numberWithInt:1] ;
         profile.isGenderSpecified = [[NSNumber numberWithInt:1] boolValue];
@@ -375,6 +375,7 @@
             panllistProfile.mobileNumber = ppanellist.MobileNumber;
             panllistProfile.title = ppanellist.Title;       //NSNumber from the database so can't decrypt
             panllistProfile.DOB = [NSString stringFromDate:ppanellist.DOB];
+            panllistProfile.additionalParams = ppanellist.Remark;
         }
         return panllistProfile;
     }
