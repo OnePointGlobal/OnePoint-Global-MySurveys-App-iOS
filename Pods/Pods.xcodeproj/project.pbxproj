@@ -18,6 +18,7 @@
 				068C64D18F441963D57BC52B41752CEA /* PBXTargetDependency */,
 			);
 			name = GoogleSignIn;
+			productName = GoogleSignIn;
 		};
 		64F644EC3CAA913A1967A9514E97E565 /* OPGFeedbackSDK */ = {
 			isa = PBXAggregateTarget;
@@ -28,6 +29,7 @@
 				198F34BD4F22EE87A1B3E8A532BD32AC /* PBXTargetDependency */,
 			);
 			name = OPGFeedbackSDK;
+			productName = OPGFeedbackSDK;
 		};
 /* End PBXAggregateTarget section */
 
@@ -644,9 +646,9 @@
 		1DF98C2FC19A1F62F01F9AD9AC62B0CA /* boxchar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = boxchar.h; path = TesseractOCR/include/tesseract/boxchar.h; sourceTree = "<group>"; };
 		1E290DF7349A596E18C964A3EA62F1DB /* AliasMap.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AliasMap.h; path = include/OnePoint.Runtime/AliasMap.h; sourceTree = "<group>"; };
 		1E8BD7B1DBC9F01F2B98ABCA405F8E34 /* tess_lang_model.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tess_lang_model.h; path = TesseractOCR/include/tesseract/tess_lang_model.h; sourceTree = "<group>"; };
-		1ED34F990BD64840C45C92E4F2777836 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ED34F990BD64840C45C92E4F2777836 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EEED23E22D3264AD9E7203A9E27B996 /* preproc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = preproc.h; path = include/OnePoint.Runtime/preproc.h; sourceTree = "<group>"; };
-		1F630FE1D8156E09878E7D5C319B5044 /* GTMOAuth2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GTMOAuth2.framework; path = GTMOAuth2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F630FE1D8156E09878E7D5C319B5044 /* GTMOAuth2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMOAuth2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FC59AAEEEA571B67A8DDD400A371A99 /* ConstantFloat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ConstantFloat.h; path = include/OnePoint.Runtime/ConstantFloat.h; sourceTree = "<group>"; };
 		1FF1DC5A2E6D7140C8AE899593A7646C /* object_cache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = object_cache.h; path = TesseractOCR/include/tesseract/object_cache.h; sourceTree = "<group>"; };
 		1FF851F928821C9E388918838604246B /* watershed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = watershed.h; path = TesseractOCR/include/leptonica/watershed.h; sourceTree = "<group>"; };
@@ -702,7 +704,7 @@
 		2D355E86167751370AE584C52A44BFC8 /* GoogleToolboxForMac-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-prefix.pch"; sourceTree = "<group>"; };
 		2D38D357B6C04F7C87C14A98B4803A17 /* OPGCategory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGCategory.h; path = include/OnePoint.Runtime/OPGCategory.h; sourceTree = "<group>"; };
 		2D4C5CA047C8F0E2D336C3BB76BA26C0 /* OPGDebug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGDebug.h; path = "include/OPGSDK/Other Supporting Files/OPGDebug.h"; sourceTree = "<group>"; };
-		2D6E45025A4201378AD7B4E3D0801CB5 /* Pods_MySurveys2_0UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MySurveys2_0UITests.framework; path = "Pods-MySurveys2.0UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D6E45025A4201378AD7B4E3D0801CB5 /* Pods_MySurveys2_0UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveys2_0UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E08834FBBD56BCD39E643B430AFE025 /* ISavePoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ISavePoint.h; path = include/OnePoint.Runtime/ISavePoint.h; sourceTree = "<group>"; };
 		2E125604DD3D2B5B9320259F2311C2BC /* paragraphs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = paragraphs.h; path = TesseractOCR/include/tesseract/paragraphs.h; sourceTree = "<group>"; };
 		2E17BA44683264DD92D5FE69759A9A78 /* Loader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Loader.h; path = include/OnePoint.Runtime/Loader.h; sourceTree = "<group>"; };
@@ -739,9 +741,9 @@
 		341B2CF268822FFEB52D4051D0C68143 /* ILabels.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ILabels.h; path = include/OnePoint.Runtime/ILabels.h; sourceTree = "<group>"; };
 		342E0A6C9C5F2C9D4032AA877C9F9395 /* OPGExif.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGExif.h; path = "include/OPGSDK/Other Supporting Files/OPGExif.h"; sourceTree = "<group>"; };
 		342F2C217B4FBAEDC96ADC26F7DDC966 /* makerow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = makerow.h; path = TesseractOCR/include/tesseract/makerow.h; sourceTree = "<group>"; };
-		3441EFE7FA290FD2B2E74C2A0073A952 /* G8Tesseract.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = G8Tesseract.mm; path = TesseractOCR/G8Tesseract.mm; sourceTree = "<group>"; };
+		3441EFE7FA290FD2B2E74C2A0073A952 /* G8Tesseract.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = G8Tesseract.mm; path = TesseractOCR/G8Tesseract.mm; sourceTree = "<group>"; };
 		34602E4B17B7B96310B3115B858AD73C /* docqual.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = docqual.h; path = TesseractOCR/include/tesseract/docqual.h; sourceTree = "<group>"; };
-		34CD0438AD2F58E4FC98BB4C48B86A99 /* RNCryptor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RNCryptor.framework; path = RNCryptor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34CD0438AD2F58E4FC98BB4C48B86A99 /* RNCryptor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RNCryptor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35569C88C9BAB28AF1C56F726843A5E4 /* IOMResponses.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IOMResponses.h; path = include/OnePoint.Runtime/IOMResponses.h; sourceTree = "<group>"; };
 		35FDFD780B07CEF9F4CFA2BB89FC5708 /* tessvars.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tessvars.h; path = TesseractOCR/include/tesseract/tessvars.h; sourceTree = "<group>"; };
 		3618BBF5205B2A9340F16C1B92B92EE4 /* OPGDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OPGDevice.h; path = "include/OPGSDK/Other Supporting Files/OPGDevice.h"; sourceTree = "<group>"; };
@@ -943,7 +945,7 @@
 		66AA6D7160DD8095076B2B184751D4A5 /* allheaders.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = allheaders.h; path = TesseractOCR/include/leptonica/allheaders.h; sourceTree = "<group>"; };
 		66D03861099B9634D86E017F02AD1D67 /* Range.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Range.h; path = include/OnePoint.Runtime/Range.h; sourceTree = "<group>"; };
 		66E3B34BC157587D0BDE3E275633FF77 /* IFontStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IFontStyle.h; path = include/OnePoint.Runtime/IFontStyle.h; sourceTree = "<group>"; };
-		6731FDDD1443D834DE5AF5367CBD9B84 /* Pods_MySurveys2_0Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MySurveys2_0Tests.framework; path = "Pods-MySurveys2.0Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6731FDDD1443D834DE5AF5367CBD9B84 /* Pods_MySurveys2_0Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveys2_0Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		673CF87BBCEF9AA1197834F37763613C /* shapeclassifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = shapeclassifier.h; path = TesseractOCR/include/tesseract/shapeclassifier.h; sourceTree = "<group>"; };
 		678EBECB51D40F613819806BF2924B23 /* Control.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Control.h; path = include/OnePoint.Runtime/Control.h; sourceTree = "<group>"; };
 		67D3996DFF6CC3DC03BA535749BC3AA7 /* matchdefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = matchdefs.h; path = TesseractOCR/include/tesseract/matchdefs.h; sourceTree = "<group>"; };
@@ -952,7 +954,7 @@
 		685373B05B3E92E3534065EBFB4AC7FC /* StaticField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = StaticField.h; path = include/OnePoint.Runtime/StaticField.h; sourceTree = "<group>"; };
 		6883276AEB7336F96BB5FCF879176AE2 /* trees.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = trees.h; path = include/OnePoint.Runtime/trees.h; sourceTree = "<group>"; };
 		688D1FFB6562897DE04FBC5B414384A8 /* StandardTexts.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = StandardTexts.h; path = include/OnePoint.Runtime/StandardTexts.h; sourceTree = "<group>"; };
-		69306F1396A2E11A311384B378A83940 /* Pods_MySurveys2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MySurveys2_0.framework; path = "Pods-MySurveys2.0.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69306F1396A2E11A311384B378A83940 /* Pods_MySurveys2_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveys2_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		696A87596828AAF5AC883E2A3C726080 /* MetaProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MetaProperty.h; path = include/OnePoint.Runtime/MetaProperty.h; sourceTree = "<group>"; };
 		69D5F0668005D7D8A54740FBFB5C2302 /* FBShimmeringView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBShimmeringView.h; path = FBShimmering/FBShimmeringView.h; sourceTree = "<group>"; };
 		6A1FD6B4A909F74CBC1E1F0B3F308486 /* Properties.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Properties.h; path = include/OnePoint.Runtime/Properties.h; sourceTree = "<group>"; };
@@ -1028,7 +1030,7 @@
 		7F83C18B9EDCA45AD8FB12BB87BCC12B /* emalloc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = emalloc.h; path = TesseractOCR/include/tesseract/emalloc.h; sourceTree = "<group>"; };
 		7FF71F1394BD015668D9451CF2B3D3DD /* LocalVariableTableAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LocalVariableTableAttribute.h; path = include/OnePoint.Runtime/LocalVariableTableAttribute.h; sourceTree = "<group>"; };
 		808BF80CEBFC62A4F3BFAB66D6BC36E0 /* tlog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tlog.h; path = TesseractOCR/include/tesseract/tlog.h; sourceTree = "<group>"; };
-		80C6EFE49A510BA0DAC35819CF7A7A49 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GTMSessionFetcher.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80C6EFE49A510BA0DAC35819CF7A7A49 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F681B66AD0B5B1E0C1664693F53C97 /* tesscallback.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tesscallback.h; path = TesseractOCR/include/tesseract/tesscallback.h; sourceTree = "<group>"; };
 		80FF994CB14CB8B413AACFE550C32F79 /* GTMOAuth2Authentication.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMOAuth2Authentication.m; path = Source/GTMOAuth2Authentication.m; sourceTree = "<group>"; };
 		81779ABAA24624C66F987194DFE5E4B5 /* pattern.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pattern.h; path = include/OnePoint.Runtime/pattern.h; sourceTree = "<group>"; };
@@ -1060,7 +1062,7 @@
 		8ADFE554632EC63B84A327306149AD85 /* textlineprojection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = textlineprojection.h; path = TesseractOCR/include/tesseract/textlineprojection.h; sourceTree = "<group>"; };
 		8AFC1AE9D62F2C11DB3494F88238F756 /* char_set.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = char_set.h; path = TesseractOCR/include/tesseract/char_set.h; sourceTree = "<group>"; };
 		8B233895FED5AFEB012A7084AD52E674 /* MetaDocument.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MetaDocument.h; path = include/OnePoint.Runtime/MetaDocument.h; sourceTree = "<group>"; };
-		8B326B661E50012A9641B42A140C551F /* Shimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Shimmer.framework; path = Shimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B326B661E50012A9641B42A140C551F /* Shimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C0B8A519715EBBC642E20F67770C983 /* makechop.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = makechop.h; path = TesseractOCR/include/tesseract/makechop.h; sourceTree = "<group>"; };
 		8C1477D8AEE56EFA8E8D6014E035A0FF /* SliderStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SliderStyle.h; path = include/OnePoint.Runtime/SliderStyle.h; sourceTree = "<group>"; };
 		8C2049D8C4B9156A3F6002E7B0429F5F /* attributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = attributes.h; path = include/OnePoint.Runtime/attributes.h; sourceTree = "<group>"; };
@@ -1094,7 +1096,7 @@
 		927F997EE46FD238F3DB6E6522D36F0E /* BTBinaryStreamWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BTBinaryStreamWriter.h; path = include/OnePoint.Runtime/BTBinaryStreamWriter.h; sourceTree = "<group>"; };
 		92A5389CD6D313A762B8B410E30B511F /* IAlias.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IAlias.h; path = include/OnePoint.Runtime/IAlias.h; sourceTree = "<group>"; };
 		92EB623032953CDF9D7D5CD55C038E57 /* oclkernels.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = oclkernels.h; path = TesseractOCR/include/tesseract/oclkernels.h; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		945FA4C1A967F28B94F8C9023745011B /* Pods-MySurveys2.0-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MySurveys2.0-frameworks.sh"; sourceTree = "<group>"; };
 		94718356954829E1E865C863F881730B /* xsltwin32config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = xsltwin32config.h; path = include/OnePoint.Runtime/xsltwin32config.h; sourceTree = "<group>"; };
 		948B5B23CE747E0A50FC821C02F92FE5 /* RecordType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RecordType.h; path = include/OnePoint.Runtime/RecordType.h; sourceTree = "<group>"; };
@@ -1362,7 +1364,7 @@
 		D56A981E2EA9687C2AF21BF3BEA9C526 /* NavigationTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NavigationTypes.h; path = include/OnePoint.Runtime/NavigationTypes.h; sourceTree = "<group>"; };
 		D5A1B86170513FC9E57583BD44BDE7BE /* svmnode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = svmnode.h; path = TesseractOCR/include/tesseract/svmnode.h; sourceTree = "<group>"; };
 		D5D95AB1E1DC33A7462F478129FE05F4 /* osdetect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = osdetect.h; path = TesseractOCR/include/tesseract/osdetect.h; sourceTree = "<group>"; };
-		D5F82D0524E0F1D793B64E20C29676F6 /* OPGFeedbackSDK.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = OPGFeedbackSDK.bundle; path = "OPGFeedbackSDK-OPGFeedbackSDK.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5F82D0524E0F1D793B64E20C29676F6 /* OPGFeedbackSDK.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OPGFeedbackSDK.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6ABE89998F0863D4732BE37568B0ED6 /* FBShimmeringLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBShimmeringLayer.m; path = FBShimmering/FBShimmeringLayer.m; sourceTree = "<group>"; };
 		D6B83161DACA508274F295D6167CB9C4 /* scanutils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = scanutils.h; path = TesseractOCR/include/tesseract/scanutils.h; sourceTree = "<group>"; };
 		D708535D593A14E20AE1D4EC8B660759 /* GTMSessionFetcherLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcherLogging.h; path = Source/GTMSessionFetcherLogging.h; sourceTree = "<group>"; };
@@ -1388,7 +1390,7 @@
 		DBA5118AA1FAF0C1D384041D519DB981 /* ScriptReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ScriptReader.h; path = include/OnePoint.Runtime/ScriptReader.h; sourceTree = "<group>"; };
 		DC082364CA4F90288356C96FE1724912 /* IAudioStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IAudioStyle.h; path = include/OnePoint.Runtime/IAudioStyle.h; sourceTree = "<group>"; };
 		DC2C1C95CC4CE117E82854D9B754EFDC /* IValueAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IValueAttribute.h; path = include/OnePoint.Runtime/IValueAttribute.h; sourceTree = "<group>"; };
-		DC358DBFC91159900E52D4951D38191E /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TesseractOCR.framework; path = TesseractOCRiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC358DBFC91159900E52D4951D38191E /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC60C0B87B9FD8E4104EE34B21CB871E /* regutils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = regutils.h; path = TesseractOCR/include/leptonica/regutils.h; sourceTree = "<group>"; };
 		DC69D462842C15E9086839BF48663C86 /* ZipFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ZipFile.h; path = include/OnePoint.Runtime/ZipFile.h; sourceTree = "<group>"; };
 		DC99B25B8559586FB8AA2542571FAB57 /* word_altlist.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = word_altlist.h; path = TesseractOCR/include/tesseract/word_altlist.h; sourceTree = "<group>"; };
@@ -2105,7 +2107,6 @@
 				C5846626791508E4C573C814B9CCC1B0 /* Resources */,
 				FEEAD85076403BC497AEE7F594E12CB8 /* Support Files */,
 			);
-			name = OPGFeedbackSDK;
 			path = OPGFeedbackSDK;
 			sourceTree = "<group>";
 		};
@@ -2160,7 +2161,6 @@
 				4C0088206F862983589342E7A433EAD2 /* NSString+URLArguments */,
 				884246A4B9C88EEF50EF7077CC1565A5 /* Support Files */,
 			);
-			name = GoogleToolboxForMac;
 			path = GoogleToolboxForMac;
 			sourceTree = "<group>";
 		};
@@ -2176,7 +2176,6 @@
 				85F62147E6CD19DB9AC9F07A89E7ACD2 /* Resources */,
 				A178054CF8E94A74101B9FB0155EC851 /* Support Files */,
 			);
-			name = GTMOAuth2;
 			path = GTMOAuth2;
 			sourceTree = "<group>";
 		};
@@ -2221,7 +2220,6 @@
 				0CD1B3103591FDFE2B461EDCC2290DEA /* FBShimmeringView.m */,
 				71335B1377EB6B3FD3D3216F9286F65A /* Support Files */,
 			);
-			name = Shimmer;
 			path = Shimmer;
 			sourceTree = "<group>";
 		};
@@ -2264,7 +2262,6 @@
 				F1DC1AE091A5B4B23DFC67765CE21226 /* Resources */,
 				6BD778E74B0D0D2C7CECDB41BE880631 /* Support Files */,
 			);
-			name = GoogleSignIn;
 			path = GoogleSignIn;
 			sourceTree = "<group>";
 		};
@@ -2618,7 +2615,6 @@
 				1323216800D849F49AE1D5AD0CF0A025 /* Frameworks */,
 				19FFE6EF096094DE40B8B5304CB80D5C /* Support Files */,
 			);
-			name = TesseractOCRiOS;
 			path = TesseractOCRiOS;
 			sourceTree = "<group>";
 		};
@@ -2736,7 +2732,6 @@
 				26EA383DF7223BA5EC170859CD701900 /* RNCryptor.swift */,
 				4E67145B894BC3E8E0A8171755CE4B6A /* Support Files */,
 			);
-			name = RNCryptor;
 			path = RNCryptor;
 			sourceTree = "<group>";
 		};
@@ -2805,7 +2800,6 @@
 				4990FB259FB36B2CE8115FD9D0415356 /* Full */,
 				F1080854BA45F1871BD50856B8BDB67A /* Support Files */,
 			);
-			name = GTMSessionFetcher;
 			path = GTMSessionFetcher;
 			sourceTree = "<group>";
 		};
@@ -3939,6 +3933,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "Target Support Files/TesseractOCRiOS/TesseractOCRiOS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/TesseractOCRiOS/TesseractOCRiOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -4059,8 +4054,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -4161,8 +4155,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -4577,6 +4570,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "Target Support Files/TesseractOCRiOS/TesseractOCRiOS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/TesseractOCRiOS/TesseractOCRiOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
