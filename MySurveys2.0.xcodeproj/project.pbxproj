@@ -26,11 +26,11 @@
 		134C44EE1FC6B107002D8AE9 /* icon_save.png in Resources */ = {isa = PBXBuildFile; fileRef = 134C44E51FC6B105002D8AE9 /* icon_save.png */; };
 		135011FA201EFAAC0043EE6F /* CurrenyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135011F7201EFAAB0043EE6F /* CurrenyViewController.swift */; };
 		135011FB201EFAAC0043EE6F /* CurrencyPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 135011F9201EFAAC0043EE6F /* CurrencyPlugin.m */; };
-		135B71041DB9FC6A00F48E94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 135B71081DB9FC6A00F48E94 /* Localizable.strings */; };
 		135B71051DB9FC6A00F48E94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 135B71081DB9FC6A00F48E94 /* Localizable.strings */; };
 		135B71061DB9FC6A00F48E94 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 135B71081DB9FC6A00F48E94 /* Localizable.strings */; };
 		13608E581DFE7ECC00F7DF05 /* profile_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 13608E571DFE7ECC00F7DF05 /* profile_bg.png */; };
 		136163071D1D611A005C41D0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 136163061D1D611A005C41D0 /* CoreLocation.framework */; };
+		136E200922BE0F8B00BA7D39 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 135B71081DB9FC6A00F48E94 /* Localizable.strings */; };
 		137B87541E0D2D7F0023C818 /* OfflineDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B87521E0D2D7F0023C818 /* OfflineDownload.swift */; };
 		137B87551E0D2D7F0023C818 /* OPGNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B87531E0D2D7F0023C818 /* OPGNotificationView.swift */; };
 		139621211E1520450065EC5E /* applogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1396211F1E1520450065EC5E /* applogo@2x.png */; };
@@ -154,8 +154,8 @@
 		78D4C0C31F179559002E6AF4 /* LoginBg_iPad_Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0BF1F179558002E6AF4 /* LoginBg_iPad_Portrait.png */; };
 		78D4C0C41F179559002E6AF4 /* LoginPageLogo_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0C01F179558002E6AF4 /* LoginPageLogo_iPad.png */; };
 		78D4C0C51F179559002E6AF4 /* LoginPageLogo_iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D4C0C11F179558002E6AF4 /* LoginPageLogo_iPad@2x.png */; };
-		78D5EA161DC36091009125A7 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
-		78E2252D1DC3638400880AE0 /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		78D5EA161DC36091009125A7 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		78E2252D1DC3638400880AE0 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		78E368461DF6DF4900D14F07 /* profile_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78E368451DF6DF4900D14F07 /* profile_default.png */; };
 		78E4F2731E1271FF001678FB /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78E4F2721E1271FF001678FB /* UserNotifications.framework */; };
 		78E9F4CB1DDC61500004FC73 /* ProfileTableViewCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E9F4CA1DDC61500004FC73 /* ProfileTableViewCountryCell.swift */; };
@@ -1129,7 +1129,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 7FK8U2PHL6;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1158,6 +1158,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				ar,
@@ -1182,6 +1183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				136E200922BE0F8B00BA7D39 /* Localizable.strings in Resources */,
 				78CB25991EA5EE460002EC6D /* survey_time_iPad.png in Resources */,
 				13F9A46B1DF9453E0017C42C /* profile_camera@3x.png in Resources */,
 				78CB259A1EA5EE460002EC6D /* survey_time_iPad@2x.png in Resources */,
@@ -1321,7 +1323,6 @@
 				781401101EADDD2D00799399 /* survey_nav_iPad.png in Resources */,
 				948102F61E435B5F00605F18 /* icon.png in Resources */,
 				948102EE1E435B5F00605F18 /* icon-50.png in Resources */,
-				135B71041DB9FC6A00F48E94 /* Localizable.strings in Resources */,
 				78F549061DF8128B00E4EB35 /* facebook@1x.png in Resources */,
 				78D4C0B61F1786FF002E6AF4 /* LoginBg-667h@2x.png in Resources */,
 				134C44EC1FC6B107002D8AE9 /* icon_cancel@3x.png in Resources */,
@@ -1502,7 +1503,7 @@
 				94C216E51DDF19DD004C1131 /* RootViewController.swift in Sources */,
 				94CD762E1DB4A63B00C6F958 /* SurveyViewController.swift in Sources */,
 				7878854320BBD20300BFEB67 /* NSString+OPGAESCrypt.m in Sources */,
-				78D5EA161DC36091009125A7 /* BuildFile in Sources */,
+				78D5EA161DC36091009125A7 /* (null) in Sources */,
 				789CCFEA1DC3664E00D79FA1 /* ProfileTableViewCell.swift in Sources */,
 				9408BB021DBF7EFE0066A049 /* NSString+NSDate.m in Sources */,
 				94CD75FD1DB4A51E00C6F958 /* UIImage.swift in Sources */,
@@ -1524,7 +1525,7 @@
 				782511F6202C1DD400654236 /* OCRViewController.m in Sources */,
 				94CD75FB1DB4A51E00C6F958 /* UIColor.swift in Sources */,
 				946474A61DBE497A00016F2C /* SettingsViewController.swift in Sources */,
-				78E2252D1DC3638400880AE0 /* BuildFile in Sources */,
+				78E2252D1DC3638400880AE0 /* (null) in Sources */,
 				94CD761A1DB4A63B00C6F958 /* AboutUsViewController.swift in Sources */,
 				78EAFEC51DD302CC002158A1 /* NotificationTableViewCell.swift in Sources */,
 				135011FB201EFAAC0043EE6F /* CurrencyPlugin.m in Sources */,
@@ -1790,9 +1791,9 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1819,8 +1820,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -1837,9 +1838,9 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = MySurveys2.0/MySurveys2.0.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7FK8U2PHL6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1866,8 +1867,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onepointglobal.onepointglobalapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cd299d84-641a-423c-b176-14f0411de178";
-				PROVISIONING_PROFILE_SPECIFIER = MySurveys1.0_Development_2017;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/MySurveys-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
