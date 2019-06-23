@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A880D807AC42C691DB9B96389248163"
+               BlueprintIdentifier = "7CE33830230019A26264E823E1F31CE0"
                BuildableName = "OPGFeedbackSDK.bundle"
                BlueprintName = "OPGFeedbackSDK-OPGFeedbackSDK"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7A880D807AC42C691DB9B96389248163"
+            BlueprintIdentifier = "7CE33830230019A26264E823E1F31CE0"
             BuildableName = "OPGFeedbackSDK.bundle"
             BlueprintName = "OPGFeedbackSDK-OPGFeedbackSDK"
             ReferencedContainer = "container:Pods.xcodeproj">

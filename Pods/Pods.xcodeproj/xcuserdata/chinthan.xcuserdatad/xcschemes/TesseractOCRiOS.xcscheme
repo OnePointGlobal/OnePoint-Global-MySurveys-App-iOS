@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A83D2977A9ECBD4140807F3AA367B018"
-               BuildableName = "Pods_MySurveys2_0Tests.framework"
-               BlueprintName = "Pods-MySurveys2.0Tests"
+               BlueprintIdentifier = "708A351CAC11B11C660683699CDA5BF8"
+               BuildableName = "TesseractOCR.framework"
+               BlueprintName = "TesseractOCRiOS"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A83D2977A9ECBD4140807F3AA367B018"
-            BuildableName = "Pods_MySurveys2_0Tests.framework"
-            BlueprintName = "Pods-MySurveys2.0Tests"
+            BlueprintIdentifier = "708A351CAC11B11C660683699CDA5BF8"
+            BuildableName = "TesseractOCR.framework"
+            BlueprintName = "TesseractOCRiOS"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
